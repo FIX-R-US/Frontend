@@ -1,0 +1,35 @@
+.account--container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.account--form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 400px;
+    height: 450px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+.account--field{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 5px;  
+}
+.account--field > input{
+    border-radius: 5px;
+}
+.account--field > select{
+    border-radius: 5px;
+}
+.account--btn{
+    width: 65%;
+    border-radius: 5px;
+}

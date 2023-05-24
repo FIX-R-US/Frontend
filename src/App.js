@@ -1,14 +1,12 @@
-import './App.css';
+import Login from "./Shared Utils/Login/Login";
+import CreateAccount from "./Shared Utils/Login/CreateAccount";
 
 function App() {
   return (
     <div className="main">
-      <div className="sub">
-        <form>
-          <label for = "email">email</label>
-          <input type="email" placeholder='youremail@gmail.com'></input>
-        </form>
-      </div>
+      {/* <h1>ROUTING GOES HERE</h1> */}
+      {/* <Login/> */}
+      <CreateAccount/>
     </div>
   );
 }
