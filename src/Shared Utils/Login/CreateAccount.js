@@ -1,7 +1,12 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import './CreateAccount.css'
+import {HiEye, HiEyeOff} from 'react-icons/hi'
+
 
 function CreateAccount() {
+    
+    const[showPassword, setShowPassword] = useState(false)
+
     const usernameRef = useRef()
     const emailRef = useRef()
     const passwordRef = useRef()
@@ -20,12 +25,11 @@ function CreateAccount() {
   return (
     <div className='account--container'>
         <form className='account--form' onSubmit={handleProceed}>
-         <h2>Create an account</h2>
+         <h2 className='h2'>Create an account</h2>
             <div className='account--field'>
                 <label htmlFor='Username'>Username</label>
                 <input 
                 type='text'
-                placeholder='Username'
                 ref={usernameRef}
                 required
                 />
@@ -34,32 +38,33 @@ function CreateAccount() {
                 <label htmlFor='Email'>Email</label>
                 <input 
                 type='email'
-                placeholder='Email'
                 ref={emailRef}
                 required
                 />
             </div>
             <div className='account--field'>
                 <label htmlFor='Password'>Password</label>
-                <input 
-                type='password'
-                placeholder='Password'
-                ref={passwordRef}
-                required
-                />
+                    <input 
+                    type={showPassword ? 'text' : 'password'}
+                    ref={passwordRef}
+                    required
+                    />
+                    {showPassword ? <HiEyeOff className='eye' onClick={()=>setShowPassword(prevShowPassword=> !prevShowPassword)}/> :
+                     <HiEye className='eye' onClick={()=>setShowPassword(prevShowPassword=> !prevShowPassword)} />}
             </div>
             <div className='account--field'>
                 <label htmlFor='Confirm Password'>Confirm Password</label>
-                <input 
-                type='password'
-                placeholder='Confirm Password'
-                ref={confirmPasswordRef}
-                required
-                />
+                    <input 
+                    type={showPassword ? 'text' : 'password'}
+                    ref={confirmPasswordRef}
+                    required
+                    />
+                    {showPassword ? <HiEyeOff className='eye' onClick={()=>setShowPassword(prevShowPassword=> !prevShowPassword)}/> :
+                     <HiEye className='eye' onClick={()=>setShowPassword(prevShowPassword=> !prevShowPassword)}/>}
             </div>
             <div className='account--field'>
                 <label htmlFor='Select Role'>Select Role</label>
-                <select placeholder='Select role' ref={roleRef} required>
+                <select ref={roleRef} required>
                     <option value='artisan'>Artisan</option>
                     <option value='user'>User</option>
                 </select>

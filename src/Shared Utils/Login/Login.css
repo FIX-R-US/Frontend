@@ -20,14 +20,18 @@
 
 .field{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
     width: 80%;  
+    border: none;
+    border-bottom: 1px solid black;
+    gap: 4px;
+    position: relative;
 }
 
 .input--field{
     border: none;
-    border-bottom: 1px solid black;
-        
+    height: 20px;
 }
 
 .input--field:focus{
@@ -36,4 +40,9 @@
 .form--button{
     border-radius: 8px;
     width: 80%;
+    height: 25px;
+}
+.show--password{
+    position: absolute;
+    right: 0;
 }

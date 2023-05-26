@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import './Login.css'
-import CreateAccount from './CreateAccount'
+import {HiUser, HiLockClosed, HiEye, HiEyeOff} from 'react-icons/hi'
+
 
 function Login() {
     const UsernameRef = useRef()
@@ -15,11 +16,15 @@ function Login() {
         console.log(username, userpassword)   
     }
     
+    const show = () => {
+        setShowPassword(prevShowPassword => !prevShowPassword )
+    }
     
   return (
     <div className='form--wrapper'>
         <form className='form' onSubmit={handleSubmit}>
                 <div className='field'>
+                    <HiUser size={20}/>
                     <input 
                         className='input--field' 
                         ref={UsernameRef} 
@@ -28,15 +33,18 @@ function Login() {
                         required/>
                 </div>
                 <div className='field'>
+                    <HiLockClosed size={20}/>
                     <input 
                         className='input--field'
                         ref={passwordRef} 
                         type={showPassword ? 'text' : 'password' } 
                         placeholder='Password' 
                         required/>
+                    {showPassword ? <HiEyeOff onClick={show} className='show--password'/> :
+                     <HiEye onClick={show} className='show--password'/>}
                 </div>
                 <button type='submit' className='form--button'>Login</button>
-            <p className='create--account'>Don't have an account?<a>Create an account</a></p>
+            <p className='create--account'>Don't have an account?<a href='a'>Create an account</a></p>
         </form>
     </div>
   )
