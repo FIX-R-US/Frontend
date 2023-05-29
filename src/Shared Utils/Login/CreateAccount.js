@@ -1,10 +1,11 @@
 import React, { useRef, useState } from 'react'
 import './CreateAccount.css'
 import {HiEye, HiEyeOff} from 'react-icons/hi'
+// import { useNavigate } from 'react-router-dom'
 
 
 function CreateAccount() {
-    
+    // const navigate = useNavigate();
     const[showPassword, setShowPassword] = useState(false)
 
     const usernameRef = useRef()
@@ -22,6 +23,10 @@ function CreateAccount() {
         const role = roleRef.current.value
         console.log(username, email, password, confirmPassword, role)
     }
+    // const handleSubmit = () => {
+    //     roleRef === 'artisan' ? navigate('/artisanRegistration'):
+    //     navigate('/userRegistration')
+    // }
   return (
     <div className='account--container'>
         <form className='account--form' onSubmit={handleProceed}>

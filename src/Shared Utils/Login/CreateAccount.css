@@ -1,12 +1,12 @@
-body{
-    overflow: hidden;
-}
 .account--container{
     width: 100vw;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image: url(./signup.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .account--form{
     display: flex;
@@ -15,10 +15,12 @@ body{
     justify-content: center;
     gap: 10px;
     width: 350px;
-    height: 450px;
+    height: 453px;
     border: 1px solid rgba(0, 0, 0, 0.5);
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
 }
 .account--field{
     display: flex;
@@ -29,21 +31,31 @@ body{
 }
 .eye{
     position: absolute;
-    top: 28px;
+    top: 36px;
     right: 5px;
 }
 .account--field > input{
     border-radius: 5px;
-    height: 20px;
+    border: 2px solid white;
+    /* height: 20px; */
+    background: transparent;
+    color: white;
 }
 .account--field > select{
     border-radius: 5px;
-    height: 25px;
+    height: 30px;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+.account--field > select > option{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
 }
 
 .account--btn{
     width: 65%;
-    height: 25px;
+    /* height: 25px; */
     border-radius: 5px;
 }
 .h2{

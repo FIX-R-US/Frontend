@@ -1,9 +1,11 @@
 import React, { useRef, useState } from 'react'
 import './Login.css'
 import {HiUser, HiLockClosed, HiEye, HiEyeOff} from 'react-icons/hi'
+import { Link } from 'react-router-dom'
 
 
 function Login() {
+
     const UsernameRef = useRef()
     const passwordRef = useRef()
     const [showPassword, setShowPassword] = useState(false);
@@ -22,9 +24,9 @@ function Login() {
     
   return (
     <div className='form--wrapper'>
-        <form className='form' onSubmit={handleSubmit}>
+        <form className='login--form' onSubmit={handleSubmit}>
                 <div className='field'>
-                    <HiUser size={20}/>
+                    <HiUser size={25} color='black'/>
                     <input 
                         className='input--field' 
                         ref={UsernameRef} 
@@ -33,18 +35,18 @@ function Login() {
                         required/>
                 </div>
                 <div className='field'>
-                    <HiLockClosed size={20}/>
+                    <HiLockClosed size={25} color='black'/>
                     <input 
                         className='input--field'
                         ref={passwordRef} 
                         type={showPassword ? 'text' : 'password' } 
                         placeholder='Password' 
                         required/>
-                    {showPassword ? <HiEyeOff onClick={show} className='show--password'/> :
-                     <HiEye onClick={show} className='show--password'/>}
+                    {showPassword ? <HiEyeOff onClick={show} className='show--password' color='black'/> :
+                     <HiEye onClick={show} className='show--password' color='black'/>}
                 </div>
                 <button type='submit' className='form--button'>Login</button>
-            <p className='create--account'>Don't have an account?<a href='a'>Create an account</a></p>
+            <p className='create--account'>Don't have an account?<Link to='/createAccount'>Create an account</Link></p>
         </form>
     </div>
   )

@@ -4,8 +4,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image: url(./login.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    
 }
-.form{
+.login--form{
     width: 400px;
     height: 400px;
     border: 1px solid rgba(0, 0, 0, 0.5);
@@ -14,7 +18,7 @@
     justify-content: center;
     align-items: center;
     gap: 30px;
-    /* background-color: rgba(0, 0, 0, 0.5); */
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
 }
 
@@ -24,14 +28,20 @@
     align-items: center;
     width: 80%;  
     border: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid white;
     gap: 4px;
     position: relative;
 }
 
 .input--field{
     border: none;
-    height: 20px;
+    /* height: 20px; */
+    width: 100%;
+    background: transparent;
+    color: white;
+}
+::placeholder{
+    color: white;
 }
 
 .input--field:focus{
@@ -40,9 +50,12 @@
 .form--button{
     border-radius: 8px;
     width: 80%;
-    height: 25px;
+    /* height: 25px; */
 }
 .show--password{
     position: absolute;
     right: 0;
+}
+.create--account{
+    color: white;
 }

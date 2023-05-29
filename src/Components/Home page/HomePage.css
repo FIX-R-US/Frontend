@@ -1,9 +1,5 @@
 body {
-  background-image: url(./homepage.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
+  overflow: hidden;
 }
 
 .nav--container {
@@ -19,22 +15,34 @@ body {
   align-items: center;
   gap: 2px;
 }
+.nav--container .nav--items .nav--text {
+  color: white;
+}
 
-.content {
+.bg--image {
+  background-image: url(./homepage.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+}
+.bg--image .content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: white;
   gap: 10px;
+  overflow: hidden;
 }
-.content h1 {
+.bg--image .content h1 {
   font-size: 60px;
+  margin: 0;
 }
-.content h3 {
+.bg--image .content h3 {
   margin-top: 30px;
 }
-.content .button {
+.bg--image .content .button {
   width: 15%;
   padding: 10px;
   border: none;
@@ -44,6 +52,6 @@ body {
   font-size: large;
   font-weight: 700;
 }
-.content .button:hover {
+.bg--image .content .button:hover {
   background-color: rgba(0, 0, 0, 0.6);
 }/*# sourceMappingURL=HomePage.css.map */

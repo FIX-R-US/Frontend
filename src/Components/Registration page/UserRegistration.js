@@ -38,7 +38,7 @@ function UserRegistration() {
             <div className='field--input'>
                 <label>Contact</label>
                 <input 
-                type='number'
+                type='phone'
                 required
                 ref={contactRef}
                 />
