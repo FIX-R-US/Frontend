@@ -47,6 +47,7 @@ function Login() {
                 </div>
                 <button type='submit' className='form--button'>Login</button>
             <p className='create--account'>Don't have an account?<Link to='/createAccount'>Create an account</Link></p>
+                <p className='forgot--password'>Forgot Password?<Link to='/resetPassword'>Reset Password</Link></p>
         </form>
     </div>
   )
