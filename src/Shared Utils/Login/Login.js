@@ -26,7 +26,7 @@ function Login() {
     <div className='form--wrapper'>
         <form className='login--form' onSubmit={handleSubmit}>
                 <div className='field'>
-                    <HiUser size={25} color='black'/>
+                    <HiUser size={25} color='white'/>
                     <input 
                         className='input--field' 
                         ref={UsernameRef} 
@@ -35,19 +35,21 @@ function Login() {
                         required/>
                 </div>
                 <div className='field'>
-                    <HiLockClosed size={25} color='black'/>
+                    <HiLockClosed size={25} color='white'/>
                     <input 
                         className='input--field'
                         ref={passwordRef} 
                         type={showPassword ? 'text' : 'password' } 
                         placeholder='Password' 
                         required/>
-                    {showPassword ? <HiEyeOff onClick={show} className='show--password' color='black'/> :
-                     <HiEye onClick={show} className='show--password' color='black'/>}
+                    {showPassword ? <HiEyeOff onClick={show} className='show--password' color='white'/> :
+                     <HiEye onClick={show} className='show--password' color='white'/>}
                 </div>
                 <button type='submit' className='form--button'>Login</button>
-            <p className='create--account'>Don't have an account?<Link to='/createAccount'>Create an account</Link></p>
-                <p className='forgot--password'>Forgot Password?<Link to='/resetPassword'>Reset Password</Link></p>
+                <div className='links'>
+                    <Link to='/createAccount' className='account--password'>Create an account</Link>
+                    <Link to='/resetPassword' className='account--password'>Forgot Password?</Link>
+                </div>
         </form>
     </div>
   )

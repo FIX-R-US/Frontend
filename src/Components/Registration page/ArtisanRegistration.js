@@ -6,9 +6,9 @@ function ArtisanRegistration() {
     const lastNameRef = useRef();
     const contactRef = useRef();
     const locationRef = useRef();
-    const nationalityRef = useRef();
     const nationalIdRef = useRef();
     const certificateRef = useRef();
+    const occupationRef = useRef();
     
 
     const [file, setFile] = useState()
@@ -19,41 +19,42 @@ function ArtisanRegistration() {
         const lastName = lastNameRef.current.value
         const contact = contactRef.current.value
         const location = locationRef.current.value
-        const nationality = nationalityRef.current.value
         const nationalId = nationalIdRef.current.value
+        const occupation = occupationRef.current.value 
 
-        console.log(firstName, lastName, contact, location, 
-            nationality, nationalId
-            )
+        console.log(firstName, lastName, contact, location, nationalId, occupation)
             console.log(file)
     }
 
   return (
     <div className='form--container'>
          <form className='form--artisan' onSubmit={handleSubmit}>
-            <div className='field--input'>
-                <label>Firstname</label>
-                <input 
-                type='text'
-                required
-                ref={firstNameRef}
-                />
-            </div>
-            <div className='field--input'>
-                <label>Lastname</label>
-                <input 
-                type='text'
-                required
-                ref={lastNameRef}
-                />
+            <h2>Setup account</h2>
+            <div className='name--input'>
+                <div className='field--input'>
+                    <label>Firstname</label>
+                    <input 
+                    type='text'
+                    required
+                    ref={firstNameRef}
+                    />
+                </div>
+                <div className='field--input'>
+                    <label>Lastname</label>
+                    <input 
+                    type='text'
+                    required
+                    ref={lastNameRef}
+                    />
+                </div>
             </div>
             <div className='field--input'>
                 <label>Contact</label>
                 <input 
-                type='number'
+                type='phone'
                 required
                 ref={contactRef}
-                />
+            />
             </div>
             <div className='field--input'>
                 <label>Location</label>
@@ -64,13 +65,14 @@ function ArtisanRegistration() {
                 />
             </div>
             <div className='field--input'>
-                <label>Nationality</label>
+                <label>Occupation</label>
                 <input 
                 type='text'
                 required
-                ref={nationalityRef}
+                ref={occupationRef}
                 />
             </div>
+            
             <div className='field--input'>
                 <label>National ID</label>
                 <div className='input--file'>

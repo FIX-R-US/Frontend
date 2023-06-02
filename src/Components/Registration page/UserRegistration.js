@@ -19,6 +19,7 @@ function UserRegistration() {
   return (
     <div className='form--container'>
         <form className='form' onSubmit={handleSubmit}>
+            <h2>Setup account</h2>
             <div className='field--input'>
                 <label>Firstname</label>
                 <input 
