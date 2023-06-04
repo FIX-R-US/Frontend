@@ -17,7 +17,7 @@ const navigate = useNavigate();
        const username = UsernameRef.current.value
         const userpassword = passwordRef.current.value
         console.log(username, userpassword)   
-        // navigate('/user')
+        navigate('/dashboard')
     }
     
     const show = () => {

@@ -1,7 +1,11 @@
 import React, { useRef } from 'react'
 import './Registration.css'
+import { useNavigate } from 'react-router-dom';
 
 function UserRegistration() {
+
+    const navigate = useNavigate();
+
     const firstNameRef = useRef();
     const lastNameRef = useRef();
     const contactRef = useRef();
@@ -15,6 +19,7 @@ function UserRegistration() {
         const location = locationRef.current.value
 
         console.log(firstName, lastName, contact, location)
+        navigate('/dashboard')
     }
   return (
     <div className='form--container'>
