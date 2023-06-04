@@ -1,0 +1,45 @@
+.sidebar--container {
+  display: flex;
+}
+.sidebar--container .sidebar {
+  background-color: #202124;
+  color: white;
+  height: 100vh;
+  width: 250px;
+  transition: all 0.2s;
+}
+.sidebar--container .sidebar .top--section {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+  padding: 20px 15px;
+}
+.sidebar--container .sidebar .top--section .logo {
+  font-size: 30px;
+}
+.sidebar--container .sidebar .link {
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 10px 15px;
+  gap: 18px;
+  transition: all 0.5s;
+  text-decoration: none;
+}
+.sidebar--container .sidebar .link .icon, .sidebar--container .sidebar .link .text--link {
+  font-size: 18px;
+}
+.sidebar--container .sidebar .link:hover {
+  background-color: rgb(0, 0, 0);
+  color: #61DBFB;
+  transition: all 0.5s;
+}
+.sidebar--container .sidebar .active {
+  background-color: rgb(0, 0, 0);
+  color: #61DBFB;
+}
+
+main {
+  width: 100%;
+  padding: 20px;
+}/*# sourceMappingURL=Sidebar.css.map */

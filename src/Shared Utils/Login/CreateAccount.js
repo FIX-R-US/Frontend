@@ -24,10 +24,7 @@ function CreateAccount() {
         console.log(username, email, password, confirmPassword, role)
         navigate(role)
     }
-    // const handleSubmit = () => {
-    //     roleRef === 'artisan' ? navigate('/artisanRegistration'):
-    //     navigate('/userRegistration')
-    // }
+
   return (
     <div className='account--container'>
         <form className='account--form' onSubmit={handleProceed}>

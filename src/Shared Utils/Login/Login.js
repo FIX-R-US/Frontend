@@ -1,10 +1,11 @@
 import React, { useRef, useState } from 'react'
 import './Login.css'
 import {HiUser, HiLockClosed, HiEye, HiEyeOff} from 'react-icons/hi'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 function Login() {
+const navigate = useNavigate();
 
     const UsernameRef = useRef()
     const passwordRef = useRef()
@@ -16,6 +17,7 @@ function Login() {
        const username = UsernameRef.current.value
         const userpassword = passwordRef.current.value
         console.log(username, userpassword)   
+        // navigate('/user')
     }
     
     const show = () => {

@@ -16,7 +16,7 @@ function ResetPassword() {
   return (
     <div className='reset--container'>
         <form className='reset' onSubmit={handleSubmit}>
-            <h2>Reset Password</h2>
+            <h2>Enter your Email</h2>
             <input type='email' placeholder='Email' ref={emailRef}/>
             <button type='submit'>Submit</button>
         </form>

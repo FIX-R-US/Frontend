@@ -6,9 +6,8 @@ function ArtisanRegistration() {
     const lastNameRef = useRef();
     const contactRef = useRef();
     const locationRef = useRef();
-    const nationalIdRef = useRef();
-    const certificateRef = useRef();
     const occupationRef = useRef();
+    const certificateRef = useRef();
     
 
     const [file, setFile] = useState()
@@ -19,10 +18,9 @@ function ArtisanRegistration() {
         const lastName = lastNameRef.current.value
         const contact = contactRef.current.value
         const location = locationRef.current.value
-        const nationalId = nationalIdRef.current.value
-        const occupation = occupationRef.current.value 
+        const occupation = occupationRef.current.value
 
-        console.log(firstName, lastName, contact, location, nationalId, occupation)
+        console.log(firstName, lastName, contact, location, occupation)
             console.log(file)
     }
 
@@ -32,7 +30,7 @@ function ArtisanRegistration() {
             <h2>Setup account</h2>
             <div className='name--input'>
                 <div className='field--input'>
-                    <label>Firstname</label>
+                    <label htmlFor='Firstname'>Firstname</label>
                     <input 
                     type='text'
                     required
@@ -40,7 +38,7 @@ function ArtisanRegistration() {
                     />
                 </div>
                 <div className='field--input'>
-                    <label>Lastname</label>
+                    <label htmlFor='Lastname'>Lastname</label>
                     <input 
                     type='text'
                     required
@@ -49,7 +47,7 @@ function ArtisanRegistration() {
                 </div>
             </div>
             <div className='field--input'>
-                <label>Contact</label>
+                <label htmlFor='Contact'>Contact</label>
                 <input 
                 type='phone'
                 required
@@ -57,7 +55,7 @@ function ArtisanRegistration() {
             />
             </div>
             <div className='field--input'>
-                <label>Location</label>
+                <label htmlFor='Location'>Location</label>
                 <input 
                 type='text'
                 required
@@ -65,30 +63,24 @@ function ArtisanRegistration() {
                 />
             </div>
             <div className='field--input'>
-                <label>Occupation</label>
-                <input 
-                type='text'
-                required
-                ref={occupationRef}
-                />
+                <label htmlFor='Occupation'>Occupation</label>
+                <select ref={occupationRef}>
+                    <option value='electrician'>Electrician</option>
+                    <option value='plumber'>Plumber</option>
+                    <option value='carpenter'>Carpenter</option>
+                    <option value='barber'>Barber</option>
+                    <option value='hairdresser'>Hairdresser</option>
+                    <option value='cobbler'>Cobbler</option>
+                </select>
             </div>
             
-            <div className='field--input'>
-                <label>National ID</label>
-                <div className='input--file'>
-                    <input 
-                    type='file'
-                    required
-                    ref={nationalIdRef}
-                    />
-                </div>
-            </div>
             <div className='field--input'>
                 <label>Certificate</label>
                 <div className='input--file'>
                     <input 
                     type='file'
                     ref={certificateRef}
+                    onChange={e => setFile(e.target.files)}
                     multiple={true}
                     />
                 </div>
