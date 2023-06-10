@@ -1,0 +1,15 @@
+.entire--container{
+    display: flex;
+    flex-direction: column;
+    .search--container{
+        width: 100vw;
+        position: relative;
+        .search--bar{
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            width: 25%;
+            // border-radius: 5px;
+        }
+    }
+}

@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react'
 import './Registration.css'
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 function ArtisanRegistration() {
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const firstNameRef = useRef();
     const lastNameRef = useRef();
@@ -26,7 +26,6 @@ function ArtisanRegistration() {
 
         console.log(firstName, lastName, contact, location, occupation)
             console.log(file)
-            navigate('/dashboard')
     }
 
   return (

@@ -1,0 +1,14 @@
+.entire--container {
+  display: flex;
+  flex-direction: column;
+}
+.entire--container .search--container {
+  width: 100vw;
+  position: relative;
+}
+.entire--container .search--container .search--bar {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  width: 25%;
+}/*# sourceMappingURL=Searchbar.css.map */

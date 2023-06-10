@@ -1,0 +1,30 @@
+.card--container{
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    .card--content{
+        width: 270px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        // text-align: center;
+        margin: 10px;
+        .top--content{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+            padding: 5px;
+            margin: 3px;
+            .card--img{
+                border-radius: 50%;
+            }
+        }
+        .bottom--content{
+            margin: 8px;
+            .card--btn{
+                border: none;
+                border-radius: 5px;
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+        }
+    }
+}

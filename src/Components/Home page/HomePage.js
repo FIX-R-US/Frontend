@@ -14,7 +14,7 @@ function HomePage() {
           <h3>Get your tasks done within a short time!</h3>
           <p>Get Professionals to complete tasks for you</p>
           <p>Join our to community of refined artisans to render your expertise</p>
-          <button className='button' onClick={()=>navigate('/login')}>Get Started</button>
+          <button className='button' onClick={()=>navigate('login')}>Get Started</button>
         </div>
       </div>
     </>

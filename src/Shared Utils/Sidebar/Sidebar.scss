@@ -5,40 +5,96 @@
         color: white;
         height: 100vh;
         width: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
         transition: all 0.2s;
+        position: relative;
         .top--section{
             display: flex;
-            align-items: center;
+            // align-items: center;
             gap: 70px;
             padding: 20px 15px;
             .logo{
-                font-size: 30px;
+                display: flex;
+                align-items: center;
+                // gap: 3px;
+                h4{
+                    margin: 0;
+                }
+            }
+            .bars:hover{
+                cursor: pointer;
             }
         }
-        .link{
+        .user--icon{
+            text-align: center;
+            margin-top: 20px;
+            .icon{
+                border: 2px solid white;
+                border-radius: 50%;
+            }
+            h5{
+                padding: 10px;
+                font-size: 15px;
+                opacity: 0.8;
+            }
+        }
+        .bottom--section{
             display: flex;
-            align-items: center;
-            color: white;
-            padding: 10px 15px;
-            gap: 18px;
-            transition: all 0.5s;
-            text-decoration: none;
-            .icon, .text--link{
-                font-size: 18px;
+            flex-direction: column;
+            gap: 150px;
+            width: 100%;
+            margin-top: 30px;
+
+            div{
+                display: grid;
+                align-items: center;
+                gap: 10px;
+                width: 100%;
+                .link{
+                    width: 100%;
+                    display: flex;
+                    text-decoration: none;
+                    padding: 10px 15px;
+                    color: white;
+                    
+                    &:hover{
+                        background-color: #61DBFB;
+                    }
+                    .icon{
+                        flex: 30%;
+                        place-items: center;
+                    }
+                    .text--link{
+                        flex: 70%;
+                    }
+                }
+                // .active{
+                //     background-color: #61DBFB;
+                // }
             }
-        }
-        .link:hover{
-            background-color: rgba(0, 0, 0);
-            color: #61DBFB;
-            transition: all 0.5s;
-        }
-        .active{
-            background-color: rgba(0, 0, 0);
-            color: #61DBFB;
+                .logout--btn{
+                    width: 80%;
+                    margin: 0 auto;
+                    padding: 3px;
+                    border: 0;
+                    border-radius: 5px;
+    
+                    &:hover{
+                        background-color: #61DBFB;
+                    }   
+                }
+                .logout--icon{
+                    position: absolute;
+                    bottom: 70px;
+                    left: 35%;
+
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
         }
     }
-}
-main{
-    width: 100%;
-    padding: 20px;
 }

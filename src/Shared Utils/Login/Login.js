@@ -1,11 +1,10 @@
 import React, { useRef, useState } from 'react'
 import './Login.css'
 import {HiUser, HiLockClosed, HiEye, HiEyeOff} from 'react-icons/hi'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 function Login() {
-const navigate = useNavigate();
 
     const UsernameRef = useRef()
     const passwordRef = useRef()
@@ -17,7 +16,7 @@ const navigate = useNavigate();
        const username = UsernameRef.current.value
         const userpassword = passwordRef.current.value
         console.log(username, userpassword)   
-        navigate('/dashboard')
+        
     }
     
     const show = () => {
@@ -50,7 +49,7 @@ const navigate = useNavigate();
                 <button type='submit' className='form--button'>Login</button>
                 <div className='links'>
                     <Link to='/createAccount' className='account--password'>Create an account</Link>
-                    <Link to='/resetPassword' className='account--password'>Forgot Password?</Link>
+                    <Link to='/forgotPassword' className='account--password'>Forgot Password?</Link>
                 </div>
         </form>
     </div>

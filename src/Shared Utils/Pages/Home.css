@@ -1,0 +1,29 @@
+.card--container {
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+}
+.card--container .card--content {
+  width: 270px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  margin: 10px;
+}
+.card--container .card--content .top--content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  margin: 3px;
+}
+.card--container .card--content .top--content .card--img {
+  border-radius: 50%;
+}
+.card--container .card--content .bottom--content {
+  margin: 8px;
+}
+.card--container .card--content .bottom--content .card--btn {
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+}/*# sourceMappingURL=Home.css.map */

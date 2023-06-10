@@ -6,40 +6,86 @@
   color: white;
   height: 100vh;
   width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   transition: all 0.2s;
+  position: relative;
 }
 .sidebar--container .sidebar .top--section {
   display: flex;
-  align-items: center;
   gap: 70px;
   padding: 20px 15px;
 }
 .sidebar--container .sidebar .top--section .logo {
-  font-size: 30px;
-}
-.sidebar--container .sidebar .link {
   display: flex;
   align-items: center;
-  color: white;
-  padding: 10px 15px;
-  gap: 18px;
-  transition: all 0.5s;
-  text-decoration: none;
 }
-.sidebar--container .sidebar .link .icon, .sidebar--container .sidebar .link .text--link {
-  font-size: 18px;
+.sidebar--container .sidebar .top--section .logo h4 {
+  margin: 0;
 }
-.sidebar--container .sidebar .link:hover {
-  background-color: rgb(0, 0, 0);
-  color: #61DBFB;
-  transition: all 0.5s;
+.sidebar--container .sidebar .top--section .bars:hover {
+  cursor: pointer;
 }
-.sidebar--container .sidebar .active {
-  background-color: rgb(0, 0, 0);
-  color: #61DBFB;
+.sidebar--container .sidebar .user--icon {
+  text-align: center;
+  margin-top: 20px;
 }
-
-main {
+.sidebar--container .sidebar .user--icon .icon {
+  border: 2px solid white;
+  border-radius: 50%;
+}
+.sidebar--container .sidebar .user--icon h5 {
+  padding: 10px;
+  font-size: 15px;
+  opacity: 0.8;
+}
+.sidebar--container .sidebar .bottom--section {
+  display: flex;
+  flex-direction: column;
+  gap: 150px;
   width: 100%;
-  padding: 20px;
+  margin-top: 30px;
+}
+.sidebar--container .sidebar .bottom--section div {
+  display: grid;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+.sidebar--container .sidebar .bottom--section div .link {
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  padding: 10px 15px;
+  color: white;
+}
+.sidebar--container .sidebar .bottom--section div .link:hover {
+  background-color: #61DBFB;
+}
+.sidebar--container .sidebar .bottom--section div .link .icon {
+  flex: 30%;
+  place-items: center;
+}
+.sidebar--container .sidebar .bottom--section div .link .text--link {
+  flex: 70%;
+}
+.sidebar--container .sidebar .bottom--section .logout--btn {
+  width: 80%;
+  margin: 0 auto;
+  padding: 3px;
+  border: 0;
+  border-radius: 5px;
+}
+.sidebar--container .sidebar .bottom--section .logout--btn:hover {
+  background-color: #61DBFB;
+}
+.sidebar--container .sidebar .bottom--section .logout--icon {
+  position: absolute;
+  bottom: 70px;
+  left: 35%;
+}
+.sidebar--container .sidebar .bottom--section .logout--icon:hover {
+  cursor: pointer;
 }/*# sourceMappingURL=Sidebar.css.map */
