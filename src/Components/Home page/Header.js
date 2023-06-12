@@ -13,9 +13,8 @@ function Header() {
                     <h2>FIX-R-US</h2>
                 </Navbar.Brand>
                 <Nav>
-                  <Nav.Link href='#Home' className='nav--text'>Home</Nav.Link>
+                  <Nav.Link href='#Home' className='nav--text'>Login</Nav.Link>
                   <Nav.Link href='#signup' className='nav--text'>Sign up</Nav.Link>
-                  <Nav.Link href='#contact' className='nav--text'>Contact</Nav.Link>
                   <Nav.Link href='#about' className='nav--text'>About</Nav.Link>
                 </Nav>
             </Container>

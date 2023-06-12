@@ -1,0 +1,38 @@
+.review--container{
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 70px;
+    .review{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        width: 600px;
+        height: 400px;
+        box-shadow: 0px 0px 5px 5px;
+       .review--select, .review--textarea{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        select{
+            padding: 5px;
+            border-radius: 5px;
+        }
+        textarea{
+            border-radius: 5px;
+        }
+       }
+       .review--btn{
+        width: 65%;
+        border: none;
+        border-radius: 5px;
+        padding: 3px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+       }
+    }
+}

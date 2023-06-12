@@ -6,7 +6,6 @@ export const homedata = [
         name: 'Samuel',
         occupation: 'Electrician',
         value: 'electrician',
-        location: 'Ayeduase, KNUST',
         description: 'An Electrical engineering final year project'
     },
     {
@@ -15,7 +14,6 @@ export const homedata = [
         name: 'Kwabena',
         occupation: 'Carpenter',
         value: 'carpenter',
-        location: 'Bomso, KNUST',
         description: 'A Materials engineering final year project'
     },
     {
@@ -24,7 +22,6 @@ export const homedata = [
         name: 'Domeh',
         occupation: 'Plumber',
         value: 'plumber',
-        location: 'Kotei, KNUST',
         description: 'A Marine engineering final year project'
     },
     {
@@ -32,8 +29,7 @@ export const homedata = [
         profileImage: '',
         name: 'Beatrice',
         occupation: 'Hairdresser',
-        value: 'hairdresser',
-        location: 'NewSite, KNUST',
+        value: '',
         description: "A fashion student's final year project"
     },
     {
@@ -41,8 +37,7 @@ export const homedata = [
         profileImage: '',
         name: 'Andrew',
         occupation: 'Barber',
-        value: 'barber',
-        location: 'Brunei, KNUST',
+        value: '',
         description: 'A Geological engineering final year project'
     },
     {
@@ -51,7 +46,6 @@ export const homedata = [
         name: 'Sarkodie',
         occupation: 'Cobbler',
         value: 'cobbler',
-        location: 'Tech junction',
         description: 'A Geomatic engineering final year project'
     },
     {
@@ -60,7 +54,6 @@ export const homedata = [
         name: 'Catherine',
         occupation: 'Hairdresser',
         value: 'hairdresser',
-        location: 'Adum, Kumasi',
         description: 'A Mining engineering final year project'
     },
     {
@@ -69,7 +62,6 @@ export const homedata = [
         name: 'Bright',
         occupation: 'Electrician',
         value: 'electrician',
-        location: 'Tanoso, Kumasi',
         description: 'A Electrical engineering final year project'
     },
     {
@@ -78,7 +70,6 @@ export const homedata = [
         name: 'Prince',
         occupation: 'Carpenter',
         value: 'carpenter',
-        location: 'Sunyani',
         description: 'A Materials engineering final year project'
     }
 

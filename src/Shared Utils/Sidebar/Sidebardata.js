@@ -9,17 +9,17 @@ export const data = [
         name:'Home'
     },
     {
-        path: '',
+        path: 'editProfile',
         icon: <FaUserAlt size={20}/>,
         name:'Profile'
     },
     {
-        path: '',
+        path: 'userReview',
         icon: <SiCodereview size={20}/>,
         name:'Reviews'
     },
     {
-        path: '',
+        path: 'mapSearch',
         icon: <GiWorld size={20}/>,
         name:'Map Search'
     }

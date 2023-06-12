@@ -8,7 +8,7 @@ function Searchbar() {
   return (
     <div className='entire--container'>
         <div className='search--container'>
-            <input type='search' placeholder='Search' className='search--bar'
+            <input type='text' placeholder='Search' className='search--bar'
             onChange={(e)=>setSearch(e.target.value)}
             />
         </div>
@@ -21,10 +21,7 @@ function Searchbar() {
                 homedata.filter(item =>{
                     return search.toLocaleLowerCase() === ''? item : item.occupation.toLocaleLowerCase().includes(search)
                 }).map(item=>(
-                    <tr key={item.id}>
-                        <td>{item.name}</td>
-                        <td>{item.occupation}</td>
-                    </tr>
+                    `${item.occupation}, ${item.name}, ${item.location}`
                 ))
             }
         </table>
