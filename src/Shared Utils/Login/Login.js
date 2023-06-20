@@ -18,7 +18,7 @@ function Login() {
        const username = UsernameRef.current.value
         const userpassword = passwordRef.current.value
         console.log(username, userpassword)   
-        navigate(`user/${username}`)
+        navigate(`user`)
     }
     
     const show = () => {

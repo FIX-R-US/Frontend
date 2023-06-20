@@ -1,8 +1,9 @@
 .sidebar--container {
   display: flex;
+  position: relative;
 }
 .sidebar--container .sidebar {
-  background-color: #202124;
+  background-color: #212529;
   color: white;
   height: 100vh;
   width: 250px;
@@ -11,7 +12,7 @@
   align-items: center;
   width: 100%;
   transition: all 0.2s;
-  position: relative;
+  position: absolute;
 }
 .sidebar--container .sidebar .top--section {
   display: flex;
@@ -62,7 +63,7 @@
   color: white;
 }
 .sidebar--container .sidebar .bottom--section div .link:hover {
-  background-color: #61DBFB;
+  background-color: #ff9800;
 }
 .sidebar--container .sidebar .bottom--section div .link .icon {
   flex: 30%;
@@ -79,7 +80,8 @@
   border-radius: 5px;
 }
 .sidebar--container .sidebar .bottom--section .logout--btn:hover {
-  background-color: #61DBFB;
+  background-color: #ff9800;
+  color: white;
 }
 .sidebar--container .sidebar .bottom--section .logout--icon {
   position: absolute;
@@ -88,4 +90,5 @@
 }
 .sidebar--container .sidebar .bottom--section .logout--icon:hover {
   cursor: pointer;
+  color: #ff9800;
 }/*# sourceMappingURL=Sidebar.css.map */

@@ -1,10 +1,13 @@
 .review--container{
-    width: 100vw;
+    // width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 70px;
+    h2{
+        color: black;
+    }
     .review{
         display: flex;
         flex-direction: column;
@@ -13,17 +16,29 @@
         gap: 15px;
         width: 600px;
         height: 400px;
-        box-shadow: 0px 0px 5px 5px;
+        box-shadow: 0px 0px 5px #212529 ;
+        border-radius: 10px;
+        background-color: #212529;
        .review--select, .review--textarea{
         display: flex;
         flex-direction: column;
         width: 90%;
-        select{
-            padding: 5px;
-            border-radius: 5px;
+
+        &:focus{
+            border-color: #212529;
         }
+        // select{
+        //     padding: 5px;
+        //     border-radius: 5px;
+        // }
         textarea{
             border-radius: 5px;
+            // background: transparent;
+            outline: none;
+            // color: white;
+            &:focus{
+                border: 2px solid #ff9800;
+            }
         }
        }
        .review--btn{
@@ -31,8 +46,14 @@
         border: none;
         border-radius: 5px;
         padding: 3px;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: #ff9800;
         color: white;
+        font-weight: 600;
+
+        &:hover{
+            background-color: rgba(0, 0, 0, 0.5);
+            transition: all 0.5s;
+        }
        }
     }
 }

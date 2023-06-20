@@ -1,10 +1,12 @@
 .review--container {
-  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 70px;
+}
+.review--container h2 {
+  color: black;
 }
 .review--container .review {
   display: flex;
@@ -14,25 +16,35 @@
   gap: 15px;
   width: 600px;
   height: 400px;
-  box-shadow: 0px 0px 5px 5px;
+  box-shadow: 0px 0px 5px #212529;
+  border-radius: 10px;
+  background-color: #212529;
 }
 .review--container .review .review--select, .review--container .review .review--textarea {
   display: flex;
   flex-direction: column;
   width: 90%;
 }
-.review--container .review .review--select select, .review--container .review .review--textarea select {
-  padding: 5px;
-  border-radius: 5px;
+.review--container .review .review--select:focus, .review--container .review .review--textarea:focus {
+  border-color: #212529;
 }
 .review--container .review .review--select textarea, .review--container .review .review--textarea textarea {
   border-radius: 5px;
+  outline: none;
+}
+.review--container .review .review--select textarea:focus, .review--container .review .review--textarea textarea:focus {
+  border: 2px solid #ff9800;
 }
 .review--container .review .review--btn {
   width: 65%;
   border: none;
   border-radius: 5px;
   padding: 3px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #ff9800;
   color: white;
+  font-weight: 600;
+}
+.review--container .review .review--btn:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.5s;
 }/*# sourceMappingURL=Review.css.map */

@@ -1,14 +1,22 @@
 .entire--container {
+  width: 100%;
+  padding: 10px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
 }
 .entire--container .search--container {
-  width: 100vw;
-  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 40%;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 2px;
+  position: sticky;
 }
 .entire--container .search--container .search--bar {
-  position: absolute;
-  right: 20px;
-  top: 10px;
-  width: 25%;
+  width: 90%;
+  border: none;
+  outline: none;
+  background: transparent;
 }/*# sourceMappingURL=Searchbar.css.map */

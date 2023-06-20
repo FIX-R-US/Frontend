@@ -1,15 +1,26 @@
 .entire--container{
+    width: 100%;
+    padding: 10px;
     display: flex;
-    flex-direction: column;
-    .search--container{
-        width: 100vw;
-        position: relative;
-        .search--bar{
-            position: absolute;
-            right: 20px;
-            top: 10px;
-            width: 25%;
-            // border-radius: 5px;
-        }
+    justify-content: center;
+   .search--container{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 40%;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 2px;
+    position: sticky;
+
+    // &:focus-within{
+    //     border-color: white;
+    // }
+    .search--bar{
+        width: 90%;
+        border: none;
+        outline: none;
+        background: transparent;  
     }
+   }
 }

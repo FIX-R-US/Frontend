@@ -1,0 +1,17 @@
+.Table--container{
+    position: relative;
+    .sticky--container{
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        padding: 1px;
+        background-color: white;
+        .sticky{
+            border-color: #212529;
+          &:focus{
+            box-shadow: none;
+            border-color: #ff9800;
+          }
+        }
+    }
+}

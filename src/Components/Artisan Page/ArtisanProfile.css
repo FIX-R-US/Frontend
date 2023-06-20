@@ -1,0 +1,13 @@
+.profile--artisan-container {
+  width: 100%;
+}
+.profile--artisan-container .profile--artisan {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  padding: 56px 20px 72px;
+  border-bottom: 1px solid #ff9800;
+}
+.profile--artisan-container .profile--artisan .artisan--pic {
+  border-radius: 50%;
+}/*# sourceMappingURL=ArtisanProfile.css.map */

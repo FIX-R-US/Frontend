@@ -6,6 +6,7 @@ export const homedata = [
         name: 'Samuel',
         occupation: 'Electrician',
         value: 'electrician',
+        location:'Kumasi,Ghana',
         description: 'An Electrical engineering final year project'
     },
     {
@@ -14,6 +15,7 @@ export const homedata = [
         name: 'Kwabena',
         occupation: 'Carpenter',
         value: 'carpenter',
+        location:'Sunyani, Ghana',
         description: 'A Materials engineering final year project'
     },
     {
@@ -22,6 +24,7 @@ export const homedata = [
         name: 'Domeh',
         occupation: 'Plumber',
         value: 'plumber',
+        location:'Ayeduase, KNUST',
         description: 'A Marine engineering final year project'
     },
     {
@@ -30,6 +33,7 @@ export const homedata = [
         name: 'Beatrice',
         occupation: 'Hairdresser',
         value: '',
+        location:'Brunei, KNUST',
         description: "A fashion student's final year project"
     },
     {
@@ -38,6 +42,7 @@ export const homedata = [
         name: 'Andrew',
         occupation: 'Barber',
         value: '',
+        location:'Bomso, KNUST',
         description: 'A Geological engineering final year project'
     },
     {
@@ -46,6 +51,7 @@ export const homedata = [
         name: 'Sarkodie',
         occupation: 'Cobbler',
         value: 'cobbler',
+        location:'',
         description: 'A Geomatic engineering final year project'
     },
     {
@@ -54,6 +60,7 @@ export const homedata = [
         name: 'Catherine',
         occupation: 'Hairdresser',
         value: 'hairdresser',
+        location:'Kotei, KNUST',
         description: 'A Mining engineering final year project'
     },
     {
@@ -62,6 +69,7 @@ export const homedata = [
         name: 'Bright',
         occupation: 'Electrician',
         value: 'electrician',
+        location:'New Site, KNUST',
         description: 'A Electrical engineering final year project'
     },
     {
@@ -70,6 +78,7 @@ export const homedata = [
         name: 'Prince',
         occupation: 'Carpenter',
         value: 'carpenter',
+        location:'Atonsu, Kumasi',
         description: 'A Materials engineering final year project'
     }
 

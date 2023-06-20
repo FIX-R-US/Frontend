@@ -9,14 +9,22 @@ function HomePage() {
     <>
       <Header/>
       <div className='bg--image'>
-        <div className='content'>
-          <h1 className='mt-5'>WELCOME TO FIX-R-US</h1>
-          <h3>Get your tasks done within a short time!</h3>
-          <p>Get Professionals to complete tasks for you</p>
-          <p>Join our to community of refined artisans to render your expertise</p>
-          <button className='button' onClick={()=>navigate('login')}>Get Started</button>
+        <div className='left--side'>
+          <div>
+            <h1>Discover Talented Artisans Near You</h1>
+            <p>Find Unique Handcrafted Products and Support Local Artisans</p>
+          </div>
         </div>
+        <div className='right--side'>
+          <div>
+            <h2>Get Connected </h2>
+            <p>Are you looking for skilled artisans to bring your creative vision to life? Look no further! Artisan Finder connects you with talented craftsmen and craftswomen from various disciplines, ensuring that you find the perfect match for your project. Whether you're in need of a master woodworker, a skilled ceramicist, or a talented jewelry maker, our platform is here to help you discover and collaborate with artisans who are passionate about their craft.</p>
+          </div>
+        </div>
+        <button className='button' onClick={()=>navigate('login')}>Get Started</button>
       </div>
+
+        
     </>
   )
 }

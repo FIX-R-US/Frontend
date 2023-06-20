@@ -16,10 +16,10 @@
     gap: 10px;
     width: 350px;
     height: 453px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #212529;
     color: white;
 }
 .account--field{
@@ -29,6 +29,7 @@
     gap: 5px;  
     position: relative;
 }
+
 .eye{
     position: absolute;
     top: 36px;
@@ -37,9 +38,14 @@
 .account--field > input{
     border-radius: 5px;
     border: 2px solid white;
+    width: 100%;
     /* height: 20px; */
     background: transparent;
     color: white;
+    outline: none;
+}
+.account--field > input:focus{
+    border-color: #ff9800;
 }
 .account--field > select{
     border-radius: 5px;
@@ -47,6 +53,10 @@
     background: transparent;
     border: 2px solid white;
     color: white;
+    outline: none;
+}
+.account--field > select:focus{
+    border-color: #ff9800;
 }
 .account--field > select > option{
     background-color: rgba(0, 0, 0, 0.5);
@@ -60,6 +70,11 @@
     border: none;
     font-weight: 700;
     color: grey;
+}
+.account--btn:hover{
+    background-color: #ff9800;
+    color: white;
+    transition: all 0.5s;
 }
 .h2{
     margin-top: 0;

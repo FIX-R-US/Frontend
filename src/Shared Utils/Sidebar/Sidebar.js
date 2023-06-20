@@ -2,11 +2,10 @@ import React, { useState } from 'react'
 import {FaBars,FaUserAlt } from 'react-icons/fa'
 import {MdLogout} from 'react-icons/md'
 import './Sidebar.css'
-import { data } from './Sidebardata'
 import { NavLink} from 'react-router-dom'
 import {FcEngineering} from 'react-icons/fc'
 
-function Sidebar(props) {
+function Sidebar({data}) {
     const[isOpen, setIsOpen] = useState(false)
 
     const width = {
@@ -33,7 +32,7 @@ function Sidebar(props) {
             </div>   
             <div className='user--icon' style={display2}>
                 <FaUserAlt size={70} className='icon'/>
-                <h5>{props.username}</h5>
+                <h5>username</h5>
             </div>  
             <div className='bottom--section'> 
                 <div>

@@ -1,7 +1,8 @@
 .sidebar--container{
     display: flex;
+    position: relative;
     .sidebar{
-        background-color: #202124;
+        background-color: #212529;
         color: white;
         height: 100vh;
         width: 250px;
@@ -10,16 +11,14 @@
         align-items: center;
         width: 100%;
         transition: all 0.2s;
-        position: relative;
+        position: absolute;
         .top--section{
             display: flex;
-            // align-items: center;
             gap: 70px;
             padding: 20px 15px;
             .logo{
                 display: flex;
                 align-items: center;
-                // gap: 3px;
                 h4{
                     margin: 0;
                 }
@@ -61,7 +60,7 @@
                     color: white;
                     
                     &:hover{
-                        background-color: #61DBFB;
+                        background-color: #ff9800;
                     }
                     .icon{
                         flex: 30%;
@@ -83,7 +82,8 @@
                     border-radius: 5px;
     
                     &:hover{
-                        background-color: #61DBFB;
+                        background-color: #ff9800;
+                        color: white;
                     }   
                 }
                 .logout--icon{
@@ -93,6 +93,7 @@
 
                     &:hover{
                         cursor: pointer;
+                        color: #ff9800;
                     }
                 }
         }
