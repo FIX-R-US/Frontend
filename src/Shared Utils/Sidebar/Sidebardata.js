@@ -2,6 +2,11 @@ import {FaUserAlt} from 'react-icons/fa'
 import {AiFillHome} from 'react-icons/ai'
 import {SiCodereview} from 'react-icons/si'
 import {GiWorld} from 'react-icons/gi'
+import {RxDashboard} from 'react-icons/rx'
+import {MdManageAccounts} from 'react-icons/md'
+import {MdEngineering} from 'react-icons/md'
+import {MdPayments} from 'react-icons/md'
+
 export const data = [
     {
         path: '',
@@ -19,31 +24,31 @@ export const data = [
         name:'Reviews'
     },
     {
-        path: 'mapSearch',
+        path: 'maps',
         icon: <GiWorld size={20}/>,
-        name:'Map Search'
+        name:'Maps'
     }
 ]
 
 export const artisanData = [
     {
         path: '',
-        icon: <FaUserAlt size={20}/>,
+        icon: <AiFillHome size={21}/>,
+        name:'Home'
+    },
+    {
+        path: 'editProfile',
+        icon: <SiCodereview size={20}/>,
         name:'Profile'
     },
     {
-        path: '',
-        icon: <SiCodereview size={20}/>,
-        name:'Reviews'
+        path: 'maps',
+        icon: <GiWorld size={20}/>,
+        name:'Maps'
     },
     {
-        path: 'mapSearch',
-        icon: <GiWorld size={20}/>,
-        name:'Map Search'
-    },
-    {
-        path: '',
-        icon: <GiWorld size={20}/>,
+        path: 'payments',
+        icon: <MdPayments size={20}/>,
         name:'Payments'
     }
  
@@ -52,22 +57,17 @@ export const artisanData = [
 export const adminData = [
     {
         path: '',
-        icon: <AiFillHome size={21}/>,
+        icon: <RxDashboard size={21}/>,
         name:'Dashboard'
     },
     {
-        path: '',
-        icon: <FaUserAlt size={20}/>,
+        path: 'manageUsers',
+        icon: <MdManageAccounts size={21}/>,
+        name:'User Management'
+    },
+    {
+        path: 'manageArtisans',
+        icon: <MdEngineering size={21}/>,
         name:'Artisan Management'
-    },
-    {
-        path: 'userReview',
-        icon: <SiCodereview size={20}/>,
-        name:'User Management'
-    },
-    {
-        path: 'userReview',
-        icon: <SiCodereview size={20}/>,
-        name:'User Management'
     }
 ]

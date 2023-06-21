@@ -9,13 +9,17 @@ import Profile from './Shared Utils/Pages/Profile'
 import Review from "./Components/User Page/Review";
 import Home from './Components/User Page/Home'
 import UserPage from "./Components/User Page/UserPage";
-// import ArtisanProfile from "./Components/Artisan Page/ArtisanProfile";
+import ArtisanProfile from "./Components/Artisan Page/ArtisanProfile";
 import LandingPage from "./Components/Home page/LandingPage";
-// import AdminPage from "./Components/Admin page/AdminPage";
-// import Searchbar from "./Shared Utils/Sidebar/Searchbar";
-// import UserManagement from "./Components/Admin page/UserManagement";
-// import ArtisanManagement from "./Components/Admin page/ArtisanManagement";
-// import Map from "./Shared Utils/Pages/Map";
+import ArtisanPage from "./Components/Artisan Page/ArtisanPage";
+import AdminPage from "./Components/Admin page/AdminPage";
+import UserManagement from "./Components/Admin page/UserManagement";
+import ArtisanManagement from "./Components/Admin page/ArtisanManagement";
+import Dashboard from "./Components/Admin page/Dashboard";
+import Map from "./Shared Utils/Pages/Map";
+import EditArtisanProfile from "./Components/Artisan Page/EditArtisanProfile";
+import Payments from "./Components/Artisan Page/Payments";
+import PageNotFound from "./Shared Utils/Pages/PageNotFound";
 
 function App() {
   return (
@@ -32,11 +36,26 @@ function App() {
           <Route path="" element={<Home/>}/>
           <Route path="editProfile" element={<Profile/>}/>
           <Route path="review" element={<Review/>}/>
+          <Route path="maps" element={<Map/>}/>
          </Route>
+
+         {/* Routes for Artisan Page */}
+         <Route path="login/artisan" element={<ArtisanPage/>}>
+          <Route path="" element={<ArtisanProfile/>}/>
+          <Route path="editProfile" element={<EditArtisanProfile/>}/>
+          <Route path="maps" element={<Map/>}/>
+          <Route path="payments" element={<Payments/>}/>
+         </Route>
+
+         {/* Routes for admin  */}
+         <Route path="login/admin" element={<AdminPage/>}>
+          <Route path="" element={<Dashboard/>}/>
+          <Route path="manageUsers" element={<UserManagement/>}/>
+          <Route path="manageArtisans" element={<ArtisanManagement/>}/>
+         </Route>
+
+         <Route path="*" element={<PageNotFound/>}/>
       </Routes> 
-      {/* <UserManagement/> */}
-      {/* <ArtisanManagement/> */}
-      {/* <Map/> */}
     </div>
   );
 }

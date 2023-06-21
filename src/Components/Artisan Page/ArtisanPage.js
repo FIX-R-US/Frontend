@@ -1,13 +1,13 @@
 import React from 'react'
 import Sidebar from '../../Shared Utils/Sidebar/Sidebar'
 import { Outlet } from 'react-router-dom'
-import {data} from '../../Shared Utils/Sidebar/Sidebardata'
+import {artisanData} from '../../Shared Utils/Sidebar/Sidebardata'
 
-function UserPage() {
+function ArtisanPage() {
   return (
     <div style={{display: 'flex'}}>
       <div style={{position: 'fixed', zIndex:'1001'}}>
-        <Sidebar data={data}/>
+        <Sidebar data={artisanData}/>
       </div>
         <div style={{marginLeft: '50px', backgroundColor:'white', width:'100%'}}>
             <Outlet/>
@@ -16,4 +16,4 @@ function UserPage() {
   )
 }
 
-export default UserPage
+export default ArtisanPage

@@ -14,11 +14,11 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    width: 350px;
-    height: 453px;
+    width: 400px;
+    height: 500px;
     border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
     background-color: #212529;
     color: white;
 }
@@ -69,7 +69,9 @@
     border-radius: 5px;
     border: none;
     font-weight: 700;
-    color: grey;
+    color: #212529;
+    margin-top: 2px;
+    margin-bottom: 10px;
 }
 .account--btn:hover{
     background-color: #ff9800;

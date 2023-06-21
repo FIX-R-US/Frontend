@@ -20,13 +20,13 @@ function ArtisanProfile() {
         <div style={{paddingTop:'15px'}}>
             <h3 style={{textAlign: 'center'}}>Projects worked on</h3>
             <div style={{display:'flex', gap:'10px', flexWrap:'wrap', justifyContent:"center"}}>
-                <img src={pic} alt='' width={460} height={400}/>
-                <img src={pic} alt='' width={460} height={400}/>
-                <img src={pic} alt='' width={460} height={400}/>
-                <img src={pic} alt='' width={460} height={400}/>
-                <img src={pic} alt='' width={460} height={400}/>
-                <img src={pic} alt='' width={460} height={400}/>
-                <img src={pic} alt='' width={460} height={400}/>
+                <img src={pic} alt='' width={400} height={350}/>
+                <img src={pic} alt='' width={400} height={350}/>
+                <img src={pic} alt='' width={400} height={350}/>
+                <img src={pic} alt='' width={400} height={350}/>
+                <img src={pic} alt='' width={400} height={350}/>
+                <img src={pic} alt='' width={400} height={350}/>
+                <img src={pic} alt='' width={400} height={350}/>
             </div>
             <div style={{textAlign:'center', paddingTop:'15px'}}>
                 <h3>Reviews</h3>

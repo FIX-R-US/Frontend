@@ -19,7 +19,7 @@ function UserRegistration() {
         const location = locationRef.current.value
 
         console.log(firstName, lastName, contact, location)
-        navigate('/dashboard')
+        navigate('/login/user')
     }
   return (
     <div className='form--container'>

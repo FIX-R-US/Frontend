@@ -2,11 +2,17 @@ import React, { useState } from 'react'
 import {FaBars,FaUserAlt } from 'react-icons/fa'
 import {MdLogout} from 'react-icons/md'
 import './Sidebar.css'
-import { NavLink} from 'react-router-dom'
+import { NavLink, useLocation, useNavigate} from 'react-router-dom'
 import {FcEngineering} from 'react-icons/fc'
 
 function Sidebar({data}) {
     const[isOpen, setIsOpen] = useState(false)
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const handleLogout = () => {
+        navigate('/login')
+    }
 
     const width = {
         width: isOpen ? '250px': '50px'
@@ -38,7 +44,7 @@ function Sidebar({data}) {
                 <div>
                 {
                     data.map((item, index) => (
-                        <NavLink to={item.path} key={index} className='link' activeclassname='active'>
+                        <NavLink to={item.path} key={index} className={`link ${location.pathname === item.path ? 'active' : ''}`}>
                             <div className='icon'>{item.icon}</div>
                             <div className='text--link' style={display}>{item.name}</div>
                         </NavLink>
@@ -46,8 +52,8 @@ function Sidebar({data}) {
                 }
                 </div>
                 {
-                    isOpen ? <button className='logout--btn' style={display2}>Logout <MdLogout size={20}/></button>:
-                    <MdLogout className='logout--icon' size={20}/>
+                    isOpen ? <button className='logout--btn' style={display2} onClick={handleLogout}>Logout <MdLogout size={20}/></button>:
+                    <MdLogout className='logout--icon' size={20} onClick={handleLogout}/>
                 }
             </div>
         </div>
