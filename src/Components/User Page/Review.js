@@ -49,7 +49,7 @@ function Review() {
                 defaultValue={value} 
                 placeholder='Search artisan'
                 onChange={setvalue}
-                noOptionsMessage={()=> "Artisan not found"}
+                noOptionsMessage={()=>"Artisan not found"}
                 isSearchable
                 isClearable
                 styles={customStyles}

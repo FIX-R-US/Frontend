@@ -1,13 +1,58 @@
 .profile--artisan-container {
   width: 100%;
 }
-.profile--artisan-container .profile--artisan {
+.profile--artisan-container .whole--content {
+  display: flex;
+  flex-direction: column;
+}
+.profile--artisan-container .whole--content .artisan--top {
+  width: 100%;
+  position: relative;
+}
+.profile--artisan-container .whole--content .artisan--top .top--img {
+  width: 100%;
   display: flex;
   justify-content: center;
-  gap: 50px;
-  padding: 56px 20px 72px;
-  border-bottom: 1px solid #ff9800;
 }
-.profile--artisan-container .profile--artisan .artisan--pic {
+.profile--artisan-container .whole--content .artisan--top .top--img img {
+  width: 100%;
+  height: auto;
+}
+.profile--artisan-container .whole--content .artisan--top .profile--icon {
+  position: absolute;
+  right: 10px;
+  bottom: -45px;
+  background-color: white;
   border-radius: 50%;
+}
+.profile--artisan-container .whole--content .artisan--down {
+  padding: 20px;
+}
+.profile--artisan-container .whole--content .artisan--down .artisan--middle {
+  color: #3C464C;
+}
+.profile--artisan-container .whole--content .artisan--down .artisan--middle h2 {
+  margin-bottom: 4px;
+}
+.profile--artisan-container .whole--content .artisan--down .artisan--middle .p {
+  margin: 0;
+}
+.profile--artisan-container .whole--content .artisan--down .artisan--bottom h5 {
+  color: #7200CC;
+  text-decoration: underline;
+}
+.profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container {
+  padding: 10px;
+}
+.profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+}
+.profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map .map--bottom p {
+  margin: 0;
+}
+.profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map .map--bottom .p2 {
+  border-bottom: 1px solid #7200CC;
 }/*# sourceMappingURL=ArtisanProfile.css.map */

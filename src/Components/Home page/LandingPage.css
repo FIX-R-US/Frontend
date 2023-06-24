@@ -5,29 +5,49 @@
 }
 .landing--container .landing--leftside {
   width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color: #F9F9F9;
+  padding: 20px;
 }
-.landing--container .landing--leftside .slide--img {
-  height: 100vh;
+.landing--container .landing--leftside .image {
+  display: flex;
+  justify-content: center;
+}
+.landing--container .landing--leftside .image img {
+  width: 600px;
+}
+.landing--container .landing--leftside .text--content {
+  text-align: center;
+  color: #5E5873;
 }
 .landing--container .landing--rightside {
   width: 40%;
-  background-color: #d68d20;
-  color: white;
+  background-color: #FFFFFF;
+  color: #5E5873;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.landing--container .landing--rightside .landingright--btn {
-  width: 30%;
+.landing--container .landing--rightside .right--content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+.landing--container .landing--rightside .right--content .landingright--btn {
+  width: 80%;
   border: none;
   border-radius: 5px;
-  background-color: #212529;
+  background-color: #7200CC;
   color: white;
   font-weight: 600;
   padding: 5px;
 }
-.landing--container .landing--rightside .landingright--btn:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+.landing--container .landing--rightside .right--content .landingright--btn:hover {
+  background-color: blue;
   transition: all 0.5s;
 }/*# sourceMappingURL=LandingPage.css.map */

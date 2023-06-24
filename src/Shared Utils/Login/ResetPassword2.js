@@ -1,33 +1,52 @@
 import React, { useState } from 'react'
 import './ResetPassword.css'
+import Header from '../../Components/Home page/Header'
 import {HiEye, HiEyeOff} from 'react-icons/hi'
+import reset from './reset.png'
 
 function ResetPassword2() {
-
   const[showPassword, setShowPassword] = useState(false)
 
+
   const handleShow = () => setShowPassword(prevShowPassword=>!prevShowPassword)
+
   return (
     <div className='reset--container'>
-        <form className='reset'>
-          <div className='password--visible'>
-            <input 
-            type={showPassword ? 'text' : 'password'} 
-            placeholder='New Password'
-            />
-            {showPassword ? <HiEyeOff color='white' className='reset--eye' onClick={handleShow}/> : 
-            <HiEye color='white' className='reset--eye' onClick={handleShow}/>}
-          </div>
-          <div className='password--visible'>
-            <input 
-            type={showPassword ? 'text' : 'password'} 
-             placeholder='Confirm Password'
-             />
-             {showPassword ? <HiEyeOff color='white' className='reset--eye' onClick={handleShow}/> : 
-            <HiEye color='white' className='reset--eye' onClick={handleShow}/>}
-          </div>
-            <button type='submit'>Reset Password</button>
-        </form>
+      <div className='left--reset'>
+      <Header/>
+      <div className='reset--fields'>
+          <form className='reset'>
+            <div className='reset--textfield'>
+              <h2>Change Password</h2>
+              <p>Please change password to complete login process</p>
+            </div>
+            <div className='reset--inputfield'>
+              <div className='reset--field'>
+                <label>New Password</label>
+                <input type={showPassword ? 'text' : 'password'} placeholder='Enter your new password'/>
+                {
+                  showPassword ? <HiEyeOff className='show--eye' onClick={handleShow}/> : <HiEye className='show--eye' onClick={handleShow}/>
+                }
+              </div>
+              <div className='reset--field'>
+                <label>Confirm Password</label>
+                <input type={showPassword ? 'text' : 'password'} placeholder='Confirm new password'/>
+                {
+                  showPassword ? <HiEyeOff className='show--eye' onClick={handleShow}/> : <HiEye className='show--eye' onClick={handleShow}/>
+                }
+              </div>
+            </div>
+            <button className='reset--btn'>Change Password</button>
+            
+          </form>
+      </div>
+      </div>
+      <div className='right--reset'>
+        <div className='reset--img'>
+          <img src={reset} alt=''/>
+        </div>
+
+      </div>
     </div>
   )
 }

@@ -1,41 +1,63 @@
 import React from 'react'
-import {CiLocationOn} from 'react-icons/ci'
-import pic from './slide1.jpg'
+import {FaUserCircle} from 'react-icons/fa'
 import './ArtisanProfile.css'
+import ProfileHeader from '../../Shared Utils/Pages/ProfileHeader'
+import Container from 'react-bootstrap/Container'
+import dp from './slide1.jpg'
 
 function ArtisanProfile() {
+    const reviews = [
+        {
+            review: 'Sammy does really great in programming. I strongly recommend. '
+        },
+        {
+            review: 'Sammy does really great in programming. I strongly recommend. '
+        },
+        {
+            review: 'Sammy does really great in programming. I strongly recommend. '
+        },
+        {
+            review: 'Sammy does really great in programming. I strongly recommend. '
+        }
+    ]
   return (
     <div className='profile--artisan-container'>
-        <div className='profile--artisan'>
-            <div>
-                <img src={pic} alt='' width={150} height={150} className='artisan--pic'/>
+        <Container>
+            <ProfileHeader/>
+            <div className='whole--content'>
+                <div className='artisan--top'>
+                    <div className='top--img'>
+                        <img src={dp} alt=''/>
+                    </div>
+                    <FaUserCircle size={100} className='profile--icon'/>
+                </div>
+                <div className='artisan--down'>
+                    <div className='artisan--middle'>
+                        <h2>Samuel Nyame</h2>
+                        <p className='p'>Electrician</p>
+                        <p>Ayeduase, KNUST</p>
+                    </div>
+                    <div className='artisan--bottom'>
+                        <h5>Reviews</h5>
+                        <div className='reveiwMap--container'>
+                            {
+                                reviews.map((item, index) => (
+                                    <div key={index} className='review--map'>
+                                        <FaUserCircle size={60}/>
+                                        <div className='map--bottom'>
+                                            <p>@ username</p>
+                                            <p className='p2'>{item.review}</p>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
-            <div>
-                <h1>Samuel Nyame</h1>
-                <p>Every picture has a story to tell</p>
-                <p><CiLocationOn/> Kumasi, Ghana</p>
-                <p>Interests</p>
-            </div>
-        </div>
-        <div style={{paddingTop:'15px'}}>
-            <h3 style={{textAlign: 'center'}}>Projects worked on</h3>
-            <div style={{display:'flex', gap:'10px', flexWrap:'wrap', justifyContent:"center"}}>
-                <img src={pic} alt='' width={400} height={350}/>
-                <img src={pic} alt='' width={400} height={350}/>
-                <img src={pic} alt='' width={400} height={350}/>
-                <img src={pic} alt='' width={400} height={350}/>
-                <img src={pic} alt='' width={400} height={350}/>
-                <img src={pic} alt='' width={400} height={350}/>
-                <img src={pic} alt='' width={400} height={350}/>
-            </div>
-            <div style={{textAlign:'center', paddingTop:'15px'}}>
-                <h3>Reviews</h3>
-                <p>Reviews go here</p>
-                <p>Reviews go here</p>
-                <p>Reviews go here</p>
-                <p>Reviews go here</p>
-            </div>
-        </div>
+        </Container>
     </div>
   )
 }

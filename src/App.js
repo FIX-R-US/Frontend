@@ -5,7 +5,7 @@ import UserRegistration from "./Components/Registration page/UserRegistration";
 import ArtisanRegistration from "./Components/Registration page/ArtisanRegistration";
 import ResetPassword from "./Shared Utils/Login/ResetPassword";
 import ResetPassword2 from "./Shared Utils/Login/ResetPassword2";
-import Profile from './Shared Utils/Pages/Profile'
+import Profile from './Components/User Page/Profile'
 import Review from "./Components/User Page/Review";
 import Home from './Components/User Page/Home'
 import UserPage from "./Components/User Page/UserPage";
@@ -32,8 +32,10 @@ function App() {
          <Route path="createAccount" element={<CreateAccount/>}/>
          <Route path="createAccount/user" element={<UserRegistration/>}/>
          <Route path="createAccount/artisan" element={<ArtisanRegistration/>}/>   
+
+         {/* Routes for User Page */}
          <Route path="login/user" element={<UserPage/>}>
-          <Route path="" element={<Home/>}/>
+          <Route path="home" element={<Home/>}/>
           <Route path="editProfile" element={<Profile/>}/>
           <Route path="review" element={<Review/>}/>
           <Route path="maps" element={<Map/>}/>
@@ -41,7 +43,7 @@ function App() {
 
          {/* Routes for Artisan Page */}
          <Route path="login/artisan" element={<ArtisanPage/>}>
-          <Route path="" element={<ArtisanProfile/>}/>
+          <Route path="home" element={<ArtisanProfile/>}/>
           <Route path="editProfile" element={<EditArtisanProfile/>}/>
           <Route path="maps" element={<Map/>}/>
           <Route path="payments" element={<Payments/>}/>
@@ -49,7 +51,7 @@ function App() {
 
          {/* Routes for admin  */}
          <Route path="login/admin" element={<AdminPage/>}>
-          <Route path="" element={<Dashboard/>}/>
+          <Route path="dashboard" element={<Dashboard/>}/>
           <Route path="manageUsers" element={<UserManagement/>}/>
           <Route path="manageArtisans" element={<ArtisanManagement/>}/>
          </Route>

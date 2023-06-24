@@ -1,9 +1,7 @@
 import React from 'react'
-import slide1 from './slide1.jpg'
-import slide2 from './slide2.jpg'
-import slide3 from './slide3.jpg'
 import './LandingPage.css'
-import Carousel from 'react-bootstrap/Carousel'
+import landing from './landing.png'
+import Header from './Header'
 import {useNavigate} from 'react-router-dom'
 
 function LandingPage() {
@@ -13,34 +11,24 @@ function LandingPage() {
   return (
     <div className='landing--container'>
         <div className='landing--leftside'>
-           <Carousel>
-            <Carousel.Item interval={10000}>
-                <img src={slide1} alt='1st Slide' className='slide--img'/>
-            <Carousel.Caption>
+            <Header/>
+            <div className='image'>
+             <img src={landing} alt=''/>
+            </div>
+            <div className='text--content'>
                 <h3>Discover Talented Artisans Near You</h3>
-                <p>Find Unique Handcrafted Products and Support Local Artisans </p>
-            </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item interval={10000}>
-                <img src={slide2} alt='2nd Slide' className='slide--img'/>
-            <Carousel.Caption>
-                <h3>Discover Talented Artisans Near You</h3>
-                <p>Find Unique Handcrafted Products and Support Local Artisans </p>
-            </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item interval={10000}>
-                <img src={slide3} alt='3rd Slide' className='slide--img'/>
-            <Carousel.Caption>
-                <h3>Discover Talented Artisans Near You</h3>
-                <p>Find Unique Handcrafted Products and Support Local Artisans </p>
-            </Carousel.Caption>
-            </Carousel.Item>
-           </Carousel>
+                <p>Find unique handcrafted products and support local artisans</p>
+            </div>
         </div>
         <div className='landing--rightside'>
-            <h1>Welcome to FIX-R-US</h1>
-            <div>
-                <button className='landingright--btn' onClick={()=>navigate('login')}>Get Started</button>
+            <div className='right--content'>
+                <div>
+                    <h3>Welcome to FIX-R-US</h3>
+                    <p>Let's get started to your account and start the experience</p>
+                 </div>
+                 <div>
+                    <button className='landingright--btn' onClick={()=>navigate('login')}>Get Started</button>
+                 </div>
             </div>
         </div>
     </div>

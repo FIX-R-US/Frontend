@@ -72,6 +72,9 @@
 .sidebar--container .sidebar .bottom--section div .link .text--link {
   flex: 70%;
 }
+.sidebar--container .sidebar .bottom--section div .active {
+  background-color: #61DBFB;
+}
 .sidebar--container .sidebar .bottom--section .logout--btn {
   width: 80%;
   margin: 0 auto;

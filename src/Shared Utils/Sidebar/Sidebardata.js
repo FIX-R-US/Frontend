@@ -9,7 +9,7 @@ import {MdPayments} from 'react-icons/md'
 
 export const data = [
     {
-        path: '',
+        path: 'home',
         icon: <AiFillHome size={21}/>,
         name:'Home'
     },
@@ -32,7 +32,7 @@ export const data = [
 
 export const artisanData = [
     {
-        path: '',
+        path: 'home',
         icon: <AiFillHome size={21}/>,
         name:'Home'
     },
@@ -56,7 +56,7 @@ export const artisanData = [
 
 export const adminData = [
     {
-        path: '',
+        path: 'dashboard',
         icon: <RxDashboard size={21}/>,
         name:'Dashboard'
     },

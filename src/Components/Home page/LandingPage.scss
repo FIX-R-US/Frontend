@@ -4,30 +4,50 @@
     display: flex;
     .landing--leftside{
         width: 60%;
-        .slide--img{
-            height: 100vh;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        background-color: #F9F9F9;
+        padding: 20px;
+        .image{
+            display: flex;
+            justify-content: center;
+            img{
+                width: 600px;
+            }
+        }
+        .text--content{
+            text-align: center;
+            color: #5E5873;
         }
     }
     .landing--rightside{
         width: 40%;
-        background-color: #d68d20;
-        color: white;
+        background-color: #FFFFFF;
+        color: #5E5873;
         text-align: center;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        .landingright--btn{
-            width: 30%;
-            border: none;
-            border-radius: 5px;
-            background-color: #212529;
-            color: white;
-            font-weight: 600;
-            padding: 5px;
-
-            &:hover{
-                background-color: rgba(0, 0, 0, 0.8);
-                transition: all 0.5s;
+        .right--content{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 30px;
+            .landingright--btn{
+                width: 80%;
+                border: none;
+                border-radius: 5px;
+                background-color: #7200CC;
+                color: white;
+                font-weight: 600;
+                padding: 5px;
+    
+                &:hover{
+                    background-color: blue;
+                    transition: all 0.5s;
+                }
             }
         }
     }

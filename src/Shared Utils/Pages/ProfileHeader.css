@@ -1,0 +1,32 @@
+.profile--header {
+  width: 100%;
+  height: auto;
+  display: flex;
+  padding: 10px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  border-radius: 0px 0px 5px 5px;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.profile--header .left--header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.profile--header .right--header {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.profile--header .right--header p {
+  margin-bottom: 7px;
+  color: #6F767E;
+}
+.profile--header .right--header img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}/*# sourceMappingURL=ProfileHeader.css.map */

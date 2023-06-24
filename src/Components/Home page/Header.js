@@ -1,24 +1,12 @@
 import React from 'react'
-import { Container, Navbar, Nav } from 'react-bootstrap'
-import {FcEngineering} from 'react-icons/fc'
+import {GiAutoRepair} from 'react-icons/gi'
 import './HomePage.css'
 
 function Header() {
   return (
-    <div>
-        <Navbar bg= 'dark' variant='dark' className='nav--container'>
-            <Container className='nav--items'>
-                <Navbar.Brand className='nav--brand'>
-                    <FcEngineering size={40}/> 
-                    <h2>FIX-R-US</h2>
-                </Navbar.Brand>
-                <Nav>
-                  <Nav.Link href='/login' className='nav--text'>Login</Nav.Link>
-                  <Nav.Link href='/createAccount' className='nav--text'>Sign up</Nav.Link>
-                  <Nav.Link href='#about' className='nav--text'>About</Nav.Link>
-                </Nav>
-            </Container>
-        </Navbar>
+    <div className='header'>
+      <GiAutoRepair size={30} color='#7200CC'/>
+      <h5>FIX-R-US</h5>
     </div>
   )
 }

@@ -1,0 +1,51 @@
+.artisanProfile--container{
+    width: 100%;
+   .artisanProfile--content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 20px;
+    .artisanProfile--fields{
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        padding-bottom: 30px;
+        border-bottom: 1px solid #F4F4F6;
+        label{
+            width: 50%;
+            font-weight: 500;
+        }
+        input{
+            width: 50%;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid grey;
+        }
+        textarea{
+            width: 50%;
+            border-radius: 5px;
+        }
+    }
+   }
+   .artisanProfile--btn{
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px;
+    margin-right: 20px;
+    button{
+        border: none;
+        padding: 5px;
+        width: 20%;
+        background-color: #7200CC;
+        color: white;
+        font-weight: 600;
+        border-radius: 10px;
+
+        &:hover{
+            background-color: blue;
+            transition: all 0.5;
+        }
+    }
+  }
+}
