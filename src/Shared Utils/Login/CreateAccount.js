@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import './CreateAccount.css'
 import {HiEye, HiEyeOff} from 'react-icons/hi'
 import { useNavigate } from 'react-router-dom'
+import Header from '../../Components/Home page/Header'
 
 
 function CreateAccount() {
@@ -27,53 +28,58 @@ function CreateAccount() {
 
   return (
     <div className='account--container'>
-        <form className='account--form' onSubmit={handleProceed}>
-         <h2 className='h2'>Create an account</h2>
-            <div className='account--field'>
-                <label htmlFor='Username'>Username</label>
-                <input 
-                type='text'
-                ref={usernameRef}
-                required
-                />
-            </div>
-            <div className='account--field'>
-                <label htmlFor='Email'>Email</label>
-                <input 
-                type='email'
-                ref={emailRef}
-                required
-                />
-            </div>
-            <div className='account--field'>
-                <label htmlFor='Password'>Password</label>
-                    <input 
-                    type={showPassword ? 'text' : 'password'}
-                    ref={passwordRef}
-                    required
-                    />
-                    {showPassword ? <HiEyeOff className='eye' onClick={()=>setShowPassword(prevShowPassword=> !prevShowPassword)}/> :
-                     <HiEye className='eye' onClick={()=>setShowPassword(prevShowPassword=> !prevShowPassword)} />}
-            </div>
-            <div className='account--field'>
-                <label htmlFor='Confirm Password'>Confirm Password</label>
-                    <input 
-                    type={showPassword ? 'text' : 'password'}
-                    ref={confirmPasswordRef}
-                    required
-                    />
-                    {showPassword ? <HiEyeOff className='eye' onClick={()=>setShowPassword(prevShowPassword=> !prevShowPassword)}/> :
-                     <HiEye className='eye' onClick={()=>setShowPassword(prevShowPassword=> !prevShowPassword)}/>}
-            </div>
-            <div className='account--field'>
-                <label htmlFor='Select Role'>Select Role</label>
-                <select ref={roleRef} required>
+      <div className='account--left'>
+          <Header/>
+          <div className='left--container'>
+            <form className='account--form' onSubmit={handleProceed}>
+              <h2>Create an account</h2>
+              <div className='create--container'>
+                <div className='create--field'>
+                  <label>Username</label>
+                  <input type='text' required ref={usernameRef}/>
+                </div>
+                <div className='create--field'>
+                  <label>Email</label>
+                  <input type='email' required ref={emailRef}/>
+                </div>
+                <div className='create--field'>
+                  <label>Password</label>
+                  <input type={showPassword ? 'text' : 'password'} 
+                  required 
+                  ref={passwordRef}/>
+                  {
+                    showPassword ? <HiEyeOff className='create--eye' onClick={()=>setShowPassword(prevShow => !prevShow)}/> : <HiEye className='create--eye' onClick={()=>setShowPassword(prevShow => !prevShow)}/>
+                  }
+                </div>
+                <div className='create--field'>
+                  <label>Confirm Password</label>
+                  <input type={showPassword ? 'text' : 'password'} 
+                  required
+                  ref={confirmPasswordRef}/>
+                  {
+                    showPassword ? <HiEyeOff className='create--eye' onClick={()=>setShowPassword(prevShow => !prevShow)}/> : <HiEye className='create--eye' onClick={()=>setShowPassword(prevShow => !prevShow)}/>
+                  }
+                </div>
+                <div className='create--field'>
+                  <label>Select Role</label>
+                  <select required ref={roleRef}>
                     <option value='artisan'>Artisan</option>
                     <option value='user'>User</option>
-                </select>
+                  </select>
+                </div>
+              </div>
+              <div className='create--btn'>
+                <button>Continue</button>
+              </div>
+            </form>
+          </div>
+          <div className='account--right'>
+            <div className='account--pic'>
+              <img alt=''/>
             </div>
-            <button type='submit' className='account--btn'>Proceed</button>
-        </form>
+          </div>
+
+      </div>
     </div>
   )
 }
