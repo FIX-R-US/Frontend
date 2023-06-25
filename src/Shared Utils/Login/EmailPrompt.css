@@ -1,0 +1,58 @@
+.prompt--container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+.left--prompt{
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 130px;
+}
+.prompt--textfield{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.prompt--textfield > p{
+    margin: 0;
+    color: #818C99;
+}
+.right--prompt{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.prompt--field{
+    display: flex;
+    justify-content: center;
+}
+.reset--prompt{
+    width: 450px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;
+}
+.prompt--img{
+    width: 653px;
+    padding-right: 20px;
+}
+.prompt--img > img{
+    width: 100%;
+}
+.prompt--link > p{
+    color: #818C99;
+}
+.prompt--link > p > a{
+    text-decoration: none;
+
+    &:hover{
+        color: #AB66E1;
+        transition: all 0.5s;
+    }
+}

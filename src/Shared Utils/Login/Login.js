@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import './Login.css'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import {HiEye, HiEyeOff} from 'react-icons/hi'
 import welcome from './welcome.png'
 import Header from '../../Components/Home page/Header'
@@ -31,7 +31,7 @@ function Login() {
                 <form className='login--form' onSubmit={handleSubmit} id='login'>
                     <div className='text--container'>
                         <h4>Welcome to FIX-R-US!</h4>
-                        <p>Kindly log in and let's get started</p>
+                        <p>Kindly log in to get started</p>
                     </div>
                     <div className='fields--container'>
                         <div className='fields'>
@@ -39,6 +39,8 @@ function Login() {
                             <input type='text'
                              placeholder='Enter your username here'
                              ref={UsernameRef}
+                             id='username'
+                             required
                              />
                         </div>
                         <div className='fields'>
@@ -46,6 +48,8 @@ function Login() {
                             <input type={showPassword ? 'text' : 'password'}
                              placeholder='Enter your password here'
                              ref={passwordRef}
+                             id='password'
+                             required
                              />
                              {
                                 showPassword ? <HiEyeOff className='show' onClick={show}/> : <HiEye className='show' onClick={show}/>
@@ -55,9 +59,9 @@ function Login() {
                     <div className='btn--container'>
                         <button className='login--btn'>Log In</button>
                         <div className='links'>
-                            <Link to='/forgotPassword' className='login--link'>Forgotten Password?</Link>
+                            <a href='/forgotPassword' className='login--link'>Forgotten Password?</a>
                             <p className='p-tag'>Don't have an account?</p>
-                            <Link to='/resetPassword' className='login--link'>Create Account</Link>
+                            <a href='/createAccount' className='login--link'>Create Account</a>
                         </div>
                     </div> 
                 </form>

@@ -1,10 +1,10 @@
 import React from 'react'
 import Select from 'react-select'
 import './Review.css'
-// import { homedata } from './Homedata'
 import artisanData from '../../MOCK_DATA.json'
 import { useState, useRef } from 'react'
 import Container from 'react-bootstrap/Container'
+import ProfileHeader from '../../Shared Utils/Pages/ProfileHeader'
 
 function Review() {
     const[value, setvalue] = useState(null)
@@ -28,39 +28,39 @@ function Review() {
     const customStyles = {
         control: (provided, state) => ({
           ...provided,
-          borderColor: state.isFocused ? '#ff9800' : provided.borderColor,
-          boxShadow: state.isFocused ? '0 0 0 2px #ff9800' : provided.boxShadow,
-        }),
-        option: (provided, state) => ({
-              ...provided,
-              backgroundColor: state.isFocused ? 'lightblue' : 'white',
-              color: state.isFocused ? 'black' : 'inherit',
-             })
+          padding: '5px',
+          borderRadius: '5px',
+          borderColor:'gray'
+        })
       };
   return (
-    <div >
-        <Container className='review--container'>
-            <h2>Review</h2>
-            <form className='review' onSubmit={handleSubmit}>
-                <div className='review--select'>
-                <Select 
-                ref={artisanRef}
-                options={options} 
-                defaultValue={value} 
-                placeholder='Search artisan'
-                onChange={setvalue}
-                noOptionsMessage={()=>"Artisan not found"}
-                isSearchable
-                isClearable
-                styles={customStyles}
-                />
-                </div>
-                <div className='review--textarea'>
-                    <label htmlFor='review'>Review</label>
-                    <textarea  name='review' rows={5} cols={45} ref={reviewRef} />
-                </div>
-                <button type='submit' className='review--btn'>Submit</button>
-            </form>
+    <div className='review--container'>
+        <Container>
+            <ProfileHeader/>
+            <div className='review--content'>
+                <form className='review' onSubmit={handleSubmit}>
+                    <div className='review--select'>
+                        <Select 
+                        ref={artisanRef}
+                        options={options} 
+                        defaultValue={value} 
+                        placeholder='Search artisan'
+                        onChange={setvalue}
+                        noOptionsMessage={()=>"Artisan not found"}
+                        isSearchable
+                        isClearable
+                        styles={customStyles}
+                        />
+                    </div>
+                    <div className='review--textarea'>
+                        <label htmlFor='review'>Review</label>
+                        <textarea id='review' rows={8} cols={45} ref={reviewRef} placeholder='Type your reviews here...' />
+                    </div>
+                    <div className='review--btn'>
+                        <button type='submit'>Submit</button>
+                    </div>
+                </form>
+            </div>
         </Container>
 
     </div>

@@ -1,8 +1,9 @@
 .sidebar--container{
     display: flex;
     position: relative;
+    top: 10px;
     .sidebar{
-        background-color: #212529;
+        background-color: #7200CC;
         color: white;
         height: 100vh;
         width: 250px;
@@ -12,6 +13,7 @@
         width: 100%;
         transition: all 0.2s;
         position: absolute;
+        border-radius: 0px 10px 0px 0px;
         .top--section{
             display: flex;
             gap: 70px;
@@ -53,14 +55,17 @@
                 gap: 10px;
                 width: 100%;
                 .link{
-                    width: 100%;
+                    width: 97%;
                     display: flex;
                     text-decoration: none;
                     padding: 10px 15px;
                     color: white;
                     
                     &:hover{
-                        background-color: #ff9800;
+                        background-color: #EFEFEF;
+                        color: #7200CC;
+                        border-radius: 0px 15px 0px 0px;
+                        transition: all 0.5s;
                     }
                     .icon{
                         flex: 30%;
@@ -71,7 +76,11 @@
                     }
                 }
                 .active{
-                    background-color: #61DBFB;
+                    background-color: white;
+                    color: #7200CC;
+                    font-weight: 500;
+                    border-radius: 0px 15px 0px 0px;
+                    transition: all 0.5s;
                 }
             }
                 .logout--btn{
@@ -80,10 +89,14 @@
                     padding: 3px;
                     border: 0;
                     border-radius: 5px;
+                    color: #7200CC;
+                    font-weight: 600;
+                    background-color: white;
     
                     &:hover{
-                        background-color: #ff9800;
-                        color: white;
+                        background-color: #E9ECEF;
+                        color: #7200CC;
+                        transition: all 0.5s;
                     }   
                 }
                 .logout--icon{
@@ -93,7 +106,8 @@
 
                     &:hover{
                         cursor: pointer;
-                        color: #ff9800;
+                        color: blue;
+                        transition: all 0.5s;
                     }
                 }
         }

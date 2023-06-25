@@ -1,50 +1,50 @@
 .review--container {
+  height: 100vh;
+  display: flex;
+}
+.review--container .review--content {
+  width: 100%;
+  height: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.review--container .review--content .review {
+  display: flex;
   flex-direction: column;
   gap: 70px;
+  width: 690px;
+  height: auto;
 }
-.review--container h2 {
-  color: black;
-}
-.review--container .review {
+.review--container .review--content .review .review--textarea {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  width: 550px;
-  height: 400px;
-  box-shadow: 0px 0px 5px #212529;
-  border-radius: 10px;
-  background-color: #212529;
+  gap: 5px;
 }
-.review--container .review .review--select, .review--container .review .review--textarea {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
+.review--container .review--content .review .review--textarea label {
+  font-weight: 500;
 }
-.review--container .review .review--select:focus, .review--container .review .review--textarea:focus {
-  border-color: #212529;
-}
-.review--container .review .review--select textarea, .review--container .review .review--textarea textarea {
+.review--container .review--content .review .review--textarea textarea {
   border-radius: 5px;
-  outline: none;
+  border-color: gray;
 }
-.review--container .review .review--select textarea:focus, .review--container .review .review--textarea textarea:focus {
-  border: 2px solid #ff9800;
+.review--container .review--content .review .review--textarea textarea:focus-within {
+  border-color: lightblue;
 }
-.review--container .review .review--btn {
-  width: 65%;
+.review--container .review--content .review .review--btn {
+  display: flex;
+  justify-content: flex-end;
+}
+.review--container .review--content .review .review--btn button {
   border: none;
-  border-radius: 5px;
-  padding: 3px;
-  background-color: #ff9800;
+  padding: 10px;
+  width: 20%;
+  background-color: #7200CC;
   color: white;
   font-weight: 600;
+  border-radius: 10px;
 }
-.review--container .review .review--btn:hover {
-  background-color: rgba(0, 0, 0, 0.5);
-  transition: all 0.5s;
+.review--container .review--content .review .review--btn button:hover {
+  background-color: #AB66E1;
+  transition: all 0.5;
 }/*# sourceMappingURL=Review.css.map */

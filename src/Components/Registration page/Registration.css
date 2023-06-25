@@ -1,134 +1,150 @@
 .form--container {
-  overflow: hidden;
   width: 100vw;
   height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: url(./homepage.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
 }
-.form--container .form {
+.form--container .userAccount--left {
+  width: 50%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 60px;
+  padding: 20px;
+}
+.form--container .userAccount--left .userLeft--container {
+  display: flex;
   justify-content: center;
-  gap: 20px;
+}
+.form--container .userAccount--left .userLeft--container .userAccount--form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   width: 400px;
-  height: 450px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
-  background-color: #212529;
-  color: white;
+  height: 520px;
 }
-.form--container .form .field--input {
+.form--container .userAccount--left .userLeft--container .userAccount--form .userCreate--container {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  width: 90%;
-}
-.form--container .form .field--input input {
-  border: 2px solid white;
-  border-radius: 5px;
-  background: transparent;
-  color: white;
-  outline: none;
-}
-.form--container .form .field--input input:focus {
-  border-color: #ff9800;
-}
-.form--container .form .form--btn {
-  width: 65%;
-  border-radius: 5px;
-  border: none;
-  font-weight: 700;
-  color: #212529;
-}
-.form--container .form .form--btn:hover {
-  background-color: #ff9800;
-  color: white;
-  transition: all 0.5s;
-}
-.form--container .form--artisan {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  width: 400px;
-  height: 600px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
-  background-color: #212529;
-  color: white;
-}
-.form--container .form--artisan .name--input {
-  display: flex;
-  width: 90%;
-  align-items: center;
-  justify-content: center;
   gap: 10px;
 }
-.form--container .form--artisan .name--input input {
-  width: 100%;
-}
-.form--container .form--artisan .field--input {
+.form--container .userAccount--left .userLeft--container .userAccount--form .userCreate--container .userCreate--field {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  width: 90%;
 }
-.form--container .form--artisan .field--input input {
-  border: 2px solid white;
+.form--container .userAccount--left .userLeft--container .userAccount--form .userCreate--container .userCreate--field label {
+  font-weight: 500;
+}
+.form--container .userAccount--left .userLeft--container .userAccount--form .userCreate--container .userCreate--field input {
+  padding: 5px;
   border-radius: 5px;
-  background: transparent;
-  color: white;
-  outline: none;
+  border: 1px solid gray;
 }
-.form--container .form--artisan .field--input input:focus {
-  border-color: #ff9800;
-}
-.form--container .form--artisan .field--input select {
-  border: 2px solid white;
-  border-radius: 5px;
-  background: transparent;
-  color: white;
-  height: 32px;
-  outline: none;
-}
-.form--container .form--artisan .field--input select:focus {
-  border-color: #ff9800;
-}
-.form--container .form--artisan .field--input select option {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-}
-.form--container .form--artisan .field--input .input--file {
-  display: flex;
-  align-items: center;
-  border: 2px solid white;
-  border-radius: 5px;
-}
-.form--container .form--artisan .field--input .input--file input {
+.form--container .userAccount--left .userLeft--container .userAccount--form .userCreate--btn button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 35px;
   border: none;
-  outline: none;
+  border-radius: 10px;
+  background-color: #7200CC;
+  color: white;
+  font-weight: 600;
+}
+.form--container .userAccount--left .userLeft--container .userAccount--form .userCreate--btn button:hover {
+  background-color: blue;
+  transition: all 0.5s;
+}
+.form--container .userAccount--right {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
+}
+.form--container .userAccount--right .userAccount--pic {
+  width: 480px;
+}
+.form--container .userAccount--right .userAccount--pic img {
   width: 100%;
 }
-.form--container .form--artisan .field--input .input--file:focus-within {
-  border-color: #ff9800;
+
+.artisanForm--container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
 }
-.form--container .form--artisan .form--btn {
-  width: 65%;
+.artisanForm--container .artisanAccount--left {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+.artisanForm--container .artisanAccount--left .artisanLeft--container {
+  display: flex;
+  justify-content: center;
+}
+.artisanForm--container .artisanAccount--left .artisanLeft--container .artisanAccount--form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 400px;
+  height: 610px;
+}
+.artisanForm--container .artisanAccount--left .artisanLeft--container .artisanAccount--form .artisanCreate--container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.artisanForm--container .artisanAccount--left .artisanLeft--container .artisanAccount--form .artisanCreate--container .artisanCreate--field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+.artisanForm--container .artisanAccount--left .artisanLeft--container .artisanAccount--form .artisanCreate--container .artisanCreate--field .file--input {
+  padding: 1px;
   border-radius: 5px;
-  border: none;
-  font-weight: 700;
-  color: #212529;
+  border: 1px solid gray;
 }
-.form--container .form--artisan .form--btn:hover {
-  background-color: #ff9800;
+.artisanForm--container .artisanAccount--left .artisanLeft--container .artisanAccount--form .artisanCreate--container .artisanCreate--field label {
+  font-weight: 500;
+}
+.artisanForm--container .artisanAccount--left .artisanLeft--container .artisanAccount--form .artisanCreate--container .artisanCreate--field input {
+  padding: 3px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+.artisanForm--container .artisanAccount--left .artisanLeft--container .artisanAccount--form .artisanCreate--container .artisanCreate--field select {
+  padding: 3.2px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+.artisanForm--container .artisanAccount--left .artisanLeft--container .artisanAccount--form .artisanCreate--btn button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #7200CC;
   color: white;
+  font-weight: 600;
+}
+.artisanForm--container .artisanAccount--left .artisanLeft--container .artisanAccount--form .artisanCreate--btn button:hover {
+  background-color: blue;
   transition: all 0.5s;
+}
+.artisanForm--container .artisanAccount--right {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 75px;
+}
+.artisanForm--container .artisanAccount--right .artisanAccount--pic {
+  width: 480px;
+}
+.artisanForm--container .artisanAccount--right .artisanAccount--pic img {
+  width: 100%;
 }/*# sourceMappingURL=Registration.css.map */

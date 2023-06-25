@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './ResetPassword.css'
+import './ResetPassword2.css'
 import Header from '../../Components/Home page/Header'
 import {HiEye, HiEyeOff} from 'react-icons/hi'
 import reset from './reset.png'
@@ -13,8 +13,8 @@ function ResetPassword2() {
   return (
     <div className='reset--container'>
       <div className='left--reset'>
-      <Header/>
-      <div className='reset--fields'>
+        <Header/>
+        <div className='reset--fields'>
           <form className='reset'>
             <div className='reset--textfield'>
               <h2>Change Password</h2>
@@ -36,16 +36,14 @@ function ResetPassword2() {
                 }
               </div>
             </div>
-            <button className='reset--btn'>Change Password</button>
-            
+            <button className='reset--btn'>Change Password</button>   
           </form>
-      </div>
+        </div>
       </div>
       <div className='right--reset'>
         <div className='reset--img'>
           <img src={reset} alt=''/>
         </div>
-
       </div>
     </div>
   )

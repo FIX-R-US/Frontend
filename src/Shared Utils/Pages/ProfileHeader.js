@@ -10,7 +10,7 @@ function ProfileHeader() {
     <div className='profile--header'>
       <div className='left--header'>
         <BsChatLeftDots size={20}/>
-        <h4>Profile</h4>
+        <h4>Edit Profile</h4>
       </div>
       <div className='right--header'>
         <FaUserCircle size={40}/>

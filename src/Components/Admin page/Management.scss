@@ -1,0 +1,11 @@
+.admin--btn{
+    border: none;
+    border-radius: 5px;
+    background-color: #7200CC;
+    color: white;
+
+    &:hover{
+        background-color: #AB66E1;
+        transition: all 0.5s;
+    }
+}

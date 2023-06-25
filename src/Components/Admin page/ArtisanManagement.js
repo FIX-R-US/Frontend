@@ -5,6 +5,7 @@ import Table from 'react-bootstrap/Table'
 import Form from 'react-bootstrap/Form'
 import { useState } from 'react'
 import './Search.css'
+import './Management.css'
 
 function ArtisanManagement() {
 
@@ -22,10 +23,9 @@ function ArtisanManagement() {
                     <Form.Control placeholder='Search artisans' type='search' onChange={(e)=>setSearch(e.target.value)} className='my-3 sticky'/>
                 </Form>
             </div>
-            <Table bordered hover variant='dark' striped='columns' responsive>
+            <Table bordered hover responsive style={{color:'#7200CC'}}>
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Username</th>
                         <th>Firstname</th>
                         <th>Lastname</th>
@@ -33,13 +33,15 @@ function ArtisanManagement() {
                         <th>Contact</th>
                         <th>Location</th>
                         <th>Occupation</th>
+                        <th>isVerified</th>
+                        <th>PaymentMade</th>
+                        <th>isActive</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         filter.map(item => (
                             <tr key={item.id}>
-                                <td>{item.id}</td>
                                 <td>{item.username}</td>
                                 <td>{item.first_name}</td>
                                 <td>{item.last_name}</td>
@@ -47,6 +49,14 @@ function ArtisanManagement() {
                                 <td>{item.contact}</td>
                                 <td>{item.location}</td>
                                 <td>{item.occupation}</td>
+                                <td>{item.isVerified ? 'Verified' : 'Not verified'}</td>
+                                <td>{item.paymentMade ? 'Yes' : 'No'}</td>
+                                <td>
+                                    {
+                                        item.paymentMade ? 
+                                        <button className='admin--btn'>Deactivate</button> : <button className='admin--btn'>Activate</button>
+                                    }
+                                </td>
                             </tr>
                         ))
                     }

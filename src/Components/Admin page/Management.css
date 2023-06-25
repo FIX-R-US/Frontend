@@ -1,0 +1,10 @@
+.admin--btn {
+  border: none;
+  border-radius: 5px;
+  background-color: #7200CC;
+  color: white;
+}
+.admin--btn:hover {
+  background-color: #AB66E1;
+  transition: all 0.5s;
+}/*# sourceMappingURL=Management.css.map */

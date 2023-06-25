@@ -78,7 +78,7 @@
     font-weight: 600;
 
     &:hover{
-        background-color: blue;
+        background-color: #AB66E1;
         transition: all 0.5s;
     }
 }
@@ -86,8 +86,12 @@
     text-align: center;
     color: #818C99;
 }
-.login--link :hover{
-    color: #7200CC;
+.links > a{
+    text-decoration: none;
+
+    &:hover{
+        color: #AB66E1;
+    }
 }
 .p-tag{
     margin-top: 16px;

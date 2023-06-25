@@ -38,7 +38,7 @@ export const artisanData = [
     },
     {
         path: 'editProfile',
-        icon: <SiCodereview size={20}/>,
+        icon: <FaUserAlt size={20}/>,
         name:'Profile'
     },
     {

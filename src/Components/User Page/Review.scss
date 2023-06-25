@@ -1,59 +1,54 @@
 .review--container{
-    // width: 100vw;/
+    // width: 100%;
+    height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 70px;
-    h2{
-        color: black;
-    }
-    .review{
+    .review--content{
+        width: 100%;
+        height: 90%;
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 15px;
-        width: 550px;
-        height: 400px;
-        box-shadow: 0px 0px 5px #212529 ;
-        border-radius: 10px;
-        background-color: #212529;
-       .review--select, .review--textarea{
-        display: flex;
-        flex-direction: column;
-        width: 90%;
+        .review{
+            display: flex;
+            flex-direction: column;
+            gap: 70px;
+            width: 690px;
+            height: auto;
+            .review--textarea{
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                label{
+                    font-weight: 500;
+                }
+                textarea{
+                    border-radius: 5px;
+                    border-color: gray;
 
-        &:focus{
-            border-color: #212529;
-        }
-        // select{
-        //     padding: 5px;
-        //     border-radius: 5px;
-        // }
-        textarea{
-            border-radius: 5px;
-            // background: transparent;
-            outline: none;
-            // color: white;
-            &:focus{
-                border: 2px solid #ff9800;
+                    &:focus-within{
+                        border-color: lightblue;
+                    }
+                }
             }
+            .review--btn{
+                display: flex;
+                justify-content: flex-end;
+                button{
+                    border: none;
+                    padding: 10px;
+                    width: 20%;
+                    background-color: #7200CC;
+                    color: white;
+                    font-weight: 600;
+                    border-radius: 10px;
+            
+                    &:hover{
+                        background-color: #AB66E1;
+                        transition: all 0.5;
+                    }
+                }
+            }
+           
         }
-       }
-       .review--btn{
-        width: 65%;
-        border: none;
-        border-radius: 5px;
-        padding: 3px;
-        background-color: #ff9800;
-        color: white;
-        font-weight: 600;
-
-        &:hover{
-            background-color: rgba(0, 0, 0, 0.5);
-            transition: all 0.5s;
-        }
-       }
     }
 }

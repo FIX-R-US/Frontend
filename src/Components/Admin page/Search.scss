@@ -7,10 +7,10 @@
         padding: 1px;
         background-color: white;
         .sticky{
-            border-color: #212529;
+            // border-color: #212529;
           &:focus{
             box-shadow: none;
-            border-color: #ff9800;
+            border-color: #7200CC;
           }
         }
     }

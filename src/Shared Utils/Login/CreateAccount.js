@@ -3,7 +3,7 @@ import './CreateAccount.css'
 import {HiEye, HiEyeOff} from 'react-icons/hi'
 import { useNavigate } from 'react-router-dom'
 import Header from '../../Components/Home page/Header'
-
+import account from './createaccount.png'
 
 function CreateAccount() {
     const navigate = useNavigate();
@@ -35,34 +35,36 @@ function CreateAccount() {
               <h2>Create an account</h2>
               <div className='create--container'>
                 <div className='create--field'>
-                  <label>Username</label>
-                  <input type='text' required ref={usernameRef}/>
+                  <label htmlFor='username'>Username</label>
+                  <input type='text' required ref={usernameRef} id='username'/>
                 </div>
                 <div className='create--field'>
-                  <label>Email</label>
-                  <input type='email' required ref={emailRef}/>
+                  <label htmlFor='email'>Email</label>
+                  <input type='email' required ref={emailRef} id='email'/>
                 </div>
                 <div className='create--field'>
-                  <label>Password</label>
+                  <label htmlFor='password'>Password</label>
                   <input type={showPassword ? 'text' : 'password'} 
-                  required 
+                  required
+                  id='password' 
                   ref={passwordRef}/>
                   {
                     showPassword ? <HiEyeOff className='create--eye' onClick={()=>setShowPassword(prevShow => !prevShow)}/> : <HiEye className='create--eye' onClick={()=>setShowPassword(prevShow => !prevShow)}/>
                   }
                 </div>
                 <div className='create--field'>
-                  <label>Confirm Password</label>
+                  <label htmlFor='confPassword'>Confirm Password</label>
                   <input type={showPassword ? 'text' : 'password'} 
                   required
+                  id='confPassword'
                   ref={confirmPasswordRef}/>
                   {
                     showPassword ? <HiEyeOff className='create--eye' onClick={()=>setShowPassword(prevShow => !prevShow)}/> : <HiEye className='create--eye' onClick={()=>setShowPassword(prevShow => !prevShow)}/>
                   }
                 </div>
                 <div className='create--field'>
-                  <label>Select Role</label>
-                  <select required ref={roleRef}>
+                  <label htmlFor='role'>Select Role</label>
+                  <select required ref={roleRef} id='role'>
                     <option value='artisan'>Artisan</option>
                     <option value='user'>User</option>
                   </select>
@@ -73,13 +75,12 @@ function CreateAccount() {
               </div>
             </form>
           </div>
-          <div className='account--right'>
+      </div>
+      <div className='account--right'>
             <div className='account--pic'>
-              <img alt=''/>
+              <img src={account} alt=''/>
             </div>
           </div>
-
-      </div>
     </div>
   )
 }

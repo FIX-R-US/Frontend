@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'
 import './Registration.css'
 import { useNavigate } from 'react-router-dom';
+import Header from '../../Components/Home page/Header'
+import account from '../../Shared Utils/Login/createaccount.png'
 
 function ArtisanRegistration() {
 
@@ -30,79 +32,78 @@ function ArtisanRegistration() {
     }
 
   return (
-    <div className='form--container'>
-         <form className='form--artisan' onSubmit={handleSubmit}>
-            <h2>Setup account</h2>
-            <div className='name--input'>
-                <div className='field--input'>
-                    <label htmlFor='Firstname'>Firstname</label>
-                    <input 
-                    type='text'
-                    required
-                    ref={firstNameRef}
-                    />
+    <div className='artisanForm--container'>
+        <div className='artisanAccount--left'>
+          <Header/>
+          <div className='artisanLeft--container'>
+            <form className='artisanAccount--form' onSubmit={handleSubmit}>
+              <h2>Setup account</h2>
+              <div className='artisanCreate--container'>
+                <div className='artisanCreate--field'>
+                  <label htmlFor='firstname'>Firstname</label>
+                  <input type='text' required ref={firstNameRef} id='firstname'/>
                 </div>
-                <div className='field--input'>
-                    <label htmlFor='Lastname'>Lastname</label>
-                    <input 
-                    type='text'
-                    required
-                    ref={lastNameRef}
-                    />
+                <div className='artisanCreate--field'>
+                  <label htmlFor='lastname'>Lastname</label>
+                  <input type='text' required ref={lastNameRef} id='lastname'/>
                 </div>
-            </div>
-            <div className='field--input'>
-                <label htmlFor='Contact'>Contact</label>
-                <input 
-                type='phone'
-                required
-                ref={contactRef}
-            />
-            </div>
-            <div className='field--input'>
-                <label htmlFor='Location'>Location</label>
-                <input 
-                type='text'
-                required
-                ref={locationRef}
-                />
-            </div>
-            <div className='field--input'>
-                <label htmlFor='Occupation'>Occupation</label>
-                <select ref={occupationRef}>
+                <div className='artisanCreate--field'>
+                  <label htmlFor='contact'>Contact</label>
+                  <input type= 'text' 
+                  required
+                  id='contact' 
+                  ref={contactRef}/>
+                </div>
+                <div className='artisanCreate--field'>
+                  <label htmlFor='location'>Location</label>
+                  <input type='text' 
+                  required
+                  id='location'
+                  ref={locationRef}/>
+                </div>
+                <div className='artisanCreate--field'>
+                  <label htmlFor='occupation'>Occupation</label>
+                  <select ref={occupationRef}>
                     <option value='electrician'>Electrician</option>
-                    <option value='plumber'>Plumber</option>
                     <option value='carpenter'>Carpenter</option>
-                    <option value='barber'>Barber</option>
+                    <option value='plumber'>Plumber</option>
                     <option value='hairdresser'>Hairdresser</option>
+                    <option value='barber'>Barber</option>
                     <option value='cobbler'>Cobbler</option>
-                </select>
-            </div>
-            
-            <div className='field--input'>
-                <label>Certificate</label>
-                <div className='input--file'>
-                    <input 
-                    type='file'
-                    ref={certificateRef}
-                    onChange={e => setFile(e.target.files)}
-                    multiple={true}
-                    />
+                  </select>
                 </div>
-            </div>
-            <div className='field--input'>
-                <label>Projects worked on(picture or video)</label>
-                <div className='input--file'>
-                    <input 
-                    type='file'
-                    required
-                    onChange={e=>setFile(e.target.files)}
-                    multiple={true}
-                    />
+                <div className='artisanCreate--field'>
+                  <label htmlFor='certificate'>Certificate</label>
+                  <input type='file' 
+                  required
+                  id='certificate'
+                  ref={certificateRef}
+                  onChange={e => setFile(e.target.files)}
+                  multiple={true}
+                  className='file--input'/>
                 </div>
+                <div className='artisanCreate--field'>
+                  <label htmlFor='projects'>Projects worked on(picture or video)</label>
+                  <input type='file' 
+                  required
+                  id='projects'
+                  ref={locationRef}
+                  onChange={e => setFile(e.target.files)}
+                  multiple={true}
+                  className='file--input'/>
+                </div>
+              </div>
+              <div className='artisanCreate--btn'>
+                <button>Submit</button>
+              </div>
+            </form>
+          </div>
+      </div>
+      <div className='artisanAccount--right'>
+            <div className='artisanAccount--pic'>
+              <img src={account} alt=''/>
             </div>
-            <button type='submit' className='form--btn'>Submit</button>
-        </form>
+          </div>
     </div>
   )
 }

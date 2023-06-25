@@ -8,10 +8,7 @@
   padding: 1px;
   background-color: white;
 }
-.Table--container .sticky--container .sticky {
-  border-color: #212529;
-}
 .Table--container .sticky--container .sticky:focus {
   box-shadow: none;
-  border-color: #ff9800;
+  border-color: #7200CC;
 }/*# sourceMappingURL=Search.css.map */
