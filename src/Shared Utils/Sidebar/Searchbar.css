@@ -1,21 +1,19 @@
 .entire--container {
-  width: 100%;
   padding: 10px;
-  display: flex;
-  justify-content: center;
 }
 .entire--container .search--container {
   display: flex;
   align-items: center;
   gap: 5px;
-  width: 40%;
-  border: 2px solid black;
+  border: 2px solid #7200CC;
   border-radius: 10px;
   padding: 2px;
-  position: sticky;
+}
+.entire--container .search--container:focus-within {
+  border-color: #AB66E1;
 }
 .entire--container .search--container .search--bar {
-  width: 90%;
+  width: 95%;
   border: none;
   outline: none;
   background: transparent;

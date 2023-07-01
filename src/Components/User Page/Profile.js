@@ -7,7 +7,7 @@ function Profile() {
   return (
     <div className='profile--container'>
       <Container>
-        <ProfileHeader/>
+        <ProfileHeader title={'Edit Profile'}/>
         <div className='profile--content'>
           <div className='profile--fields'>
             <label>Username</label>

@@ -13,10 +13,12 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  height: 350px;
 }
 .profile--artisan-container .whole--content .artisan--top .top--img img {
   width: 100%;
-  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .profile--artisan-container .whole--content .artisan--top .profile--icon {
   position: absolute;

@@ -26,7 +26,7 @@ function Review() {
     }
 
     const customStyles = {
-        control: (provided, state) => ({
+        control: (provided) => ({
           ...provided,
           padding: '5px',
           borderRadius: '5px',
@@ -36,7 +36,7 @@ function Review() {
   return (
     <div className='review--container'>
         <Container>
-            <ProfileHeader/>
+            <ProfileHeader title={'Review'}/>
             <div className='review--content'>
                 <form className='review' onSubmit={handleSubmit}>
                     <div className='review--select'>

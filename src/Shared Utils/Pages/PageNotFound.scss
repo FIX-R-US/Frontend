@@ -1,0 +1,65 @@
+.notFound--container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    .notFound--left{
+        width: 50%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        .notFound--field{
+            display: flex;
+            justify-content: center;
+            .notFound--prompt{
+                width: 300px;
+                height: 500px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 20px;
+                .notFound--textfield{
+                    display: flex;
+                    flex-direction: column;
+                    h1{
+                        font-size: 50px;
+                    }
+                    p{
+                        font-size: 25px;
+                        color: #818C99;
+                    }
+                }
+                .notFound--btn{
+                    button{
+                        width: 100%;
+                        padding: 10px;
+                        margin-top: 20px;
+                        border: none;
+                        border-radius: 10px;
+                        background-color: #7200CC;
+                        color: white;
+                        font-weight: 600;
+                    
+                        &:hover{
+                            background-color: #AB66E1;
+                            transition: all 0.5s;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .notFound--right{
+        width: 50%;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .notFound--img{
+            width: 480px;
+            img{
+                width: 100%;
+            }
+        }
+    }
+}

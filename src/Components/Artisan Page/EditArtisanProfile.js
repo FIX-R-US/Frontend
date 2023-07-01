@@ -7,7 +7,7 @@ function EditArtisanProfile() {
   return (
     <div className='artisanProfile--container'>
       <Container>
-        <ProfileHeader/>
+        <ProfileHeader title={'Edit Profile'}/>
         <div className='artisanProfile--content'>
           <div className='artisanProfile--fields'>
             <label>Username</label>
@@ -34,7 +34,7 @@ function EditArtisanProfile() {
             <input type='text'/>
           </div>
           <div className='artisanProfile--fields'>
-            <label>Bio</label>
+            <label>Description</label>
             <textarea rows={3} cols={70}/>
           </div>
         </div>

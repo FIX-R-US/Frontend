@@ -3,7 +3,7 @@ import {FaBars,FaUserAlt } from 'react-icons/fa'
 import {MdLogout} from 'react-icons/md'
 import './Sidebar.css'
 import { NavLink, useLocation, useNavigate} from 'react-router-dom'
-import {FcEngineering} from 'react-icons/fc'
+import {GiAutoRepair} from 'react-icons/gi'
 
 function Sidebar({data}) {
     const[isOpen, setIsOpen] = useState(false)
@@ -29,7 +29,7 @@ function Sidebar({data}) {
         <div className='sidebar' style={width}>
             <div className='top--section'>
                 <div className='logo' style={display}>
-                    <FcEngineering size={25}/>
+                    <GiAutoRepair size={25}/>
                     <h4>FIX-R-US</h4>
                 </div>
                 <div className='bars'>

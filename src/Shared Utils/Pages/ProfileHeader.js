@@ -5,12 +5,12 @@ import './ProfileHeader.css'
 // import profilepic from './slide1.jpg'
 
 
-function ProfileHeader() {
+function ProfileHeader({title}) {
   return (
     <div className='profile--header'>
       <div className='left--header'>
         <BsChatLeftDots size={20}/>
-        <h4>Edit Profile</h4>
+        <h4>{title}</h4>
       </div>
       <div className='right--header'>
         <FaUserCircle size={40}/>

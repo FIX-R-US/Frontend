@@ -23,7 +23,7 @@ function ArtisanProfile() {
   return (
     <div className='profile--artisan-container'>
         <Container>
-            <ProfileHeader/>
+            <ProfileHeader title={'Profile'}/>
             <div className='whole--content'>
                 <div className='artisan--top'>
                     <div className='top--img'>
@@ -35,7 +35,9 @@ function ArtisanProfile() {
                     <div className='artisan--middle'>
                         <h2>Samuel Nyame</h2>
                         <p className='p'>Electrician</p>
-                        <p>Ayeduase, KNUST</p>
+                        <p className='p'>Ayeduase, KNUST</p>
+                        <p className='p'>0559389586</p>
+                        <p>Description: ...</p>
                     </div>
                     <div className='artisan--bottom'>
                         <h5>Reviews</h5>

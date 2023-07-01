@@ -1,13 +1,33 @@
 import React from 'react'
+import Header from '../../Components/Home page/Header'
+import notFound from './pagenotfound.png'
+import './PageNotFound.css'
+import { useNavigate } from 'react-router-dom'
 
 function PageNotFound() {
+  const navigate = useNavigate()
   return (
-    <div style={{width:'100vw',height:"100vh", display:'flex', justifyContent:'center', alignItems:'center'}}>
-        <div style={{display:'flex',flexDirection:"column", justifyContent:'center', alignItems:'center'}}>
-            <h1>404 Error</h1>
-            <h1>Page Not Found</h1>
+    <div className='notFound--container'>
+    <div className='notFound--left'>
+      <Header/>
+      <div className='notFound--field'>
+        <div className='notFound--prompt'>
+          <div className='notFound--textfield'>
+            <h1>404</h1>
+            <p>OOps! Page not found</p>
+          </div>
+          <div className='notFound--btn'>
+            <button onClick={() => navigate('login/user/home')}>Return Home</button>
+          </div> 
         </div>
+      </div>
     </div>
+    <div className='notFound--right'>
+      <div className='notFound--img'>
+        <img src={notFound} alt=''/>
+      </div>
+    </div>
+  </div>
   )
 }
 

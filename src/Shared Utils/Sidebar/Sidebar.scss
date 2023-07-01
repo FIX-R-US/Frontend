@@ -21,6 +21,7 @@
             .logo{
                 display: flex;
                 align-items: center;
+                color: #E9ECEF;
                 h4{
                     margin: 0;
                 }
@@ -94,8 +95,8 @@
                     background-color: white;
     
                     &:hover{
-                        background-color: #E9ECEF;
-                        color: #7200CC;
+                        background-color: #AB66E1;
+                        color: white;
                         transition: all 0.5s;
                     }   
                 }
@@ -106,7 +107,7 @@
 
                     &:hover{
                         cursor: pointer;
-                        color: blue;
+                        color: #c698e9;
                         transition: all 0.5s;
                     }
                 }

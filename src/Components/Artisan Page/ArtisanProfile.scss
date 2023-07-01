@@ -10,9 +10,10 @@
             width: 100%;
             display: flex;
             justify-content: center;
+            height: 350px;
             img{
                 width: 100%;
-                height: auto;
+                object-fit: cover;
             }
         }
         .profile--icon{

@@ -28,7 +28,7 @@ function ArtisanRegistration() {
 
         console.log(firstName, lastName, contact, location, occupation)
             console.log(file)
-        navigate('/login/artisan')
+        navigate('/login/artisan/home')
     }
 
   return (
@@ -63,7 +63,7 @@ function ArtisanRegistration() {
                 </div>
                 <div className='artisanCreate--field'>
                   <label htmlFor='occupation'>Occupation</label>
-                  <select ref={occupationRef}>
+                  <select ref={occupationRef} required>
                     <option value='electrician'>Electrician</option>
                     <option value='carpenter'>Carpenter</option>
                     <option value='plumber'>Plumber</option>
@@ -73,9 +73,8 @@ function ArtisanRegistration() {
                   </select>
                 </div>
                 <div className='artisanCreate--field'>
-                  <label htmlFor='certificate'>Certificate</label>
+                  <label htmlFor='certificate'>Certificate(if any)</label>
                   <input type='file' 
-                  required
                   id='certificate'
                   ref={certificateRef}
                   onChange={e => setFile(e.target.files)}
@@ -85,7 +84,6 @@ function ArtisanRegistration() {
                 <div className='artisanCreate--field'>
                   <label htmlFor='projects'>Projects worked on(picture or video)</label>
                   <input type='file' 
-                  required
                   id='projects'
                   ref={locationRef}
                   onChange={e => setFile(e.target.files)}

@@ -1,6 +1,8 @@
-.account--container{
+.container--acount{
     width: 100vw;
     height: 100vh;
+}
+.account--container{
     display: flex;
 }
 .account--left{
@@ -69,6 +71,7 @@
 }
 .account--right{
     width: 50%;
+    padding-top: 60px;
     display: flex;
     justify-content: center;
     align-items: center;

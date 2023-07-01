@@ -6,6 +6,7 @@ import {RxDashboard} from 'react-icons/rx'
 import {MdManageAccounts} from 'react-icons/md'
 import {MdEngineering} from 'react-icons/md'
 import {MdPayments} from 'react-icons/md'
+import {MdVerified} from 'react-icons/md'
 
 export const data = [
     {
@@ -63,11 +64,16 @@ export const adminData = [
     {
         path: 'manageUsers',
         icon: <MdManageAccounts size={21}/>,
-        name:'User Management'
+        name:'Manage Users'
     },
     {
         path: 'manageArtisans',
         icon: <MdEngineering size={21}/>,
-        name:'Artisan Management'
+        name:'Manage Artisans'
+    },
+    {
+        path: 'verifyRegistration',
+        icon: <MdVerified size={21}/>,
+        name:'Verify Registration'
     }
 ]

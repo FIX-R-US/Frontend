@@ -52,7 +52,7 @@ function Login() {
                              required
                              />
                              {
-                                showPassword ? <HiEyeOff className='show' onClick={show}/> : <HiEye className='show' onClick={show}/>
+                                showPassword ? <HiEyeOff className='show1' onClick={show}/> : <HiEye className='show1' onClick={show}/>
                              }
                         </div>
                     </div>

@@ -24,6 +24,7 @@
 .sidebar--container .sidebar .top--section .logo {
   display: flex;
   align-items: center;
+  color: #E9ECEF;
 }
 .sidebar--container .sidebar .top--section .logo h4 {
   margin: 0;
@@ -95,8 +96,8 @@
   background-color: white;
 }
 .sidebar--container .sidebar .bottom--section .logout--btn:hover {
-  background-color: #E9ECEF;
-  color: #7200CC;
+  background-color: #AB66E1;
+  color: white;
   transition: all 0.5s;
 }
 .sidebar--container .sidebar .bottom--section .logout--icon {
@@ -106,6 +107,6 @@
 }
 .sidebar--container .sidebar .bottom--section .logout--icon:hover {
   cursor: pointer;
-  color: blue;
+  color: #c698e9;
   transition: all 0.5s;
 }/*# sourceMappingURL=Sidebar.css.map */

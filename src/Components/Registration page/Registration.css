@@ -112,12 +112,12 @@
   font-weight: 500;
 }
 .artisanForm--container .artisanAccount--left .artisanLeft--container .artisanAccount--form .artisanCreate--container .artisanCreate--field input {
-  padding: 3px;
+  padding: 5px;
   border-radius: 5px;
   border: 1px solid gray;
 }
 .artisanForm--container .artisanAccount--left .artisanLeft--container .artisanAccount--form .artisanCreate--container .artisanCreate--field select {
-  padding: 3.2px;
+  padding: 5.2px;
   border-radius: 5px;
   border: 1px solid gray;
 }
@@ -140,7 +140,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 75px;
+  padding-top: 80px;
 }
 .artisanForm--container .artisanAccount--right .artisanAccount--pic {
   width: 480px;

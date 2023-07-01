@@ -1,13 +1,14 @@
 import {React, useState} from 'react'
 // import photo from './card.jpg'
 import './Home.css'
-// import {homedata} from './Homedata'
 import artisanData from '../../MOCK_DATA.json'
 import Searchbar from '../../Shared Utils/Sidebar/Searchbar'
 import Container from 'react-bootstrap/Container'
+import { useNavigate } from 'react-router-dom'
 
 
 function Home() {
+  const navigate = useNavigate();
   const[search, setSearch] = useState('')
   const[itemsToShow, setItemsToShow] = useState(15)
 
@@ -20,13 +21,15 @@ function Home() {
   }
 
   const handleLoadMore = () => {
-    setItemsToShow(prevItemsToShow => prevItemsToShow + 15)
+    setTimeout(() => {
+      setItemsToShow(prevItemsToShow => prevItemsToShow + 15)
+    }, 2500)
   }
 
   const renderItems = () => {
     if(filter.length === 0){
-      return <div style={{display:'flex', width:'100%'}}>
-                 <p style={{justifyContent:'center', alignItems:'center'}}>No results found</p>
+      return <div style={{display:'flex', width:'100%',justifyContent:'center', paddingTop:'10px'}}>
+                <p>No results found</p>
             </div>
     }
 
@@ -36,13 +39,15 @@ function Home() {
             <img src={item.profile_photo} alt='' className='card--img' width={120} height={120}/>
             <div className='card--details'>
               <h5>{`${item.first_name} ${item.last_name}`}</h5>
-              <p id='location'>{item.occupation}</p>
+              <p id='occupation'>{item.occupation}</p>
               <p >{item.location}</p>
             </div>
           </div>
           <div className='bottom--content'>
             <p>{item.description}</p>
-            <button className='card--btn'>View Profile</button>
+            <button className='card--btn' onClick={()=>navigate('viewProfile')}>
+              View Profile
+            </button>
           </div>
       </div>
   ))

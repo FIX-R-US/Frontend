@@ -20,6 +20,7 @@ import Dashboard from "./Components/Admin page/Dashboard";
 import Map from "./Shared Utils/Pages/Map";
 import EditArtisanProfile from "./Components/Artisan Page/EditArtisanProfile";
 import Payments from "./Components/Artisan Page/Payments";
+import VerifyRegistration from "./Components/Admin page/VerifyRegistration";
 import PageNotFound from "./Shared Utils/Pages/PageNotFound";
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
          {/* Routes for User Page */}
          <Route path="login/user" element={<UserPage/>}>
           <Route path="home" element={<Home/>}/>
+          <Route path="home/viewProfile" element={<ArtisanProfile/>}/>
           <Route path="editProfile" element={<Profile/>}/>
           <Route path="review" element={<Review/>}/>
           <Route path="maps" element={<Map/>}/>
@@ -56,6 +58,7 @@ function App() {
           <Route path="dashboard" element={<Dashboard/>}/>
           <Route path="manageUsers" element={<UserManagement/>}/>
           <Route path="manageArtisans" element={<ArtisanManagement/>}/>
+          <Route path="verifyRegistration" element={<VerifyRegistration/>}/>
          </Route>
 
          <Route path="*" element={<PageNotFound/>}/>
