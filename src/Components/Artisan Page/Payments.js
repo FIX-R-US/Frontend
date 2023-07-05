@@ -4,45 +4,52 @@ import './Payment.css'
 import Container  from 'react-bootstrap/Container'
 
 function Payments() {
-  const publicKey = 'pk_test_5f727831c1256722db92408ab5ad8a99c9e0ae95'
+  // const publicKey = "pk_test_5f727831c1256722db92408ab5ad8a99c9e0ae95"
+  const publicKey = process.env.REACT_APP_PAYMENT_KEY
   const amount = 100
   const [email, setEmail] = useState('')
-  const [name, setName] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [number, setNumber] = useState('')
 
+  
+  const resetForm = () => {
+    setEmail('')
+    setFirstName('')
+    setLastName('')
+    setNumber('')
+  }
   const componentProps = {
     email,
     amount: amount * 100,
+    currency: 'GHS',
+    channels: ['card', 'ussd', 'mobile_money', 'bank_transfer'],
     metadata:{
-      name,
+      firstName,
+      lastName,
       number
     },
     publicKey,
     text:'Pay Now',
-    onSuccess: () => alert("Thanks for paying your monthly fee"),
+    onSuccess: ({reference}) => {
+      alert(`Thank you for paying your monthly fee! Transaction reference: ${reference}`)
+      resetForm()
+    },
     onClose: () => alert("Transaction cancelled")
   }
 
   return (
     <div className="payment--container">
-      <Container className='my-3'>
-        <div className="item">
-          <div className="overlay-effect"></div>
-          <img
-            className="item-image"
-            src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
-            alt="product"
-          />
-          <div className="item-details">
-            <p className="item-details__title">Coconut Oil</p>
-            <p className="item-details__amount">GHS{amount}</p>
-          </div>
-        </div>
+      <Container>
         <div className="checkout">
           <div className="checkout-form">
             <div className="checkout-field">
-              <label>Name</label>
-              <input onChange={(e)=>setName(e.target.value)} id='name'/>
+              <label>Firstname</label>
+              <input onChange={(e)=>setFirstName(e.target.value)} id='firstname'/>
+            </div>
+            <div className="checkout-field">
+              <label>Lastname</label>
+              <input onChange={(e)=>setLastName(e.target.value)} id='lastname'/>
             </div>
             <div className="checkout-field">
               <label>Email</label>
