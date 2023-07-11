@@ -50,4 +50,91 @@
 .landing--container .landing--rightside .right--content .landingright--btn:hover {
   background-color: #AB66E1;
   transition: all 0.5s;
+}
+
+@media (max-width: 920px) {
+  .landing--container {
+    flex-direction: column;
+    gap: 100px;
+    background-color: #F9F9F9;
+  }
+  .landing--container .landing--leftside {
+    width: 100%;
+    gap: 80px;
+  }
+  .landing--container .landing--leftside .image {
+    width: 100%;
+  }
+  .landing--container .landing--leftside .image img {
+    width: 100%;
+  }
+  .landing--container .landing--rightside {
+    width: 100%;
+    padding: 20px;
+    background-color: #F9F9F9;
+  }
+  .landing--container .landing--rightside .right--content {
+    width: 100%;
+  }
+  .landing--container .landing--rightside .right--content .right--text {
+    display: none;
+  }
+}
+@media (max-width: 560px) {
+  .landing--container {
+    gap: 0;
+  }
+  .landing--container .landing--leftside {
+    gap: 30px;
+  }
+}
+@media (max-width: 480px) {
+  .landing--container {
+    gap: 150px;
+  }
+  .landing--container .landing--leftside {
+    gap: 65px;
+  }
+  .landing--container .landing--leftside .text--content h3 {
+    font-size: larger;
+  }
+  .landing--container .landing--leftside .text--content p {
+    font-size: 12.6px;
+  }
+}
+@media (max-width: 376px) {
+  .landing--container {
+    gap: 60px;
+  }
+  .landing--container .landing--leftside {
+    gap: 45px;
+  }
+  .landing--container .landing--leftside .text--content h3 {
+    font-size: larger;
+  }
+  .landing--container .landing--leftside .text--content p {
+    font-size: 12.6px;
+  }
+}
+@media (max-width: 290px) {
+  .landing--container .landing--leftside {
+    padding: 10px;
+  }
+  .landing--container .landing--leftside .text--content h3 {
+    font-size: medium;
+  }
+  .landing--container .landing--leftside .text--content p {
+    font-size: 10px;
+  }
+  .landing--container .landing--rightside {
+    padding: 10px;
+  }
+  .landing--container .landing--rightside .right--content .landingright--btn {
+    font-size: 12px;
+  }
+}
+@media (min-width: 1020px) and (max-width: 1030px) {
+  .landing--container .landing--leftside {
+    gap: 20px;
+  }
 }/*# sourceMappingURL=LandingPage.css.map */

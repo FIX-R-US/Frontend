@@ -28,6 +28,9 @@ function UserRegistration() {
        <div className='userAccount--left'>
           <Header/>
           <div className='userLeft--container'>
+            <div className='user--responsive'>
+              <img src={account} alt=''/>
+            </div>
             <form className='userAccount--form' onSubmit={handleSubmit}>
               <h2>Setup account</h2>
               <div className='userCreate--container'>

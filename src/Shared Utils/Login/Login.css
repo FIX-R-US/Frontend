@@ -1,6 +1,3 @@
-body{
-    font-family: 'Roboto', sans-serif;
-}
 .form--wrapper{
     width: 100vw;
     height: 100vh;
@@ -13,6 +10,9 @@ body{
     flex-direction: column;
     padding: 20px;
     gap: 75px;
+}
+.responsive{
+    display: none;
 }
 .text--container{
     width: 100%;
@@ -101,3 +101,94 @@ body{
     margin-bottom: 0;
 }
 
+@media (max-width: 920px) {
+    .form--wrapper{
+        height: auto;
+    }
+    .login--left{
+        width: 100%;
+        gap: 40px;
+    }
+    .login--right{
+        display: none;
+    }
+    .login--form{
+       width: 80%;
+       display: flex;
+       justify-content: center;
+       align-self: center;
+       gap: 20px;
+    }
+    .responsive{
+        display: inline-block;
+        width: 100%;
+    }
+    .responsive > img{
+        width: 100%;
+        height: 650px;
+    }
+    .login--fields{
+        flex-direction: column;
+        gap: 20px;
+    }   
+}
+@media (max-width: 780px) {
+    .responsive > img{
+        width: 100%;
+        height: 584px;
+    }  
+}
+
+@media (max-width: 560px){
+    .responsive > img{
+        width: 100%;
+        height: 400px;
+    }
+    .login--form{
+        width: 100%;
+        gap: 20px;
+     }
+}
+
+@media (max-width: 480px){
+    .login--form{
+       width: 100%;
+       gap: 20px;
+       height: 420px;
+    }
+    .responsive > img{
+        width: 100%;
+        height: 330px;
+    }
+    .login--left{
+        gap: 19px;
+    }
+}
+
+@media (max-width: 395px) {
+    .responsive > img{
+        width: 100%;
+        height: 315px;
+    }
+}
+
+@media(max-width: 290px){
+    .login--left{
+        gap: 30px;
+        padding: 10px;
+    }
+    .login--form{
+        font-size: 12px;
+        height: 380px;
+    }
+    .text--container > p{
+        margin: 0;
+    }
+    .responsive > img{
+        width: 100%;
+        height: 220px;
+    }
+    .show1{
+        top: 33px;
+    }
+}

@@ -43,6 +43,9 @@ function CreateAccount() {
         <div className='account--left'>
             <Header/>
             <div className='left--container'>
+              <div className='account--responsive'>
+                <img src={account} alt=''/>
+              </div>
               <form className='account--form' onSubmit={handleProceed}>
                 <h2>Create an account</h2>
                 <div className='create--container'>

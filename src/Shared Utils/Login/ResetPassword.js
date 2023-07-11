@@ -21,6 +21,9 @@ function ResetPassword() {
       <div className='left--reset1'>
         <Header/>
         <div className='reset--fields1'>
+          <div className='reset1--responsive'>
+            <img src={reset} alt=''/>
+          </div>
           <form className='reset1' onSubmit={handleSubmit}>
             <div className='reset--textfield1'>
               <h2>Forget your password?</h2>

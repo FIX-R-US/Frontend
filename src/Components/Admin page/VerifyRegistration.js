@@ -15,10 +15,10 @@ function VerifyRegistration() {
                     <th>Firstname</th>
                     <th>Lastname</th>
                     <th>Email</th>
-                    <th>Contact</th>
                     <th>Location</th>
+                    <th>National ID</th>
                     <th>Certificate</th>
-                    <th>Verify</th>
+                    <th>Approve</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,11 +29,11 @@ function VerifyRegistration() {
                             <td>{item.first_name}</td>
                             <td>{item.last_name}</td>
                             <td>{item.email}</td>
-                            <td>{item.contact}</td>
                             <td>{item.location}</td>
                             <td>{item.profile_photo}</td>
+                            <td>{item.profile_photo}</td>
                             <td>
-                               <button className='admin--btn'>Verify</button>    
+                               <button className='admin--btn'>Approve</button>    
                             </td>
                         </tr>
                     ))

@@ -22,7 +22,7 @@ function LandingPage() {
         </div>
         <div className='landing--rightside'>
             <div className='right--content'>
-                <div>
+                <div className='right--text'>
                     <h3>Welcome to FIX-R-US</h3>
                     <p>Let's get started to your account and start the experience</p>
                  </div>

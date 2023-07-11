@@ -9,11 +9,11 @@ function ProfileHeader({title}) {
   return (
     <div className='profile--header'>
       <div className='left--header'>
-        <BsChatLeftDots size={20}/>
+        <BsChatLeftDots size={20} />
         <h4>{title}</h4>
       </div>
       <div className='right--header'>
-        <FaUserCircle size={40}/>
+        <FaUserCircle size={40} className='profileHeader--icon'/>
         {/* <img src={profilepic} alt=''/> */}
         <p>username</p>
       </div>

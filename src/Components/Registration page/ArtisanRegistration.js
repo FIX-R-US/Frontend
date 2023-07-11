@@ -36,6 +36,9 @@ function ArtisanRegistration() {
         <div className='artisanAccount--left'>
           <Header/>
           <div className='artisanLeft--container'>
+            <div className='artisan--responsive'>
+              <img src={account} alt=''/>
+            </div>
             <form className='artisanAccount--form' onSubmit={handleSubmit}>
               <h2>Setup account</h2>
               <div className='artisanCreate--container'>

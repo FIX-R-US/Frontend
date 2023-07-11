@@ -31,3 +31,23 @@
         }
     }
 }
+
+@media (max-width: 290px) {
+    .profile--header{
+        .left--header{
+            h4{
+                font-size: 15px;
+            }
+        }
+        .right--header{
+            .profileHeader--icon{
+                display: none;
+            }
+            img{
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+}

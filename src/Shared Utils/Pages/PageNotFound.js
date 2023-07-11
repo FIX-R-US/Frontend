@@ -11,6 +11,9 @@ function PageNotFound() {
     <div className='notFound--left'>
       <Header/>
       <div className='notFound--field'>
+        <div className='notFound--responsive'>
+          <img src={notFound} alt=''/>
+        </div>
         <div className='notFound--prompt'>
           <div className='notFound--textfield'>
             <h1>404</h1>

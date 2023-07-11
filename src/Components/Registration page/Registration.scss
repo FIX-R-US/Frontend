@@ -48,12 +48,15 @@
                         font-weight: 600;
                     
                         &:hover{
-                            background-color: blue;
+                            background-color: #AB66E1;
                             transition: all 0.5s;
                         }
                     }
                 }
             }
+        }
+        .user--responsive{
+            display: none;
         }
     }
     .userAccount--right{
@@ -70,6 +73,107 @@
         }
     }
 }
+
+@media (max-width: 920px){
+    .form--container{
+        .userAccount--left{
+            width: 100%;
+            gap: 35px;
+            .userLeft--container{
+               flex-direction: column;
+               gap: 20px;
+                .userAccount--form{
+                    width: 80%;
+                    height: 460px;
+                    align-self: center;
+                }
+                .user--responsive{
+                    display: inline-block;
+                    width: 100%;
+                    img{
+                        width: 100%;
+                        height: 700px;
+                    }
+                }
+            }
+        }
+        .userAccount--right{
+            display: none;
+        }  
+    }
+}
+
+@media (max-width: 780px) {
+    .form--container{
+        .userAccount--left{
+            .userLeft--container{
+                .user--responsive{
+                    img{
+                        width: 100%;
+                        height: 584px;
+                    }
+                }
+            }
+        }  
+    }
+}
+
+@media (max-width: 560px) {
+    .form--container{
+        .userAccount--left{
+            .userLeft--container{
+                .user--responsive{
+                    img{
+                        width: 100%;
+                        height: 400px;
+                    }
+                }
+                .userAccount--form{
+                    width: 100%;
+                }
+            }
+        }  
+    }
+}
+@media (max-width: 480px) {
+    .form--container{
+        .userAccount--left{
+            gap: 20px;
+            .userLeft--container{
+                .user--responsive{
+                    img{
+                        width: 100%;
+                        height: 330px;
+                    }
+                }
+                .userAccount--form{
+                    height: 455px;
+                }
+            }
+        }  
+    }
+}
+
+@media (max-width: 290px) {
+    .form--container{
+        .userAccount--left{
+            padding: 10px;
+            .userLeft--container{
+                .user--responsive{
+                    img{
+                        width: 100%;
+                        height: 220px;
+                    }
+                }
+                .userAccount--form{
+                    font-size: 12px;
+                    height: 420px;
+                }
+            }
+        }  
+    }
+}
+
 .artisanForm--container{
     width: 100vw;
     height: 100vh;
@@ -131,11 +235,14 @@
                         font-weight: 600;
                     
                         &:hover{
-                            background-color: blue;
+                            background-color: #AB66E1;
                             transition: all 0.5s;
                         }
                     }
                 }
+            }
+            .artisan--responsive{
+                display: none;
             }
         }
     }
@@ -152,4 +259,111 @@
             }
         }
     }  
+}
+
+@media (max-width: 920px){
+    .artisanForm--container{
+        .artisanAccount--left{
+            width: 100%;
+            gap: 35px;
+            .artisanLeft--container{
+               flex-direction: column;
+               gap: 20px;
+                .artisanAccount--form{
+                    width: 80%;
+                    align-self: center;
+                    height: 630px;
+                    .artisanCreate--container{
+                        .artisanCreate--field{
+                            select{
+                                width: 100%;
+                                option{
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+                .artisan--responsive{
+                    display: inline-block;
+                    width: 100%;
+                    img{
+                        width: 100%;
+                        height: 700px;
+                    }
+                }
+            }
+        }
+        .artisanAccount--right{
+            display: none;
+        }  
+    }
+}
+
+@media (max-width: 780px) {
+    .artisanForm--container{
+        .artisanAccount--left{
+            .artisanLeft--container{
+                .artisan--responsive{
+                    img{
+                        width: 100%;
+                        height: 584px;
+                    }
+                }
+            }
+        }  
+    }
+}
+
+@media (max-width: 560px) {
+    .artisanForm--container{
+        .artisanAccount--left{
+            .artisanLeft--container{
+                .artisan--responsive{
+                    img{
+                        width: 100%;
+                        height: 400px;
+                    }
+                }
+                .artisanAccount--form{
+                    width: 100%;
+                }
+            }
+        }  
+    }
+}
+@media (max-width: 480px) {
+    .artisanForm--container{
+        .artisanAccount--left{
+            gap: 20px;
+            .artisanLeft--container{
+                .artisan--responsive{
+                    img{
+                        width: 100%;
+                        height: 330px;
+                    }
+                }
+            }
+        }  
+    }
+}
+
+@media (max-width: 290px) {
+    .artisanForm--container{
+        .artisanAccount--left{
+            padding: 10px;
+            .artisanLeft--container{
+                .artisan--responsive{
+                    img{
+                        width: 100%;
+                        height: 220px;
+                    }
+                }
+                .artisanAccount--form{
+                    font-size: 12px;
+                    height: 540px;
+                }
+            }
+        }  
+    }
 }

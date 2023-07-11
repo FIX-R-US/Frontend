@@ -28,9 +28,12 @@ function Login() {
         <div className='login--left'>
             <Header/>
             <div className='login--fields'>
+                <div className='responsive'>
+                    <img src={welcome} alt=''/>
+                </div>
                 <form className='login--form' onSubmit={handleSubmit} id='login'>
                     <div className='text--container'>
-                        <h4>Welcome to FIX-R-US!</h4>
+                        <h2>Welcome to FIX-R-US!</h2>
                         <p>Kindly log in to get started</p>
                     </div>
                     <div className='fields--container'>

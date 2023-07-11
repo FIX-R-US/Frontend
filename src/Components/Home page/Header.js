@@ -5,7 +5,7 @@ import './HomePage.css'
 function Header() {
   return (
     <div className='header'>
-      <GiAutoRepair size={30} color='#7200CC'/>
+      <GiAutoRepair  color='#7200CC' className='header--icon'/>
       <h5>FIX-R-US</h5>
     </div>
   )

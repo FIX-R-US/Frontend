@@ -17,4 +17,10 @@
   border: none;
   outline: none;
   background: transparent;
+}
+
+@media (max-width: 920px) {
+  .entire--container {
+    width: 80%;
+  }
 }/*# sourceMappingURL=Searchbar.css.map */

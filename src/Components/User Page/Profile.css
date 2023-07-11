@@ -43,4 +43,70 @@
 .profile--container .profile--btn button:hover {
   background-color: #AB66E1;
   transition: all 0.5;
+}
+
+@media (max-width: 920px) {
+  .profile--container .profile--content {
+    margin-top: 50px;
+  }
+  .profile--container .profile--content .profile--fields label {
+    width: 30%;
+  }
+  .profile--container .profile--content .profile--fields input {
+    width: 70%;
+  }
+  .profile--container .profile--btn button {
+    width: 30%;
+  }
+}
+@media (max-width: 560px) {
+  .profile--container .profile--content {
+    margin-top: 20px;
+  }
+  .profile--container .profile--content .profile--fields {
+    padding-bottom: 25px;
+    gap: 0;
+  }
+  .profile--container .profile--btn button {
+    width: 40%;
+  }
+}
+@media (max-width: 480px) {
+  .profile--container .profile--content .profile--fields input {
+    padding: 0;
+  }
+  .profile--container .profile--btn button {
+    width: 50%;
+  }
+}
+@media (max-width: 380px) {
+  .profile--container .profile--content .profile--fields {
+    gap: 5px;
+    padding-bottom: 20px;
+  }
+  .profile--container .profile--content .profile--fields input {
+    padding: 0;
+  }
+  .profile--container .profile--btn button {
+    width: 55%;
+  }
+}
+@media (max-width: 290px) {
+  .profile--container {
+    font-size: 12px;
+  }
+  .profile--container .profile--content {
+    padding: 5px;
+    margin-top: 15px;
+  }
+  .profile--container .profile--content .profile--fields {
+    gap: 5px;
+    padding-bottom: 10px;
+  }
+  .profile--container .profile--content .profile--fields input {
+    padding: 0;
+  }
+  .profile--container .profile--btn {
+    margin-right: 5px;
+  }
 }/*# sourceMappingURL=Profile.css.map */

@@ -16,6 +16,9 @@
     display: flex;
     justify-content: center;
 }
+.account--responsive{
+    display: none;
+}
 .create--container{
     width: 100%;
     display: flex;
@@ -82,3 +85,70 @@
 .account--pic > img{
     width: 100%;
 }
+
+@media (max-width: 920px) {
+    .account--left{
+        width: 100%;
+        gap: 35px;
+    }
+    .left--container{
+        flex-direction: column;
+        gap: 20px;
+    }
+    .account--responsive{
+        display: inline-block;
+    }
+    .account--responsive > img{
+        width: 100%;
+        height: 700px;
+    }
+    .account--form{
+        width: 80%;
+        align-self: center;
+    }
+    .account--right{     
+        display: none;
+    }
+}
+
+@media (max-width: 780px){
+    .account--responsive > img{
+        width: 100%;
+        height: 584px;
+    }
+}
+@media (max-width: 560px){
+    .account--responsive > img{
+        width: 100%;
+        height: 400px;
+    }
+    .account--form{
+        width: 100%;
+    }
+}
+@media (max-width: 480px) {
+    .account--responsive > img{
+        width: 100%;
+        height: 330px;
+    }
+    .account--left{
+        gap: 20px;
+    }
+}
+@media (max-width: 290px){
+    .account--responsive > img{
+        width: 100%;
+        height: 220px;
+    }
+    .account--form{
+        font-size: 12px;
+        height: 440px;
+    }
+    .create--eye{
+        top: 33px;
+    }
+    .account--left{
+        padding: 10px;
+    }
+}
+

@@ -14,6 +14,9 @@
   display: flex;
   justify-content: center;
 }
+.notFound--container .notFound--left .notFound--field .notFound--responsive {
+  display: none;
+}
 .notFound--container .notFound--left .notFound--field .notFound--prompt {
   width: 300px;
   height: 500px;
@@ -59,4 +62,89 @@
 }
 .notFound--container .notFound--right .notFound--img img {
   width: 100%;
+}
+
+@media (max-width: 920px) {
+  .notFound--container .notFound--left {
+    width: 100%;
+    gap: 50px;
+  }
+  .notFound--container .notFound--left .notFound--field {
+    flex-direction: column;
+  }
+  .notFound--container .notFound--left .notFound--field .notFound--responsive {
+    display: inline-block;
+    width: 100%;
+  }
+  .notFound--container .notFound--left .notFound--field .notFound--responsive img {
+    width: 100%;
+  }
+  .notFound--container .notFound--left .notFound--field .notFound--prompt {
+    width: 50%;
+    height: 400px;
+    gap: 20px;
+    align-self: center;
+  }
+  .notFound--container .notFound--left .notFound--field .notFound--prompt .notFound--textfield {
+    text-align: center;
+  }
+  .notFound--container .notFound--right {
+    display: none;
+  }
+}
+@media (max-width: 780px) {
+  .notFound--container .notFound--left .notFound--field .notFound--prompt {
+    height: 300px;
+  }
+}
+@media (max-width: 560px) {
+  .notFound--container .notFound--left {
+    gap: 20px;
+  }
+  .notFound--container .notFound--left .notFound--field .notFound--prompt {
+    height: 270px;
+    width: 60%;
+  }
+}
+@media (max-width: 480px) {
+  .notFound--container .notFound--left {
+    gap: 40px;
+  }
+  .notFound--container .notFound--left .notFound--field .notFound--prompt {
+    height: 370px;
+    width: 70%;
+  }
+  .notFound--container .notFound--left .notFound--field .notFound--prompt .notFound--textfield p {
+    font-size: 20px;
+  }
+}
+@media (max-width: 376px) {
+  .notFound--container .notFound--left {
+    gap: 40px;
+  }
+  .notFound--container .notFound--left .notFound--field .notFound--prompt {
+    height: 320px;
+    width: 80%;
+    gap: 0;
+  }
+}
+@media (max-width: 290px) {
+  .notFound--container .notFound--left .notFound--field .notFound--prompt {
+    height: 290px;
+    width: 85%;
+  }
+  .notFound--container .notFound--left .notFound--field .notFound--prompt .notFound--textfield h1 {
+    font-size: 35px;
+  }
+  .notFound--container .notFound--left .notFound--field .notFound--prompt .notFound--textfield p {
+    font-size: 15px;
+  }
+  .notFound--container .notFound--left .notFound--field .notFound--prompt .notFound--btn {
+    font-size: 15px;
+  }
+}
+@media (min-width: 1020px) and (max-width: 1030px) {
+  .notFound--container .notFound--left .notFound--field .notFound--prompt {
+    height: 410px;
+  }
 }/*# sourceMappingURL=PageNotFound.css.map */

@@ -10,6 +10,9 @@ function EmailPrompt() {
       <div className='left--prompt'>
         <Header/>
         <div className='prompt--field'>
+          <div className='prompt--responsive'>
+            <img src={check} alt=''/>
+          </div>
           <div className='reset--prompt'>
             <div className='prompt--textfield'>
               <h2>Check your Email</h2>

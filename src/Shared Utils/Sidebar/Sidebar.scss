@@ -1,12 +1,9 @@
 .sidebar--container{
     display: flex;
-    // position: relative;
-    // top: 10px;
     .sidebar{
         background-color: #7200CC;
         color: white;
         height: 100vh;
-        width: 250px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -46,14 +43,14 @@
         .bottom--section{
             display: flex;
             flex-direction: column;
-            gap: 150px;
+            gap: 170px;
             width: 100%;
             margin-top: 30px;
 
             div{
                 display: grid;
                 align-items: center;
-                gap: 10px;
+                gap: 15px;
                 width: 100%;
                 .link{
                     width: 97%;
@@ -114,3 +111,161 @@
         }
     }
 }
+
+@media (min-width: 900px) and (max-width: 920px) {
+    .sidebar--container{
+        .sidebar{
+            gap: 30px;
+            .top--section{
+                gap: 155px;
+            }
+            .user--icon{
+                .icon{
+                    width: 100px;
+                    height: 100px;
+                }
+                h5{
+                    font-size: 20px;
+                }
+            }
+            .bottom--section{
+                gap: 450px;
+    
+                div{
+                    gap: 30px;
+                    .link{
+                        height: 75px;
+                        .text--link{
+                            flex: 40%;
+                        }
+                    }
+                }
+            }
+        }
+    }    
+}
+
+@media (min-width: 815px) and (max-width: 825px) {
+    .sidebar--container{
+        .sidebar{
+            gap: 30px;
+            .top--section{
+                gap: 155px;
+            }
+            .user--icon{
+                .icon{
+                    width: 100px;
+                    height: 100px;
+                }
+                h5{
+                    font-size: 20px;
+                }
+            }
+            .bottom--section{
+                gap: 350px;
+    
+                div{
+                    gap: 30px;
+                    .link{
+                        height: 75px;
+                        .text--link{
+                            flex: 40%;
+                        }
+                    }
+                }
+            }
+        }
+    }    
+}
+
+@media (min-width: 760px) and (max-width: 800px) {
+    .sidebar--container{
+        .sidebar{
+            gap: 30px;
+            .top--section{
+                gap: 155px;
+            }
+            .user--icon{
+                .icon{
+                    width: 100px;
+                    height: 100px;
+                }
+                h5{
+                    font-size: 20px;
+                }
+            }
+            .bottom--section{
+                gap: 210px;
+    
+                div{
+                    gap: 30px;
+                    .link{
+                        height: 75px;
+                        .text--link{
+                            flex: 40%;
+                        }
+                    }
+                }
+            }
+        }
+    }    
+}
+
+@media (max-width: 480px) {
+    .sidebar--container{
+        .sidebar{
+            gap: 10px;
+            .bottom--section{
+                gap: 320px;
+            }
+        }
+    }    
+}
+
+@media (min-width: 370px) and (max-width: 380px) {
+    .sidebar--container{
+        .sidebar{
+            gap: 10px;
+            .top--section{
+                gap: 60px;
+            }
+            .bottom--section{
+                gap: 120px;
+            }
+        }
+    }    
+}
+
+@media (max-width: 365px) {
+    .sidebar--container{
+        .sidebar{
+            .top--section{
+                gap: 60px;
+            }
+            .bottom--section{
+                gap: 170px;
+            }
+        }
+    }    
+}
+
+@media (max-width: 290px) {
+    .sidebar--container{
+        .sidebar{
+            .bottom--section{
+                gap: 100px;
+            }
+        }
+    }    
+}
+
+@media (min-width: 1020px) and (max-width: 1030px) {
+    .sidebar--container{
+        .sidebar{
+            .bottom--section{
+                gap: 75px;
+            }
+        }
+    }    
+}
+

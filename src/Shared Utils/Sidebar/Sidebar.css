@@ -5,7 +5,6 @@
   background-color: #7200CC;
   color: white;
   height: 100vh;
-  width: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,14 +45,14 @@
 .sidebar--container .sidebar .bottom--section {
   display: flex;
   flex-direction: column;
-  gap: 150px;
+  gap: 170px;
   width: 100%;
   margin-top: 30px;
 }
 .sidebar--container .sidebar .bottom--section div {
   display: grid;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   width: 100%;
 }
 .sidebar--container .sidebar .bottom--section div .link {
@@ -107,4 +106,123 @@
   cursor: pointer;
   color: #c698e9;
   transition: all 0.5s;
+}
+
+@media (min-width: 900px) and (max-width: 920px) {
+  .sidebar--container .sidebar {
+    gap: 30px;
+  }
+  .sidebar--container .sidebar .top--section {
+    gap: 155px;
+  }
+  .sidebar--container .sidebar .user--icon .icon {
+    width: 100px;
+    height: 100px;
+  }
+  .sidebar--container .sidebar .user--icon h5 {
+    font-size: 20px;
+  }
+  .sidebar--container .sidebar .bottom--section {
+    gap: 450px;
+  }
+  .sidebar--container .sidebar .bottom--section div {
+    gap: 30px;
+  }
+  .sidebar--container .sidebar .bottom--section div .link {
+    height: 75px;
+  }
+  .sidebar--container .sidebar .bottom--section div .link .text--link {
+    flex: 40%;
+  }
+}
+@media (min-width: 815px) and (max-width: 825px) {
+  .sidebar--container .sidebar {
+    gap: 30px;
+  }
+  .sidebar--container .sidebar .top--section {
+    gap: 155px;
+  }
+  .sidebar--container .sidebar .user--icon .icon {
+    width: 100px;
+    height: 100px;
+  }
+  .sidebar--container .sidebar .user--icon h5 {
+    font-size: 20px;
+  }
+  .sidebar--container .sidebar .bottom--section {
+    gap: 350px;
+  }
+  .sidebar--container .sidebar .bottom--section div {
+    gap: 30px;
+  }
+  .sidebar--container .sidebar .bottom--section div .link {
+    height: 75px;
+  }
+  .sidebar--container .sidebar .bottom--section div .link .text--link {
+    flex: 40%;
+  }
+}
+@media (min-width: 760px) and (max-width: 800px) {
+  .sidebar--container .sidebar {
+    gap: 30px;
+  }
+  .sidebar--container .sidebar .top--section {
+    gap: 155px;
+  }
+  .sidebar--container .sidebar .user--icon .icon {
+    width: 100px;
+    height: 100px;
+  }
+  .sidebar--container .sidebar .user--icon h5 {
+    font-size: 20px;
+  }
+  .sidebar--container .sidebar .bottom--section {
+    gap: 210px;
+  }
+  .sidebar--container .sidebar .bottom--section div {
+    gap: 30px;
+  }
+  .sidebar--container .sidebar .bottom--section div .link {
+    height: 75px;
+  }
+  .sidebar--container .sidebar .bottom--section div .link .text--link {
+    flex: 40%;
+  }
+}
+@media (max-width: 480px) {
+  .sidebar--container .sidebar {
+    gap: 10px;
+  }
+  .sidebar--container .sidebar .bottom--section {
+    gap: 320px;
+  }
+}
+@media (min-width: 370px) and (max-width: 380px) {
+  .sidebar--container .sidebar {
+    gap: 10px;
+  }
+  .sidebar--container .sidebar .top--section {
+    gap: 60px;
+  }
+  .sidebar--container .sidebar .bottom--section {
+    gap: 120px;
+  }
+}
+@media (max-width: 365px) {
+  .sidebar--container .sidebar .top--section {
+    gap: 60px;
+  }
+  .sidebar--container .sidebar .bottom--section {
+    gap: 170px;
+  }
+}
+@media (max-width: 290px) {
+  .sidebar--container .sidebar .bottom--section {
+    gap: 100px;
+  }
+}
+@media (min-width: 1020px) and (max-width: 1030px) {
+  .sidebar--container .sidebar .bottom--section {
+    gap: 75px;
+  }
 }/*# sourceMappingURL=Sidebar.css.map */

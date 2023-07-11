@@ -52,3 +52,106 @@
         }
     }
 }
+@media (max-width: 920px){
+    .landing--container{
+        flex-direction: column;
+        gap: 100px;
+        background-color: #F9F9F9;
+        .landing--leftside{
+            width: 100%;
+            gap: 80px;
+            .image{
+                width: 100%;
+                img{
+                    width: 100%;
+                }
+            }
+        }
+        .landing--rightside{
+            width: 100%;
+           padding: 20px;
+           background-color: #F9F9F9;
+            .right--content{
+                width: 100%;
+                .right--text{
+                        display: none;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 560px) {
+    .landing--container{
+        gap: 0;
+        .landing--leftside{
+            gap: 30px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .landing--container{
+        gap: 150px;
+        .landing--leftside{
+            gap: 65px;
+            .text--content{
+                h3{
+                    font-size: larger;
+                }
+                 p{
+                    font-size: 12.6px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 376px) {
+    .landing--container{
+        gap: 60px;
+        .landing--leftside{
+            gap: 45px;
+            .text--content{
+                h3{
+                    font-size: larger;
+                }
+                 p{
+                    font-size: 12.6px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 290px) {
+    .landing--container{
+        .landing--leftside{
+            padding: 10px;
+            .text--content{
+                h3{
+                    font-size: medium;
+                }
+                 p{
+                    font-size: 10px;
+                }
+            }
+        }
+        .landing--rightside{
+            padding: 10px;
+            .right--content{
+                .landingright--btn{
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1020px) and (max-width: 1030px){
+    .landing--container{
+        .landing--leftside{
+            gap: 20px;
+        }
+    }
+}

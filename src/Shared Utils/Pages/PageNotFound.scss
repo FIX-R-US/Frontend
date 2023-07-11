@@ -11,6 +11,9 @@
         .notFound--field{
             display: flex;
             justify-content: center;
+            .notFound--responsive{
+                display: none;
+            }
             .notFound--prompt{
                 width: 300px;
                 height: 500px;
@@ -59,6 +62,133 @@
             width: 480px;
             img{
                 width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 920px) {
+    .notFound--container{
+        .notFound--left{
+            width: 100%;
+            gap: 50px;
+            .notFound--field{
+                flex-direction: column;
+                .notFound--responsive{
+                    display: inline-block;
+                    width: 100%;
+                    img{
+                        width: 100%;
+                    }
+                }
+                .notFound--prompt{
+                    width: 50%;
+                    height: 400px;
+                    gap: 20px;
+                    align-self: center;
+                    .notFound--textfield{
+                        text-align: center;
+                    }
+                }
+            }
+        }
+        .notFound--right{
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 780px) {
+    .notFound--container{
+        .notFound--left{
+            .notFound--field{
+                .notFound--prompt{
+                    height: 300px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 560px) {
+    .notFound--container{
+        .notFound--left{
+            gap: 20px;
+            .notFound--field{
+                .notFound--prompt{
+                  height: 270px;
+                  width: 60%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .notFound--container{
+        .notFound--left{
+            gap: 40px;
+            .notFound--field{
+                .notFound--prompt{
+                  height: 370px;
+                  width: 70%;
+                  .notFound--textfield{
+                    p{
+                        font-size: 20px;
+                    }
+                }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 376px) {
+    .notFound--container{
+        .notFound--left{
+            gap: 40px;
+            .notFound--field{
+                .notFound--prompt{
+                  height: 320px;
+                  width: 80%;
+                  gap: 0;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 290px) {
+    .notFound--container{
+        .notFound--left{
+            .notFound--field{
+                .notFound--prompt{
+                    height: 290px;
+                  width: 85%;
+                  .notFound--textfield{
+                    h1{
+                        font-size: 35px;
+                    }
+                    p{
+                        font-size: 15px;
+                    }
+                }
+                .notFound--btn{
+                    font-size: 15px;
+                }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1020px) and (max-width: 1030px) {
+    .notFound--container{
+        .notFound--left{
+            .notFound--field{
+                .notFound--prompt{
+                    height: 410px;
+                }
             }
         }
     }
