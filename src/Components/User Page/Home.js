@@ -1,20 +1,35 @@
-import {React, useState} from 'react'
+import {React, useEffect, useState} from 'react'
 // import photo from './card.jpg'
 import './Home.css'
 import artisanData from '../../MOCK_DATA.json'
 import Searchbar from '../../Shared Utils/Sidebar/Searchbar'
 import Container from 'react-bootstrap/Container'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { LinkContainer } from 'react-router-bootstrap'
 
 
 function Home() {
   const navigate = useNavigate();
   const[search, setSearch] = useState('')
   const[itemsToShow, setItemsToShow] = useState(15)
+const [artisan,setArtisan] = useState([]);
 
-  const filter = artisanData.slice(0, itemsToShow).filter(item => (
+  const filter = artisan.slice(0, itemsToShow).filter(item => (
     item.occupation.toLowerCase().includes(search) || item.location.toLowerCase().includes(search)
   ))
+  const role ="artisan"
+  useEffect(() => 
+  {
+    axios
+    .post("http://localhost:3001/data/getdata" , {role})
+    .then((data) => 
+    {
+      // console.log(data.data)
+      setArtisan(data.data)
+
+    })
+  },[])
 
   const handleSearch = (e) => {
     setSearch(e.target.value)
@@ -38,16 +53,18 @@ function Home() {
           <div className='top--content'>
             <img src={item.profile_photo} alt='' className='card--img' width={120} height={120}/>
             <div className='card--details'>
-              <h5>{`${item.first_name} ${item.last_name}`}</h5>
+              <h5>{`${item.firstname} ${item.lastname}`}</h5>
               <p id='occupation'>{item.occupation}</p>
               <p >{item.location}</p>
             </div>
           </div>
           <div className='bottom--content'>
-            <p>{item.description}</p>
+            <p>{item.Description}</p>
+            <LinkContainer to = {`viewProfile/${item.id}`}>
             <button className='card--btn' onClick={()=>navigate('viewProfile')}>
               View Profile
             </button>
+            </LinkContainer>
           </div>
       </div>
   ))
