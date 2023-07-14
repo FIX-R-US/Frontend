@@ -1,18 +1,23 @@
 .payment--container{
     width: 100%;
-    height: 100%;
-    .item{
-        width: 400px;
-        img{
-            width: 100%;
-        }
+    height: 100vh;
+    .payment--text{
+        text-align: center;
+        margin-top: 20px;
     }
     .checkout{
-        width: 35%;
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
         .checkout-form{
             display: flex;
             flex-direction: column;
             gap: 20px;
+            width: 500px;
+            height: 450px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 5px #212529;
             .checkout-field{
                 display: flex;
                 flex-direction: column;
@@ -44,4 +49,127 @@
             }
         }
     }
+}
+
+@media (max-width: 920px) {
+    .payment--container{
+        .payment--text{
+            margin-top: 40px;
+        }
+        .checkout{
+            .checkout-form{
+                gap: 25px;
+                width: 90%;
+                height: 470px;
+            }
+        }
+    }
+}
+
+@media (max-width: 560px) {
+    .payment--container{
+        .payment--text{
+            margin-top: 20px;
+            h4{
+                font-size: 17.5px;
+            }
+        }
+        .checkout{
+            margin-top: 25px;
+            .checkout-form{
+                padding: 15px;
+                height: 450px;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .payment--container{
+        .payment--text{
+            h4{
+                font-size: 15px;
+            }
+        }
+        .checkout{
+            margin-top: 15px;
+            .checkout-form{
+                gap: 20px;
+                width: 100%;
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 380px) {
+    .payment--container{
+        .payment--text{
+            margin-top: 10px;
+        }
+        .checkout{
+            margin-top: 5px;
+            .checkout-form{
+                padding: 10px;
+                gap: 15px;
+                .checkout-field{
+                    input{
+                        padding: 3px;
+                    }
+                }
+                .payment--btn{
+                    padding: 7px;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 365px) {
+    .payment--container{
+        .payment--text{
+            h4{
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media (max-width: 290px) {
+    .payment--container{
+        .payment--text{
+            h4{
+                font-size: 13px;
+            }
+        }
+        .checkout{
+            margin-top: 5px;
+            .checkout-form{
+                padding: 10px;
+                gap: 10px;
+                .checkout-field{
+                    font-size: 13px;
+                    input{
+                        padding: 2px;
+                    }
+                }
+                .payment--btn{
+                    padding: 5px;
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1020px) and (max-width: 1030px){
+    .payment--container{
+        .checkout{
+            margin-top: 25px;
+            .checkout-form{
+                height: 430px;
+            }
+        }
+    }    
 }

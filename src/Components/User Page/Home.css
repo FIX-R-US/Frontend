@@ -83,4 +83,151 @@
 .card--container .load--btn button:hover {
   background-color: #AB66E1;
   transition: all 0.5s;
+}
+
+@media (max-width: 920px) {
+  .card--container .card--card {
+    padding-left: 0;
+    justify-content: center;
+    gap: 20px;
+  }
+  .card--container .card--card .card--content {
+    width: 290px;
+    height: 290px;
+  }
+}
+@media (max-width: 560px) {
+  .card--container .card--card .card--content {
+    width: 220px;
+    height: 260px;
+  }
+  .card--container .card--card .card--content .top--content .card--img {
+    width: 90px;
+    height: 90px;
+  }
+  .card--container .card--card .card--content .top--content .card--details {
+    font-size: 13.5px;
+  }
+  .card--container .card--card .card--content .top--content .card--details #occupation {
+    margin-bottom: 5px;
+  }
+  .card--container .card--card .card--content .top--content .card--details h5 {
+    font-size: large;
+  }
+  .card--container .card--card .card--content .bottom--content {
+    margin: 5px;
+  }
+  .card--container .card--card .card--content .bottom--content p {
+    padding: 0;
+    font-size: 15px;
+    overflow: scroll;
+    max-width: 97%;
+  }
+  .card--container .card--card .card--content .bottom--content .card--btn {
+    font-size: 15px;
+  }
+}
+@media (max-width: 480px) {
+  .card--container .card--card {
+    gap: 10px;
+  }
+  .card--container .card--card .card--content {
+    width: 160px;
+    height: 220px;
+  }
+  .card--container .card--card .card--content .top--content {
+    gap: 5px;
+  }
+  .card--container .card--card .card--content .top--content .card--img {
+    width: 65px;
+    height: 65px;
+  }
+  .card--container .card--card .card--content .top--content .card--details {
+    overflow: scroll;
+    font-size: 11.5px;
+  }
+  .card--container .card--card .card--content .top--content .card--details h5 {
+    font-size: medium;
+    margin-bottom: 4px;
+  }
+  .card--container .card--card .card--content .top--content .card--details #occupation {
+    margin-bottom: 1px;
+  }
+  .card--container .card--card .card--content .top--content .card--details p {
+    margin-bottom: 0;
+  }
+  .card--container .card--card .card--content .bottom--content p {
+    font-size: 11.5px;
+    max-width: 95%;
+  }
+  .card--container .card--card .card--content .bottom--content .card--btn {
+    font-size: 12px;
+  }
+  .card--container .load--btn button {
+    font-size: 12px;
+  }
+}
+@media (max-width: 395px) {
+  .card--container .card--card .card--content {
+    width: 153px;
+    height: 220px;
+  }
+  .card--container .card--card .card--content .top--content {
+    gap: 5px;
+  }
+  .card--container .card--card .card--content .top--content .card--img {
+    width: 60px;
+    height: 60px;
+  }
+  .card--container .card--card .card--content .top--content .card--details h5 {
+    font-size: medium;
+    margin-bottom: 4px;
+  }
+  .card--container .card--card .card--content .top--content .card--details #occupation {
+    margin-bottom: 1px;
+  }
+  .card--container .card--card .card--content .bottom--content p {
+    font-size: 11px;
+  }
+  .card--container .card--card .card--content .bottom--content .card--btn {
+    font-size: 12px;
+  }
+}
+@media (max-width: 378px) {
+  .card--container .card--card {
+    justify-content: left;
+  }
+  .card--container .card--card .card--content {
+    width: 145px;
+    height: 200px;
+  }
+  .card--container .card--card .card--content .top--content .card--details {
+    font-size: 10px;
+  }
+  .card--container .card--card .card--content .top--content .card--details h5 {
+    font-size: small;
+  }
+  .card--container .card--card .card--content .bottom--content .card--btn {
+    font-size: 11px;
+    padding: 2.5px;
+  }
+}
+@media (max-width: 365px) {
+  .card--container .card--card .card--content {
+    width: 136px;
+    height: 190px;
+  }
+  .card--container .card--card .card--content .bottom--content {
+    margin: 3px;
+  }
+}
+@media (max-width: 290px) {
+  .card--container .card--card {
+    justify-content: center;
+  }
+}
+@media (min-width: 1020px) and (max-width: 1030px) {
+  .card--container .card--card {
+    justify-content: center;
+  }
 }/*# sourceMappingURL=Home.css.map */

@@ -192,3 +192,9 @@
         top: 33px;
     }
 }
+
+@media (min-width: 1020px) and (max-width: 1030px){
+    .login--left{
+        gap: 30px;
+    }
+}

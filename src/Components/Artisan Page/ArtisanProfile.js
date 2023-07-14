@@ -45,7 +45,7 @@ function ArtisanProfile() {
                             {
                                 reviews.map((item, index) => (
                                     <div key={index} className='review--map'>
-                                        <FaUserCircle size={60}/>
+                                        <FaUserCircle size={60} className='reviewMap--img'/>
                                         <div className='map--bottom'>
                                             <p>@ username</p>
                                             <p className='p2'>{item.review}</p>

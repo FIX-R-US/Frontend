@@ -152,3 +152,11 @@
     }
 }
 
+@media (min-width: 1020px) and (max-width: 1030px){
+    .account--left{
+        gap: 10px;
+    }
+    .account--right{
+        padding-top: 70px;
+    }
+}

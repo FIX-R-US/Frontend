@@ -14,15 +14,15 @@ function Review() {
     ))
     
 
-    const artisanRef = useRef();
+    const artisanRef = useRef(null);
     const reviewRef = useRef();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const artisan = artisanRef.current.value
+        const selectedOption = artisanRef.current.state.value
         const review = reviewRef.current.value
 
-        console.log(artisan, review)
+        console.log(selectedOption, review)
     }
 
     const customStyles = {

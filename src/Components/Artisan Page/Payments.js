@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { PaystackButton } from 'react-paystack'
 import './Payment.css'
-import Container  from 'react-bootstrap/Container'
+import ProfileHeader from '../../Shared Utils/Pages/ProfileHeader'
+import Container from 'react-bootstrap/Container'
 
 function Payments() {
   // const publicKey = "pk_test_5f727831c1256722db92408ab5ad8a99c9e0ae95"
@@ -41,27 +42,31 @@ function Payments() {
   return (
     <div className="payment--container">
       <Container>
-        <div className="checkout">
-          <div className="checkout-form">
-            <div className="checkout-field">
-              <label>Firstname</label>
-              <input onChange={(e)=>setFirstName(e.target.value)} id='firstname'/>
-            </div>
-            <div className="checkout-field">
-              <label>Lastname</label>
-              <input onChange={(e)=>setLastName(e.target.value)} id='lastname'/>
-            </div>
-            <div className="checkout-field">
-              <label>Email</label>
-              <input onChange={(e)=>setEmail(e.target.value)} id='email'/>
-            </div>
-            <div className="checkout-field">
-              <label>Phone</label>
-              <input onChange={(e)=>setNumber(e.target.value)} id='phone'/>
-            </div>
-            <PaystackButton {...componentProps} className='payment--btn'/>
-          </div>
+        <ProfileHeader title={'Payment'}/>
+        <div className='payment--text'>
+          <h4>Please fill in correctly the necessary details to commence payment</h4>
         </div>
+          <div className="checkout">
+            <div className="checkout-form">
+              <div className="checkout-field">
+                <label>Firstname</label>
+                <input onChange={(e)=>setFirstName(e.target.value)} id='firstname'/>
+              </div>
+              <div className="checkout-field">
+                <label>Lastname</label>
+                <input onChange={(e)=>setLastName(e.target.value)} id='lastname'/>
+              </div>
+              <div className="checkout-field">
+                <label>Email</label>
+                <input onChange={(e)=>setEmail(e.target.value)} id='email'/>
+              </div>
+              <div className="checkout-field">
+                <label>Phone</label>
+                <input onChange={(e)=>setNumber(e.target.value)} id='phone'/>
+              </div>
+              <PaystackButton {...componentProps} className='payment--btn'/>
+            </div>
+          </div>
       </Container>
     </div>
   )

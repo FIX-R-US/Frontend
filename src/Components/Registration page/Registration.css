@@ -137,6 +137,11 @@
     height: 420px;
   }
 }
+@media (min-width: 1020px) and (max-width: 1030px) {
+  .form--container .userAccount--left {
+    gap: 30px;
+  }
+}
 .artisanForm--container {
   width: 100vw;
   height: 100vh;
@@ -288,5 +293,16 @@
   .artisanForm--container .artisanAccount--left .artisanLeft--container .artisanAccount--form {
     font-size: 12px;
     height: 540px;
+  }
+}
+@media (min-width: 1020px) and (max-width: 1030px) {
+  .artisanForm--container .artisanAccount--left {
+    gap: 5px;
+  }
+  .artisanForm--container .artisanAccount--left .artisanLeft--container {
+    overflow: scroll;
+  }
+  .artisanForm--container .artisanAccount--right {
+    padding-top: 60px;
   }
 }/*# sourceMappingURL=Registration.css.map */

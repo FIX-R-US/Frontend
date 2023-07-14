@@ -47,4 +47,70 @@
 .review--container .review--content .review .review--btn button:hover {
   background-color: #AB66E1;
   transition: all 0.5;
+}
+
+@media (max-width: 920px) {
+  .review--container .review--content {
+    height: 60%;
+  }
+}
+@media (max-width: 560px) {
+  .review--container .review--content {
+    height: 70%;
+  }
+  .review--container .review--content .review {
+    gap: 30px;
+    width: 465px;
+  }
+  .review--container .review--content .review .review--btn button {
+    width: 30%;
+  }
+}
+@media (max-width: 480px) {
+  .review--container .review--content {
+    height: 50%;
+  }
+  .review--container .review--content .review {
+    gap: 20px;
+    width: 340px;
+  }
+  .review--container .review--content .review .review--textarea textarea {
+    height: 170px;
+  }
+  .review--container .review--content .review .review--btn button {
+    width: 35%;
+  }
+}
+@media (max-width: 395px) {
+  .review--container .review--content {
+    height: 45%;
+  }
+  .review--container .review--content .review {
+    gap: 20px;
+    width: 315px;
+  }
+  .review--container .review--content .review .review--textarea textarea {
+    height: 150px;
+  }
+  .review--container .review--content .review .review--btn button {
+    width: 35%;
+  }
+}
+@media (max-width: 378px) {
+  .review--container .review--content {
+    height: 50%;
+  }
+  .review--container .review--content .review {
+    gap: 10px;
+    width: 301px;
+  }
+  .review--container .review--content .review .review--textarea textarea {
+    height: 150px;
+  }
+  .review--container .review--content .review .review--btn {
+    font-size: 13px;
+  }
+  .review--container .review--content .review .review--btn button {
+    width: 40%;
+  }
 }/*# sourceMappingURL=Review.css.map */

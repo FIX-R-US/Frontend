@@ -57,4 +57,79 @@
 }
 .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map .map--bottom .p2 {
   border-bottom: 1px solid #7200CC;
+}
+
+@media (max-width: 560px) {
+  .profile--artisan-container .whole--content .artisan--top .top--img {
+    height: auto;
+  }
+  .profile--artisan-container .whole--content .artisan--top .profile--icon {
+    width: 90px;
+    height: 90px;
+  }
+  .profile--artisan-container .whole--content .artisan--down {
+    padding: 16px;
+  }
+  .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container {
+    padding: 0;
+  }
+  .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map {
+    padding: 10px;
+    font-size: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map .map--bottom {
+    font-size: 13px;
+  }
+}
+@media (max-width: 380px) {
+  .profile--artisan-container .whole--content .artisan--top .profile--icon {
+    width: 70px;
+    height: 70px;
+    bottom: -35px;
+  }
+  .profile--artisan-container .whole--content .artisan--down {
+    padding: 12px;
+  }
+  .profile--artisan-container .whole--content .artisan--down .artisan--middle {
+    font-size: 15px;
+  }
+  .profile--artisan-container .whole--content .artisan--down .artisan--bottom {
+    font-size: 12.5px;
+  }
+  .profile--artisan-container .whole--content .artisan--down .artisan--bottom h5 {
+    margin: 0;
+  }
+  .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map {
+    padding: 5px;
+    font-size: 13px;
+  }
+  .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map .reviewMap--img {
+    width: 70px;
+    height: 70px;
+  }
+  .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map .map--bottom {
+    font-size: 12.5px;
+  }
+}
+@media (max-width: 290px) {
+  .profile--artisan-container .whole--content .artisan--top .profile--icon {
+    width: 55px;
+    height: 55px;
+    bottom: -25px;
+  }
+  .profile--artisan-container .whole--content .artisan--down {
+    padding: 8px;
+  }
+  .profile--artisan-container .whole--content .artisan--down .artisan--middle {
+    font-size: 12.5px;
+  }
+  .profile--artisan-container .whole--content .artisan--down .artisan--middle h2 {
+    font-size: medium;
+  }
+  .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map .reviewMap--img {
+    width: 80px;
+    height: 80px;
+  }
 }/*# sourceMappingURL=ArtisanProfile.css.map */

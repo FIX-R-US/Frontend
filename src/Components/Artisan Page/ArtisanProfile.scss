@@ -61,3 +61,121 @@
     }
   }
 }
+
+@media (max-width: 560px) {
+    .profile--artisan-container{
+      .whole--content{
+        .artisan--top{
+            .top--img{
+                height: auto;
+            }
+            .profile--icon{
+                width: 90px;
+                height: 90px;
+            }
+        }
+        .artisan--down{
+            padding: 16px;
+            .artisan--bottom{
+                .reveiwMap--container{
+                    padding: 0;
+                    .review--map{
+                        padding: 10px;
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+      }
+    }
+}
+
+@media (max-width: 480px) {
+    .profile--artisan-container{
+        .whole--content{
+          .artisan--down{
+              .artisan--bottom{
+                  .reveiwMap--container{
+                      .review--map{
+                          .map--bottom{
+                            font-size: 13px;
+                          }
+                      }
+                  }
+              }
+          }
+        }
+      }
+}
+
+@media (max-width: 380px) {
+    .profile--artisan-container{
+        .whole--content{
+          .artisan--top{
+              .profile--icon{
+                  width: 70px;
+                  height: 70px;
+                  bottom: -35px;
+              }
+          }
+          .artisan--down{
+              padding: 12px;
+              .artisan--middle{
+                font-size: 15px;
+              }
+              .artisan--bottom{
+                font-size: 12.5px;
+                h5{
+                    margin: 0;
+                }
+                  .reveiwMap--container{
+                      .review--map{
+                        padding: 5px;
+                          font-size: 13px;
+                          .reviewMap--img{
+                            width: 70px;
+                            height: 70px;
+                          }
+                          .map--bottom{
+                            font-size: 12.5px;
+                          }
+                      }
+                  }
+              }
+          }
+        }
+      }
+}
+
+@media (max-width: 290px) {
+    .profile--artisan-container{
+        .whole--content{
+          .artisan--top{
+              .profile--icon{
+                  width: 55px;
+                  height: 55px;
+                  bottom: -25px;
+              }
+          }
+          .artisan--down{
+              padding: 8px;
+              .artisan--middle{
+                font-size: 12.5px;
+                h2{
+                    font-size: medium;
+                }
+              }
+              .artisan--bottom{
+                  .reveiwMap--container{
+                      .review--map{
+                          .reviewMap--img{
+                           width: 80px;
+                           height: 80px;
+                          }
+                      }
+                  }
+              }
+          }
+        }
+      }
+}

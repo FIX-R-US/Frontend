@@ -4,7 +4,7 @@ import {MdLogout} from 'react-icons/md'
 import './Sidebar.css'
 import { NavLink, useLocation, useNavigate} from 'react-router-dom'
 import {GiAutoRepair} from 'react-icons/gi'
-import Radium, { StyleRoot } from 'radium'
+import { StyleRoot } from 'radium'
 
 function Sidebar({data}) {
     const[isOpen, setIsOpen] = useState(false)
@@ -20,7 +20,7 @@ function Sidebar({data}) {
         '@media (min-width: 760px) and (max-width: 920px)': {
             width: isOpen ? '350px': '60px'
           },
-          '@media (max-width: 395px)': {
+          '@media (max-width: 480px)': {
             width: isOpen ? '240px': '50px'
           },
           '@media (max-width: 376px)': {

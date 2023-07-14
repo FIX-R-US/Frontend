@@ -47,4 +47,90 @@
 .artisanProfile--container .artisanProfile--btn button:hover {
   background-color: #AB66E1;
   transition: all 0.5;
+}
+
+@media (max-width: 920px) {
+  .artisanProfile--container .artisanProfile--content {
+    margin-top: 50px;
+  }
+  .artisanProfile--container .artisanProfile--content .artisanProfile--fields label {
+    width: 30%;
+  }
+  .artisanProfile--container .artisanProfile--content .artisanProfile--fields input {
+    width: 70%;
+  }
+  .artisanProfile--container .artisanProfile--content .artisanProfile--fields textarea {
+    width: 70%;
+  }
+  .artisanProfile--container .artisanProfile--btn button {
+    width: 30%;
+  }
+}
+@media (max-width: 560px) {
+  .artisanProfile--container .artisanProfile--content {
+    margin-top: 20px;
+  }
+  .artisanProfile--container .artisanProfile--content .artisanProfile--fields {
+    padding-bottom: 25px;
+    gap: 0;
+  }
+  .artisanProfile--container .artisanProfile--btn button {
+    width: 40%;
+  }
+}
+@media (max-width: 480px) {
+  .artisanProfile--container .artisanProfile--content .artisanProfile--fields input {
+    padding: 0;
+  }
+  .artisanProfile--container .artisanProfile--content .artisanProfile--fields textarea {
+    height: 50px;
+  }
+  .artisanProfile--container .artisanProfile--btn button {
+    width: 50%;
+  }
+}
+@media (max-width: 380px) {
+  .artisanProfile--container .artisanProfile--content {
+    margin-top: 15px;
+  }
+  .artisanProfile--container .artisanProfile--content .artisanProfile--fields {
+    gap: 5px;
+    padding-bottom: 20px;
+  }
+  .artisanProfile--container .artisanProfile--content .artisanProfile--fields input {
+    padding: 0;
+  }
+  .artisanProfile--container .artisanProfile--content .artisanProfile--fields label {
+    width: 35%;
+  }
+  .artisanProfile--container .artisanProfile--content .artisanProfile--fields textarea {
+    height: 45px;
+  }
+  .artisanProfile--container .artisanProfile--btn button {
+    width: 55%;
+    font-size: 15px;
+  }
+}
+@media (max-width: 290px) {
+  .artisanProfile--container {
+    font-size: 12px;
+  }
+  .artisanProfile--container .artisanProfile--content {
+    padding: 5px;
+    margin-top: 15px;
+  }
+  .artisanProfile--container .artisanProfile--content .artisanProfile--fields {
+    gap: 5px;
+    padding-bottom: 10px;
+  }
+  .artisanProfile--container .artisanProfile--content .artisanProfile--fields input {
+    padding: 0;
+  }
+  .artisanProfile--container .artisanProfile--btn {
+    margin-right: 5px;
+  }
+  .artisanProfile--container .artisanProfile--btn button {
+    width: 45%;
+    font-size: 12px;
+  }
 }/*# sourceMappingURL=EditArtisanProfile.css.map */
