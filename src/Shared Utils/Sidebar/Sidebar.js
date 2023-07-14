@@ -59,7 +59,7 @@ function Sidebar({data}) {
                     <div>
                     {
                         data.map((item, index) => (
-                            <NavLink to={item.path} key={index} className={`link ${location.pathname === item.path ? 'active' : ''}`}>
+                            <NavLink to={item.path} key={index} className={`link ${location.pathname === item.path ? 'active' : ''}`} onClick={()=>setIsOpen(false)}>
                                 <div className='icon'>{item.icon}</div>
                                 <div className='text--link' style={display}>{item.name}</div>
                             </NavLink>

@@ -2,6 +2,8 @@ import React from 'react'
 import verifyArtisanData from '../../MOCK_DATA.json'
 import Container from 'react-bootstrap/Container'
 import Table from 'react-bootstrap/Table'
+// import {MdVerified} from 'react-icons/md'
+
 
 
 function VerifyRegistration() {

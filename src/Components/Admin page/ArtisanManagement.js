@@ -3,17 +3,51 @@ import artisanData from '../../MOCK_DATA.json'
 import Container from 'react-bootstrap/Container'
 import Table from 'react-bootstrap/Table'
 import Form from 'react-bootstrap/Form'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './Search.css'
 import './Management.css'
+import {MdVerified} from 'react-icons/md'
 
 function ArtisanManagement() {
-
+    const [accountState, setAccountState] = useState(artisanData)
     const[search, setSearch] = useState('')
 
-    const filter = artisanData.filter(item => (item.first_name.toLowerCase().includes(search) ||
+    const filter = accountState.filter(item => (item.first_name.toLowerCase().includes(search) ||
         item.last_name.toLowerCase().includes(search) || item.location.toLowerCase().includes(search) || item.occupation.toLowerCase().includes(search)
     ))
+
+    const handleAccountToggle = (id) => {
+        setAccountState(prevState => prevState.map(item => {
+            if(item.id === id){
+                return{...item, isActive: !item.isActive}
+            }
+            return item
+        }))
+    }
+
+    const handlePaymentToggle = (id) => {
+        setAccountState(prevState => prevState.map(item => {
+            if(item.id === id){
+                return {...item, paymentMade: !item.paymentMade}
+            }
+            return item
+        }))
+    }
+
+    useEffect(() => {
+        const currentDate = new Date();
+        const paymentUpdate = accountState.map(item => {
+            const paymentDate = new Date(item.isActive)
+            const timeDiff = currentDate - paymentDate;
+            const daysDiff = timeDiff / (1000 * 3600 * 24);
+            if(daysDiff >= 30){
+                return {...item, paymentMade: false}
+            }
+            return item
+        })
+        setAccountState(paymentUpdate)
+        // eslint-disable-next-line
+    },[])
 
   return (
     <div className='Table--container'>
@@ -34,7 +68,9 @@ function ArtisanManagement() {
                         <th>Location</th>
                         <th>Occupation</th>
                         <th>isVerified</th>
+                        <th>paymentMade</th>
                         <th>PaymentMade</th>
+                        <th>isActive</th>
                         <th>isActive</th>
                     </tr>
                 </thead>
@@ -49,14 +85,31 @@ function ArtisanManagement() {
                                 <td>{item.contact}</td>
                                 <td>{item.location}</td>
                                 <td>{item.occupation}</td>
-                                <td>{item.isVerified ? 'Verified' : 'Not verified'}</td>
+                                <td>{item.isVerified ? <MdVerified size={30}/> : 'Not verified'}</td>
                                 <td>{item.paymentMade ? 'Yes' : 'No'}</td>
+                                <td>{item.paymentMade ? (
+                                    <button className='admin--btn' onClick={()=>handlePaymentToggle(item.id)}>
+                                        Yes
+                                    </button>
+                                ) : (
+                                    <button className='admin--btn' onClick={()=>handlePaymentToggle(item.id)}>
+                                        No
+                                    </button>
+                                )}</td>
                                 <td>
-                                    {
-                                        item.paymentMade ? 
-                                        <button className='admin--btn'>Deactivate</button> : <button className='admin--btn'>Activate</button>
-                                    }
+                                    {item.isActive ? (
+                                        <button className='admin--btn'
+                                         onClick={()=>handleAccountToggle(item.id)}>
+                                            Deactivate
+                                        </button>
+                                    ) : (
+                                        <button className='admin--btn' 
+                                        onClick={()=>handleAccountToggle(item.id)}>
+                                            Activate
+                                        </button>
+                                    )}
                                 </td>
+                                <td>{item.isActive ? 'Yes' : 'No'}</td>
                             </tr>
                         ))
                     }
