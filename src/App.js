@@ -34,8 +34,14 @@ function App() {
         <Route path="checkEmail" element={<EmailPrompt />} />
         <Route path="resetPassword" element={<ResetPassword2 />} />
         <Route path="createAccount" element={<CreateAccount />} />
-        <Route path="createAccount/user" element={<UserRegistration />} />
-        <Route path="createAccount/artisan" element={<ArtisanRegistration />} />
+        <Route
+          path="createAccount/user/:username"
+          element={<UserRegistration />}
+        />
+        <Route
+          path="createAccount/artisan/:username"
+          element={<ArtisanRegistration />}
+        />
 
         {/* Routes for User Page */}
         <Route path="login/user" element={<UserPage />}>
