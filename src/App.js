@@ -62,7 +62,7 @@ function App() {
 
         {/* Routes for admin  */}
         <Route path="login/admin" element={<AdminPage />}>
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="home" element={<Dashboard />} />
           <Route path="manageUsers" element={<UserManagement />} />
           <Route path="manageArtisans" element={<ArtisanManagement />} />
           <Route path="verifyRegistration" element={<VerifyRegistration />} />

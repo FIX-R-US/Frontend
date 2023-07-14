@@ -22,7 +22,7 @@ function Login() {
       .post("http://localhost:3001/auth/login", { username, password })
       .then((data) => {
         console.log(data);
-        navigate(`user/home`);
+        navigate(`${data.data.user.role}/home`);
       })
       .catch((error) => console.log(error));
   };
