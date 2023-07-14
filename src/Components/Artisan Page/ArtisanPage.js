@@ -10,6 +10,12 @@ function ArtisanPage() {
     marginLeft: '50px',
     backgroundColor:'white',
     width:'100%',
+    '@media(min-width: 275px) and (max-width: 380px)': {
+      marginLeft: '35px'
+    },
+    '@media(min-width: 381px) and (max-width: 480px)': {
+      marginLeft: '40px'
+    },
     '@media(min-width: 765px)': {
     marginLeft: '60px'
     },

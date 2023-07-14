@@ -21,10 +21,10 @@ function Sidebar({data}) {
             width: isOpen ? '350px': '60px'
           },
           '@media (max-width: 480px)': {
-            width: isOpen ? '240px': '50px'
+            width: isOpen ? '240px': '40px'
           },
           '@media (max-width: 376px)': {
-            width: isOpen ? '230px': '50px'
+            width: isOpen ? '230px': '35px'
           }
     }
     const display = {
@@ -32,6 +32,11 @@ function Sidebar({data}) {
     }
     const display2 = {
         display: isOpen ? 'inline-block' : 'none'
+    }
+    const display3 = {
+        '@media (max-width: 480px)': {
+            display: isOpen ? 'flex' : 'none',
+        }
     }
   return (
     <StyleRoot>
@@ -50,7 +55,7 @@ function Sidebar({data}) {
                     <FaUserAlt size={70} className='icon'/>
                     <h5>username</h5>
                 </div>  
-                <div className='bottom--section'> 
+                <div className='bottom--section' style={display3}> 
                     <div>
                     {
                         data.map((item, index) => (

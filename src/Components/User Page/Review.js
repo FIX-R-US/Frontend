@@ -5,24 +5,29 @@ import artisanData from '../../MOCK_DATA.json'
 import { useState, useRef } from 'react'
 import Container from 'react-bootstrap/Container'
 import ProfileHeader from '../../Shared Utils/Pages/ProfileHeader'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
 
 function Review() {
-    const[value, setvalue] = useState(null)
-    
+    const [showModal, setShowModal] = useState(false)
     const options = artisanData.map(item => (
         {value: `${item.occupation}`, label: `${item.first_name} ${item.last_name}`}
     ))
     
-
-    const artisanRef = useRef(null);
+    const [selectedOption, setSelectedOption] = useState()
     const reviewRef = useRef();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const selectedOption = artisanRef.current.state.value
         const review = reviewRef.current.value
-
+        if(!selectedOption || review.trim() === ''){
+            return;
+        }
         console.log(selectedOption, review)
+        
+        setShowModal(prevShow => !prevShow)
+        setSelectedOption(null);
+        reviewRef.current.value = "";   
     }
 
     const customStyles = {
@@ -33,6 +38,13 @@ function Review() {
           borderColor:'gray'
         })
       };
+
+      const modalButton = {
+        backgroundColor: '#7200CC',
+        width: '25%',
+        fontWeight: '600',
+        border: 'none'
+      }
   return (
     <div className='review--container'>
         <Container>
@@ -41,11 +53,11 @@ function Review() {
                 <form className='review' onSubmit={handleSubmit}>
                     <div className='review--select'>
                         <Select 
-                        ref={artisanRef}
                         options={options} 
-                        defaultValue={value} 
+                        defaultValue={selectedOption} 
                         placeholder='Search artisan'
-                        onChange={setvalue}
+                        value={selectedOption}
+                        onChange={setSelectedOption}
                         noOptionsMessage={()=>"Artisan not found"}
                         isSearchable
                         isClearable
@@ -60,6 +72,19 @@ function Review() {
                         <button type='submit'>Submit</button>
                     </div>
                 </form>
+                <Modal show={showModal} onHide={()=>setShowModal(prevshow => !prevshow)}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Thanks for your review</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <p>Your review has been submitted succesfully</p>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button onClick={()=>setShowModal(prevshow => !prevshow)} style={modalButton}>
+                          Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
         </Container>
 

@@ -9,10 +9,16 @@ function UserPage() {
     marginLeft: '50px',
     backgroundColor:'white',
     width:'100%',
+    '@media(min-width: 275px) and (max-width: 380px)': {
+        marginLeft: '35px'
+      },
+      '@media(min-width: 381px) and (max-width: 480px)': {
+        marginLeft: '40px'
+      },
     '@media(min-width: 765px)': {
-    marginLeft: '60px'
+      marginLeft: '60px'
     },
-    '@media(min-width: 1020px) and (max-width: 1285px)': {
+    '@media(min-width: 1020px)': {
       marginLeft: '50px'
       }
   }

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import {useEffect} from 'react'
 import L from 'leaflet'
 import 'leaflet-control-geocoder/dist/Control.Geocoder.css'
 import 'leaflet-control-geocoder/dist/Control.Geocoder.js'
@@ -18,7 +18,6 @@ function LeafletGeocoder() {
             })
             .addTo(map);
     })
-  return <div></div>
 }
 
 export default LeafletGeocoder

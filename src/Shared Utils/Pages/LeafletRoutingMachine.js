@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import L from 'leaflet'
 import 'leaflet-routing-machine'
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css'
@@ -29,9 +29,6 @@ function LeafletRoutingMachine() {
             showAlternatives: true
           }).addTo(map);
     })
-  return (
-    <div></div>
-  )
 }
 
 export default LeafletRoutingMachine
