@@ -19,17 +19,19 @@ function UserManagement() {
       item.location.toLowerCase().includes(search)
   );
   const handleAccountToggle = (id) => {
-    setArtisan((prevState) =>
-      prevState.map((item) => {
-        if (item.id === id) {
-          return { ...item, isActive: !item.isActive };
-        }
-        // console.log(item.id);
-        return item;
-      })
-    );
+    axios.post("http://localhost:3001/isactive/active", { id }).then((data) => {
+      console.log(data);
+      setArtisan((prevState) =>
+        prevState.map((item) => {
+          if (item.id === id) {
+            return { ...item, isActive: !item.isActive };
+          }
+          // console.log(item.id);
+          return item;
+        })
+      );
+    });
   };
-
   const role = "user";
   useEffect(() => {
     axios

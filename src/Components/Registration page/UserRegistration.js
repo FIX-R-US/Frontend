@@ -20,14 +20,18 @@ function UserRegistration() {
     const contact = contactRef.current.value;
     const location = locationRef.current.value;
     // console.log(firstName, lastName, contact, location)
-    axios.post("http://localhost:3001/update/updateregister", {
-      firstname,
-      lastname,
-      contact,
-      location,
-      username,
-    });
-    navigate("/login");
+    axios
+      .post("http://localhost:3001/update/updateregister", {
+        firstname,
+        lastname,
+        contact,
+        location,
+        username,
+      })
+      .then((data) => {
+        console.log(data);
+        navigate("/login");
+      });
   };
   return (
     <div className="form--container">

@@ -21,9 +21,13 @@ function Login() {
     axios
       .post("http://localhost:3001/auth/login", { username, password })
       .then((data) => {
-        console.log(data);
-        navigate(`${data.data.user.role}/home`);
-        localStorage.setItem("username", data.data.user.username);
+        //console.log(data);
+        if (data.data.user.isActive === 0) {
+          window.alert("you have been deactivated");
+        } else {
+          navigate(`${data.data.user.role}/home`);
+          localStorage.setItem("username", data.data.user.username);
+        }
       })
       .catch((error) => console.log(error));
   };
