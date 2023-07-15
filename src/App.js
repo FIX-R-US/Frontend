@@ -32,8 +32,8 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="login" element={<Login />} />
         <Route path="forgotPassword" element={<ResetPassword />} />
-        <Route path="checkEmail" element={<EmailPrompt />} />
-        <Route path="resetPassword" element={<ResetPassword2 />} />
+        <Route path="checkEmail/:email" element={<EmailPrompt />} />
+        <Route path="resetPassword/:email" element={<ResetPassword2 />} />
         <Route path="createAccount" element={<CreateAccount />} />
         <Route
           path="createAccount/user/:username"
@@ -56,7 +56,7 @@ function App() {
         {/* Routes for Artisan Page */}
         <Route path="login/artisan" element={<ArtisanPage />}>
           <Route path="home" element={<ArtisanProfile />} />
-          <Route path="home/bookings" element={<ArtisanBookings/>}/>
+          <Route path="home/bookings" element={<ArtisanBookings />} />
           <Route path="editProfile" element={<EditArtisanProfile />} />
           <Route path="maps" element={<Map />} />
           <Route path="payments" element={<Payments />} />

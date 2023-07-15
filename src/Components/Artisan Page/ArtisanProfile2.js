@@ -10,7 +10,7 @@ import axios from "axios";
 function ArtisanProfile2() {
   const id = useParams().id;
   const [artisan, setArtisan] = useState(null);
-  const [isRequested, setIsRequested] = useState(false)
+  const [isRequested, setIsRequested] = useState(false);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -20,11 +20,11 @@ function ArtisanProfile2() {
           console.log(data.data[0]);
           setArtisan(data.data[0]);
 
-          console.log("aa:", artisan);
+          // console.log("aa:", artisan[0]);
         });
     };
     fetchDetails();
-  }, []);
+  }, [id]);
   // const filter = artisan.filter(
   //   (item) =>
   //     item.occupation.toLowerCase().includes() ||
@@ -32,16 +32,16 @@ function ArtisanProfile2() {
   // );
 
   const handleBooking = async () => {
-   try{
-    await axios.post('Endpoint here', {
-      id: artisan.id,
-      request: 'book'
-    })
-    setIsRequested(true)
-   } catch(error){
-      console.error('Error sending booking request', error)
-   }
-  }
+    try {
+      await axios.post("http://localhost:3001/book/booking", {
+        id: artisan.id,
+        request: "book",
+      });
+      setIsRequested(true);
+    } catch (error) {
+      console.error("Error sending booking request", error);
+    }
+  };
   const reviews = [
     {
       review: "Sammy does really great in programming. I strongly recommend. ",
@@ -78,9 +78,13 @@ function ArtisanProfile2() {
               </div>
             )}
             {isRequested ? (
-              <button disable className="book--btn">Requested</button>
+              <button disable className="book--btn">
+                Requested
+              </button>
             ) : (
-              <button onClick={handleBooking} className="book--btn">Book</button>
+              <button onClick={handleBooking} className="book--btn">
+                Book
+              </button>
             )}
             <div className="artisan--bottom">
               <h5>Reviews</h5>

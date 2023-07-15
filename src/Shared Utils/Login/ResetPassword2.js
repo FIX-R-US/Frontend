@@ -1,55 +1,87 @@
-import React, { useState } from 'react'
-import './ResetPassword2.css'
-import Header from '../../Components/Home page/Header'
-import {HiEye, HiEyeOff} from 'react-icons/hi'
-import reset from './reset.png'
-import { useNavigate } from 'react-router-dom'
+import React, { useRef, useState } from "react";
+import "./ResetPassword2.css";
+import Header from "../../Components/Home page/Header";
+import { HiEye, HiEyeOff } from "react-icons/hi";
+import reset from "./reset.png";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 function ResetPassword2() {
-  const[showPassword, setShowPassword] = useState(false)
-  const navigate = useNavigate()
-  const handleShow = () => setShowPassword(prevShowPassword=>!prevShowPassword)
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const email = useParams().email;
+  const passwordRef = useRef();
+  const handleShow = () =>
+    setShowPassword((prevShowPassword) => !prevShowPassword);
 
+  const handleclick = (e) => {
+    e.preventDefault();
+    const password = passwordRef.current.value;
+    axios
+      .post("http://localhost:3001/newpassword/resetpassword", {
+        email,
+        password,
+      })
+      .then((data) => {
+        console.log(data);
+        navigate("/login");
+      })
+      .catch((error) => console.log(error));
+  };
   return (
-    <div className='reset--container'>
-      <div className='left--reset'>
-        <Header/>
-        <div className='reset--fields'>
-          <div className='reset--responsive'>
-            <img src={reset} alt=''/>
+    <div className="reset--container">
+      <div className="left--reset">
+        <Header />
+        <div className="reset--fields">
+          <div className="reset--responsive">
+            <img src={reset} alt="" />
           </div>
-          <form className='reset'>
-            <div className='reset--textfield'>
+          <form className="reset">
+            <div className="reset--textfield">
               <h2>Change Password</h2>
               <p>Please change password to complete login process</p>
             </div>
-            <div className='reset--inputfield'>
-              <div className='reset--field'>
+            <div className="reset--inputfield">
+              <div className="reset--field">
                 <label>New Password</label>
-                <input type={showPassword ? 'text' : 'password'} placeholder='Enter your new password'/>
-                {
-                  showPassword ? <HiEyeOff className='show--eye' onClick={handleShow}/> : <HiEye className='show--eye' onClick={handleShow}/>
-                }
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Enter your new password"
+                  ref={passwordRef}
+                />
+                {showPassword ? (
+                  <HiEyeOff className="show--eye" onClick={handleShow} />
+                ) : (
+                  <HiEye className="show--eye" onClick={handleShow} />
+                )}
               </div>
-              <div className='reset--field'>
+              <div className="reset--field">
                 <label>Confirm Password</label>
-                <input type={showPassword ? 'text' : 'password'} placeholder='Confirm new password'/>
-                {
-                  showPassword ? <HiEyeOff className='show--eye' onClick={handleShow}/> : <HiEye className='show--eye' onClick={handleShow}/>
-                }
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Confirm new password"
+                  ref={passwordRef}
+                />
+                {showPassword ? (
+                  <HiEyeOff className="show--eye" onClick={handleShow} />
+                ) : (
+                  <HiEye className="show--eye" onClick={handleShow} />
+                )}
               </div>
             </div>
-            <button className='reset--btn' onClick={()=>navigate('/login')}>Change Password</button>   
+            <button className="reset--btn" onClick={handleclick}>
+              Change Password
+            </button>
           </form>
         </div>
       </div>
-      <div className='right--reset'>
-        <div className='reset--img'>
-          <img src={reset} alt=''/>
+      <div className="right--reset">
+        <div className="reset--img">
+          <img src={reset} alt="" />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default ResetPassword2
+export default ResetPassword2;

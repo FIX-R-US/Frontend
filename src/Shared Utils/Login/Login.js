@@ -23,6 +23,7 @@ function Login() {
       .then((data) => {
         console.log(data);
         navigate(`${data.data.user.role}/home`);
+        localStorage.setItem("username", data.data.user.username);
       })
       .catch((error) => console.log(error));
   };
