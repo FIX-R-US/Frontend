@@ -7,6 +7,7 @@ import { MdManageAccounts } from "react-icons/md";
 import { MdEngineering } from "react-icons/md";
 import { MdPayments } from "react-icons/md";
 import { MdVerified } from "react-icons/md";
+// import {FaBookReader} from 'react-icons/fa'
 
 export const data = [
   {
@@ -51,7 +52,7 @@ export const artisanData = [
     path: "payments",
     icon: <MdPayments size={20} />,
     name: "Payments",
-  },
+  }
 ];
 
 export const adminData = [

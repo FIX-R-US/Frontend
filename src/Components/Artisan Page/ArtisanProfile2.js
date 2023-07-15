@@ -10,6 +10,7 @@ import axios from "axios";
 function ArtisanProfile2() {
   const id = useParams().id;
   const [artisan, setArtisan] = useState(null);
+  const [isRequested, setIsRequested] = useState(false)
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -29,6 +30,18 @@ function ArtisanProfile2() {
   //     item.occupation.toLowerCase().includes() ||
   //     item.location.toLowerCase().includes()
   // );
+
+  const handleBooking = async () => {
+   try{
+    await axios.post('Endpoint here', {
+      id: artisan.id,
+      request: 'book'
+    })
+    setIsRequested(true)
+   } catch(error){
+      console.error('Error sending booking request', error)
+   }
+  }
   const reviews = [
     {
       review: "Sammy does really great in programming. I strongly recommend. ",
@@ -61,10 +74,14 @@ function ArtisanProfile2() {
                 <p className="p">{artisan.occupation}</p>
                 <p className="p">{artisan.location}</p>
                 <p className="p">{artisan.contact}</p>
-                <p>{artisan.Description}</p>
+                <p className="p">{artisan.Description}</p>
               </div>
             )}
-
+            {isRequested ? (
+              <button disable className="book--btn">Requested</button>
+            ) : (
+              <button onClick={handleBooking} className="book--btn">Book</button>
+            )}
             <div className="artisan--bottom">
               <h5>Reviews</h5>
               <div className="reveiwMap--container">

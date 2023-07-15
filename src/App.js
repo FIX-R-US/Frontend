@@ -23,6 +23,7 @@ import Payments from "./Components/Artisan Page/Payments";
 import VerifyRegistration from "./Components/Admin page/VerifyRegistration";
 import PageNotFound from "./Shared Utils/Pages/PageNotFound";
 import ArtisanProfile2 from "./Components/Artisan Page/ArtisanProfile2";
+import ArtisanBookings from "./Components/Artisan Page/ArtisanBookings";
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
         {/* Routes for Artisan Page */}
         <Route path="login/artisan" element={<ArtisanPage />}>
           <Route path="home" element={<ArtisanProfile />} />
+          <Route path="home/bookings" element={<ArtisanBookings/>}/>
           <Route path="editProfile" element={<EditArtisanProfile />} />
           <Route path="maps" element={<Map />} />
           <Route path="payments" element={<Payments />} />

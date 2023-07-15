@@ -4,8 +4,10 @@ import './ArtisanProfile.css'
 import ProfileHeader from '../../Shared Utils/Pages/ProfileHeader'
 import Container from 'react-bootstrap/Container'
 import dp from './slide1.jpg'
+import { useNavigate } from 'react-router'
 
 function ArtisanProfile() {
+    const navigate = useNavigate()
     const reviews = [
         {
             review: 'Sammy does really great in programming. I strongly recommend. '
@@ -37,8 +39,9 @@ function ArtisanProfile() {
                         <p className='p'>Electrician</p>
                         <p className='p'>Ayeduase, KNUST</p>
                         <p className='p'>0559389586</p>
-                        <p>Description: ...</p>
+                        <p className='p'>Description: ...</p>
                     </div>
+                <button className="book--btn" onClick={()=>navigate('bookings')}>Bookings</button>
                     <div className='artisan--bottom'>
                         <h5>Reviews</h5>
                         <div className='reveiwMap--container'>
