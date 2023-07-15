@@ -18,6 +18,18 @@ function UserManagement() {
       item.lastname.toLowerCase().includes(search) ||
       item.location.toLowerCase().includes(search)
   );
+  const handleAccountToggle = (id) => {
+    setArtisan((prevState) =>
+      prevState.map((item) => {
+        if (item.id === id) {
+          return { ...item, isActive: !item.isActive };
+        }
+        // console.log(item.id);
+        return item;
+      })
+    );
+  };
+
   const role = "user";
   useEffect(() => {
     axios
@@ -65,9 +77,19 @@ function UserManagement() {
                 <td>{item.location}</td>
                 <td>
                   {item.isActive ? (
-                    <button className="admin--btn">Deactivate</button>
+                    <button
+                      className="admin--btn"
+                      onClick={() => handleAccountToggle(item.id)}
+                    >
+                      Deactivate
+                    </button>
                   ) : (
-                    <button className="admin--btn">Activate</button>
+                    <button
+                      className="admin--btn"
+                      onClick={() => handleAccountToggle(item.id)}
+                    >
+                      Activate
+                    </button>
                   )}
                 </td>
               </tr>

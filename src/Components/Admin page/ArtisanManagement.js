@@ -32,18 +32,19 @@ function ArtisanManagement() {
   }, []);
 
   const handleAccountToggle = (id) => {
-    setAccountState((prevState) =>
+    setArtisan((prevState) =>
       prevState.map((item) => {
         if (item.id === id) {
           return { ...item, isActive: !item.isActive };
         }
+        // console.log(item.id);
         return item;
       })
     );
   };
 
   const handlePaymentToggle = (id) => {
-    setAccountState((prevState) =>
+    setArtisan((prevState) =>
       prevState.map((item) => {
         if (item.id === id) {
           return { ...item, paymentMade: !item.paymentMade };
