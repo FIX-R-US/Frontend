@@ -9,7 +9,10 @@ import axios from "axios";
 
 function ArtisanProfile2() {
   const id = useParams().id;
+  const user_id = id;
   const [artisan, setArtisan] = useState(null);
+  const [review, setReviews] = useState([]);
+
   const [isRequested, setIsRequested] = useState(false);
 
   useEffect(() => {
@@ -42,20 +45,17 @@ function ArtisanProfile2() {
       console.error("Error sending booking request", error);
     }
   };
-  const reviews = [
-    {
-      review: "Sammy does really great in programming. I strongly recommend. ",
-    },
-    {
-      review: "Sammy does really great in programming. I strongly recommend. ",
-    },
-    {
-      review: "Sammy does really great in programming. I strongly recommend. ",
-    },
-    {
-      review: "Sammy does really great in programming. I strongly recommend. ",
-    },
-  ];
+
+  useEffect(() => {
+    axios
+      .post("http://localhost:3001/review/display", { user_id })
+      .then((data) => {
+        // console.log(data.data)
+        setReviews(data.data);
+      })
+      .catch((error) => console.log(error));
+  }, [user_id]);
+
   return (
     <div className="profile--artisan-container">
       <Container>
@@ -89,11 +89,11 @@ function ArtisanProfile2() {
             <div className="artisan--bottom">
               <h5>Reviews</h5>
               <div className="reveiwMap--container">
-                {reviews.map((item, index) => (
+                {review.map((item, index) => (
                   <div key={index} className="review--map">
                     <FaUserCircle size={60} className="reviewMap--img" />
                     <div className="map--bottom">
-                      <p>@ </p>
+                      <p>ANONYMOUS</p>
                       <p className="p2">{item.review}</p>
                     </div>
                   </div>
