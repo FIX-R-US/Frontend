@@ -16,17 +16,20 @@ function Login() {
     e.preventDefault();
     const username = UsernameRef.current.value;
     const password = passwordRef.current.value;
-    console.log(username, password);
+    //console.log(username, password);
 
     axios
       .post("http://localhost:3001/auth/login", { username, password })
       .then((data) => {
-        //console.log(data);
+        console.log(data);
         if (data.data.user.isActive === 0) {
           window.alert("you have been deactivated");
         } else {
           navigate(`${data.data.user.role}/home`);
-          localStorage.setItem("username", data.data.user.username);
+          JSON.stringify(
+            localStorage.setItem("username", data.data.user.username)
+          );
+          JSON.stringify(localStorage.setItem("id", data.data.user.id));
         }
       })
       .catch((error) => console.log(error));

@@ -57,7 +57,7 @@ function Profile() {
 
   
   return (
-    <div className='profile--container'>
+    <div className="profile--container">
       <Container>
         <ProfileHeader title={'Edit Profile'}/>
         <form onSubmit={handleSave}>
@@ -97,7 +97,7 @@ function Profile() {
         </form>
       </Container>
     </div>
-  )
+  );
 }
 
-export default Profile
+export default Profile;

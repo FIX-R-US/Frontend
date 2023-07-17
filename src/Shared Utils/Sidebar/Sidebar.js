@@ -16,6 +16,7 @@ function Sidebar({ data }) {
   const handleLogout = () => {
     navigate("/login");
     localStorage.removeItem("username");
+    localStorage.removeItem("id");
   };
 
   const width = {

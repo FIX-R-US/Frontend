@@ -1,28 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import "./ArtisanProfile.css";
 import ProfileHeader from "../../Shared Utils/Pages/ProfileHeader";
 import Container from "react-bootstrap/Container";
 import dp from "./slide1.jpg";
 import { useNavigate } from "react-router";
-import artisan from '../../MOCK_DATA.json'
+import axios from "axios";
+import artisanD from '../../MOCK_DATA.json'
 
 function ArtisanProfile() {
   const navigate = useNavigate();
-  const reviews = [
-    {
-      review: "Sammy does really great in programming. I strongly recommend. ",
-    },
-    {
-      review: "Sammy does really great in programming. I strongly recommend. ",
-    },
-    {
-      review: "Sammy does really great in programming. I strongly recommend. ",
-    },
-    {
-      review: "Sammy does really great in programming. I strongly recommend. ",
-    },
-  ];
+  const [review, setReviews] = useState([]);
+  const [artisan, setArtisan] = useState(null);
+  const id = localStorage.getItem("id");
+  const user_id = id;
+  useEffect(() => {
+    const fetchDetails = async () => {
+      await axios
+        .post("http://localhost:3001/details/getuser", { id })
+        .then((data) => {
+          console.log(data.data[0]);
+          setArtisan(data.data[0]);
+
+          // console.log("aa:", artisan[0]);
+        });
+    };
+    fetchDetails();
+  }, [id]);
+  useEffect(() => {
+    axios
+      .post("http://localhost:3001/review/display", { user_id })
+      .then((data) => {
+        // console.log(data.data)
+        setReviews(data.data);
+      })
+      .catch((error) => console.log(error));
+  }, [user_id]);
+
   return (
     <div className="profile--artisan-container">
       <Container>
@@ -34,28 +48,30 @@ function ArtisanProfile() {
               <img src={dp} alt="" />} */}
               <img src={dp} alt="" />
             </div>
-            {artisan[1].profile_photo ? <img src={artisan[1].profile_photo} alt="" className="profile--icon"/> : <FaUserCircle size={100} className="profile--icon" />}
+            {artisanD[1].profile_photo ? <img src={artisanD[1].profile_photo} alt="" className="profile--icon"/> : <FaUserCircle size={100} className="profile--icon" />}
           </div>
           <div className="artisan--down">
-            <div className="artisan--middle">
-              <h2>Samuel Nyame</h2>
-              <p className="p">Electrician</p>
-              <p className="p">Ayeduase, KNUST</p>
-              <p className="p">0559389586</p>
-              <p className="p">Description: ...</p>
-            </div>
+            {artisan && (
+              <div className="artisan--middle">
+                <h2>{artisan.fullname}</h2>
+                <p className="p">{artisan.occupation}</p>
+                <p className="p">{artisan.location}</p>
+                <p className="p">{artisan.contact}</p>
+                <p className="p">{artisan.Description}</p>
+              </div>
+            )}
             <button className="book--btn" onClick={() => navigate("bookings")}>
               Bookings
             </button>
             <div className="artisan--bottom">
               <h5>Reviews</h5>
               <div className="reveiwMap--container">
-                {reviews.map((item, index) => (
+                {review.map((item, index) => (
                   <div key={index} className="review--map">
-                    {artisan[1].profile_photo ? <img src={artisan[1].profile_photo} alt="" className="reviewMap--img"/> : <FaUserCircle size={60} className="reviewMap--img" />}
+                    {artisanD[1].profile_photo ? <img src={artisanD[1].profile_photo} alt="" className="reviewMap--img"/> : <FaUserCircle size={60} className="reviewMap--img" />}
                     {/* <FaUserCircle size={60} className="reviewMap--img" /> */}
                     <div className="map--bottom">
-                      <p>@ username</p>
+                      <p>ANONYMOUS</p>
                       <p className="p2">{item.review}</p>
                     </div>
                   </div>
