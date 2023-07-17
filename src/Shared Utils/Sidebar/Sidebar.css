@@ -36,6 +36,8 @@
 .sidebar--container .sidebar .user--icon .icon {
   border: 2px solid white;
   border-radius: 50%;
+  width: 100px;
+  height: 100px;
 }
 .sidebar--container .sidebar .user--icon h5 {
   padding: 10px;
@@ -45,7 +47,7 @@
 .sidebar--container .sidebar .bottom--section {
   display: flex;
   flex-direction: column;
-  gap: 170px;
+  gap: 150px;
   width: 100%;
   margin-top: 30px;
 }
@@ -69,11 +71,11 @@
   transition: all 0.5s;
 }
 .sidebar--container .sidebar .bottom--section div .link .icon {
-  flex: 30%;
+  flex: 40%;
   place-items: center;
 }
 .sidebar--container .sidebar .bottom--section div .link .text--link {
-  flex: 70%;
+  flex: 60%;
 }
 .sidebar--container .sidebar .bottom--section div .active {
   background-color: white;
@@ -116,8 +118,8 @@
     gap: 155px;
   }
   .sidebar--container .sidebar .user--icon .icon {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
   }
   .sidebar--container .sidebar .user--icon h5 {
     font-size: 20px;
@@ -134,6 +136,9 @@
   .sidebar--container .sidebar .bottom--section div .link .text--link {
     flex: 40%;
   }
+  .sidebar--container .sidebar .bottom--section .logout--btn {
+    padding: 10px;
+  }
 }
 @media (min-width: 815px) and (max-width: 825px) {
   .sidebar--container .sidebar {
@@ -143,14 +148,14 @@
     gap: 155px;
   }
   .sidebar--container .sidebar .user--icon .icon {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
   }
   .sidebar--container .sidebar .user--icon h5 {
     font-size: 20px;
   }
   .sidebar--container .sidebar .bottom--section {
-    gap: 350px;
+    gap: 320px;
   }
   .sidebar--container .sidebar .bottom--section div {
     gap: 30px;
@@ -160,6 +165,9 @@
   }
   .sidebar--container .sidebar .bottom--section div .link .text--link {
     flex: 40%;
+  }
+  .sidebar--container .sidebar .bottom--section .logout--btn {
+    padding: 10px;
   }
 }
 @media (min-width: 760px) and (max-width: 800px) {
@@ -170,14 +178,14 @@
     gap: 155px;
   }
   .sidebar--container .sidebar .user--icon .icon {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
   }
   .sidebar--container .sidebar .user--icon h5 {
     font-size: 20px;
   }
   .sidebar--container .sidebar .bottom--section {
-    gap: 210px;
+    gap: 160px;
   }
   .sidebar--container .sidebar .bottom--section div {
     gap: 30px;
@@ -188,13 +196,25 @@
   .sidebar--container .sidebar .bottom--section div .link .text--link {
     flex: 40%;
   }
+  .sidebar--container .sidebar .bottom--section .logout--btn {
+    padding: 10px;
+  }
 }
 @media (max-width: 480px) {
   .sidebar--container .sidebar {
     gap: 10px;
   }
+  .sidebar--container .sidebar .user--icon .icon {
+    width: 120px;
+    height: 120px;
+  }
   .sidebar--container .sidebar .bottom--section {
-    gap: 320px;
+    gap: 290px;
+  }
+}
+@media (min-width: 385px) and (max-width: 450px) {
+  .sidebar--container .sidebar .bottom--section {
+    gap: 250px;
   }
 }
 @media (min-width: 370px) and (max-width: 380px) {
@@ -204,25 +224,39 @@
   .sidebar--container .sidebar .top--section {
     gap: 60px;
   }
+  .sidebar--container .sidebar .user--icon .icon {
+    width: 100px;
+    height: 100px;
+  }
   .sidebar--container .sidebar .bottom--section {
     gap: 120px;
+    margin-top: 15px;
   }
 }
 @media (max-width: 365px) {
   .sidebar--container .sidebar .top--section {
     gap: 60px;
   }
+  .sidebar--container .sidebar .user--icon .icon {
+    width: 100px;
+    height: 100px;
+  }
   .sidebar--container .sidebar .bottom--section {
     gap: 170px;
+    margin-top: 15px;
   }
 }
 @media (max-width: 290px) {
+  .sidebar--container .sidebar .user--icon .icon {
+    width: 95px;
+    height: 95px;
+  }
   .sidebar--container .sidebar .bottom--section {
     gap: 100px;
   }
 }
 @media (min-width: 1020px) and (max-width: 1030px) {
   .sidebar--container .sidebar .bottom--section {
-    gap: 75px;
+    gap: 70px;
   }
 }/*# sourceMappingURL=Sidebar.css.map */

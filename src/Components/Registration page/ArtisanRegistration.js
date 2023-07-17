@@ -67,12 +67,13 @@ function ArtisanRegistration() {
                 <div className='artisanCreate--field'>
                   <label htmlFor='occupation'>Occupation</label>
                   <select ref={occupationRef} required>
-                    <option value='electrician'>Electrician</option>
-                    <option value='carpenter'>Carpenter</option>
-                    <option value='plumber'>Plumber</option>
-                    <option value='hairdresser'>Hairdresser</option>
-                    <option value='barber'>Barber</option>
-                    <option value='cobbler'>Cobbler</option>
+                    <option value='Electrician'>Electrician</option>
+                    <option value='Carpenter'>Carpenter</option>
+                    <option value='Plumber'>Plumber</option>
+                    <option value='Hairdresser'>Hairdresser</option>
+                    <option value='Barber'>Barber</option>
+                    <option value='Cobbler'>Cobbler</option>
+                    <option value='Painter'>Painter</option>
                   </select>
                 </div>
                 <div className='artisanCreate--field'>

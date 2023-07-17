@@ -5,12 +5,13 @@ import "./Sidebar.css";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { GiAutoRepair } from "react-icons/gi";
 import { StyleRoot } from "radium";
+import userpic from '../../MOCK_DATA.json'
 
 function Sidebar({ data }) {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const username = localStorage.getItem("username");
+  // const username = localStorage.getItem("username");
 
   const handleLogout = () => {
     navigate("/login");
@@ -57,8 +58,9 @@ function Sidebar({ data }) {
             </div>
           </div>
           <div className="user--icon" style={display2}>
-            <FaUserAlt size={70} className="icon" />
-            <h5>{username}</h5>
+            {userpic[0].profile_photo ? <img src={userpic[0].profile_photo} alt="" className="icon"/> : <FaUserAlt size={70} className="icon" /> }
+            {/* <FaUserAlt size={75} className="icon" /> */}
+            <h5>{userpic[0].username}</h5>
           </div>
           <div className="bottom--section" style={display3}>
             <div>

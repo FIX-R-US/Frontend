@@ -8,12 +8,12 @@
     padding: 20px;
     .profile--fields{
         display: flex;
-        gap: 50px;
         align-items: center;
         padding-bottom: 30px;
         border-bottom: 1px solid #F4F4F6;
+        justify-content: center;
         label{
-            width: 50%;
+            width: 30%;
             font-weight: 500;
         }
         input{
@@ -89,7 +89,10 @@
         .profile--content{
          .profile--fields{
             input{
-                padding: 0;
+                padding: 3px;
+            }
+            .userFile--input{
+                font-size: 14px;
             }
          }
         }
@@ -108,7 +111,10 @@
             gap: 5px;
             padding-bottom: 20px;
             input{
-                padding: 0;
+                padding: 2px;
+            }
+            .userFile--input{
+                font-size: small;
             }
          }
         }

@@ -5,6 +5,7 @@ import ProfileHeader from "../../Shared Utils/Pages/ProfileHeader";
 import Container from "react-bootstrap/Container";
 import dp from "./slide1.jpg";
 import { useNavigate } from "react-router";
+import artisan from '../../MOCK_DATA.json'
 
 function ArtisanProfile() {
   const navigate = useNavigate();
@@ -29,9 +30,11 @@ function ArtisanProfile() {
         <div className="whole--content">
           <div className="artisan--top">
             <div className="top--img">
+              {/* {artisan[1].profile_photo ? <img src={artisan[1].profile_photo} alt=""/> : 
+              <img src={dp} alt="" />} */}
               <img src={dp} alt="" />
             </div>
-            <FaUserCircle size={100} className="profile--icon" />
+            {artisan[1].profile_photo ? <img src={artisan[1].profile_photo} alt="" className="profile--icon"/> : <FaUserCircle size={100} className="profile--icon" />}
           </div>
           <div className="artisan--down">
             <div className="artisan--middle">
@@ -49,7 +52,8 @@ function ArtisanProfile() {
               <div className="reveiwMap--container">
                 {reviews.map((item, index) => (
                   <div key={index} className="review--map">
-                    <FaUserCircle size={60} className="reviewMap--img" />
+                    {artisan[1].profile_photo ? <img src={artisan[1].profile_photo} alt="" className="reviewMap--img"/> : <FaUserCircle size={60} className="reviewMap--img" />}
+                    {/* <FaUserCircle size={60} className="reviewMap--img" /> */}
                     <div className="map--bottom">
                       <p>@ username</p>
                       <p className="p2">{item.review}</p>

@@ -44,7 +44,7 @@ function App() {
           element={<ArtisanRegistration />}
         />
 
-        {/* Routes for User Page */}
+        Routes for User Page
         <Route path="login/user" element={<UserPage />}>
           <Route path="home" element={<Home />} />
           <Route path="home/viewProfile/:id" element={<ArtisanProfile2 />} />
@@ -53,7 +53,7 @@ function App() {
           <Route path="maps" element={<Map />} />
         </Route>
 
-        {/* Routes for Artisan Page */}
+        Routes for Artisan Page
         <Route path="login/artisan" element={<ArtisanPage />}>
           <Route path="home" element={<ArtisanProfile />} />
           <Route path="home/bookings" element={<ArtisanBookings />} />
@@ -62,7 +62,7 @@ function App() {
           <Route path="payments" element={<Payments />} />
         </Route>
 
-        {/* Routes for admin  */}
+        Routes for admin 
         <Route path="login/admin" element={<AdminPage />}>
           <Route path="home" element={<Dashboard />} />
           <Route path="manageUsers" element={<UserManagement />} />

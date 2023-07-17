@@ -74,6 +74,6 @@ export const adminData = [
   {
     path: "verifyRegistration",
     icon: <MdVerified size={21} />,
-    name: "Verify Registration",
+    name: "Verify Artisans",
   },
 ];

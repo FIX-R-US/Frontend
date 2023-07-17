@@ -1,0 +1,19 @@
+.analyze{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+.analyze--btn{
+    width: 50%;
+    border: none;
+    background-color: #7200CC;
+    color: white;
+    font-weight: 600;
+    padding: 5px;
+    border-radius: 10px;
+
+    &:hover{
+        background-color: #AB66E1;
+        transition: all 0.5s;
+    }
+}

@@ -33,6 +33,8 @@
             .icon{
                 border: 2px solid white;
                 border-radius: 50%;
+                width: 100px;
+                height: 100px;
             }
             h5{
                 padding: 10px;
@@ -43,7 +45,7 @@
         .bottom--section{
             display: flex;
             flex-direction: column;
-            gap: 170px;
+            gap: 150px;
             width: 100%;
             margin-top: 30px;
 
@@ -66,11 +68,11 @@
                         transition: all 0.5s;
                     }
                     .icon{
-                        flex: 30%;
+                        flex: 40%;
                         place-items: center;
                     }
                     .text--link{
-                        flex: 70%;
+                        flex: 60%;
                     }
                 }
                 .active{
@@ -121,8 +123,8 @@
             }
             .user--icon{
                 .icon{
-                    width: 100px;
-                    height: 100px;
+                    width: 150px;
+                    height: 150px;
                 }
                 h5{
                     font-size: 20px;
@@ -140,6 +142,9 @@
                         }
                     }
                 }
+                .logout--btn{
+                    padding: 10px;
+                }
             }
         }
     }    
@@ -154,15 +159,15 @@
             }
             .user--icon{
                 .icon{
-                    width: 100px;
-                    height: 100px;
+                    width: 150px;
+                    height: 150px;
                 }
                 h5{
                     font-size: 20px;
                 }
             }
             .bottom--section{
-                gap: 350px;
+                gap: 320px;
     
                 div{
                     gap: 30px;
@@ -172,6 +177,9 @@
                             flex: 40%;
                         }
                     }
+                }
+                .logout--btn{
+                    padding: 10px;
                 }
             }
         }
@@ -187,15 +195,15 @@
             }
             .user--icon{
                 .icon{
-                    width: 100px;
-                    height: 100px;
+                    width: 150px;
+                    height: 150px;
                 }
                 h5{
                     font-size: 20px;
                 }
             }
             .bottom--section{
-                gap: 210px;
+                gap: 160px;
     
                 div{
                     gap: 30px;
@@ -205,6 +213,9 @@
                             flex: 40%;
                         }
                     }
+                }
+                .logout--btn{
+                    padding: 10px;
                 }
             }
         }
@@ -216,8 +227,24 @@
         .sidebar{
             // border-radius: 0;
             gap: 10px;
+            .user--icon{
+                .icon{
+                    width: 120px;
+                    height: 120px;
+                }
+            }
             .bottom--section{
-                gap: 320px;
+                gap: 290px;
+            }
+        }
+    }    
+}
+
+@media (min-width: 385px) and (max-width: 450px){
+    .sidebar--container{
+        .sidebar{
+            .bottom--section{
+                gap: 250px;
             }
         }
     }    
@@ -230,8 +257,15 @@
             .top--section{
                 gap: 60px;
             }
+            .user--icon{
+                .icon{
+                    width: 100px;
+                    height: 100px;
+                }
+            }
             .bottom--section{
                 gap: 120px;
+                margin-top: 15px;
             }
         }
     }    
@@ -243,8 +277,15 @@
             .top--section{
                 gap: 60px;
             }
+            .user--icon{
+                .icon{
+                    width: 100px;
+                    height: 100px;
+                }
+            }
             .bottom--section{
                 gap: 170px;
+                margin-top: 15px;
             }
         }
     }    
@@ -253,6 +294,12 @@
 @media (max-width: 290px) {
     .sidebar--container{
         .sidebar{
+            .user--icon{
+                .icon{
+                    width: 95px;
+                    height: 95px;
+                }
+            }
             .bottom--section{
                 gap: 100px;
             }
@@ -264,7 +311,7 @@
     .sidebar--container{
         .sidebar{
             .bottom--section{
-                gap: 75px;
+                gap: 70px;
             }
         }
     }    

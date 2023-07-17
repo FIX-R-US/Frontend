@@ -11,12 +11,12 @@
 .artisanProfile--container .artisanProfile--content .artisanProfile--fields {
   display: flex;
   align-items: center;
-  gap: 50px;
   padding-bottom: 30px;
   border-bottom: 1px solid #F4F4F6;
+  justify-content: center;
 }
 .artisanProfile--container .artisanProfile--content .artisanProfile--fields label {
-  width: 50%;
+  width: 30%;
   font-weight: 500;
 }
 .artisanProfile--container .artisanProfile--content .artisanProfile--fields input {
@@ -80,10 +80,13 @@
 }
 @media (max-width: 480px) {
   .artisanProfile--container .artisanProfile--content .artisanProfile--fields input {
-    padding: 0;
+    padding: 3px;
   }
   .artisanProfile--container .artisanProfile--content .artisanProfile--fields textarea {
     height: 50px;
+  }
+  .artisanProfile--container .artisanProfile--content .artisanProfile--fields .artisanFile--input {
+    font-size: 14px;
   }
   .artisanProfile--container .artisanProfile--btn button {
     width: 50%;
@@ -98,13 +101,16 @@
     padding-bottom: 20px;
   }
   .artisanProfile--container .artisanProfile--content .artisanProfile--fields input {
-    padding: 0;
+    padding: 2px;
   }
   .artisanProfile--container .artisanProfile--content .artisanProfile--fields label {
     width: 35%;
   }
   .artisanProfile--container .artisanProfile--content .artisanProfile--fields textarea {
     height: 45px;
+  }
+  .artisanProfile--container .artisanProfile--content .artisanProfile--fields .artisanFile--input {
+    font-size: small;
   }
   .artisanProfile--container .artisanProfile--btn button {
     width: 55%;

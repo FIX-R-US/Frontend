@@ -6,6 +6,8 @@ import Container from "react-bootstrap/Container";
 import dp from "./slide1.jpg";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import artisanD from '../../MOCK_DATA.json'
+
 
 function ArtisanProfile2() {
   const id = useParams().id;
@@ -65,7 +67,7 @@ function ArtisanProfile2() {
             <div className="top--img">
               <img src={dp} alt="" />
             </div>
-            <FaUserCircle size={100} className="profile--icon" />
+            {artisanD[1].profile_photo ? <img src={artisanD[1].profile_photo} alt="" className="profile--icon"/> : <FaUserCircle size={100} className="profile--icon" />}
           </div>
           <div className="artisan--down">
             {artisan && (
@@ -91,7 +93,8 @@ function ArtisanProfile2() {
               <div className="reveiwMap--container">
                 {reviews.map((item, index) => (
                   <div key={index} className="review--map">
-                    <FaUserCircle size={60} className="reviewMap--img" />
+                    {artisanD[1].profile_photo ? <img src={artisanD[1].profile_photo} alt="" className="reviewMap--img"/> : <FaUserCircle size={60} className="reviewMap--img" />}
+                    {/* <FaUserCircle size={60} className="reviewMap--img" /> */}
                     <div className="map--bottom">
                       <p>@ </p>
                       <p className="p2">{item.review}</p>

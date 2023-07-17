@@ -10,13 +10,13 @@
 }
 .profile--container .profile--content .profile--fields {
   display: flex;
-  gap: 50px;
   align-items: center;
   padding-bottom: 30px;
   border-bottom: 1px solid #F4F4F6;
+  justify-content: center;
 }
 .profile--container .profile--content .profile--fields label {
-  width: 50%;
+  width: 30%;
   font-weight: 500;
 }
 .profile--container .profile--content .profile--fields input {
@@ -73,7 +73,10 @@
 }
 @media (max-width: 480px) {
   .profile--container .profile--content .profile--fields input {
-    padding: 0;
+    padding: 3px;
+  }
+  .profile--container .profile--content .profile--fields .userFile--input {
+    font-size: 14px;
   }
   .profile--container .profile--btn button {
     width: 50%;
@@ -85,7 +88,10 @@
     padding-bottom: 20px;
   }
   .profile--container .profile--content .profile--fields input {
-    padding: 0;
+    padding: 2px;
+  }
+  .profile--container .profile--content .profile--fields .userFile--input {
+    font-size: small;
   }
   .profile--container .profile--btn button {
     width: 55%;

@@ -3,6 +3,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { BsChatLeftDots } from "react-icons/bs";
 import "./ProfileHeader.css";
 // import profilepic from './slide1.jpg'
+import user from '../../MOCK_DATA.json'
 
 function ProfileHeader({ title }) {
   const username = localStorage.getItem("username");
@@ -13,8 +14,7 @@ function ProfileHeader({ title }) {
         <h4>{title}</h4>
       </div>
       <div className="right--header">
-        <FaUserCircle size={40} className="profileHeader--icon" />
-        {/* <img src={profilepic} alt=''/> */}
+        {user[0].profile_photo ? <img src={user[0].profile_photo} alt=""/> : <FaUserCircle size={40}/>}
         <p>{username}</p>
       </div>
     </div>
