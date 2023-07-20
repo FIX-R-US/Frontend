@@ -1,19 +1,20 @@
 import {React, useEffect, useState} from 'react'
 // import photo from './card.jpg'
 import './Home.css'
-import artisanData from '../../MOCK_DATA.json'
+// import artisanData from '../../MOCK_DATA.json'
 import Searchbar from '../../Shared Utils/Sidebar/Searchbar'
 import Container from 'react-bootstrap/Container'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { LinkContainer } from 'react-router-bootstrap'
+import { FaUserCircle } from "react-icons/fa";
 
 
 function Home() {
   const navigate = useNavigate();
   const[search, setSearch] = useState('')
   const[itemsToShow, setItemsToShow] = useState(15)
-const [artisan,setArtisan] = useState([]);
+  const [artisan,setArtisan] = useState([]);
 
   const filter = artisan.slice(0, itemsToShow).filter(item => (
     item.occupation.toLowerCase().includes(search) || item.location.toLowerCase().includes(search)
@@ -51,7 +52,8 @@ const [artisan,setArtisan] = useState([]);
     return filter.map(item => (
       <div className='card--content' key={item.id}>
           <div className='top--content'>
-            <img src={item.profile_photo} alt='' className='card--img' width={120} height={120}/>
+            {item.profile_photo ? <img src={item.profile_photo} alt='' className='card--img'/> :
+             <FaUserCircle className='card--img'/> }    
             <div className='card--details'>
               <h5>{`${item.firstname} ${item.lastname}`}</h5>
               <p id='occupation'>{item.occupation}</p>
@@ -79,7 +81,7 @@ const [artisan,setArtisan] = useState([]);
           </div>
           <div className='load--btn'>
             {
-              !search && itemsToShow < artisanData.length && (<button onClick={handleLoadMore} >Load more</button>)
+              !search && itemsToShow < artisan.length && (<button onClick={handleLoadMore} >Load more</button>)
             }
           </div>
         </Container>

@@ -29,7 +29,8 @@
   border-color: gray;
 }
 .review--container .review--content .review .review--textarea textarea:focus-within {
-  border-color: lightblue;
+  outline: none !important;
+  border: 2px solid #6bacf1;
 }
 .review--container .review--content .review .review--btn {
   display: flex;

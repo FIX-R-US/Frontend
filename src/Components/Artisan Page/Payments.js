@@ -45,6 +45,7 @@ function Payments() {
         <ProfileHeader title={'Payment'}/>
         <div className='payment--text'>
           <h4>Please fill in correctly the necessary details to commence payment</h4>
+          <p>Amount: 100 cedis every month</p>
         </div>
           <div className="checkout">
             <div className="checkout-form">

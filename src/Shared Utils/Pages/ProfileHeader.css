@@ -34,6 +34,9 @@
 }
 
 @media (max-width: 290px) {
+  .profile--header {
+    height: 50px;
+  }
   .profile--header .left--header h4 {
     font-size: 15px;
   }

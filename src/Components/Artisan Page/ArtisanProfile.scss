@@ -115,6 +115,9 @@
     .profile--artisan-container{
         .whole--content{
           .artisan--down{
+            .book--btn{
+                width: 25%;
+            }
               .artisan--bottom{
                   .reveiwMap--container{
                       .review--map{
@@ -140,6 +143,9 @@
               }
           }
           .artisan--down{
+            .book--btn{
+                font-size: 12.5px;
+            }
               padding: 12px;
               .artisan--middle{
                 font-size: 15px;
@@ -180,6 +186,9 @@
           }
           .artisan--down{
               padding: 8px;
+              .book--btn{
+                width: 30%;
+            }
               .artisan--middle{
                 font-size: 12.5px;
                 h2{

@@ -67,7 +67,7 @@ function App() {
           <Route path="home" element={<Dashboard />} />
           <Route path="manageUsers" element={<UserManagement />} />
           <Route path="manageArtisans" element={<ArtisanManagement />} />
-          <Route path="verifyRegistration" element={<VerifyRegistration />} />
+          <Route path="verifyArtisans" element={<VerifyRegistration />} />
         </Route>
 
         <Route path="*" element={<PageNotFound />} />

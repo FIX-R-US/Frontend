@@ -26,7 +26,8 @@
                     border-color: gray;
 
                     &:focus-within{
-                        border-color: lightblue;
+                        outline: none !important;
+                        border: 2px solid #6bacf1;
                     }
                 }
             }

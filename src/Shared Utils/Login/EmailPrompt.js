@@ -29,7 +29,7 @@ function EmailPrompt() {
             <div className="prompt--textfield">
               <h2>Check your Email</h2>
               <p>
-                An email has been sent to andrew@gmail.com with a link to reset
+                An email has been sent to {email} with a link to reset
                 your password. Please click on the link to continue.
               </p>
             </div>

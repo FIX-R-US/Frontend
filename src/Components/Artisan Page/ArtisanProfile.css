@@ -99,6 +99,9 @@
   }
 }
 @media (max-width: 480px) {
+  .profile--artisan-container .whole--content .artisan--down .book--btn {
+    width: 25%;
+  }
   .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map .map--bottom {
     font-size: 13px;
   }
@@ -111,6 +114,9 @@
   }
   .profile--artisan-container .whole--content .artisan--down {
     padding: 12px;
+  }
+  .profile--artisan-container .whole--content .artisan--down .book--btn {
+    font-size: 12.5px;
   }
   .profile--artisan-container .whole--content .artisan--down .artisan--middle {
     font-size: 15px;
@@ -141,6 +147,9 @@
   }
   .profile--artisan-container .whole--content .artisan--down {
     padding: 8px;
+  }
+  .profile--artisan-container .whole--content .artisan--down .book--btn {
+    width: 30%;
   }
   .profile--artisan-container .whole--content .artisan--down .artisan--middle {
     font-size: 12.5px;

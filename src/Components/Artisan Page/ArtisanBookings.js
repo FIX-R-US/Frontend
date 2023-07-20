@@ -21,7 +21,6 @@ function ArtisanBookings() {
             <Table bordered hover responsive style={{color:'#7200CC'}} >
                 <thead>
                     <tr>
-                        <th>Username</th>
                         <th>Firstname</th>
                         <th>Lastname</th>
                         <th>Email</th>
@@ -34,7 +33,6 @@ function ArtisanBookings() {
                     {
                         filter.map(item => (
                             <tr key={item.id}>
-                                <td>{item.username}</td>
                                 <td>{item.first_name}</td>
                                 <td>{item.last_name}</td>
                                 <td>{item.email}</td>

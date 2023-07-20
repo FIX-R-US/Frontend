@@ -1,0 +1,45 @@
+.dashboard--container{
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+}
+.admin--cardDiv{
+    width: 50%;
+}
+.admin--cardContent{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.users--overview{
+    width: 10rem;
+    /* height: 200px; */
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px #212529;
+    color: #7200CC;
+
+    &:hover{
+        background-color: #AB66E1;
+        color: white;
+        cursor: pointer;
+        transform: scale(1.1);
+        transition: all 0.5s;
+    }
+}
+.admin--verification{
+    width: 50%;
+}
+.verification--overview{
+    border: none;
+    border-radius: 10px;
+    color: #7200CC;
+    box-shadow: 0px 0px 5px #212529;
+}
+.verification--overview:hover{
+    background-color: #68a9e2;
+    color: white;
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: all 0.5s;
+}

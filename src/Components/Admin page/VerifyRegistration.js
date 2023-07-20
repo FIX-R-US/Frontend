@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import artisan from "../../MOCK_DATA.json";
+import sammy from "../../MOCK_DATA.json";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import axios from "axios";
@@ -22,39 +22,42 @@ function VerifyRegistration() {
   }, []);
 
 
-  const reviews = [
-    {
-      review: "Sammy does really bad in programming. I strongly recommend. ",
-    },
-    {
-      review: "Sammy does really bad in programming. I strongly recommend. ",
-    },
-    {
-      review: "Sammy does really bad in programming. I strongly recommend. ",
-    },
-    {
-      review: "Sammy does really bad in programming. I strongly recommend. ",
-    },
-  ];
+  // const reviews = [
+  //   {
+  //     review: "Sammy does really bad in programming. I strongly recommend. ",
+  //   },
+  //   {
+  //     review: "Sammy does really bad in programming. I strongly recommend. ",
+  //   },
+  //   {
+  //     review: "Sammy does really bad in programming. I strongly recommend. ",
+  //   },
+  //   {
+  //     review: "Sammy does really bad in programming. I strongly recommend. ",
+  //   },
+  // ];
 
   const [sentiment, setSentiment] = useState(null);
 
-  const analzyeAllReviews = () => {
+  const analzyeAllReviews = (data) => {
     const sentimentAnalyzer = new Sentiment();
     let totalScore = 0;
     let positiveWords = [];
     let negativeWords = [];
 
-    for (const review of reviews) {
-      const result = sentimentAnalyzer.analyze(review.review);
+    // for (const review of reviews) {
+      const result = sentimentAnalyzer.analyze(data.description);
       totalScore += result.score;
       positiveWords = positiveWords.concat(result.positive)
       negativeWords = negativeWords.concat(result.negative)
-    }
+    // }
 
-    const averageScore = totalScore / reviews.length;
+    const averageScore = totalScore / data.length;
     const percentage = Math.min(100, Math.max(0, Math.round(((averageScore + 5) / 10) * 100)));
-
+    if(percentage < 80) return percentage
+    
+    // Perform API call to verify artisans if percentage is 80 and above
+    return percentage
     setSentiment({
       score: averageScore,
       percentage: percentage,
@@ -88,11 +91,12 @@ function VerifyRegistration() {
               <th>Email</th>
               <th>National ID</th>
               <th>Certificate</th>
+              <th>Results</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
-            {artisan.map((item) => (
+            {sammy.map((item) => (
               <tr key={item.id}>
                 <td>{item.username}</td>
                 <td>{item.firstname}</td>
@@ -100,6 +104,7 @@ function VerifyRegistration() {
                 <td>{item.email}</td>
                 <td>{item.profile_photo}</td>
                 <td>{item.certificate}</td>
+                <td>{analzyeAllReviews(item)}</td>
                 <td>
                   {item.isVerified ? <MdVerified size={20}/> : 'Not Verified'}
                 </td>
