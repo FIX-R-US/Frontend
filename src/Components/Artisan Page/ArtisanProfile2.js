@@ -10,7 +10,17 @@ import axios from "axios";
 function ArtisanProfile2() {
   const id = useParams().id;
   const user_id = id;
-  const [artisan, setArtisan] = useState(null);
+  const username = localStorage.getItem("username");
+  const [artisan, setArtisan] = useState({
+    username: "",
+    id: "",
+    profile_photo: "",
+    occupation: "",
+    contact: "",
+    Description: "",
+    fullname: "",
+    location: "",
+  });
   const [review, setReviews] = useState([]);
 
   const [isRequested, setIsRequested] = useState(false);
@@ -21,7 +31,16 @@ function ArtisanProfile2() {
         .post("http://localhost:3001/details/getuser", { id })
         .then((data) => {
           console.log(data.data[0]);
-          setArtisan(data.data[0]);
+          setArtisan({
+            username: data.data[0].username,
+            id: data.data[0].id,
+            profile_photo: data.data[0].profile_photo,
+            occupation: data.data[0].occupation,
+            contact: data.data[0].contact,
+            Description: data.data[0].Description,
+            fullname: data.data[0].fullname,
+            location: data.data[0].location,
+          });
 
           // console.log("aa:", artisan[0]);
         });
@@ -36,11 +55,18 @@ function ArtisanProfile2() {
 
   const handleBooking = async () => {
     try {
-      await axios.post("", {
-        id: artisan.id,
-        request: "book",
-      });
-      setIsRequested(true);
+      const request = "book";
+      const user_id = id;
+      await axios
+        .post("http://localhost:3001/book/booking", {
+          user_id,
+          request,
+          username,
+        })
+        .then((data) => {
+          console.log(data.data);
+          setIsRequested(true);
+        });
     } catch (error) {
       console.error("Error sending booking request", error);
     }

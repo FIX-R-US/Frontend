@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import sammy from "../../MOCK_DATA.json";
+//import sammy from "../../MOCK_DATA.json";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import axios from "axios";
@@ -45,18 +45,21 @@ function VerifyRegistration() {
     let negativeWords = [];
 
     // for (const review of reviews) {
-      const result = sentimentAnalyzer.analyze(data.description);
-      totalScore += result.score;
-      positiveWords = positiveWords.concat(result.positive)
-      negativeWords = negativeWords.concat(result.negative)
+    const result = sentimentAnalyzer.analyze(data.description);
+    totalScore += result.score;
+    positiveWords = positiveWords.concat(result.positive);
+    negativeWords = negativeWords.concat(result.negative);
     // }
 
     const averageScore = totalScore / data.length;
-    const percentage = Math.min(100, Math.max(0, Math.round(((averageScore + 5) / 10) * 100)));
-    if(percentage < 80) return percentage
-    
+    const percentage = Math.min(
+      100,
+      Math.max(0, Math.round(((averageScore + 5) / 10) * 100))
+    );
+    if (percentage < 80) return percentage;
+
     // Perform API call to verify artisans if percentage is 80 and above
-    return percentage
+    return percentage;
     // setSentiment({
     //   score: averageScore,
     //   percentage: percentage,
@@ -97,7 +100,7 @@ function VerifyRegistration() {
             </tr>
           </thead>
           <tbody>
-            {sammy.map((item) => (
+            {artisan.map((item) => (
               <tr key={item.id}>
                 <td>{item.username}</td>
                 <td>{item.firstname}</td>

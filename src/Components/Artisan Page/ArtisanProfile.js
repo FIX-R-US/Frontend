@@ -10,7 +10,16 @@ import axios from "axios";
 function ArtisanProfile() {
   const navigate = useNavigate();
   const [review, setReviews] = useState([]);
-  const [artisan, setArtisan] = useState(null);
+  const [artisan, setArtisan] = useState({
+    username: "",
+    id: "",
+    profile_photo: "",
+    occupation: "",
+    contact: "",
+    Description: "",
+    fullname: "",
+    location: "",
+  });
   const id = localStorage.getItem("id");
   const user_id = id;
   useEffect(() => {
@@ -19,7 +28,16 @@ function ArtisanProfile() {
         .post("http://localhost:3001/details/getuser", { id })
         .then((data) => {
           console.log(data.data[0]);
-          setArtisan(data.data[0]);
+          setArtisan({
+            username: data.data[0].username,
+            id: data.data[0].id,
+            profile_photo: data.data[0].profile_photo,
+            occupation: data.data[0].occupation,
+            contact: data.data[0].contact,
+            Description: data.data[0].Description,
+            fullname: data.data[0].fullname,
+            location: data.data[0].location,
+          });
 
           // console.log("aa:", artisan[0]);
         });

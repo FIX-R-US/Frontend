@@ -5,7 +5,7 @@ import { HiEye, HiEyeOff } from "react-icons/hi";
 import welcome from "./welcome.png";
 import Header from "../../Components/Home page/Header";
 import axios from "axios";
-import {toast, ToastContainer} from 'react-toastify'
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
@@ -27,12 +27,24 @@ function Login() {
         if (data.data.user.isActive === 0) {
           toast.error("Account deactivated");
         } else {
-          toast.success('Login successful')
-          setTimeout(()=>{ navigate(`${data.data.user.role}/home`);},[5000])
+          toast.success("Login successful");
+          setTimeout(() => {
+            navigate(`${data.data.user.role}/home`);
+          }, [5000]);
           JSON.stringify(
             localStorage.setItem("username", data.data.user.username)
           );
           JSON.stringify(localStorage.setItem("id", data.data.user.id));
+          // JSON.stringify(
+          //   localStorage.setItem("lastname", data.data.user.lastname)
+          // );
+          // JSON.stringify(localStorage.setItem("email", data.data.user.email));
+          // JSON.stringify(
+          //   localStorage.setItem("contact", data.data.user.contact)
+          // );
+          // JSON.stringify(
+          //   localStorage.setItem("location", data.data.user.location)
+          // );
         }
       })
       .catch((error) => {
@@ -57,7 +69,7 @@ function Login() {
 
   return (
     <div className="form--wrapper">
-      <ToastContainer/>
+      <ToastContainer />
       <div className="login--left">
         <Header />
         <div className="login--fields">

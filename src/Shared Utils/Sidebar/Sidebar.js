@@ -20,9 +20,9 @@ function Sidebar({ data }) {
   const id = localStorage.getItem("id");
 
   const handleLogout = () => {
-    setTimeout(()=>{
+    setTimeout(() => {
       navigate("/login");
-    },[1500])
+    }, [1500]);
     localStorage.removeItem("username");
     localStorage.removeItem("id");
   };
@@ -46,7 +46,7 @@ function Sidebar({ data }) {
         });
     };
     handlePost();
-  }, []);
+  }, [id]);
 
   const width = {
     width: isOpen ? "250px" : "50px",

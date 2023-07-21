@@ -1,13 +1,13 @@
 import { React, useEffect, useState } from "react";
 // import photo from './card.jpg'
 import "./Home.css";
-import artisanData from "../../MOCK_DATA.json";
+// import artisanData from "../../MOCK_DATA.json";
 import Searchbar from "../../Shared Utils/Sidebar/Searchbar";
 import Container from "react-bootstrap/Container";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { LinkContainer } from "react-router-bootstrap";
-import {FaUserCircle} from 'react-icons/fa'
+import { FaUserCircle } from "react-icons/fa";
 
 function Home() {
   const navigate = useNavigate();
@@ -36,9 +36,9 @@ function Home() {
 
   const handleLoadMore = () => {
     setTimeout(() => {
-      setItemsToShow(prevItemsToShow => prevItemsToShow + 15)
-    }, 2500)
-  }
+      setItemsToShow((prevItemsToShow) => prevItemsToShow + 15);
+    }, 2500);
+  };
 
   const renderItems = () => {
     if (filter.length === 0) {
@@ -56,17 +56,20 @@ function Home() {
       );
     }
 
-    return filter.map(item => (
-      <div className='card--content' key={item.id}>
-          <div className='top--content'>
-            {item.profile_photo ? <img src={item.profile_photo} alt='' className='card--img'/> :
-             <FaUserCircle className='card--img'/> }    
-            <div className='card--details'>
-              <h5>{`${item.firstname} ${item.lastname}`}</h5>
-              <p id='occupation'>{item.occupation}</p>
-              <p >{item.location}</p>
-            </div>
+    return filter.map((item) => (
+      <div className="card--content" key={item.id}>
+        <div className="top--content">
+          {item.profile_photo ? (
+            <img src={item.profile_photo} alt="" className="card--img" />
+          ) : (
+            <FaUserCircle className="card--img" />
+          )}
+          <div className="card--details">
+            <h5>{`${item.firstname} ${item.lastname}`}</h5>
+            <p id="occupation">{item.occupation}</p>
+            <p>{item.location}</p>
           </div>
+        </div>
         <div className="bottom--content">
           <p>{item.Description}</p>
           <LinkContainer to={`viewProfile/${item.id}`}>
@@ -82,22 +85,19 @@ function Home() {
     ));
   };
 
-  return (  
-      <div className='card--container'>
-        <Container>
-          <Searchbar handleSearch={handleSearch}/> 
-          <div className='card--card'>
-          {renderItems()}
-          </div>
-          <div className='load--btn'>
-            {
-              !search && itemsToShow < artisan.length && (<button onClick={handleLoadMore} >Load more</button>)
-            }
-          </div>
-        </Container>
-       
-      </div>
-  )
+  return (
+    <div className="card--container">
+      <Container>
+        <Searchbar handleSearch={handleSearch} />
+        <div className="card--card">{renderItems()}</div>
+        <div className="load--btn">
+          {!search && itemsToShow < artisan.length && (
+            <button onClick={handleLoadMore}>Load more</button>
+          )}
+        </div>
+      </Container>
+    </div>
+  );
 }
 
 export default Home;

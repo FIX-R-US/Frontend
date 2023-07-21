@@ -12,12 +12,22 @@ function UserManagement() {
   const [search, setSearch] = useState("");
   const [artisan, setArtisan] = useState([]);
 
-  const filter = artisan.filter(
-    (item) =>
-      item.firstname.toLowerCase().includes(search) ||
-      item.lastname.toLowerCase().includes(search) ||
-      item.location.toLowerCase().includes(search)
-  );
+  const role = "user";
+  useEffect(() => {
+    axios
+      .post("http://localhost:3001/datauser/getuserdata", { role })
+      .then((data) => {
+        // console.log(data.data)
+        setArtisan(data.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+  // const filter = artisan.filter(
+  //   (item) =>
+  //     item.firstname.includes(search) ||
+  //     item.lastname.includes(search) ||
+  //     item.location.includes(search)
+  // );
   const handleAccountToggle = (id) => {
     axios.post("http://localhost:3001/isactive/active", { id }).then((data) => {
       console.log(data);
@@ -32,16 +42,6 @@ function UserManagement() {
       );
     });
   };
-  const role = "user";
-  useEffect(() => {
-    axios
-      .post("http://localhost:3001/datauser/getuserdata", { role })
-      .then((data) => {
-        // console.log(data.data)
-        setArtisan(data.data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
 
   return (
     <div className="Table--container">
@@ -69,7 +69,7 @@ function UserManagement() {
             </tr>
           </thead>
           <tbody>
-            {filter.map((item) => (
+            {artisan.map((item) => (
               <tr key={item.id}>
                 <td>{item.username}</td>
                 <td>{item.firstname}</td>
