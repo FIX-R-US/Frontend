@@ -15,7 +15,7 @@ function EditArtisanProfile() {
   const EmailRef = useRef();
   const ContactRef = useRef();
   const LocationRef = useRef();
-  const DescriptionRef = useRef(null);
+  const DescriptionRef = useRef();
   const ProfilepicRef = useRef();
   const VideoRef = useRef();
   const id = localStorage.getItem("id");
@@ -89,6 +89,7 @@ function EditArtisanProfile() {
         location,
         Description,
         profile_photo,
+        picture_videos,
         id,
       };
       send(values);
