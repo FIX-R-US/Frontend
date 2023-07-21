@@ -5,6 +5,8 @@ import { HiEye, HiEyeOff } from "react-icons/hi";
 import welcome from "./welcome.png";
 import Header from "../../Components/Home page/Header";
 import axios from "axios";
+import {toast, ToastContainer} from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
   const navigate = useNavigate();
@@ -23,16 +25,30 @@ function Login() {
       .then((data) => {
         console.log(data);
         if (data.data.user.isActive === 0) {
-          window.alert("you have been deactivated");
+          toast.error("Account deactivated");
         } else {
-          navigate(`${data.data.user.role}/home`);
+          toast.success('Login successful')
+          setTimeout(()=>{ navigate(`${data.data.user.role}/home`);},[5000])
           JSON.stringify(
             localStorage.setItem("username", data.data.user.username)
           );
           JSON.stringify(localStorage.setItem("id", data.data.user.id));
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        let errorMessage = "An error occurred during login";
+        if (error.response && error.response.data) {
+          if (error.response.data.message) {
+            errorMessage = error.response.data.message;
+          } else if (error.response.data.username) {
+            errorMessage = error.response.data.username;
+          } else if (error.response.data.password) {
+            errorMessage = error.response.data.password;
+          }
+        }
+        toast.error(errorMessage);
+        console.log(error);
+      });
   };
 
   const show = () => {
@@ -41,6 +57,7 @@ function Login() {
 
   return (
     <div className="form--wrapper">
+      <ToastContainer/>
       <div className="login--left">
         <Header />
         <div className="login--fields">

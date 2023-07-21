@@ -4,15 +4,13 @@ import { HiEye, HiEyeOff } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import Header from "../../Components/Home page/Header";
 import account from "./createaccount.png";
-import Notifications from "./Notifications";
 import axios from "axios";
+import {toast, ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function CreateAccount() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [showMessage, setShowMessage] = useState(false);
-  const [message, setMessage] = useState("");
-  const [bg, setBg] = useState("");
 
   const usernameRef = useRef();
   const emailRef = useRef();
@@ -37,9 +35,7 @@ function CreateAccount() {
       })
       .then((data) => {
         if (password !== confirmPassword) {
-          setShowMessage((prevShow) => !prevShow);
-          setMessage("Passwords do not match");
-          setBg("danger");
+         toast.error('Passwords do not match')
         } else {
           console.log(data);
           navigate(`${role}/${username}`);
@@ -50,13 +46,7 @@ function CreateAccount() {
 
   return (
     <div className="container--account">
-      {showMessage && (
-        <Notifications
-          message={message}
-          show={() => setShowMessage((prevShow) => !prevShow)}
-          bg={bg}
-        />
-      )}
+      <ToastContainer/>
       <div className="account--container">
         <div className="account--left">
           <Header />

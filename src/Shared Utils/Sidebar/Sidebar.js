@@ -20,7 +20,9 @@ function Sidebar({ data }) {
   const id = localStorage.getItem("id");
 
   const handleLogout = () => {
-    navigate("/login");
+    setTimeout(()=>{
+      navigate("/login");
+    },[1500])
     localStorage.removeItem("username");
     localStorage.removeItem("id");
   };
