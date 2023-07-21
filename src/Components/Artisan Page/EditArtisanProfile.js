@@ -36,7 +36,7 @@ function EditArtisanProfile() {
 
     const send = async (inputs) => {
       await axios
-        .post("http://localhost:3001/editp/editprofile", { inputs })
+        .post("http://localhost:3001/editp1/editartisanProfile", { inputs })
         .then((data) => {
           console.log(data);
           navigate("/login/artisan/home");
@@ -79,6 +79,20 @@ function EditArtisanProfile() {
         .catch((error) => {
           console.log(error);
         });
+    } else {
+      const values = {
+        username,
+        firstname,
+        lastname,
+        email,
+        contact,
+        location,
+        Description,
+        profile_photo,
+        picture_videos,
+        id,
+      };
+      send(values);
     }
   };
 
@@ -114,7 +128,7 @@ function EditArtisanProfile() {
             </div>
             <div className="artisanProfile--fields">
               <label>Description</label>
-              <textarea rows={3} cols={70} ref={DescriptionRef} />
+              <textarea ref={DescriptionRef} rows={3} cols={70} />
             </div>
             <div className="artisanProfile--fields">
               <label>Profile Picture</label>
