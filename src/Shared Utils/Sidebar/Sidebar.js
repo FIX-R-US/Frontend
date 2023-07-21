@@ -1,23 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaBars, FaUserAlt } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
 import "./Sidebar.css";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { GiAutoRepair } from "react-icons/gi";
 import { StyleRoot } from "radium";
-import userpic from '../../MOCK_DATA.json'
+//import userpic from "../../MOCK_DATA.json";
+import axios from "axios";
 
 function Sidebar({ data }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [artisan, setArtisan] = useState({
+    username: "",
+    id: "",
+    profile_photo: "",
+  });
   const navigate = useNavigate();
   const location = useLocation();
-  // const username = localStorage.getItem("username");
+  const id = localStorage.getItem("id");
 
   const handleLogout = () => {
     navigate("/login");
     localStorage.removeItem("username");
     localStorage.removeItem("id");
   };
+  // useEffect(() => {
+  //   const username = localStorage.getItem("username");
+  //   const id = localStorage.getItem("id");
+  //   console.log(username, id);
+  //   setArtisan({ username, id });
+  // }, []);
+  useEffect(() => {
+    const handlePost = async () => {
+      await axios
+        .post("http://localhost:3001/details/getuser", { id })
+        .then((data) => {
+          //console.log(data.data);
+          setArtisan({
+            username: data.data[0].username,
+            id: data.data[0].id,
+            profile_photo: data.data[0].profile_photo,
+          });
+        });
+    };
+    handlePost();
+  }, []);
 
   const width = {
     width: isOpen ? "250px" : "50px",
@@ -42,6 +69,7 @@ function Sidebar({ data }) {
       display: isOpen ? "flex" : "none",
     },
   };
+
   return (
     <StyleRoot>
       <div className="sidebar--container">
@@ -59,9 +87,13 @@ function Sidebar({ data }) {
             </div>
           </div>
           <div className="user--icon" style={display2}>
-            {userpic[0].profile_photo ? <img src={userpic[0].profile_photo} alt="" className="icon"/> : <FaUserAlt size={70} className="icon" /> }
+            {artisan.profile_photo ? (
+              <img src={artisan.profile_photo} alt="" className="icon" />
+            ) : (
+              <FaUserAlt size={70} className="icon" />
+            )}
             {/* <FaUserAlt size={75} className="icon" /> */}
-            <h5>{userpic[0].username}</h5>
+            <h5>{artisan.username}</h5>
           </div>
           <div className="bottom--section" style={display3}>
             <div>

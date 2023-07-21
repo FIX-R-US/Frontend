@@ -3,9 +3,9 @@ import sammy from "../../MOCK_DATA.json";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import axios from "axios";
-import {MdVerified} from 'react-icons/md'
-import './VerifyArtisan.css'
-import Sentiment from 'sentiment';
+import { MdVerified } from "react-icons/md";
+import "./VerifyArtisan.css";
+import Sentiment from "sentiment";
 // import {useState} from 'react'
 
 function VerifyRegistration() {
@@ -20,7 +20,6 @@ function VerifyRegistration() {
       })
       .catch((error) => console.log(error));
   }, []);
-
 
   // const reviews = [
   //   {
@@ -58,30 +57,32 @@ function VerifyRegistration() {
     
     // Perform API call to verify artisans if percentage is 80 and above
     return percentage
-    setSentiment({
-      score: averageScore,
-      percentage: percentage,
-      positiveWords,
-      negativeWords
-    });
-  }
+    // setSentiment({
+    //   score: averageScore,
+    //   percentage: percentage,
+    //   positiveWords,
+    //   negativeWords,
+    // });
+  };
 
   return (
     <div className="Table--container">
       <Container className="mt-3">
         <div className="analyze">
-          <button className="analyze--btn" onClick={analzyeAllReviews}>Analyze</button>
+          <button className="analyze--btn" onClick={analzyeAllReviews}>
+            Analyze
+          </button>
         </div>
         {sentiment !== null && (
-        <div>
-         <h4>Overall Sentiment Analysis</h4>
-          <p>Score: {sentiment.score}</p>
-          <p>Percentage: {sentiment.percentage}%</p>
-          <p>Positive Words: {sentiment.positiveWords.join(', ')}</p>
-          <p>Negative Words: {sentiment.negativeWords.join(', ')}</p>
-          {sentiment.percentage >= 80 && <button>Passed</button>}
-        </div>
-      )}
+          <div>
+            <h4>Overall Sentiment Analysis</h4>
+            <p>Score: {sentiment.score}</p>
+            <p>Percentage: {sentiment.percentage}%</p>
+            <p>Positive Words: {sentiment.positiveWords.join(", ")}</p>
+            <p>Negative Words: {sentiment.negativeWords.join(", ")}</p>
+            {sentiment.percentage >= 80 && <button>Passed</button>}
+          </div>
+        )}
         <Table bordered hover responsive style={{ color: "#7200CC" }}>
           <thead>
             <tr>
@@ -106,7 +107,7 @@ function VerifyRegistration() {
                 <td>{item.certificate}</td>
                 <td>{analzyeAllReviews(item)}</td>
                 <td>
-                  {item.isVerified ? <MdVerified size={20}/> : 'Not Verified'}
+                  {item.isVerified ? <MdVerified size={20} /> : "Not Verified"}
                 </td>
               </tr>
             ))}

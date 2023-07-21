@@ -6,7 +6,6 @@ import Container from "react-bootstrap/Container";
 import dp from "./slide1.jpg";
 import { useNavigate } from "react-router";
 import axios from "axios";
-import artisanD from '../../MOCK_DATA.json'
 
 function ArtisanProfile() {
   const navigate = useNavigate();
@@ -48,7 +47,15 @@ function ArtisanProfile() {
               <img src={dp} alt="" />} */}
               <img src={dp} alt="" />
             </div>
-            {artisanD[1].profile_photo ? <img src={artisanD[1].profile_photo} alt="" className="profile--icon"/> : <FaUserCircle size={100} className="profile--icon" />}
+            {artisan.profile_photo ? (
+              <img
+                src={artisan.profile_photo}
+                alt=""
+                className="profile--icon"
+              />
+            ) : (
+              <FaUserCircle size={100} className="profile--icon" />
+            )}
           </div>
           <div className="artisan--down">
             {artisan && (
@@ -68,10 +75,17 @@ function ArtisanProfile() {
               <div className="reveiwMap--container">
                 {review.map((item, index) => (
                   <div key={index} className="review--map">
-                    {artisanD[1].profile_photo ? <img src={artisanD[1].profile_photo} alt="" className="reviewMap--img"/> : <FaUserCircle size={60} className="reviewMap--img" />}
-                    {/* <FaUserCircle size={60} className="reviewMap--img" /> */}
+                    {artisan.profile_photo ? (
+                      <img
+                        src={artisan.profile_photo}
+                        alt=""
+                        className="reviewMap--img"
+                      />
+                    ) : (
+                      <FaUserCircle size={60} className="reviewMap--img" />
+                    )}
                     <div className="map--bottom">
-                      <p>ANONYMOUS</p>
+                      <p>@{item.username}</p>
                       <p className="p2">{item.review}</p>
                     </div>
                   </div>

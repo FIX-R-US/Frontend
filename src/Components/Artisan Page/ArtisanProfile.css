@@ -27,6 +27,8 @@
   background-color: white;
   border-radius: 50%;
   border: 1px solid #212529;
+  width: 150px;
+  height: 150px;
 }
 .profile--artisan-container .whole--content .artisan--down {
   padding: 20px;
@@ -79,6 +81,11 @@
   border-bottom: 1px solid #7200CC;
 }
 
+@media (max-width: 930px) {
+  .profile--artisan-container .whole--content .artisan--down .book--btn {
+    width: 15%;
+  }
+}
 @media (max-width: 560px) {
   .profile--artisan-container .whole--content .artisan--top .top--img {
     height: auto;
@@ -90,6 +97,9 @@
   .profile--artisan-container .whole--content .artisan--down {
     padding: 16px;
   }
+  .profile--artisan-container .whole--content .artisan--down .book--btn {
+    width: 20%;
+  }
   .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container {
     padding: 0;
   }
@@ -99,6 +109,17 @@
   }
 }
 @media (max-width: 480px) {
+  .profile--artisan-container .whole--content .artisan--top .profile--icon {
+    width: 85px;
+    height: 85px;
+    bottom: -40px;
+  }
+  .profile--artisan-container .whole--content .artisan--down .artisan--middle {
+    max-width: 76%;
+  }
+  .profile--artisan-container .whole--content .artisan--down .artisan--middle h2 {
+    font-size: 20px;
+  }
   .profile--artisan-container .whole--content .artisan--down .book--btn {
     width: 25%;
   }

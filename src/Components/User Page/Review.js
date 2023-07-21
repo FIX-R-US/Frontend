@@ -12,11 +12,12 @@ import axios from "axios";
 function Review() {
   const [showModal, setShowModal] = useState(false);
   const [artisan, setArtisan] = useState([]);
-
+  const username1 = localStorage.getItem("username");
   const options = artisan.map((item) => ({
     value: `${item.occupation}`,
     label: `${item.firstname} ${item.lastname}`,
     id: `${item.id}`,
+    username: username1,
   }));
 
   const [selectedOption, setSelectedOption] = useState();
@@ -36,8 +37,13 @@ function Review() {
     e.preventDefault();
     const review = reviewRef.current.value;
     const user_id = selectedOption.id;
+    const username = username1;
     axios
-      .post("http://localhost:3001/storereviews/reviews", { review, user_id })
+      .post("http://localhost:3001/storereviews/reviews", {
+        review,
+        user_id,
+        username,
+      })
       .then((data) => {
         console.log(data);
         if (!selectedOption || review.trim() === "") {
