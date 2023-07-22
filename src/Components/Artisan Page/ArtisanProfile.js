@@ -3,7 +3,13 @@ import { FaUserCircle } from "react-icons/fa";
 import "./ArtisanProfile.css";
 import ProfileHeader from "../../Shared Utils/Pages/ProfileHeader";
 import Container from "react-bootstrap/Container";
-import dp from "./slide1.jpg";
+import electrician from "./slide1.jpg";
+import plumber from './plumber.jpg'
+import hairdresser from './hairdresser.jpg'
+import carpenter from './carpenter.jpg'
+import cobbler from './cobbler.jpg'
+import painter from './painter.jpg'
+import barber from './barber.jpg'
 import { useNavigate } from "react-router";
 import axios from "axios";
 
@@ -54,6 +60,23 @@ function ArtisanProfile() {
       .catch((error) => console.log(error));
   }, [user_id]);
 
+  let coverPhoto;
+  if(artisan.occupation === 'Electrician'){
+    coverPhoto = <img src={electrician} alt=""/>
+  } else if(artisan.occupation === 'Hairdresser'){
+    coverPhoto = <img src={hairdresser} alt=""/>
+  } else if (artisan.occupation === 'Painter'){
+    coverPhoto = <img src={painter} alt=""/>
+  } else if (artisan.occupation === 'Carpenter'){
+    coverPhoto = <img src={carpenter} alt=""/>
+  } else if (artisan.occupation === 'Barber'){
+    coverPhoto = <img src={barber} alt=""/>
+  } else if (artisan.occupation === 'Plumber'){
+    coverPhoto = <img src={plumber} alt=""/>
+  } else if(artisan.occupation === 'Cobbler'){
+    coverPhoto = <img src={cobbler} alt=""/>
+  } 
+
   return (
     <div className="profile--artisan-container">
       <Container>
@@ -61,9 +84,7 @@ function ArtisanProfile() {
         <div className="whole--content">
           <div className="artisan--top">
             <div className="top--img">
-              {/* {artisan[1].profile_photo ? <img src={artisan[1].profile_photo} alt=""/> : 
-              <img src={dp} alt="" />} */}
-              <img src={dp} alt="" />
+              {coverPhoto}
             </div>
             {artisan.profile_photo ? (
               <img

@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
-import Form from "react-bootstrap/Form";
-// import userData from "../../MOCK_DATA.json";
 import axios from "axios";
 
 function ArtisanBookings() {
-  const [search, setSearch] = useState("");
   const [books, setBookings] = useState([]);
   const user_id = localStorage.getItem("id");
 
@@ -20,26 +17,12 @@ function ArtisanBookings() {
       .catch((error) => console.log(error));
   }, [user_id]);
 
-  //   const filter = userData.filter(
-  //     (item) =>
-  //       item.first_name.toLowerCase().includes(search) ||
-  //       item.last_name.toLowerCase().includes(search) ||
-  //       item.location.toLowerCase().includes(search) ||
-  //       item.contact.includes(search) ||
-  //       item.email.toLowerCase().includes(search)
-  //   );
+
   return (
     <div className="Table--container">
       <Container>
-        <div className="sticky--container">
-          <Form>
-            <Form.Control
-              placeholder="Search users"
-              type="search"
-              onChange={(e) => setSearch(e.target.value)}
-              className="my-3 sticky"
-            />
-          </Form>
+        <div style={{textAlign:'center'}}>
+          <h1 style={{ color: "#7200CC" }}>Bookings</h1>
         </div>
         <Table bordered hover responsive style={{ color: "#7200CC" }}>
           <thead>
