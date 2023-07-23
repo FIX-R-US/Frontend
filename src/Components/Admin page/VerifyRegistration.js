@@ -8,6 +8,7 @@ import Sentiment from "sentiment";
 
 function VerifyRegistration() {
   const [artisan, setArtisan] = useState([]);
+  // const [review, setReviews] = useState([]);
   const role = "artisan";
   useEffect(() => {
     axios
@@ -18,29 +19,36 @@ function VerifyRegistration() {
       })
       .catch((error) => console.log(error));
   }, []);
+  // const user_id = artisan.id
+  //   const handleclick = () => {
+  //     axios
+  //       .post("http://localhost:3001/review/display",{user_id})
+  //       .then((data) => {
+  //         // console.log(data.data)
+  //         setReviews(data.data);
+  //       })
+  //       .catch((error) => console.log(error));
+  //   };
 
-  const sentimentScore = (reviews) => {
-    if (!Array.isArray(reviews) || reviews.length === 0) return 0;
-    const sentiment = new Sentiment()
+  const sentimentScore = (review) => {
+    if (!Array.isArray(review) || review.length === 0) return 0;
+    const sentiment = new Sentiment();
     let totalScore = 0;
-    reviews.forEach((review) => {
-      const {score} = sentiment.analyze(review)
+    review.forEach((review) => {
+      const { score } = sentiment.analyze(review);
       totalScore += score;
-    })
-    const avgScore = totalScore / reviews.length
-    return avgScore
-  }
+    });
+    const avgScore = totalScore / review.length;
+    return avgScore;
+  };
 
-  
   return (
     <div className="Table--container">
       <Container className="mt-3">
         <div className="analyze">
-          <button className="analyze--btn">
-            Analyze
-          </button>
+          <button className="analyze--btn">Analyze</button>
         </div>
-    
+
         <Table bordered hover responsive style={{ color: "#7200CC" }}>
           <thead>
             <tr>

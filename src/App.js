@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Login from "./Shared Utils/Login/Login";
 import CreateAccount from "./Shared Utils/Login/CreateAccount";
 import UserRegistration from "./Components/Registration page/UserRegistration";
@@ -26,6 +26,13 @@ import ArtisanProfile2 from "./Components/Artisan Page/ArtisanProfile2";
 import ArtisanBookings from "./Components/Artisan Page/ArtisanBookings";
 
 function App() {
+  const ProtectedRoute = ({ children }) => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      return children;
+    }
+    return <Navigate to="/login" />;
+  };
   return (
     <div>
       <Routes>
@@ -43,33 +50,148 @@ function App() {
           path="createAccount/artisan/:username"
           element={<ArtisanRegistration />}
         />
-
         Routes for User Page
-        <Route path="login/user" element={<UserPage />}>
-          <Route path="home" element={<Home />} />
-          <Route path="home/viewProfile/:id" element={<ArtisanProfile2 />} />
-          <Route path="editProfile" element={<Profile />} />
-          <Route path="review" element={<Review />} />
-          <Route path="maps" element={<Map />} />
+        <Route
+          path="login/user"
+          element={
+            <ProtectedRoute>
+              <UserPage />
+            </ProtectedRoute>
+          }
+        >
+          <Route
+            path="home"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="home/viewProfile/:id"
+            element={
+              <ProtectedRoute>
+                <ArtisanProfile2 />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="editProfile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="review"
+            element={
+              <ProtectedRoute>
+                <Review />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="maps"
+            element={
+              <ProtectedRoute>
+                <Map />
+              </ProtectedRoute>
+            }
+          />
         </Route>
-
         Routes for Artisan Page
-        <Route path="login/artisan" element={<ArtisanPage />}>
-          <Route path="home" element={<ArtisanProfile />} />
-          <Route path="home/bookings" element={<ArtisanBookings />} />
-          <Route path="editProfile" element={<EditArtisanProfile />} />
-          <Route path="maps" element={<Map />} />
-          <Route path="payments" element={<Payments />} />
+        <Route
+          path="login/artisan"
+          element={
+            <ProtectedRoute>
+              <ArtisanPage />
+            </ProtectedRoute>
+          }
+        >
+          <Route
+            path="home"
+            element={
+              <ProtectedRoute>
+                <ArtisanProfile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="home/bookings"
+            element={
+              <ProtectedRoute>
+                <ArtisanBookings />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="editProfile"
+            element={
+              <ProtectedRoute>
+                <EditArtisanProfile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="maps"
+            element={
+              <ProtectedRoute>
+                <Map />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="payments"
+            element={
+              <ProtectedRoute>
+                <Payments />
+              </ProtectedRoute>
+            }
+          />
         </Route>
-
-        Routes for admin 
-        <Route path="login/admin" element={<AdminPage />}>
-          <Route path="home" element={<Dashboard />} />
-          <Route path="manageUsers" element={<UserManagement />} />
-          <Route path="manageArtisans" element={<ArtisanManagement />} />
-          <Route path="verifyArtisans" element={<VerifyRegistration />} />
+        Routes for admin
+        <Route
+          path="login/admin"
+          element={
+            <ProtectedRoute>
+              <AdminPage />
+            </ProtectedRoute>
+          }
+        >
+          <Route
+            path="home"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="manageUsers"
+            element={
+              <ProtectedRoute>
+                <UserManagement />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="manageArtisans"
+            element={
+              <ProtectedRoute>
+                <ArtisanManagement />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="verifyArtisans"
+            element={
+              <ProtectedRoute>
+                <VerifyRegistration />
+              </ProtectedRoute>
+            }
+          />
         </Route>
-
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>

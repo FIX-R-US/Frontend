@@ -23,6 +23,7 @@ function Login() {
     axios
       .post("http://localhost:3001/auth/login", { username, password })
       .then((data) => {
+        localStorage.setItem("user", JSON.stringify(data.data.user));
         console.log(data);
         if (data.data.user.isActive === 0) {
           toast.error("Account deactivated");
@@ -35,16 +36,19 @@ function Login() {
             localStorage.setItem("username", data.data.user.username)
           );
           JSON.stringify(localStorage.setItem("id", data.data.user.id));
-          // JSON.stringify(
-          //   localStorage.setItem("lastname", data.data.user.lastname)
-          // );
-          // JSON.stringify(localStorage.setItem("email", data.data.user.email));
-          // JSON.stringify(
-          //   localStorage.setItem("contact", data.data.user.contact)
-          // );
-          // JSON.stringify(
-          //   localStorage.setItem("location", data.data.user.location)
-          // );
+          JSON.stringify(
+            localStorage.setItem("firstname", data.data.user.firstname)
+          );
+          JSON.stringify(
+            localStorage.setItem("lastname", data.data.user.lastname)
+          );
+          JSON.stringify(localStorage.setItem("email", data.data.user.email));
+          JSON.stringify(
+            localStorage.setItem("contact", data.data.user.contact)
+          );
+          JSON.stringify(
+            localStorage.setItem("location", data.data.user.location)
+          );
         }
       })
       .catch((error) => {

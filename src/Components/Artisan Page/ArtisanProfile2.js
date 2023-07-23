@@ -4,19 +4,23 @@ import "./ArtisanProfile.css";
 import ProfileHeader from "../../Shared Utils/Pages/ProfileHeader";
 import Container from "react-bootstrap/Container";
 import electrician from "./slide1.jpg";
-import plumber from './plumber.jpg'
-import hairdresser from './hairdresser.jpg'
-import carpenter from './carpenter.jpg'
-import cobbler from './cobbler.jpg'
-import painter from './painter.jpg'
-import barber from './barber.jpg'
+import plumber from "./plumber.jpg";
+import hairdresser from "./hairdresser.jpg";
+import carpenter from "./carpenter.jpg";
+import cobbler from "./cobbler.jpg";
+import painter from "./painter.jpg";
+import barber from "./barber.jpg";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
 function ArtisanProfile2() {
   const id = useParams().id;
   const user_id = id;
-  const username = localStorage.getItem("username");
+  const firstname = localStorage.getItem("firstname");
+  const lastname = localStorage.getItem("lastname");
+  const email = localStorage.getItem("email");
+  const contact = localStorage.getItem("contact");
+  const location = localStorage.getItem("location");
   const [artisan, setArtisan] = useState({
     username: "",
     id: "",
@@ -67,7 +71,11 @@ function ArtisanProfile2() {
         .post("http://localhost:3001/book/booking", {
           user_id,
           request,
-          username,
+          firstname,
+          lastname,
+          email,
+          contact,
+          location,
         })
         .then((data) => {
           console.log(data.data);
@@ -89,22 +97,21 @@ function ArtisanProfile2() {
   }, [user_id]);
 
   let coverPhoto;
-  if(artisan.occupation === 'Electrician'){
-    coverPhoto = <img src={electrician} alt=""/>
-  } else if(artisan.occupation === 'Hairdresser'){
-    coverPhoto = <img src={hairdresser} alt=""/>
-  } else if (artisan.occupation === 'Painter'){
-    coverPhoto = <img src={painter} alt=""/>
-  } else if (artisan.occupation === 'Carpenter'){
-    coverPhoto = <img src={carpenter} alt=""/>
-  } else if (artisan.occupation === 'Barber'){
-    coverPhoto = <img src={barber} alt=""/>
-  } else if (artisan.occupation === 'Plumber'){
-    coverPhoto = <img src={plumber} alt=""/>
-  } else if(artisan.occupation === 'Cobbler'){
-    coverPhoto = <img src={cobbler} alt=""/>
-  } 
-
+  if (artisan.occupation === "Electrician") {
+    coverPhoto = <img src={electrician} alt="" />;
+  } else if (artisan.occupation === "Hairdresser") {
+    coverPhoto = <img src={hairdresser} alt="" />;
+  } else if (artisan.occupation === "Painter") {
+    coverPhoto = <img src={painter} alt="" />;
+  } else if (artisan.occupation === "Carpenter") {
+    coverPhoto = <img src={carpenter} alt="" />;
+  } else if (artisan.occupation === "Barber") {
+    coverPhoto = <img src={barber} alt="" />;
+  } else if (artisan.occupation === "Plumber") {
+    coverPhoto = <img src={plumber} alt="" />;
+  } else if (artisan.occupation === "Cobbler") {
+    coverPhoto = <img src={cobbler} alt="" />;
+  }
 
   return (
     <div className="profile--artisan-container">
@@ -112,9 +119,7 @@ function ArtisanProfile2() {
         <ProfileHeader title={"Profile"} />
         <div className="whole--content">
           <div className="artisan--top">
-            <div className="top--img">
-              {coverPhoto}
-            </div>
+            <div className="top--img">{coverPhoto}</div>
             {artisan.profile_photo ? (
               <img
                 src={artisan.profile_photo}
