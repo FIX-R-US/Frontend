@@ -17,20 +17,20 @@ function Sidebar({ data }) {
   });
   const navigate = useNavigate();
   const location = useLocation();
-  const id = localStorage.getItem("id");
+  const id = sessionStorage.getItem("id");
 
   const handleLogout = () => {
     setTimeout(() => {
       navigate("/login");
     }, [1500]);
-    localStorage.removeItem("user");
-    localStorage.removeItem("username");
-    localStorage.removeItem("id");
-    localStorage.removeItem("firstname");
-    localStorage.removeItem("lastname");
-    localStorage.removeItem("email");
-    localStorage.removeItem("contact");
-    localStorage.removeItem("location");
+    sessionStorage.removeItem("user");
+    sessionStorage.removeItem("username");
+    sessionStorage.removeItem("id");
+    sessionStorage.removeItem("firstname");
+    sessionStorage.removeItem("lastname");
+    sessionStorage.removeItem("email");
+    sessionStorage.removeItem("contact");
+    sessionStorage.removeItem("location");
   };
   // useEffect(() => {
   //   const username = localStorage.getItem("username");

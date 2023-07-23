@@ -12,7 +12,7 @@ import axios from "axios";
 function Review() {
   const [showModal, setShowModal] = useState(false);
   const [artisan, setArtisan] = useState([]);
-  const username1 = localStorage.getItem("username");
+  const username1 = sessionStorage.getItem("username");
   const options = artisan.map((item) => ({
     value: `${item.occupation}`,
     label: `${item.firstname} ${item.lastname}`,

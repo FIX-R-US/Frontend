@@ -22,7 +22,7 @@ function Profile() {
   const ContactRef = useRef();
   const LocationRef = useRef();
   const ProfilepicRef = useRef();
-  const id = localStorage.getItem("id");
+  const id = sessionStorage.getItem("id");
   const navigate = useNavigate();
   const [pic, setCert] = useState("");
 

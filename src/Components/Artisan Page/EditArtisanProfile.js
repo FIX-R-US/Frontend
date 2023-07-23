@@ -18,7 +18,7 @@ function EditArtisanProfile() {
   const DescriptionRef = useRef();
   const ProfilepicRef = useRef();
   const VideoRef = useRef();
-  const id = localStorage.getItem("id");
+  const id = sessionStorage.getItem("id");
   const [pic, setCert] = useState("");
   // const [showProfilePic, setShowProfilePic] = useState();
 

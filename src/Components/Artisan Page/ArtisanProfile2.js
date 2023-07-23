@@ -15,12 +15,14 @@ import axios from "axios";
 
 function ArtisanProfile2() {
   const id = useParams().id;
-  const user_id = id;
-  const firstname = localStorage.getItem("firstname");
-  const lastname = localStorage.getItem("lastname");
-  const email = localStorage.getItem("email");
-  const contact = localStorage.getItem("contact");
-  const location = localStorage.getItem("location");
+  const artisan_id = id;
+
+  const firstname = sessionStorage.getItem("firstname");
+  const lastname = sessionStorage.getItem("lastname");
+  const email = sessionStorage.getItem("email");
+  const contact = sessionStorage.getItem("contact");
+  const location = sessionStorage.getItem("location");
+  const user_id = sessionStorage.getItem("id");
   const [artisan, setArtisan] = useState({
     username: "",
     id: "",
@@ -32,9 +34,20 @@ function ArtisanProfile2() {
     location: "",
   });
   const [review, setReviews] = useState([]);
-
   const [isRequested, setIsRequested] = useState(false);
 
+  useEffect(() => {
+    axios
+      .post("http://localhost:3001/bookings/check", { artisan_id, user_id })
+      .then((data) => {
+        console.log(data);
+        if (data.data.length == 0) {
+          setIsRequested(false);
+        } else {
+          setIsRequested(true);
+        }
+      });
+  }, []);
   useEffect(() => {
     const fetchDetails = async () => {
       await axios
@@ -66,9 +79,9 @@ function ArtisanProfile2() {
   const handleBooking = async () => {
     try {
       const request = "book";
-      const user_id = id;
       await axios
         .post("http://localhost:3001/book/booking", {
+          artisan_id,
           user_id,
           request,
           firstname,
@@ -88,13 +101,13 @@ function ArtisanProfile2() {
 
   useEffect(() => {
     axios
-      .post("http://localhost:3001/review/display", { user_id })
+      .post("http://localhost:3001/review/display", { artisan_id })
       .then((data) => {
         // console.log(data.data)
         setReviews(data.data);
       })
       .catch((error) => console.log(error));
-  }, [user_id]);
+  }, [artisan_id]);
 
   let coverPhoto;
   if (artisan.occupation === "Electrician") {
@@ -164,7 +177,7 @@ function ArtisanProfile2() {
                       <FaUserCircle size={60} className="reviewMap--img" />
                     )}
                     <div className="map--bottom">
-                      <p style={{color:'#7200CC'}}>@{item.username}</p>
+                      <p style={{ color: "#7200CC" }}>@{item.username}</p>
                       <p className="p2">{item.review}</p>
                     </div>
                   </div>
