@@ -74,7 +74,6 @@ function EditArtisanProfile() {
             .catch((error) => {
               console.log(error);
             });
-          console.log();
         })
         .catch((error) => {
           console.log(error);

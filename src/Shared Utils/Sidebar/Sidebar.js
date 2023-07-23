@@ -23,8 +23,14 @@ function Sidebar({ data }) {
     setTimeout(() => {
       navigate("/login");
     }, [1500]);
+    localStorage.removeItem("user");
     localStorage.removeItem("username");
     localStorage.removeItem("id");
+    localStorage.removeItem("firstname");
+    localStorage.removeItem("lastname");
+    localStorage.removeItem("email");
+    localStorage.removeItem("contact");
+    localStorage.removeItem("location");
   };
   // useEffect(() => {
   //   const username = localStorage.getItem("username");
@@ -37,7 +43,7 @@ function Sidebar({ data }) {
       await axios
         .post("http://localhost:3001/details/getuser", { id })
         .then((data) => {
-          //console.log(data.data);
+          console.log(data.data);
           setArtisan({
             username: data.data[0].username,
             id: data.data[0].id,

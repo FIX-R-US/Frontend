@@ -9,7 +9,7 @@ function ArtisanBookings() {
 
   useEffect(() => {
     axios
-      .post("http://localhost:3001/review/display", { user_id })
+      .post("http://localhost:3001/hasbooked/book", { user_id })
       .then((data) => {
         // console.log(data.data)
         setBookings(data.data);
@@ -17,11 +17,10 @@ function ArtisanBookings() {
       .catch((error) => console.log(error));
   }, [user_id]);
 
-
   return (
     <div className="Table--container">
       <Container>
-        <div style={{textAlign:'center'}}>
+        <div style={{ textAlign: "center" }}>
           <h1 style={{ color: "#7200CC" }}>Bookings</h1>
         </div>
         <Table bordered hover responsive style={{ color: "#7200CC" }}>
@@ -38,8 +37,8 @@ function ArtisanBookings() {
           <tbody>
             {books.map((item) => (
               <tr key={item.id}>
-                <td>{item.username}</td>
-                <td>{item.last_name}</td>
+                <td>{item.firstname}</td>
+                <td>{item.lastname}</td>
                 <td>{item.email}</td>
                 <td>{item.contact}</td>
                 <td>{item.location}</td>
