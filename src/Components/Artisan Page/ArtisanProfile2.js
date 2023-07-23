@@ -159,7 +159,7 @@ function ArtisanProfile2() {
                       <FaUserCircle size={60} className="reviewMap--img" />
                     )}
                     <div className="map--bottom">
-                      <p>@{item.username}</p>
+                      <p style={{color:'#7200CC'}}>@{item.username}</p>
                       <p className="p2">{item.review}</p>
                     </div>
                   </div>

@@ -73,6 +73,7 @@
 .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map .reviewMap--img {
   width: 60px;
   height: 60px;
+  border-radius: 50%;
 }
 .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map .map--bottom p {
   margin: 0;
