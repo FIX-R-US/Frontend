@@ -33,16 +33,21 @@ function ArtisanBookings() {
       return
     }
 
+     // Update the agreed price for the selected booking.
     const updatedBooking = {...selectedBooking, agreedPrice: parseFloat(agreedPrice), status: 'Accepted'}
 
+    // Find the booking with the given bookingId in the 'books' array.
     const updatedBookings = books.map((booking) => (
       booking.id === selectedBooking.id ? updatedBooking : booking
     ))
 
+    // Update the state with the updated 'books' array.
     setBookings(updatedBookings)
 
+    // Show a toast notification to confirm acceptance status and agreed price.
     toast.success(`Booking ${selectedBooking.id} accepted. Agreed Price: ${agreedPrice}`)
 
+    // Clear the selected booking and agreed price after confirmation.
     setSelectedBooking(null)
     setAgreedPrice('')
   }
@@ -53,12 +58,14 @@ function ArtisanBookings() {
   }
 
   const handleDeclineBooking = (bookingId) => {
+    // Remove the booking with the given bookingId from the 'books' array.
     const updatedBookings = books.filter((booking) => booking.id !== bookingId)
 
     setBookings(updatedBookings)
 
     toast.error(`Booking ${bookingId} rejected`)
 
+    // Clear the selected booking after rejection.
     setSelectedBooking(null)
   }
 
@@ -73,8 +80,7 @@ function ArtisanBookings() {
         <Table bordered hover responsive style={{ color: "#7200CC" }}>
           <thead>
             <tr>
-              <th>Firstname</th>
-              <th>Lastname</th>
+              <th>Name</th>
               <th>Email</th>
               <th>Contact</th>
               <th>Location</th>
@@ -84,13 +90,12 @@ function ArtisanBookings() {
           <tbody>
             {books.map((item) => (
               <tr key={item.id}>
-                <td>{item.firstname}</td>
-                <td>{item.lastname}</td>
+                <td>{item.firstname} {item.lastname}</td>
                 <td>{item.email}</td>
                 <td>{item.contact}</td>
                 <td>{item.location}</td>
                 <td style={{ display: "flex", gap: "10px" }}>
-                  {item.status === 'Accepted' ? (<span>Agreed Price: {item.agreedPrice}</span>) : (
+                  {item.status === 'Accepted' ? (<span>Agreed Price: {item.agreedPrice} cedis</span>) : (
                   <>
                     <button className="admin--btn" 
                     onClick={() => handleAcceptBooking(item)}>
