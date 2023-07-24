@@ -116,7 +116,7 @@ function ArtisanManagement() {
                 <td>{item.location}</td>
                 <td>{item.occupation}</td>
                 <td>
-                  {item.isVerified ? <MdVerified size={30} /> : "Not verified"}
+                  {item.isVerified ? <MdVerified size={40} /> : "Not verified"}
                 </td>
                 <td>{item.paymentMade ? "Yes" : "No"}</td>
                 <td>
