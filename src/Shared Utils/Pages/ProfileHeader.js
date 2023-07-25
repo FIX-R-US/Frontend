@@ -7,7 +7,7 @@ import "./ProfileHeader.css";
 import axios from "axios";
 
 function ProfileHeader({ title }) {
-  const id = localStorage.getItem("id");
+  const id = sessionStorage.getItem("id");
   const [artisan, setArtisan] = useState({
     username: "",
     id: "",

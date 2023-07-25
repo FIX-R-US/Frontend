@@ -27,7 +27,7 @@ import ArtisanBookings from "./Components/Artisan Page/ArtisanBookings";
 
 function App() {
   const ProtectedRoute = ({ children }) => {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(sessionStorage.getItem("user"));
     if (user) {
       return children;
     }
