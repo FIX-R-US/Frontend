@@ -45,10 +45,6 @@ function VerifyRegistration() {
   return (
     <div className="Table--container">
       <Container className="mt-3">
-        <div className="analyze">
-          <button className="analyze--btn">Analyze</button>
-        </div>
-
         <Table bordered hover responsive style={{ color: "#7200CC" }}>
           <thead>
             <tr>
@@ -73,7 +69,7 @@ function VerifyRegistration() {
                 <td>{item.certificate}</td>
                 <td>{sentimentScore(item.reviews)}</td>
                 <td>
-                  {item.isVerified ? <MdVerified size={20} /> : "Not Verified"}
+                  {item.isVerified ? <MdVerified size={60} /> : "Not Verified"}
                 </td>
               </tr>
             ))}

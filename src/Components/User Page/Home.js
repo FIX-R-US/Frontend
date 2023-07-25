@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { LinkContainer } from "react-router-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
-// import { useHistory } from "react-router-dom";
+
 function Home() {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
@@ -16,6 +16,7 @@ function Home() {
   const [artisan, setArtisan] = useState([]);
   // const history = useHistory();
   
+
   const filter = artisan
     .slice(0, itemsToShow)
     .filter(

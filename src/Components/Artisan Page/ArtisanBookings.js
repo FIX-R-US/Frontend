@@ -12,31 +12,50 @@ function ArtisanBookings() {
   const [selectedBooking, setSelectedBooking] = useState(null);
   const [agreedPrice, setAgreedPrice] = useState("");
   const artisan_id = sessionStorage.getItem("id");
-
+  // console.log("hello", books);
   useEffect(() => {
     axios
       .post("http://localhost:3001/hasbooked/book", { artisan_id })
       .then((data) => {
-        // console.log(data.data)
+        console.log(data.data);
         setBookings(data.data);
       })
       .catch((error) => console.log(error));
   }, [artisan_id]);
 
+  // useEffect(() => {
+  //   axios
+  //     .post("http://localhost:3001/booking/refresh", { artisan_id })
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
+  // }, [artisan_id]);
+
   const handleAcceptBooking = (booking) => {
     setSelectedBooking(booking);
   };
 
-  const handleConfirmAccept = () => {
+  const handleConfirmAccept = (id) => {
     if (!agreedPrice || isNaN(agreedPrice)) {
       toast.error("Please enter a valid agreed price.");
       return;
     }
+    axios
+      .post("http://localhost:3001/booking/accept", {
+        accepted: true,
+        agreedPrice,
+        id,
+      })
+      .then((data) => {
+        console.log(data);
+        setAgreedPrice(agreedPrice);
+        setSelectedBooking(null);
+      });
 
     const updatedBooking = {
       ...selectedBooking,
       agreedPrice: parseFloat(agreedPrice),
-      status: "Accepted",
+      accepted: true,
     };
 
     const updatedBookings = books.map((booking) =>
@@ -49,8 +68,7 @@ function ArtisanBookings() {
       `Booking ${selectedBooking.id} accepted. Agreed Price: ${agreedPrice}`
     );
 
-    setSelectedBooking(null);
-    setAgreedPrice("");
+    // const accepted = true;
   };
 
   const handleCloseModal = () => {
@@ -101,13 +119,13 @@ function ArtisanBookings() {
                 <td>{item.contact}</td>
                 <td>{item.location}</td>
                 <td style={{ display: "flex", gap: "10px" }}>
-                  {item.status === "Accepted" ? (
+                  {item.accepted ? (
                     <span>Agreed Price: {item.agreedPrice}</span>
                   ) : (
                     <>
                       <button
                         className="admin--btn"
-                        onClick={() => handleAcceptBooking(item.id)}
+                        onClick={() => handleAcceptBooking(item)}
                       >
                         Accept
                       </button>
@@ -141,9 +159,15 @@ function ArtisanBookings() {
             <Button variant="secondary" onClick={handleCloseModal}>
               Close
             </Button>
-            <Button variant="primary" onClick={handleConfirmAccept}>
-              Accept
-            </Button>
+
+            {books.map((item) => (
+              <Button
+                variant="primary"
+                onClick={() => handleConfirmAccept(item.id)}
+              >
+                Accept
+              </Button>
+            ))}
           </Modal.Footer>
         </Modal>
       </Container>

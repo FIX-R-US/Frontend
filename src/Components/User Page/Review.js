@@ -36,12 +36,12 @@ function Review() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const review = reviewRef.current.value;
-    const user_id = selectedOption.id;
+    const artisan_id = selectedOption.id;
     const username = username1;
     axios
       .post("http://localhost:3001/storereviews/reviews", {
         review,
-        user_id,
+        artisan_id,
         username,
       })
       .then((data) => {
