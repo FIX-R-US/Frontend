@@ -68,7 +68,10 @@ function ArtisanBookings() {
         toast.error(`Booking ${id} rejected`);
         setSelectedBooking(null);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error.message)
+        toast.error(error.message)
+      });
   };
 
   return (

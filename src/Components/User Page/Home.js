@@ -15,9 +15,7 @@ function Home() {
   const [itemsToShow, setItemsToShow] = useState(15);
   const [artisan, setArtisan] = useState([]);
   // const history = useHistory();
-  const handleViewProfile = () => {
-    navigate("/viewProfile");
-  };
+  
   const filter = artisan
     .slice(0, itemsToShow)
     .filter(

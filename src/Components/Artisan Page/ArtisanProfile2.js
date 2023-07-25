@@ -41,7 +41,7 @@ function ArtisanProfile2() {
       .post("http://localhost:3001/bookings/check", { artisan_id, user_id })
       .then((data) => {
         console.log(data);
-        if (data.data.length == 0) {
+        if (data.data.length === 0) {
           setIsRequested(false);
         } else {
           setIsRequested(true);
