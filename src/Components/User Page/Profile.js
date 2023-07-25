@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import ProfileHeader from "../../Shared Utils/Pages/ProfileHeader";
 import axios from "axios";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { storage } from "../../firebaseConfig.js";
+import { storage } from "../../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 
 function Profile() {
@@ -26,34 +26,6 @@ function Profile() {
   const navigate = useNavigate();
   const [pic, setCert] = useState("");
 
-  // const handleUsernameChange = (e) => {
-  //   setShowUsername(e.target.value);
-  // };
-
-  // const handleFirstnameChange = (e) => {
-  //   setShowFirstname(e.target.value);
-  // };
-
-  // const handleLastnameChange = (e) => {
-  //   setShowLastname(e.target.value);
-  // };
-
-  // const handleEmailChange = (e) => {
-  //   setShowEmail(e.target.value);
-  // };
-
-  // const handleContactChange = (e) => {
-  //   setShowContact(e.target.value);
-  // };
-
-  // const handleLocationChange = (e) => {
-  //   setShowLocation(e.target.value);
-  // };
-
-  // const handleProfilePic = (e) => {
-  //   setProfilePic(e.target.files);
-  // };
-
   const handleSave = (e) => {
     e.preventDefault();
     const username = UsernameRef.current.value;
@@ -63,6 +35,7 @@ function Profile() {
     const contact = ContactRef.current.value;
     const location = LocationRef.current.value;
     const profile_photo = ProfilepicRef.current.files[0];
+
     const send = async (inputs) => {
       await axios
         .post("http://localhost:3001/editp/editprofile", { inputs })
@@ -74,10 +47,10 @@ function Profile() {
     };
 
     // console.log("Saving profile data:", profileData);
-    if (profile_photo !== undefined || profile_photo !== null) {
+    if (profile_photo !== undefined && profile_photo !== null) {
       const storageRef = ref(
         storage,
-        `/docs/profilepics/${profile_photo}` + username
+        `/docs/profilepics/${profile_photo.name}` + id
       );
       const uploadTask = uploadBytesResumable(storageRef, profile_photo);
       uploadTask
