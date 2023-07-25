@@ -38,16 +38,16 @@ function EditArtisanProfile() {
       await axios
         .post("http://localhost:3001/editp1/editartisanProfile", { inputs })
         .then((data) => {
-          console.log(data);
+          console.log(data.data);
           navigate("/login/artisan/home");
         })
         .catch((error) => console.log(error));
     };
 
-    if (profile_photo !== undefined || profile_photo != null) {
+    if (profile_photo !== undefined && profile_photo != null) {
       const storageRef = ref(
         storage,
-        `/docs/profilepics(Artisans)/${profile_photo.name}` + username
+        `/docs/profilepics(Artisans)/${profile_photo.name}` + id
       );
       const uploadTask = uploadBytesResumable(storageRef, profile_photo);
       uploadTask
