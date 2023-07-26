@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { LinkContainer } from "react-router-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
+import { MdVerified } from "react-icons/md";
 
 function Home() {
   const navigate = useNavigate();
@@ -15,7 +16,6 @@ function Home() {
   const [itemsToShow, setItemsToShow] = useState(15);
   const [artisan, setArtisan] = useState([]);
   // const history = useHistory();
-  
 
   const filter = artisan
     .slice(0, itemsToShow)
@@ -67,7 +67,10 @@ function Home() {
             <FaUserCircle className="card--img" />
           )}
           <div className="card--details">
-            <h5>{`${item.firstname} ${item.lastname}`}</h5>
+            <h5>
+              {`${item.firstname} ${item.lastname}`}{" "}
+              {item.isVerified ? <MdVerified size={20} color="#7200CC" /> : ""}
+            </h5>
             <p id="occupation">{item.occupation}</p>
             <p>{item.location}</p>
           </div>

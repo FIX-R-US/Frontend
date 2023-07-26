@@ -30,6 +30,7 @@ function ArtisanRegistration() {
     const occupation = occupationRef.current.value;
     const certificate = certificateRef.current.files[0];
     const picture_video = certificateRef.current.files[0];
+    const isActive = "1";
     //console.log(firstname, lastname, contact, location, occupation);
     //console.log(file);
 
@@ -73,6 +74,7 @@ function ArtisanRegistration() {
             occupation,
             certificate: cert ? cert : "",
             picture_video: pic ? pic : "",
+            isActive,
             username,
           })
           .then((data) => {
