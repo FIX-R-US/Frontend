@@ -35,18 +35,31 @@
             flex-direction: column;
             justify-content: center;
             gap: 30px;
-            .landingright--btn{
-                width: 80%;
-                border: none;
-                border-radius: 5px;
-                background-color: #7200CC;
-                color: white;
-                font-weight: 600;
-                padding: 10px;
-    
-                &:hover{
-                    background-color: #AB66E1;
-                    transition: all 0.5s;
+            .aboutUs{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                .landingright--btn{
+                    width: 80%;
+                    border: none;
+                    border-radius: 5px;
+                    background-color: #7200CC;
+                    color: white;
+                    font-weight: 600;
+                    padding: 10px;
+        
+                    &:hover{
+                        background-color: #AB66E1;
+                        transition: all 0.5s;
+                    }
+                }
+                a{
+                    text-decoration: none;
+
+                    &:hover{
+                        color: #7200CC;
+                    }
                 }
             }
         }

@@ -1,0 +1,14 @@
+.bin--container{
+    text-align: end;
+    margin-bottom: 10px;
+}
+.trashcan{
+    color: #7200CC;
+
+    &:hover{
+        color: #AB66E1;
+        cursor: pointer;
+        transform: scale(1.2);
+        transition: all 0.5s;
+    }
+}

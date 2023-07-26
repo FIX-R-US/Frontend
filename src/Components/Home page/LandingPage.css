@@ -38,7 +38,13 @@
   justify-content: center;
   gap: 30px;
 }
-.landing--container .landing--rightside .right--content .landingright--btn {
+.landing--container .landing--rightside .right--content .aboutUs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.landing--container .landing--rightside .right--content .aboutUs .landingright--btn {
   width: 80%;
   border: none;
   border-radius: 5px;
@@ -47,9 +53,15 @@
   font-weight: 600;
   padding: 10px;
 }
-.landing--container .landing--rightside .right--content .landingright--btn:hover {
+.landing--container .landing--rightside .right--content .aboutUs .landingright--btn:hover {
   background-color: #AB66E1;
   transition: all 0.5s;
+}
+.landing--container .landing--rightside .right--content .aboutUs a {
+  text-decoration: none;
+}
+.landing--container .landing--rightside .right--content .aboutUs a:hover {
+  color: #7200CC;
 }
 
 @media (max-width: 920px) {

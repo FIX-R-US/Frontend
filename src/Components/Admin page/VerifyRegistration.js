@@ -69,7 +69,7 @@ function VerifyRegistration() {
                 <td>{item.certificate}</td>
                 <td>{sentimentScore(item.reviews)}</td>
                 <td>
-                  {item.isVerified ? <MdVerified size={60} /> : "Not Verified"}
+                  {item.isVerified ? <MdVerified size={50} /> : "Not Verified"}
                 </td>
               </tr>
             ))}

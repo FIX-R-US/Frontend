@@ -26,8 +26,9 @@ function LandingPage() {
                     <h3>Welcome to FIX-R-US</h3>
                     <p>Let's get started to your account and start the experience</p>
                  </div>
-                 <div>
+                 <div className='aboutUs'>
                     <button className='landingright--btn' onClick={()=>navigate('login')}>Get Started</button>
+                    <a href='./About'>About us</a>
                  </div>
             </div>
         </div>

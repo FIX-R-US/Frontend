@@ -12,6 +12,10 @@ import painter from "./painter.jpg";
 import barber from "./barber.jpg";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { MdVerified } from "react-icons/md";
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 
 function ArtisanProfile2() {
   const id = useParams().id;
@@ -32,6 +36,7 @@ function ArtisanProfile2() {
     Description: "",
     fullname: "",
     location: "",
+    isVerified:""
   });
   const [review, setReviews] = useState([]);
   const [isRequested, setIsRequested] = useState(false);
@@ -63,6 +68,7 @@ function ArtisanProfile2() {
             Description: data.data[0].Description,
             fullname: data.data[0].fullname,
             location: data.data[0].location,
+            isVerified: data.data[0].isVerified
           });
 
           // console.log("aa:", artisan[0]);
@@ -93,6 +99,7 @@ function ArtisanProfile2() {
         .then((data) => {
           console.log(data.data);
           setIsRequested(true);
+          toast.success('Booking Successful')
         });
     } catch (error) {
       console.error("Error sending booking request", error);
@@ -128,6 +135,7 @@ function ArtisanProfile2() {
 
   return (
     <div className="profile--artisan-container">
+      <ToastContainer/>
       <Container>
         <ProfileHeader title={"Profile"} />
         <div className="whole--content">
@@ -146,7 +154,7 @@ function ArtisanProfile2() {
           <div className="artisan--down">
             {artisan && (
               <div className="artisan--middle">
-                <h2>{artisan.fullname}</h2>
+                <h2>{artisan.fullname} {artisan.isVerified ? <MdVerified size={20} color="#7200CC"/> : ''}</h2>
                 <p className="p">{artisan.occupation}</p>
                 <p className="p">{artisan.location}</p>
                 <p className="p">{artisan.contact}</p>

@@ -6,6 +6,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import {BsFillTrash3Fill} from 'react-icons/bs'
+import './ArtisanBooking.css'
 
 function ArtisanBookings() {
   const [books, setBookings] = useState([]);
@@ -77,7 +79,7 @@ function ArtisanBookings() {
   };
 
   const handleDeclineBooking = (id) => {
-    const updatedBookings = books.filter((item) => item.id !== item.id);
+    const updatedBookings = books.filter((item) => !item.id);
     axios
       .post("http://localhost:3001/book/deleted", { id })
       .then((data) => {
@@ -92,12 +94,22 @@ function ArtisanBookings() {
       });
   };
 
+  const deleteAllBookings = () => {
+    const deleteAll = books.filter(() => false)
+    //API call
+    setBookings(deleteAll)
+    toast.info('Bookings Deleted')
+  }
+
   return (
     <div className="Table--container">
       <ToastContainer />
       <Container>
         <div style={{ textAlign: "center" }}>
           <h1 style={{ color: "#7200CC" }}>Bookings</h1>
+        </div>
+        <div className="bin--container">
+          <BsFillTrash3Fill size={21} className="trashcan" onClick={deleteAllBookings}/>
         </div>
         <Table bordered hover responsive style={{ color: "#7200CC" }}>
           <thead>

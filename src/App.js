@@ -24,6 +24,7 @@ import VerifyRegistration from "./Components/Admin page/VerifyRegistration";
 import PageNotFound from "./Shared Utils/Pages/PageNotFound";
 import ArtisanProfile2 from "./Components/Artisan Page/ArtisanProfile2";
 import ArtisanBookings from "./Components/Artisan Page/ArtisanBookings";
+import AboutUs from "./Components/Home page/AboutUs";
 
 function App() {
   const ProtectedRoute = ({ children }) => {
@@ -42,6 +43,7 @@ function App() {
         <Route path="checkEmail/:email" element={<EmailPrompt />} />
         <Route path="resetPassword/:email" element={<ResetPassword2 />} />
         <Route path="createAccount" element={<CreateAccount />} />
+        <Route path="/About" element={<AboutUs/>}/>
         <Route
           path="createAccount/user/:username"
           element={<UserRegistration />}

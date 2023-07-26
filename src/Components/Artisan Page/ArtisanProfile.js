@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import "./ArtisanProfile.css";
 import ProfileHeader from "../../Shared Utils/Pages/ProfileHeader";
@@ -12,9 +12,13 @@ import painter from "./painter.jpg";
 import barber from "./barber.jpg";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import { MdVerified } from "react-icons/md";
+import {BsCloudUploadFill} from 'react-icons/bs'
 
 function ArtisanProfile() {
   const navigate = useNavigate();
+  const fileRef = useRef()
+  const [upload, setUpload] = useState()
   const [review, setReviews] = useState([]);
   const [artisan, setArtisan] = useState({
     username: "",
@@ -25,6 +29,7 @@ function ArtisanProfile() {
     Description: "",
     fullname: "",
     location: "",
+    isVerified:""
   });
   const id = sessionStorage.getItem("id");
   const artisan_id = id;
@@ -43,6 +48,7 @@ function ArtisanProfile() {
             Description: data.data[0].Description,
             fullname: data.data[0].fullname,
             location: data.data[0].location,
+            isVerified: data.data[0].isVerified
           });
 
           // console.log("aa:", artisan[0]);
@@ -77,6 +83,11 @@ function ArtisanProfile() {
     coverPhoto = <img src={cobbler} alt="" />;
   }
 
+  const uploadWorks = () => {
+    const file = fileRef.current.files[0]
+    console.log(file)
+  }
+
   return (
     <div className="profile--artisan-container">
       <Container>
@@ -97,7 +108,7 @@ function ArtisanProfile() {
           <div className="artisan--down">
             {artisan && (
               <div className="artisan--middle">
-                <h2>{artisan.fullname}</h2>
+                <h2>{artisan.fullname} {artisan.isVerified ? <MdVerified size={20} color="#7200CC"/> : ''}</h2>
                 <p className="p">{artisan.occupation}</p>
                 <p className="p">{artisan.location}</p>
                 <p className="p">{artisan.contact}</p>
@@ -127,6 +138,10 @@ function ArtisanProfile() {
                     </div>
                   </div>
                 ))}
+              </div>
+              <div className="upload--works">
+                <input type="file" id="file" ref={fileRef} onChange={uploadWorks}/>
+                <label htmlFor="file"><BsCloudUploadFill size={20}/> Add works</label>
               </div>
             </div>
           </div>

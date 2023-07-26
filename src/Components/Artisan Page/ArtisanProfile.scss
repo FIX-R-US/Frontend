@@ -81,6 +81,29 @@
                     }
                 }
             }
+            .upload--works{
+                input{
+                    display: none;
+                }
+                label{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 5px;
+                    width: 12%;
+                    border-radius: 10px;
+                    padding: 5px;
+                    background-color: #7200CC;
+                    color: white;
+                    font-weight: 600;
+    
+                    &:hover{
+                        cursor: pointer;
+                        background-color: #AB66E1;
+                        transition: all 0.5;
+                    }
+                }
+            }
         }
     }
   }

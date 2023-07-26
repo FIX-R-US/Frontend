@@ -81,6 +81,26 @@
 .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map .map--bottom .p2 {
   border-bottom: 1px solid #7200CC;
 }
+.profile--artisan-container .whole--content .artisan--down .artisan--bottom .upload--works input {
+  display: none;
+}
+.profile--artisan-container .whole--content .artisan--down .artisan--bottom .upload--works label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 12%;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #7200CC;
+  color: white;
+  font-weight: 600;
+}
+.profile--artisan-container .whole--content .artisan--down .artisan--bottom .upload--works label:hover {
+  cursor: pointer;
+  background-color: #AB66E1;
+  transition: all 0.5;
+}
 
 @media (max-width: 930px) {
   .profile--artisan-container .whole--content .artisan--down .book--btn {
