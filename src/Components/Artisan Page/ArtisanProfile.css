@@ -101,6 +101,9 @@
   background-color: #AB66E1;
   transition: all 0.5;
 }
+.profile--artisan-container .whole--content .artisan--down .works--container {
+  margin-top: 20px;
+}
 
 @media (max-width: 930px) {
   .profile--artisan-container .whole--content .artisan--down .book--btn {

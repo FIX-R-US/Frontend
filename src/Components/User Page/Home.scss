@@ -31,6 +31,7 @@
                 }
                 .card--details{
                     height: 100%;
+                    width: 50%;
                     font-size: 14px;
                     #occupation{
                         margin-bottom: 8px;
@@ -107,6 +108,7 @@
                 width: 220px;
                 height: 260px;
                 .top--content{
+                    align-items: unset;
                     .card--img{
                         width: 90px;
                         height: 90px;

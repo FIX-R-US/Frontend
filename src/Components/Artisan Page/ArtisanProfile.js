@@ -24,7 +24,7 @@ function ArtisanProfile() {
   const [isLoading, setIsLoading] = useState(true);
   const [review, setReviews] = useState([]);
   const [cert, setCert] = useState("");
-  // const [pics, setPics] = useState("");  // for displaying pics
+  const [pics, setPics] = useState([]);  // for displaying pics
   const [artisan, setArtisan] = useState({
     username: "",
     id: "",
@@ -76,16 +76,17 @@ function ArtisanProfile() {
   }, [artisan_id]);
 
   //displaying the pics
-  // useEffect(() => {
-  //   axios
-  //     .post("http://localhost:3001/view/pic", { artisan_id })
-  //     .then((data) => {
-  //       // console.log(data.data)
-  //       setPics(data.data);
-  //
-  //     })
-  //     .catch((error) => console.log(error));
-  // }, [artisan_id]);
+  useEffect(() => {
+    axios
+      .post("http://localhost:3001/view/pic", { artisan_id })
+      .then((data) => {
+        // console.log(data.data)
+        setPics(data.data);
+  
+      })
+      .catch((error) => console.log(error));
+  }, [artisan_id]);
+
   let coverPhoto;
   if (artisan.occupation === "Electrician") {
     coverPhoto = <img src={electrician} alt="" />;
@@ -215,6 +216,17 @@ function ArtisanProfile() {
                 </label>
               </div>
             </div>
+              {pics.length > 0 && (
+                <div className="works--container">
+                  <h5>Works</h5>
+                  {pics.map((works) => (
+                    <div>
+                      <iframe src={works.picture_video}/>
+                      <img src={works.picture_video}/>
+                    </div>
+                  ))}
+                </div>
+              )}
           </div>
         </div>
       </Container>

@@ -38,6 +38,7 @@
 }
 .card--container .card--card .card--content .top--content .card--details {
   height: 100%;
+  width: 50%;
   font-size: 14px;
 }
 .card--container .card--card .card--content .top--content .card--details #occupation {
@@ -102,6 +103,9 @@
   .card--container .card--card .card--content {
     width: 220px;
     height: 260px;
+  }
+  .card--container .card--card .card--content .top--content {
+    align-items: unset;
   }
   .card--container .card--card .card--content .top--content .card--img {
     width: 90px;
