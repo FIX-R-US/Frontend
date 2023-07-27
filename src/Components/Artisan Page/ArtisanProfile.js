@@ -86,6 +86,7 @@ function ArtisanProfile() {
   //     })
   //     .catch((error) => console.log(error));
   // }, [artisan_id]);
+
   let coverPhoto;
   if (artisan.occupation === "Electrician") {
     coverPhoto = <img src={electrician} alt="" />;
@@ -118,15 +119,18 @@ function ArtisanProfile() {
       });
     });
     console.log(picture_video);
-    axios
-      .post("http://localhost:3001/pic/upload", {
-        picture_video: cert,
-        artisan_id,
-      })
-      .then((data) => {
-        console.log(data.data);
-      })
-      .catch((error) => console.log(error));
+
+    if (cert) {
+      axios
+        .post("http://localhost:3001/pic/upload", {
+          picture_video: cert,
+          artisan_id,
+        })
+        .then((data) => {
+          console.log(data.data);
+        })
+        .catch((error) => console.log(error));
+    }
   };
 
   //
