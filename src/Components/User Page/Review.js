@@ -8,9 +8,11 @@ import ProfileHeader from "../../Shared Utils/Pages/ProfileHeader";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import Spinner from 'react-bootstrap/Spinner'
 
 function Review() {
   const [showModal, setShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(true)
   const [artisan, setArtisan] = useState([]);
   const username1 = sessionStorage.getItem("username");
   const options = artisan.map((item) => ({
@@ -29,6 +31,7 @@ function Review() {
       .then((data) => {
         // console.log(data.data)
         setArtisan(data.data);
+        setIsLoading(false)
       })
       .catch((error) => console.log(error));
   }, []);
@@ -73,6 +76,16 @@ function Review() {
     fontWeight: "600",
     border: "none",
   };
+
+  if(isLoading){
+    return(
+      <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
+        <Spinner animation="grow" role="status" style={{color: '#7200CC'}}>
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div>
+    )
+  }
 
   return (
     <div className="review--container">
