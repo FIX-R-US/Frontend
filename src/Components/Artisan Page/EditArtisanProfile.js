@@ -17,7 +17,7 @@ function EditArtisanProfile() {
   const LocationRef = useRef();
   const DescriptionRef = useRef();
   const ProfilepicRef = useRef();
-  const VideoRef = useRef();
+  // const VideoRef = useRef();
   const id = sessionStorage.getItem("id");
   const [pic, setCert] = useState("");
   // const [showProfilePic, setShowProfilePic] = useState();
@@ -32,7 +32,7 @@ function EditArtisanProfile() {
     const location = LocationRef.current.value;
     const Description = DescriptionRef.current.value;
     const profile_photo = ProfilepicRef.current.files[0];
-    const picture_videos = VideoRef.current.files[0];
+    // const picture_videos = VideoRef.current.files[0];
 
     const send = async (inputs) => {
       await axios
@@ -65,7 +65,6 @@ function EditArtisanProfile() {
                 location,
                 Description,
                 profile_photo: url,
-                picture_videos,
                 id,
               };
               console.log("identity: ", id);
@@ -88,7 +87,6 @@ function EditArtisanProfile() {
         location,
         Description,
         profile_photo,
-        picture_videos,
         id,
       };
       send(values);
@@ -138,7 +136,7 @@ function EditArtisanProfile() {
                 ref={ProfilepicRef}
               />
             </div>
-            <div className="artisanProfile--fields">
+            {/* <div className="artisanProfile--fields">
               <label>Upload works</label>
               <input
                 type="file"
@@ -147,7 +145,7 @@ function EditArtisanProfile() {
                 accept="image/*"
                 ref={VideoRef}
               />
-            </div>
+            </div> */}
           </div>
           <div className="artisanProfile--btn">
             <button>Save</button>

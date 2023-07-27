@@ -16,8 +16,8 @@ function ArtisanRegistration() {
   const locationRef = useRef();
   const occupationRef = useRef();
   const certificateRef = useRef();
-  const picRef = useRef();
-  const [pic, setPic] = useState("");
+  // const picRef = useRef();
+  // const [pic, setPic] = useState("");
   const [file, setFile] = useState();
   const [cert, setCert] = useState("");
 
@@ -29,7 +29,7 @@ function ArtisanRegistration() {
     const location = locationRef.current.value;
     const occupation = occupationRef.current.value;
     const certificate = certificateRef.current.files[0];
-    const picture_video = certificateRef.current.files[0];
+    // const picture_video = certificateRef.current.files[0];
     const isActive = "1";
     //console.log(firstname, lastname, contact, location, occupation);
     //console.log(file);
@@ -50,20 +50,20 @@ function ArtisanRegistration() {
         });
       });
     }
-    if (picture_video !== undefined || picture_video !== null) {
-      const storageRef = ref(
-        storage,
-        `/docs/picture_video/${picture_video}` + username
-      );
-      await uploadBytesResumable(storageRef, picture_video).then((snapshot) => {
-        getDownloadURL(snapshot.ref).then((img) => {
-          // console.log("url:",
-          setPic(img);
-          console.log("mm: ", pic);
-        });
-      });
-    }
-    if (cert || pic) {
+    // if (picture_video !== undefined || picture_video !== null) {
+    //   const storageRef = ref(
+    //     storage,
+    //     `/docs/picture_video/${picture_video}` + username
+    //   );
+    //   await uploadBytesResumable(storageRef, picture_video).then((snapshot) => {
+    //     getDownloadURL(snapshot.ref).then((img) => {
+    //       // console.log("url:",
+    //       setPic(img);
+    //       console.log("mm: ", pic);
+    //     });
+    //   });
+    // }
+    if (cert) {
       setTimeout(() => {
         axios
           .post("http://localhost:3001/update/updateregister", {
@@ -73,20 +73,40 @@ function ArtisanRegistration() {
             location,
             occupation,
             certificate: cert ? cert : "",
-            picture_video: pic ? pic : "",
             isActive,
             username,
           })
           .then((data) => {
             console.log("hi:", data);
             console.log("Hello", certificate);
-            console.log("Hello", picture_video);
+            // console.log("Hello", picture_video);
             // console.log("Hello", location);
 
             navigate(`/login`);
           })
           .catch((error) => console.log(error));
       }, 3000);
+    } else {
+      axios
+        .post("http://localhost:3001/update/updateregister", {
+          firstname,
+          lastname,
+          contact,
+          location,
+          occupation,
+          certificate,
+          isActive,
+          username,
+        })
+        .then((data) => {
+          console.log("hi:", data);
+          console.log("Hello", certificate);
+          // console.log("Hello", picture_video);
+          // console.log("Hello", location);
+
+          navigate(`/login`);
+        })
+        .catch((error) => console.log(error));
     }
   };
 
@@ -140,7 +160,7 @@ function ArtisanRegistration() {
                   className="file--input"
                 />
               </div>
-              <div className="artisanCreate--field">
+              {/* <div className="artisanCreate--field">
                 <label htmlFor="projects">
                   Projects worked on(picture or video)
                 </label>
@@ -152,7 +172,7 @@ function ArtisanRegistration() {
                   multiple={true}
                   className="file--input"
                 />
-              </div>
+              </div> */}
             </div>
             <div className="artisanCreate--btn">
               {cert ? <button>Submit</button> : <button>Save</button>}

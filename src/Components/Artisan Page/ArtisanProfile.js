@@ -14,13 +14,17 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import { MdVerified } from "react-icons/md";
 import { BsCloudUploadFill } from "react-icons/bs";
-import Spinner from 'react-bootstrap/Spinner'
+import Spinner from "react-bootstrap/Spinner";
+import { storage } from "../../firebaseConfig.js";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 function ArtisanProfile() {
   const navigate = useNavigate();
   const fileRef = useRef();
   const [isLoading, setIsLoading] = useState(true);
   const [review, setReviews] = useState([]);
+  const [cert, setCert] = useState("");
+  // const [pics, setPics] = useState("");  // for displaying pics
   const [artisan, setArtisan] = useState({
     username: "",
     id: "",
@@ -31,7 +35,7 @@ function ArtisanProfile() {
     fullname: "",
     location: "",
     isVerified: "",
-    email: ''
+    email: "",
   });
   const id = sessionStorage.getItem("id");
   const artisan_id = id;
@@ -51,9 +55,9 @@ function ArtisanProfile() {
             fullname: data.data[0].fullname,
             location: data.data[0].location,
             isVerified: data.data[0].isVerified,
-            email: data.data[0].email
+            email: data.data[0].email,
           });
-          setIsLoading(false)
+          setIsLoading(false);
 
           // console.log("aa:", artisan[0]);
         });
@@ -66,11 +70,22 @@ function ArtisanProfile() {
       .then((data) => {
         // console.log(data.data)
         setReviews(data.data);
-        setIsLoading(false)
+        setIsLoading(false);
       })
       .catch((error) => console.log(error));
   }, [artisan_id]);
 
+  //displaying the pics
+  // useEffect(() => {
+  //   axios
+  //     .post("http://localhost:3001/view/pic", { artisan_id })
+  //     .then((data) => {
+  //       // console.log(data.data)
+  //       setPics(data.data);
+  //
+  //     })
+  //     .catch((error) => console.log(error));
+  // }, [artisan_id]);
   let coverPhoto;
   if (artisan.occupation === "Electrician") {
     coverPhoto = <img src={electrician} alt="" />;
@@ -89,18 +104,44 @@ function ArtisanProfile() {
   }
 
   const uploadWorks = () => {
-    const file = fileRef.current.files[0];
-    console.log(file);
+    const picture_video = fileRef.current.files[0];
+    const storageRef = ref(
+      storage,
+      `/docs/videos worked on/${picture_video}` + artisan.fullname
+    );
+    uploadBytesResumable(storageRef, picture_video).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        // console.log("url:",
+        setCert(url);
+        console.log(cert);
+        // console.log("mmm: ", cert);
+      });
+    });
+    console.log(picture_video);
+    axios
+      .post("http://localhost:3001/pic/upload", {
+        picture_video: cert,
+        artisan_id,
+      })
+      .then((data) => {
+        console.log(data.data);
+      })
+      .catch((error) => console.log(error));
   };
 
-  if(isLoading){
-    return(
-      <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
-        <Spinner animation="grow" role="status" style={{color: '#7200CC'}}>
+  //
+
+  if (isLoading) {
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "90vh" }}
+      >
+        <Spinner animation="grow" role="status" style={{ color: "#7200CC" }}>
           <span className="visually-hidden">Loading...</span>
         </Spinner>
       </div>
-    )
+    );
   }
 
   return (
