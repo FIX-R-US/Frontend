@@ -119,15 +119,18 @@ function ArtisanProfile() {
       });
     });
     console.log(picture_video);
-    axios
-      .post("http://localhost:3001/pic/upload", {
-        picture_video: cert,
-        artisan_id,
-      })
-      .then((data) => {
-        console.log(data.data);
-      })
-      .catch((error) => console.log(error));
+
+    if (cert) {
+      axios
+        .post("http://localhost:3001/pic/upload", {
+          picture_video: cert,
+          artisan_id,
+        })
+        .then((data) => {
+          console.log(data.data);
+        })
+        .catch((error) => console.log(error));
+    }
   };
 
   //
@@ -221,6 +224,7 @@ function ArtisanProfile() {
                   <h5>Works</h5>
                   {pics.map((works) => (
                     <div>
+                      {/* {works.artisan_id} */}
                       <iframe src={works.picture_video}/>
                       <img src={works.picture_video}/>
                     </div>
