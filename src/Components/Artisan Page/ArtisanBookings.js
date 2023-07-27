@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { BsFillTrash3Fill } from "react-icons/bs";
+import Spinner from 'react-bootstrap/Spinner'
 import "./ArtisanBooking.css";
 
 function ArtisanBookings() {
@@ -14,6 +15,7 @@ function ArtisanBookings() {
   const [selectedBooking, setSelectedBooking] = useState(null);
   const [agreedPrice, setAgreedPrice] = useState("");
   const [tableId, setTableId] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
   console.log("table", tableId);
   const artisan_id = sessionStorage.getItem("id");
   // console.log("hello", books);
@@ -23,6 +25,7 @@ function ArtisanBookings() {
       .then((data) => {
         console.log(data.data);
         setBookings(data.data);
+        setIsLoading(false)
       })
       .catch((error) => console.log(error));
   }, [artisan_id]);
@@ -82,7 +85,7 @@ function ArtisanBookings() {
   };
 
   const handleDeclineBooking = (id) => {
-    const updatedBookings = books.filter((item) => item.id !== item.id);
+    const updatedBookings = books.filter((item) => !item.id);
     axios
       .post("http://localhost:3001/book/deleted", { id })
       .then((data) => {
@@ -113,6 +116,16 @@ function ArtisanBookings() {
       });
     // setBookings(deleteAll)
   };
+
+  if(isLoading){
+    return(
+      <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
+        <Spinner animation="grow" role="status" style={{color: '#7200CC'}}>
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div>
+    )
+  }
 
   return (
     <div className="Table--container">

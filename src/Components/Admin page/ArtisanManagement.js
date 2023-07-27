@@ -1,5 +1,4 @@
 import React from "react";
-//import artisanData from "../../MOCK_DATA.json";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
@@ -8,11 +7,13 @@ import "./Search.css";
 import "./Management.css";
 import { MdVerified } from "react-icons/md";
 import axios from "axios";
+import Spinner from 'react-bootstrap/Spinner'
 
 function ArtisanManagement() {
   const [artisan, setArtisan] = useState([]);
   const [accountState, setAccountState] = useState(artisan);
   const [search, setSearch] = useState("");
+  const [isLoading, setIsLoading] = useState(true)
   const filter = artisan.filter(
     (item) =>
       item.firstname.toLowerCase().includes(search) ||
@@ -27,6 +28,7 @@ function ArtisanManagement() {
       .then((data) => {
         // console.log(data.data)
         setArtisan(data.data);
+        setIsLoading(false)
       })
       .catch((error) => console.log(error));
   }, []);
@@ -74,6 +76,16 @@ function ArtisanManagement() {
     setAccountState(paymentUpdate);
     // eslint-disable-next-line
   }, []);
+
+  if(isLoading){
+    return(
+      <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
+        <Spinner animation="grow" role="status" style={{color: '#7200CC'}}>
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div>
+    )
+  }
 
   return (
     <div className="Table--container">

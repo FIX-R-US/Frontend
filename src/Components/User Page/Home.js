@@ -1,7 +1,5 @@
 import { React, useEffect, useState } from "react";
-// import photo from './card.jpg'
 import "./Home.css";
-// import artisanData from "../../MOCK_DATA.json";
 import Searchbar from "../../Shared Utils/Sidebar/Searchbar";
 import Container from "react-bootstrap/Container";
 import { useNavigate } from "react-router-dom";
@@ -9,13 +7,14 @@ import axios from "axios";
 import { LinkContainer } from "react-router-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
 import { MdVerified } from "react-icons/md";
+import Spinner from 'react-bootstrap/Spinner'
 
 function Home() {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [itemsToShow, setItemsToShow] = useState(15);
   const [artisan, setArtisan] = useState([]);
-  // const history = useHistory();
+  const [isLoading, setIsLoading] = useState(true)
 
   const filter = artisan
     .slice(0, itemsToShow)
@@ -29,13 +28,24 @@ function Home() {
     axios.post("http://localhost:3001/data/getdata", { role }).then((data) => {
       // console.log(data.data)
       setArtisan(data.data);
+      setIsLoading(false)
     });
   }, []);
+
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
-
+  
+  if(isLoading){
+    return(
+      <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
+        <Spinner animation="grow" role="status" style={{color: '#7200CC'}}>
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div>
+    )
+  }
   const handleLoadMore = () => {
     setTimeout(() => {
       setItemsToShow((prevItemsToShow) => prevItemsToShow + 15);

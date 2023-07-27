@@ -5,9 +5,11 @@ import axios from "axios";
 import { MdVerified } from "react-icons/md";
 import "./VerifyArtisan.css";
 import Sentiment from "sentiment";
+import Spinner from 'react-bootstrap/Spinner'
 
 function VerifyRegistration() {
   const [artisan, setArtisan] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
   // const [review, setReviews] = useState([]);
   const role = "artisan";
   useEffect(() => {
@@ -16,6 +18,7 @@ function VerifyRegistration() {
       .then((data) => {
         // console.log(data.data)
         setArtisan(data.data);
+        setIsLoading(false)
       })
       .catch((error) => console.log(error));
   }, []);
@@ -81,6 +84,16 @@ function VerifyRegistration() {
     const avgScore = totalScore / review.length;
     return avgScore;
   };
+
+  if(isLoading){
+    return(
+      <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
+        <Spinner animation="grow" role="status" style={{color: '#7200CC'}}>
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div>
+    )
+  }
 
   return (
     <div className="Table--container">

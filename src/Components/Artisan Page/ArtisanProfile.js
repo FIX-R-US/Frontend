@@ -14,11 +14,12 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import { MdVerified } from "react-icons/md";
 import { BsCloudUploadFill } from "react-icons/bs";
+import Spinner from 'react-bootstrap/Spinner'
 
 function ArtisanProfile() {
   const navigate = useNavigate();
   const fileRef = useRef();
-  const [upload, setUpload] = useState();
+  const [isLoading, setIsLoading] = useState(true);
   const [review, setReviews] = useState([]);
   const [artisan, setArtisan] = useState({
     username: "",
@@ -30,6 +31,7 @@ function ArtisanProfile() {
     fullname: "",
     location: "",
     isVerified: "",
+    email: ''
   });
   const id = sessionStorage.getItem("id");
   const artisan_id = id;
@@ -49,7 +51,9 @@ function ArtisanProfile() {
             fullname: data.data[0].fullname,
             location: data.data[0].location,
             isVerified: data.data[0].isVerified,
+            email: data.data[0].email
           });
+          setIsLoading(false)
 
           // console.log("aa:", artisan[0]);
         });
@@ -62,6 +66,7 @@ function ArtisanProfile() {
       .then((data) => {
         // console.log(data.data)
         setReviews(data.data);
+        setIsLoading(false)
       })
       .catch((error) => console.log(error));
   }, [artisan_id]);
@@ -87,6 +92,16 @@ function ArtisanProfile() {
     const file = fileRef.current.files[0];
     console.log(file);
   };
+
+  if(isLoading){
+    return(
+      <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
+        <Spinner animation="grow" role="status" style={{color: '#7200CC'}}>
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div>
+    )
+  }
 
   return (
     <div className="profile--artisan-container">
@@ -119,6 +134,7 @@ function ArtisanProfile() {
                 <p className="p">{artisan.occupation}</p>
                 <p className="p">{artisan.location}</p>
                 <p className="p">{artisan.contact}</p>
+                <p className="p">{artisan.email}</p>
                 <p className="p">{artisan.Description}</p>
               </div>
             )}

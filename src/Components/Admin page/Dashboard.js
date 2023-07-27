@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
-//import userData from "../../MOCK_DATA.json";
 import axios from "axios";
 import Card from "react-bootstrap/Card";
 import { HiUsers } from "react-icons/hi";
@@ -8,10 +7,13 @@ import { MdEngineering } from "react-icons/md";
 import "./Dashboard.css";
 import { PieChart, Pie, Tooltip, Cell } from "recharts";
 import { useNavigate } from "react-router-dom";
+import Spinner from 'react-bootstrap/Spinner'
+
 
 function Dashboard() {
   const [artisan, setArtisan] = useState([]);
   const [user, setUser] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
   // const [userActive, setActive] = useState([]);
   // const [userInactive, setInactive] = useState([]);
   // const [userInactiveA, setInactiveA] = useState([]);
@@ -25,6 +27,7 @@ function Dashboard() {
         { role }
       );
       setUser(userResponse.data);
+      setIsLoading(false)
     };
     fetchData();
   }, []);
@@ -37,6 +40,7 @@ function Dashboard() {
         { role }
       );
       setArtisan(artisanResponse.data);
+      setIsLoading(false)
     };
     fetchme();
   }, []);
@@ -98,6 +102,16 @@ function Dashboard() {
   ];
 
   const COLORS = ["#8884d8", "#82ca9d"];
+
+  if(isLoading){
+    return(
+      <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
+        <Spinner animation="grow" role="status" style={{color: '#7200CC'}}>
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div>
+    )
+  }
 
   return (
     <div>

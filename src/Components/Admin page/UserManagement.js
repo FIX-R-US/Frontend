@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-//import userData from "../../MOCK_DATA.json";
 import Table from "react-bootstrap/Table";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -7,10 +6,19 @@ import { useState } from "react";
 import "./Search.css";
 import "./Management.css";
 import axios from "axios";
+import Spinner from 'react-bootstrap/Spinner'
 
 function UserManagement() {
   const [search, setSearch] = useState("");
   const [artisan, setArtisan] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
+
+  // const filter = artisan.filter(
+  //   (item) =>
+  //     item.firstname.includes(search) ||
+  //     item.lastname.includes(search) ||
+  //     item.location.includes(search)
+  // );
 
   const role = "user";
   useEffect(() => {
@@ -19,15 +27,11 @@ function UserManagement() {
       .then((data) => {
         // console.log(data.data)
         setArtisan(data.data);
+        setIsLoading(false)
       })
       .catch((error) => console.log(error));
   }, []);
-  // const filter = artisan.filter(
-  //   (item) =>
-  //     item.firstname.includes(search) ||
-  //     item.lastname.includes(search) ||
-  //     item.location.includes(search)
-  // );
+ 
   const handleAccountToggle = (id) => {
     axios.post("http://localhost:3001/isactive/active", { id }).then((data) => {
       console.log(data);
@@ -42,6 +46,16 @@ function UserManagement() {
       );
     });
   };
+
+  if(isLoading){
+    return(
+      <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
+        <Spinner animation="grow" role="status" style={{color: '#7200CC'}}>
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div>
+    )
+  }
 
   return (
     <div className="Table--container">

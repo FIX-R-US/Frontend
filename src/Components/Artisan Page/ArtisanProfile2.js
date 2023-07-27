@@ -15,6 +15,7 @@ import axios from "axios";
 import { MdVerified } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Spinner from 'react-bootstrap/Spinner'
 
 function ArtisanProfile2() {
   const id = useParams().id;
@@ -40,6 +41,7 @@ function ArtisanProfile2() {
   });
   const [review, setReviews] = useState([]);
   const [isRequested, setIsRequested] = useState(false);
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     axios
@@ -71,6 +73,7 @@ function ArtisanProfile2() {
             email: data.data[0].email,
             isVerified: data.data[0].isVerified,
           });
+          setIsLoading(false)
 
           // console.log("aa:", artisan[0]);
         });
@@ -116,6 +119,7 @@ function ArtisanProfile2() {
       .then((data) => {
         // console.log(data.data)
         setReviews(data.data);
+        setIsLoading(false)
       })
       .catch((error) => console.log(error));
   }, [artisan_id]);
@@ -135,6 +139,16 @@ function ArtisanProfile2() {
     coverPhoto = <img src={plumber} alt="" />;
   } else if (artisan.occupation === "Cobbler") {
     coverPhoto = <img src={cobbler} alt="" />;
+  }
+
+  if(isLoading){
+    return(
+      <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
+        <Spinner animation="grow" role="status" style={{color: '#7200CC'}}>
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+    </div>
+    )
   }
 
   return (
@@ -169,8 +183,8 @@ function ArtisanProfile2() {
                 <p className="p">{artisan.occupation}</p>
                 <p className="p">{artisan.location}</p>
                 <p className="p">{artisan.contact}</p>
-                <p className="p">{artisan.Description}</p>
                 <p className="p">{artisan.email}</p>
+                <p className="p">{artisan.Description}</p>
               </div>
             )}
             {isRequested ? (
