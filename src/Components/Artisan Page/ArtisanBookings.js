@@ -13,6 +13,8 @@ function ArtisanBookings() {
   const [books, setBookings] = useState([]);
   const [selectedBooking, setSelectedBooking] = useState(null);
   const [agreedPrice, setAgreedPrice] = useState("");
+  const [tableId, setTableId] = useState(null)
+  console.log("table", tableId);
   const artisan_id = sessionStorage.getItem("id");
   // console.log("hello", books);
   useEffect(() => {
@@ -34,10 +36,11 @@ function ArtisanBookings() {
   // }, [artisan_id]);
 
   const handleAcceptBooking = (booking) => {
+    setTableId(booking.id);
     setSelectedBooking(booking);
   };
 
-  const handleConfirmAccept = (id) => {
+  const handleConfirmAccept = () => {
     if (!agreedPrice || isNaN(agreedPrice)) {
       toast.error("Please enter a valid agreed price.");
       return;
@@ -46,7 +49,7 @@ function ArtisanBookings() {
       .post("http://localhost:3001/booking/accept", {
         accepted: true,
         agreedPrice,
-        id,
+        id:tableId
       })
       .then((data) => {
         console.log(data);
@@ -79,7 +82,7 @@ function ArtisanBookings() {
   };
 
   const handleDeclineBooking = (id) => {
-    const updatedBookings = books.filter((item) => !item.id);
+    const updatedBookings = books.filter((item) => item.id !== item.id);
     axios
       .post("http://localhost:3001/book/deleted", { id })
       .then((data) => {
@@ -172,14 +175,12 @@ function ArtisanBookings() {
               Close
             </Button>
 
-            {books.map((item) => (
               <Button
                 variant="primary"
-                onClick={() => handleConfirmAccept(item.id)}
+                onClick={() => handleConfirmAccept()}
               >
                 Accept
               </Button>
-            ))}
           </Modal.Footer>
         </Modal>
       </Container>
