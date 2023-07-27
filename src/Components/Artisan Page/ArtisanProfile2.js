@@ -13,9 +13,8 @@ import barber from "./barber.jpg";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { MdVerified } from "react-icons/md";
-import {ToastContainer, toast} from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function ArtisanProfile2() {
   const id = useParams().id;
@@ -36,7 +35,8 @@ function ArtisanProfile2() {
     Description: "",
     fullname: "",
     location: "",
-    isVerified:""
+    email: "",
+    isVerified: "",
   });
   const [review, setReviews] = useState([]);
   const [isRequested, setIsRequested] = useState(false);
@@ -68,7 +68,8 @@ function ArtisanProfile2() {
             Description: data.data[0].Description,
             fullname: data.data[0].fullname,
             location: data.data[0].location,
-            isVerified: data.data[0].isVerified
+            email: data.data[0].email,
+            isVerified: data.data[0].isVerified,
           });
 
           // console.log("aa:", artisan[0]);
@@ -83,6 +84,8 @@ function ArtisanProfile2() {
   // );
 
   const handleBooking = async () => {
+    // const artisan_email = artisan.email;
+
     try {
       const request = "book";
       await axios
@@ -95,11 +98,12 @@ function ArtisanProfile2() {
           email,
           contact,
           location,
+          artisan_email: artisan.email,
         })
         .then((data) => {
           console.log(data.data);
           setIsRequested(true);
-          toast.success('Booking Successful')
+          toast.success("Booking Successful");
         });
     } catch (error) {
       console.error("Error sending booking request", error);
@@ -135,7 +139,7 @@ function ArtisanProfile2() {
 
   return (
     <div className="profile--artisan-container">
-      <ToastContainer/>
+      <ToastContainer />
       <Container>
         <ProfileHeader title={"Profile"} />
         <div className="whole--content">
@@ -154,11 +158,19 @@ function ArtisanProfile2() {
           <div className="artisan--down">
             {artisan && (
               <div className="artisan--middle">
-                <h2>{artisan.fullname} {artisan.isVerified ? <MdVerified size={20} color="#7200CC"/> : ''}</h2>
+                <h2>
+                  {artisan.fullname}{" "}
+                  {artisan.isVerified ? (
+                    <MdVerified size={20} color="#7200CC" />
+                  ) : (
+                    ""
+                  )}
+                </h2>
                 <p className="p">{artisan.occupation}</p>
                 <p className="p">{artisan.location}</p>
                 <p className="p">{artisan.contact}</p>
                 <p className="p">{artisan.Description}</p>
+                <p className="p">{artisan.email}</p>
               </div>
             )}
             {isRequested ? (
@@ -175,7 +187,7 @@ function ArtisanProfile2() {
               <div className="reveiwMap--container">
                 {review.map((item, index) => (
                   <div key={index} className="review--map">
-                    {artisan.profile_photo ? (
+                    {/* {artisan.profile_photo ? (
                       <img
                         src={artisan.profile_photo}
                         alt=""
@@ -183,7 +195,7 @@ function ArtisanProfile2() {
                       />
                     ) : (
                       <FaUserCircle size={60} className="reviewMap--img" />
-                    )}
+                    )} */}
                     <div className="map--bottom">
                       <p style={{ color: "#7200CC" }}>@{item.username}</p>
                       <p className="p2">{item.review}</p>

@@ -6,8 +6,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import {BsFillTrash3Fill} from 'react-icons/bs'
-import './ArtisanBooking.css'
+import { BsFillTrash3Fill } from "react-icons/bs";
+import "./ArtisanBooking.css";
 
 function ArtisanBookings() {
   const [books, setBookings] = useState([]);
@@ -88,21 +88,31 @@ function ArtisanBookings() {
       .then((data) => {
         console.log(data);
         setBookings(updatedBookings);
-        toast.error(`Booking ${id} rejected`);
+        toast.error(`Booking rejected`);
         setSelectedBooking(null);
       })
       .catch((error) => {
-        console.log(error.message)
-        toast.error(error.message)
+        console.log(error.message);
+        toast.error(error.message);
       });
   };
 
-  const deleteAllBookings = () => {
-    const deleteAll = books.filter(() => false)
+  const deleteAllBookings = (id) => {
+    // const deleteAll = books.filter(() => false)
     //API call
-    setBookings(deleteAll)
-    toast.info('Bookings Deleted')
-  }
+
+    const accepted = 1;
+    axios
+      .post("http://localhost:3001/workedbooks/clear", { accepted, artisan_id })
+      .then((data) => {
+        console.log(data);
+        // setBookings(updatedBookings);
+        // toast.error(`Booking ${id} rejected`);
+        // setSelectedBooking(null);
+        toast.info("Bookings worked on Deleted");
+      });
+    // setBookings(deleteAll)
+  };
 
   return (
     <div className="Table--container">
@@ -112,7 +122,11 @@ function ArtisanBookings() {
           <h1 style={{ color: "#7200CC" }}>Bookings</h1>
         </div>
         <div className="bin--container">
-          <BsFillTrash3Fill size={21} className="trashcan" onClick={deleteAllBookings}/>
+          <BsFillTrash3Fill
+            size={21}
+            className="trashcan"
+            onClick={() => deleteAllBookings(books.id)}
+          />
         </div>
         <Table bordered hover responsive style={{ color: "#7200CC" }}>
           <thead>

@@ -19,6 +19,7 @@ function UserRegistration() {
     const lastname = lastNameRef.current.value;
     const contact = contactRef.current.value;
     const location = locationRef.current.value;
+    const isActive = "1";
     // console.log(firstName, lastName, contact, location)
     axios
       .post("http://localhost:3001/update/updateregister", {
@@ -26,6 +27,7 @@ function UserRegistration() {
         lastname,
         contact,
         location,
+        isActive,
         username,
       })
       .then((data) => {

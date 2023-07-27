@@ -31,7 +31,7 @@ function Login() {
           toast.success("Login successful");
           setTimeout(() => {
             navigate(`${data.data.user.role}/home`);
-          }, [5000]);
+          }, [3000]);
           JSON.stringify(
             sessionStorage.setItem("username", data.data.user.username)
           );

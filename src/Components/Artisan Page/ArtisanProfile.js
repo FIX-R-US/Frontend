@@ -13,12 +13,12 @@ import barber from "./barber.jpg";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { MdVerified } from "react-icons/md";
-import {BsCloudUploadFill} from 'react-icons/bs'
+import { BsCloudUploadFill } from "react-icons/bs";
 
 function ArtisanProfile() {
   const navigate = useNavigate();
-  const fileRef = useRef()
-  const [upload, setUpload] = useState()
+  const fileRef = useRef();
+  const [upload, setUpload] = useState();
   const [review, setReviews] = useState([]);
   const [artisan, setArtisan] = useState({
     username: "",
@@ -29,7 +29,7 @@ function ArtisanProfile() {
     Description: "",
     fullname: "",
     location: "",
-    isVerified:""
+    isVerified: "",
   });
   const id = sessionStorage.getItem("id");
   const artisan_id = id;
@@ -48,7 +48,7 @@ function ArtisanProfile() {
             Description: data.data[0].Description,
             fullname: data.data[0].fullname,
             location: data.data[0].location,
-            isVerified: data.data[0].isVerified
+            isVerified: data.data[0].isVerified,
           });
 
           // console.log("aa:", artisan[0]);
@@ -84,9 +84,9 @@ function ArtisanProfile() {
   }
 
   const uploadWorks = () => {
-    const file = fileRef.current.files[0]
-    console.log(file)
-  }
+    const file = fileRef.current.files[0];
+    console.log(file);
+  };
 
   return (
     <div className="profile--artisan-container">
@@ -108,7 +108,14 @@ function ArtisanProfile() {
           <div className="artisan--down">
             {artisan && (
               <div className="artisan--middle">
-                <h2>{artisan.fullname} {artisan.isVerified ? <MdVerified size={20} color="#7200CC"/> : ''}</h2>
+                <h2>
+                  {artisan.fullname}{" "}
+                  {artisan.isVerified ? (
+                    <MdVerified size={20} color="#7200CC" />
+                  ) : (
+                    ""
+                  )}
+                </h2>
                 <p className="p">{artisan.occupation}</p>
                 <p className="p">{artisan.location}</p>
                 <p className="p">{artisan.contact}</p>
@@ -123,7 +130,7 @@ function ArtisanProfile() {
               <div className="reveiwMap--container">
                 {review.map((item, index) => (
                   <div key={index} className="review--map">
-                    {artisan.profile_photo ? (
+                    {/* {artisan.profile_photo ? (
                       <img
                         src={artisan.profile_photo}
                         alt=""
@@ -131,7 +138,7 @@ function ArtisanProfile() {
                       />
                     ) : (
                       <FaUserCircle size={60} className="reviewMap--img" />
-                    )}
+                    )} */}
                     <div className="map--bottom">
                       <p style={{ color: "#7200CC" }}>@{item.username}</p>
                       <p className="p2">{item.review}</p>
@@ -140,8 +147,15 @@ function ArtisanProfile() {
                 ))}
               </div>
               <div className="upload--works">
-                <input type="file" id="file" ref={fileRef} onChange={uploadWorks}/>
-                <label htmlFor="file"><BsCloudUploadFill size={20}/> Add works</label>
+                <input
+                  type="file"
+                  id="file"
+                  ref={fileRef}
+                  onChange={uploadWorks}
+                />
+                <label htmlFor="file">
+                  <BsCloudUploadFill size={20} /> Add works
+                </label>
               </div>
             </div>
           </div>

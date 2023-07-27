@@ -19,16 +19,56 @@ function VerifyRegistration() {
       })
       .catch((error) => console.log(error));
   }, []);
-  // const user_id = artisan.id
-  //   const handleclick = () => {
-  //     axios
-  //       .post("http://localhost:3001/review/display",{user_id})
-  //       .then((data) => {
-  //         // console.log(data.data)
-  //         setReviews(data.data);
-  //       })
-  //       .catch((error) => console.log(error));
-  //   };
+  // const calculateSentiment = (reviews) => {
+  //   if (reviews.length === 0 || reviews.length === null) {
+  //     return 0;
+  //   }
+  //   const analyzer = new Sentiment();
+  //   const sentimentResults = reviews.map((review) =>
+  //     analyzer.analyze(review.review)
+  //   );
+
+  //   const scores = sentimentResults.map((item) => item.score);
+  //   console.log("chi", scores);
+
+  //   //Calculate average sentiment
+  //   const totalScore = scores.reduce((total, result) => total + result);
+
+  //   const averageSentiment = totalScore / scores.length;
+
+  //   //convert the average sentiment score to percentage
+  //   const sentimentPercentage = Math.round((averageSentiment + 5) * 10);
+  //   if (sentimentPercentage > 100) {
+  //     return 100;
+  //   } else if (sentimentPercentage < 0) {
+  //     return 0;
+  //   } else {
+  //     console.log(sentimentPercentage);
+  //     return sentimentPercentage;
+  //   }
+  // };
+
+  // export const sentimentA = async () => {
+  //   const role = "artisan";
+  //   const connection = getDbConnection();
+  //   const user = await runQuery(connection, fetcheveryone(), [role]);
+
+  //   user.forEach(async (item) => {
+  //     const reviewsArray = [];
+  //     const artisan_id = item.id;
+  //     const reviews = await runQuery(connection, getReviews(), [artisan_id]);
+  //     console.log(reviews);
+  //     console.log("Artisan ID:", artisan_id);
+  //     reviewsArray.push(...reviews);
+  //     // console.log("hello", reviewsArray);
+
+  //     const sentimentScore = calculateSentiment(reviewsArray);
+  //     if (sentimentScore < 65) return;
+  //     const id = artisan_id;
+  //     const artisans = await runQuery(connection, isVerified(), [id]);
+  //     console.log(artisans);
+  //   });
+  // };
 
   const sentimentScore = (review) => {
     if (!Array.isArray(review) || review.length === 0) return 0;
@@ -54,7 +94,7 @@ function VerifyRegistration() {
               <th>Email</th>
               <th>National ID</th>
               <th>Certificate</th>
-              <th>Results</th>
+              {/* <th>Results</th> */}
               <th>Status</th>
             </tr>
           </thead>
@@ -67,7 +107,7 @@ function VerifyRegistration() {
                 <td>{item.email}</td>
                 <td>{item.profile_photo}</td>
                 <td>{item.certificate}</td>
-                <td>{sentimentScore(item.reviews)}</td>
+                {/* <td>{sentimentScore(item.reviews)}</td> */}
                 <td>
                   {item.isVerified ? <MdVerified size={50} /> : "Not Verified"}
                 </td>
