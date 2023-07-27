@@ -23,8 +23,8 @@ function ArtisanProfile() {
   const fileRef = useRef();
   const [isLoading, setIsLoading] = useState(true);
   const [review, setReviews] = useState([]);
-  const [cert, setCert] = useState("");
-  const [pics, setPics] = useState([]);  // for displaying pics
+
+  const [pics, setPics] = useState([]); // for displaying pics
   const [artisan, setArtisan] = useState({
     username: "",
     id: "",
@@ -82,7 +82,6 @@ function ArtisanProfile() {
       .then((data) => {
         // console.log(data.data)
         setPics(data.data);
-  
       })
       .catch((error) => console.log(error));
   }, [artisan_id]);
@@ -113,24 +112,18 @@ function ArtisanProfile() {
     uploadBytesResumable(storageRef, picture_video).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
         // console.log("url:",
-        setCert(url);
-        console.log(cert);
+        axios
+          .post("http://localhost:3001/pic/upload", {
+            picture_video: url,
+            artisan_id,
+          })
+          .then((data) => {
+            console.log(data.data);
+          })
+          .catch((error) => console.log(error));
         // console.log("mmm: ", cert);
       });
     });
-    console.log(picture_video);
-
-    if (cert) {
-      axios
-        .post("http://localhost:3001/pic/upload", {
-          picture_video: cert,
-          artisan_id,
-        })
-        .then((data) => {
-          console.log(data.data);
-        })
-        .catch((error) => console.log(error));
-    }
   };
 
   //
@@ -219,18 +212,18 @@ function ArtisanProfile() {
                 </label>
               </div>
             </div>
-              {pics.length > 0 && (
-                <div className="works--container">
-                  <h5>Works</h5>
-                  {pics.map((works) => (
-                    <div>
-                      {/* {works.artisan_id} */}
-                      <iframe src={works.picture_video}/>
-                      <img src={works.picture_video}/>
-                    </div>
-                  ))}
-                </div>
-              )}
+            {pics.length > 0 && (
+              <div className="works--container">
+                <h5>Works</h5>
+                {pics.map((works) => (
+                  <div>
+                    {/* {works.artisan_id} */}
+                    <iframe src={works.picture_video} />
+                    <img src={works.picture_video} />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </Container>

@@ -7,15 +7,15 @@ import "react-toastify/dist/ReactToastify.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { BsFillTrash3Fill } from "react-icons/bs";
-import Spinner from 'react-bootstrap/Spinner'
+import Spinner from "react-bootstrap/Spinner";
 import "./ArtisanBooking.css";
 
 function ArtisanBookings() {
   const [books, setBookings] = useState([]);
   const [selectedBooking, setSelectedBooking] = useState(null);
   const [agreedPrice, setAgreedPrice] = useState("");
-  const [tableId, setTableId] = useState(null)
-  const [isLoading, setIsLoading] = useState(true)
+  const [tableId, setTableId] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   console.log("table", tableId);
   const artisan_id = sessionStorage.getItem("id");
   // console.log("hello", books);
@@ -25,7 +25,7 @@ function ArtisanBookings() {
       .then((data) => {
         console.log(data.data);
         setBookings(data.data);
-        setIsLoading(false)
+        setIsLoading(false);
       })
       .catch((error) => console.log(error));
   }, [artisan_id]);
@@ -52,7 +52,7 @@ function ArtisanBookings() {
       .post("http://localhost:3001/booking/accept", {
         accepted: true,
         agreedPrice,
-        id:tableId
+        id: tableId,
       })
       .then((data) => {
         console.log(data);
@@ -100,31 +100,37 @@ function ArtisanBookings() {
       });
   };
 
-  const deleteAllBookings = (id) => {
-    // const deleteAll = books.filter(() => false)
+  const deleteAllBookings = () => {
+    const deleteAll = books.filter(() => false);
     //API call
-
-    const accepted = 1;
+    const accepted = "1";
     axios
-      .post("http://localhost:3001/workedbooks/clear", { accepted, artisan_id })
+      .post("http://localhost:3001/workedbooks/clear", {
+        accepted,
+        artisan_id,
+      })
       .then((data) => {
-        console.log(data);
+        setBookings(deleteAll);
+        console.log(data.data);
+        // console.log(artisan_id);
         // setBookings(updatedBookings);
         // toast.error(`Booking ${id} rejected`);
         // setSelectedBooking(null);
         toast.info("Bookings worked on Deleted");
       });
-    // setBookings(deleteAll)
   };
 
-  if(isLoading){
-    return(
-      <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
-        <Spinner animation="grow" role="status" style={{color: '#7200CC'}}>
+  if (isLoading) {
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "90vh" }}
+      >
+        <Spinner animation="grow" role="status" style={{ color: "#7200CC" }}>
           <span className="visually-hidden">Loading...</span>
         </Spinner>
       </div>
-    )
+    );
   }
 
   return (
@@ -138,7 +144,7 @@ function ArtisanBookings() {
           <BsFillTrash3Fill
             size={21}
             className="trashcan"
-            onClick={() => deleteAllBookings(books.id)}
+            onClick={deleteAllBookings}
           />
         </div>
         <Table bordered hover responsive style={{ color: "#7200CC" }}>
@@ -202,12 +208,9 @@ function ArtisanBookings() {
               Close
             </Button>
 
-              <Button
-                variant="primary"
-                onClick={() => handleConfirmAccept()}
-              >
-                Accept
-              </Button>
+            <Button variant="primary" onClick={() => handleConfirmAccept()}>
+              Accept
+            </Button>
           </Modal.Footer>
         </Modal>
       </Container>
