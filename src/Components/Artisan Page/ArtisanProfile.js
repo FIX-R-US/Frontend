@@ -82,7 +82,7 @@ function ArtisanProfile() {
       .then((data) => {
         // console.log(data.data)
         setPics(data.data);
-        setIsLoading(false)
+        setIsLoading(false);
       })
       .catch((error) => console.log(error));
   }, [artisan_id]);
@@ -108,7 +108,7 @@ function ArtisanProfile() {
     const picture_video = fileRef.current.files[0];
     const storageRef = ref(
       storage,
-      `/docs/videos worked on/${picture_video}` + artisan.fullname
+      `/docs/videos worked on/${picture_video.name}` + artisan.fullname
     );
     uploadBytesResumable(storageRef, picture_video).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
@@ -183,7 +183,7 @@ function ArtisanProfile() {
             <div className="artisan--bottom">
               {review.length > 0 && (
                 <>
-                 <h5>Reviews</h5>
+                  <h5>Reviews</h5>
                   <div className="reveiwMap--container">
                     {review.map((item, index) => (
                       <div key={index} className="review--map">
@@ -217,39 +217,50 @@ function ArtisanProfile() {
                 </label>
               </div>
             </div>
-              {pics.length > 0 && (
-                <div className="works--container">
-                  <h5>Works</h5>
-                  <div style={{ display: "flex", gap: "10px", flexWrap:'wrap' }}>
-                    {pics.map((works) => {
-                      function getFileExtensionFromLink(link) {
-                        const lastDotIndex = link.lastIndexOf(".");
-                        if (lastDotIndex === -1) {
-                          // If there is no dot in the link, return an empty string
-                          return "";
-                        }
-                      
-                        // Extract the substring after the last dot (the file extension)
-                        const fileExtension = link.substring(lastDotIndex + 1).toLowerCase();
-                        return fileExtension;
+            {pics.length > 0 && (
+              <div className="works--container">
+                <h5>Works</h5>
+                <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                  {pics.map((works) => {
+                    function getFileExtensionFromLink(link) {
+                      const lastDotIndex = link.lastIndexOf(".");
+                      if (lastDotIndex === -1) {
+                        // If there is no dot in the link, return an empty string
+                        return "";
                       }
 
-                      const isVideo = getFileExtensionFromLink(works.picture_video) === 'mp4'
-                    return(
+                      // Extract the substring after the last dot (the file extension)
+                      const fileExtension = link
+                        .substring(lastDotIndex + 1)
+                        .toLowerCase();
+                      return fileExtension;
+                    }
+
+                    const isVideo =
+                      getFileExtensionFromLink(works.picture_video) === "mp4";
+                    return (
                       <div key={works.id}>
                         {isVideo ? (
                           <video width="350" height="400" controls>
-                            <source src={works.picture_video} type="video/mp4" />
+                            <source
+                              src={works.picture_video}
+                              type="video/mp4"
+                            />
                           </video>
                         ) : (
-                          <img src={works.picture_video} alt="" width="350" height="400" />
+                          <img
+                            src={works.picture_video}
+                            alt=""
+                            width="350"
+                            height="400"
+                          />
                         )}
                       </div>
-                    )
-                    })}
-                  </div>
+                    );
+                  })}
                 </div>
-              )}
+              </div>
+            )}
           </div>
         </div>
       </Container>
