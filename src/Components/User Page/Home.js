@@ -4,7 +4,6 @@ import Searchbar from "../../Shared Utils/Sidebar/Searchbar";
 import Container from "react-bootstrap/Container";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { LinkContainer } from "react-router-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
 import { MdVerified } from "react-icons/md";
 import Spinner from 'react-bootstrap/Spinner'
@@ -87,14 +86,12 @@ function Home() {
         </div>
         <div className="bottom--content">
           <p>{item.Description}</p>
-          <LinkContainer to={`viewProfile/${item.id}`}>
             <button
               className="card--btn"
-              onClick={() => navigate("viewProfile")}
+              onClick={() => navigate(`viewProfile/${item.id}`)}
             >
               View Profile
             </button>
-          </LinkContainer>
         </div>
       </div>
     ));

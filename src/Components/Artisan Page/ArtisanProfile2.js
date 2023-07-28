@@ -27,6 +27,8 @@ function ArtisanProfile2() {
   const contact = sessionStorage.getItem("contact");
   const location = sessionStorage.getItem("location");
   const user_id = sessionStorage.getItem("id");
+  const [pics, setPics] = useState([]);  // for displaying pics
+
   const [artisan, setArtisan] = useState({
     username: "",
     id: "",
@@ -124,6 +126,18 @@ function ArtisanProfile2() {
       .catch((error) => console.log(error));
   }, [artisan_id]);
 
+   //displaying the pics
+   useEffect(() => {
+    axios
+      .post("http://localhost:3001/view/pic", { artisan_id })
+      .then((data) => {
+        // console.log(data.data)
+        setPics(data.data);
+        setIsLoading(false)
+      })
+      .catch((error) => console.log(error));
+  }, [artisan_id]);
+
   let coverPhoto;
   if (artisan.occupation === "Electrician") {
     coverPhoto = <img src={electrician} alt="" />;
@@ -196,28 +210,42 @@ function ArtisanProfile2() {
                 Book
               </button>
             )}
-            <div className="artisan--bottom">
-              <h5>Reviews</h5>
-              <div className="reveiwMap--container">
-                {review.map((item, index) => (
-                  <div key={index} className="review--map">
-                    {/* {artisan.profile_photo ? (
-                      <img
-                        src={artisan.profile_photo}
-                        alt=""
-                        className="reviewMap--img"
-                      />
-                    ) : (
-                      <FaUserCircle size={60} className="reviewMap--img" />
-                    )} */}
-                    <div className="map--bottom">
-                      <p style={{ color: "#7200CC" }}>@{item.username}</p>
-                      <p className="p2">{item.review}</p>
+            {review.length > 0 && (
+              <div className="artisan--bottom">
+                <h5>Reviews</h5>
+                <div className="reveiwMap--container">
+                  {review.map((item, index) => (
+                    <div key={index} className="review--map">
+                      {/* {artisan.profile_photo ? (
+                        <img
+                          src={artisan.profile_photo}
+                          alt=""
+                          className="reviewMap--img"
+                        />
+                      ) : (
+                        <FaUserCircle size={60} className="reviewMap--img" />
+                      )} */}
+                      <div className="map--bottom">
+                        <p style={{ color: "#7200CC" }}>@{item.username}</p>
+                        <p className="p2">{item.review}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+                  ))}
+                </div>
+              </div>   
+            )}
+            {pics.length > 0 && (
+                <div className="works--container">
+                  <h5>Works</h5>
+                  {pics.map((works) => (
+                    <div>
+                      {/* {works.artisan_id} */}
+                      <iframe src={works.picture_video}/>
+                      <img src={works.picture_video} alt=""/>
+                    </div>
+                  ))}
+                </div>
+              )}
           </div>
         </div>
       </Container>

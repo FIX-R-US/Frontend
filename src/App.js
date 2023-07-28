@@ -52,7 +52,7 @@ function App() {
           path="createAccount/artisan/:username"
           element={<ArtisanRegistration />}
         />
-        Routes for User Page
+        {/* Routes for User Page */}
         <Route
           path="login/user"
           element={
@@ -102,7 +102,7 @@ function App() {
             }
           />
         </Route>
-        Routes for Artisan Page
+        {/* Routes for Artisan Page */}
         <Route
           path="login/artisan"
           element={
@@ -152,7 +152,7 @@ function App() {
             }
           />
         </Route>
-        Routes for admin
+        {/* Routes for admin */}
         <Route
           path="login/admin"
           element={

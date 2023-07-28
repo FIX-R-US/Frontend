@@ -82,7 +82,7 @@ function ArtisanProfile() {
       .then((data) => {
         // console.log(data.data)
         setPics(data.data);
-  
+        setIsLoading(false)
       })
       .catch((error) => console.log(error));
   }, [artisan_id]);
@@ -187,26 +187,30 @@ function ArtisanProfile() {
               Bookings
             </button>
             <div className="artisan--bottom">
-              <h5>Reviews</h5>
-              <div className="reveiwMap--container">
-                {review.map((item, index) => (
-                  <div key={index} className="review--map">
-                    {/* {artisan.profile_photo ? (
-                      <img
-                        src={artisan.profile_photo}
-                        alt=""
-                        className="reviewMap--img"
-                      />
-                    ) : (
-                      <FaUserCircle size={60} className="reviewMap--img" />
-                    )} */}
-                    <div className="map--bottom">
-                      <p style={{ color: "#7200CC" }}>@{item.username}</p>
-                      <p className="p2">{item.review}</p>
-                    </div>
+              {review.length > 0 && (
+                <>
+                 <h5>Reviews</h5>
+                  <div className="reveiwMap--container">
+                    {review.map((item, index) => (
+                      <div key={index} className="review--map">
+                        {/* {artisan.profile_photo ? (
+                          <img
+                            src={artisan.profile_photo}
+                            alt=""
+                            className="reviewMap--img"
+                          />
+                        ) : (
+                          <FaUserCircle size={60} className="reviewMap--img" />
+                        )} */}
+                        <div className="map--bottom">
+                          <p style={{ color: "#7200CC" }}>@{item.username}</p>
+                          <p className="p2">{item.review}</p>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </>
+              )}
               <div className="upload--works">
                 <input
                   type="file"
@@ -215,7 +219,7 @@ function ArtisanProfile() {
                   onChange={uploadWorks}
                 />
                 <label htmlFor="file">
-                  <BsCloudUploadFill size={20} /> Add works
+                  <BsCloudUploadFill size={16} /> Add works
                 </label>
               </div>
             </div>
@@ -226,7 +230,7 @@ function ArtisanProfile() {
                     <div>
                       {/* {works.artisan_id} */}
                       <iframe src={works.picture_video}/>
-                      <img src={works.picture_video}/>
+                      <img src={works.picture_video} alt=""/>
                     </div>
                   ))}
                 </div>

@@ -134,13 +134,15 @@ function ArtisanBookings() {
         <div style={{ textAlign: "center" }}>
           <h1 style={{ color: "#7200CC" }}>Bookings</h1>
         </div>
-        <div className="bin--container">
-          <BsFillTrash3Fill
-            size={21}
-            className="trashcan"
-            onClick={() => deleteAllBookings(books.id)}
-          />
-        </div>
+        {books.length > 0 && (
+          <div className="bin--container">
+            <BsFillTrash3Fill
+              size={21}
+              className="trashcan"
+              onClick={() => deleteAllBookings(books.id)}
+            />
+          </div>
+        )}
         <Table bordered hover responsive style={{ color: "#7200CC" }}>
           <thead>
             <tr>
