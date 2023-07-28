@@ -23,8 +23,8 @@ function ArtisanProfile() {
   const fileRef = useRef();
   const [isLoading, setIsLoading] = useState(true);
   const [review, setReviews] = useState([]);
-  const [cert, setCert] = useState("");
-  const [pics, setPics] = useState([]);  // for displaying pics
+
+  const [pics, setPics] = useState([]); // for displaying pics
   const [artisan, setArtisan] = useState({
     username: "",
     id: "",
@@ -113,24 +113,18 @@ function ArtisanProfile() {
     uploadBytesResumable(storageRef, picture_video).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
         // console.log("url:",
-        setCert(url);
-        console.log(cert);
+        axios
+          .post("http://localhost:3001/pic/upload", {
+            picture_video: url,
+            artisan_id,
+          })
+          .then((data) => {
+            console.log(data.data);
+          })
+          .catch((error) => console.log(error));
         // console.log("mmm: ", cert);
       });
     });
-    console.log(picture_video);
-
-    if (cert) {
-      axios
-        .post("http://localhost:3001/pic/upload", {
-          picture_video: cert,
-          artisan_id,
-        })
-        .then((data) => {
-          console.log(data.data);
-        })
-        .catch((error) => console.log(error));
-    }
   };
 
   //
