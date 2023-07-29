@@ -16,6 +16,7 @@ import { MdVerified } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from 'react-bootstrap/Spinner'
+import Prompts from "../../Prompts";
 
 function ArtisanProfile2() {
   const id = useParams().id;
@@ -44,6 +45,7 @@ function ArtisanProfile2() {
   const [review, setReviews] = useState([]);
   const [isRequested, setIsRequested] = useState(false);
   const [isLoading, setIsLoading] = useState(true)
+  const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
     axios
@@ -82,14 +84,10 @@ function ArtisanProfile2() {
     };
     fetchDetails();
   }, [id]);
-  // const filter = artisan.filter(
-  //   (item) =>
-  //     item.occupation.toLowerCase().includes() ||
-  //     item.location.toLowerCase().includes()
-  // );
+
 
   const handleBooking = async () => {
-    // const artisan_email = artisan.email;
+    setShowModal(prevShow => !prevShow)
 
     try {
       const request = "book";
@@ -112,6 +110,8 @@ function ArtisanProfile2() {
         });
     } catch (error) {
       console.error("Error sending booking request", error);
+      toast.error(error.message);
+
     }
   };
 
@@ -155,6 +155,10 @@ function ArtisanProfile2() {
     coverPhoto = <img src={cobbler} alt="" />;
   }
 
+  const openModal = () => {
+    setShowModal(prevShow => !prevShow)
+  }
+
   if(isLoading){
     return(
       <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
@@ -168,6 +172,8 @@ function ArtisanProfile2() {
   return (
     <div className="profile--artisan-container">
       <ToastContainer />
+      <Prompts showModal={showModal} hideModal={openModal} title={'Booking'} 
+      message={`Do you want to book ${artisan.fullname}?`} action={handleBooking}/>
       <Container>
         <ProfileHeader title={"Profile"} />
         <div className="whole--content">
@@ -202,11 +208,11 @@ function ArtisanProfile2() {
               </div>
             )}
             {isRequested ? (
-              <button disable className="book--btn">
+              <button disabled className="book--btn">
                 Requested
               </button>
             ) : (
-              <button onClick={handleBooking} className="book--btn">
+              <button onClick={openModal} className="book--btn">
                 Book
               </button>
             )}
@@ -234,16 +240,16 @@ function ArtisanProfile2() {
                 </div>
               </div>   
             )}
-            {pics.length > 0 && (
+              {pics.length > 0 && (
                 <div className="works--container">
                   <h5>Works</h5>
-                  {pics.map((works) => (
-                    <div>
-                      {/* {works.artisan_id} */}
-                      <iframe src={works.picture_video}/>
-                      <img src={works.picture_video} alt=""/>
-                    </div>
-                  ))}
+                  <div className="upload--container">
+                    {pics.map((works, index) => (
+                      <div key={index}>
+                        <img src={works.picture_video} alt=""/>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
           </div>

@@ -136,16 +136,6 @@ function EditArtisanProfile() {
                 ref={ProfilepicRef}
               />
             </div>
-            {/* <div className="artisanProfile--fields">
-              <label>Upload works</label>
-              <input
-                type="file"
-                className="artisanFile--input"
-                multiple={true}
-                accept="image/*"
-                ref={VideoRef}
-              />
-            </div> */}
           </div>
           <div className="artisanProfile--btn">
             <button>Save</button>

@@ -5,11 +5,12 @@ import "./Sidebar.css";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { GiAutoRepair } from "react-icons/gi";
 import { StyleRoot } from "radium";
-//import userpic from "../../MOCK_DATA.json";
 import axios from "axios";
+import Prompts from "../../Prompts";
 
 function Sidebar({ data }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false)
   const [artisan, setArtisan] = useState({
     username: "",
     id: "",
@@ -22,7 +23,7 @@ function Sidebar({ data }) {
   const handleLogout = () => {
     setTimeout(() => {
       navigate("/login");
-    }, [1500]);
+    }, [700]);
     sessionStorage.removeItem("user");
     sessionStorage.removeItem("username");
     sessionStorage.removeItem("id");
@@ -32,12 +33,12 @@ function Sidebar({ data }) {
     sessionStorage.removeItem("contact");
     sessionStorage.removeItem("location");
   };
-  // useEffect(() => {
-  //   const username = localStorage.getItem("username");
-  //   const id = localStorage.getItem("id");
-  //   console.log(username, id);
-  //   setArtisan({ username, id });
-  // }, []);
+
+  const openModal = () => {
+    setShowModal(prevShow => !prevShow)
+    setIsOpen(false)
+  }
+
   useEffect(() => {
     const handlePost = async () => {
       await axios
@@ -81,6 +82,8 @@ function Sidebar({ data }) {
   return (
     <StyleRoot>
       <div className="sidebar--container">
+        <Prompts showModal={showModal} hideModal={openModal} message={'Do you want to log out?'} 
+        action={handleLogout} title={'Logging out'}/>
         <div className="sidebar" style={width}>
           <div className="top--section">
             <div className="logo" style={display}>
@@ -100,7 +103,6 @@ function Sidebar({ data }) {
             ) : (
               <FaUserAlt size={70} className="icon" />
             )}
-            {/* <FaUserAlt size={75} className="icon" /> */}
             <h5>{artisan.username}</h5>
           </div>
           <div className="bottom--section" style={display3}>
@@ -125,7 +127,7 @@ function Sidebar({ data }) {
               <button
                 className="logout--btn"
                 style={display2}
-                onClick={handleLogout}
+                onClick={openModal}
               >
                 Logout <MdLogout size={20} />
               </button>
@@ -133,7 +135,7 @@ function Sidebar({ data }) {
               <MdLogout
                 className="logout--icon"
                 size={20}
-                onClick={handleLogout}
+                onClick={openModal}
               />
             )}
           </div>

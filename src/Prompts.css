@@ -1,0 +1,15 @@
+.modal--button{
+    background-color: #7200CC;
+    border: none;
+    width: 20%;
+    font-weight: 500;
+    padding: 7px;
+    color: white;
+    border-radius: 7px;
+
+
+    &:hover{
+        background-color: #AB66E1;
+        transition: all 0.5s;
+    }
+}

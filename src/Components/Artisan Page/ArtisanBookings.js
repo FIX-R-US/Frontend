@@ -5,10 +5,10 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import { BsFillTrash3Fill } from "react-icons/bs";
 import Spinner from "react-bootstrap/Spinner";
 import "./ArtisanBooking.css";
+import Prompts from "../../Prompts";
 
 function ArtisanBookings() {
   const [books, setBookings] = useState([]);
@@ -16,6 +16,8 @@ function ArtisanBookings() {
   const [agreedPrice, setAgreedPrice] = useState("");
   const [tableId, setTableId] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false)
+  const [showModal2, setShowModal2] = useState(false)
   console.log("table", tableId);
   const artisan_id = sessionStorage.getItem("id");
   // console.log("hello", books);
@@ -29,14 +31,6 @@ function ArtisanBookings() {
       })
       .catch((error) => console.log(error));
   }, [artisan_id]);
-
-  // useEffect(() => {
-  //   axios
-  //     .post("http://localhost:3001/booking/refresh", { artisan_id })
-  //     .then((data) => {
-  //       console.log(data);
-  //     });
-  // }, [artisan_id]);
 
   const handleAcceptBooking = (booking) => {
     setTableId(booking.id);
@@ -72,9 +66,12 @@ function ArtisanBookings() {
 
     setBookings(updatedBookings);
 
-    toast.success(
-      `Booking ${selectedBooking.id} accepted. Agreed Price: ${agreedPrice}`
-    );
+    setTimeout(() => {
+      toast.success(
+        `Booking ${selectedBooking.id} accepted. Agreed Price: ${agreedPrice}`
+      );
+    },[2000])
+
 
     // const accepted = true;
   };
@@ -85,11 +82,12 @@ function ArtisanBookings() {
   };
 
   const handleDeclineBooking = (id) => {
-    const updatedBookings = books.filter((item) => !item.id);
+    const updatedBookings = books.filter((item) => item.id !== id);
     axios
       .post("http://localhost:3001/book/deleted", { id })
       .then((data) => {
         console.log(data);
+        setShowModal2(prevShow => !prevShow)
         setBookings(updatedBookings);
         toast.error(`Booking rejected`);
         setSelectedBooking(null);
@@ -101,7 +99,7 @@ function ArtisanBookings() {
   };
 
   const deleteAllBookings = () => {
-    const deleteAll = books.filter(() => false);
+    const deleteAll = books.filter((booking) => !booking.accepted);
     //API call
     const accepted = "1";
     axios
@@ -112,13 +110,12 @@ function ArtisanBookings() {
       .then((data) => {
         setBookings(deleteAll);
         console.log(data.data);
-        // console.log(artisan_id);
-        // setBookings(updatedBookings);
-        // toast.error(`Booking ${id} rejected`);
-        // setSelectedBooking(null);
-        toast.info("Bookings worked on Deleted");
+        setShowModal(prevState => !prevState)
+        toast.info("Bookings worked on deleted");
       });
   };
+
+  const hasAcceptedBooking = books.some((booking) => booking.accepted)
 
   if (isLoading) {
     return (
@@ -133,19 +130,29 @@ function ArtisanBookings() {
     );
   }
 
+  const openModal = () => {
+    setShowModal(prevShow => !prevShow)
+  }
+
+  const openModal2 = () => {
+    setShowModal2(prevShow => !prevShow)
+  }
+
   return (
     <div className="Table--container">
       <ToastContainer />
+      <Prompts showModal={showModal} hideModal={openModal} title={'Delete all Agreed bookings'} 
+      message={'Do you want to delete all agreed bookings?'} action={() => deleteAllBookings(books.id)}/>
       <Container>
         <div style={{ textAlign: "center" }}>
           <h1 style={{ color: "#7200CC" }}>Bookings</h1>
         </div>
-        {books.length > 0 && (
+        {books.length > 0 && hasAcceptedBooking && (
           <div className="bin--container">
             <BsFillTrash3Fill
               size={21}
               className="trashcan"
-              onClick={() => deleteAllBookings(books.id)}
+              onClick={openModal}
             />
           </div>
         )}
@@ -163,6 +170,10 @@ function ArtisanBookings() {
           <tbody>
             {books.map((item) => (
               <tr key={item.id}>
+                { <Prompts showModal={showModal2} hideModal={openModal2} title={'Decline booking'} 
+                  message={'Are you sure you want to decline booking?'} 
+                  action={() => handleDeclineBooking(item.id)}/>
+                }
                 <td>{item.firstname}</td>
                 <td>{item.lastname}</td>
                 <td>{item.email}</td>
@@ -181,7 +192,7 @@ function ArtisanBookings() {
                       </button>
                       <button
                         className="admin--btn"
-                        onClick={() => handleDeclineBooking(item.id)}
+                        onClick={openModal2}
                       >
                         Decline
                       </button>
@@ -206,13 +217,12 @@ function ArtisanBookings() {
             />
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseModal}>
-              Close
-            </Button>
-
-            <Button variant="primary" onClick={() => handleConfirmAccept()}>
+            <button className="modal--button" onClick={handleConfirmAccept}>
               Accept
-            </Button>
+            </button>
+            <button className="modal--button" onClick={handleCloseModal}>
+              Close
+            </button>
           </Modal.Footer>
         </Modal>
       </Container>

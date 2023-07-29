@@ -107,6 +107,17 @@
         }
         .works--container{
             margin-top: 20px;
+            .upload--container{
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                div{
+                    img{
+                        width: 350px;
+                        height: 400px;
+                    }
+                }
+            }
         }
     }
   }

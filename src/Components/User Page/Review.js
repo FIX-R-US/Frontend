@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
 import Select from "react-select";
 import "./Review.css";
-//import artisanData from "../../MOCK_DATA.json";
 import { useState, useRef } from "react";
 import Container from "react-bootstrap/Container";
 import ProfileHeader from "../../Shared Utils/Pages/ProfileHeader";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import axios from "axios";
 import Spinner from 'react-bootstrap/Spinner'
 
@@ -70,12 +68,12 @@ function Review() {
     }),
   };
 
-  const modalButton = {
-    backgroundColor: "#7200CC",
-    width: "25%",
-    fontWeight: "600",
-    border: "none",
-  };
+  // const modalButton = {
+  //   backgroundColor: "#7200CC",
+  //   width: "25%",
+  //   fontWeight: "600",
+  //   border: "none",
+  // };
 
   if(isLoading){
     return(
@@ -131,12 +129,12 @@ function Review() {
               <p>Your review has been submitted succesfully</p>
             </Modal.Body>
             <Modal.Footer>
-              <Button
+              <button
                 onClick={() => setShowModal((prevshow) => !prevshow)}
-                style={modalButton}
+                className="modal--button"
               >
                 Close
-              </Button>
+              </button>
             </Modal.Footer>
           </Modal>
         </div>

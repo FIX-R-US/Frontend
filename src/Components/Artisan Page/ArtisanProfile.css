@@ -104,6 +104,15 @@
 .profile--artisan-container .whole--content .artisan--down .works--container {
   margin-top: 20px;
 }
+.profile--artisan-container .whole--content .artisan--down .works--container .upload--container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.profile--artisan-container .whole--content .artisan--down .works--container .upload--container div img {
+  width: 350px;
+  height: 400px;
+}
 
 @media (max-width: 930px) {
   .profile--artisan-container .whole--content .artisan--down .book--btn {
