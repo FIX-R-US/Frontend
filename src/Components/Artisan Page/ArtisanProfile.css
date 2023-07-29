@@ -61,14 +61,11 @@
   color: #7200CC;
   text-decoration: underline;
 }
-.profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container {
-  padding: 10px;
-}
 .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 15px;
+  padding: 10px;
 }
 .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map .reviewMap--img {
   width: 60px;
@@ -95,6 +92,7 @@
   background-color: #7200CC;
   color: white;
   font-weight: 500;
+  margin-top: 10px;
 }
 .profile--artisan-container .whole--content .artisan--down .artisan--bottom .upload--works label:hover {
   cursor: pointer;
@@ -111,12 +109,32 @@
 }
 .profile--artisan-container .whole--content .artisan--down .works--container .upload--container div img {
   width: 350px;
-  height: 400px;
+  height: 450px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 @media (max-width: 930px) {
   .profile--artisan-container .whole--content .artisan--down .book--btn {
     width: 15%;
+  }
+  .profile--artisan-container .whole--content .artisan--down .artisan--bottom .upload--works label {
+    width: 25%;
+  }
+  .profile--artisan-container .whole--content .artisan--down .works--container .upload--container div img {
+    width: 323px;
+    height: 380px;
+  }
+}
+@media (max-width: 825px) {
+  .profile--artisan-container .whole--content .artisan--down .artisan--bottom .upload--works label {
+    width: 100%;
+  }
+}
+@media (max-width: 770px) {
+  .profile--artisan-container .whole--content .artisan--down .works--container .upload--container div img {
+    width: 315px;
+    height: 390px;
   }
 }
 @media (max-width: 560px) {
@@ -133,12 +151,19 @@
   .profile--artisan-container .whole--content .artisan--down .book--btn {
     width: 20%;
   }
+  .profile--artisan-container .whole--content .artisan--down .artisan--bottom h5 {
+    margin: 0;
+  }
   .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container {
     padding: 0;
   }
   .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map {
     padding: 10px;
     font-size: 16px;
+  }
+  .profile--artisan-container .whole--content .artisan--down .works--container .upload--container div img {
+    width: 212px;
+    height: 340px;
   }
 }
 @media (max-width: 480px) {
@@ -156,8 +181,12 @@
   .profile--artisan-container .whole--content .artisan--down .book--btn {
     width: 25%;
   }
-  .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map .map--bottom {
-    font-size: 13px;
+  .profile--artisan-container .whole--content .artisan--down .artisan--bottom .upload--works label {
+    width: 33%;
+  }
+  .profile--artisan-container .whole--content .artisan--down .works--container .upload--container div img {
+    width: 154px;
+    height: 250px;
   }
 }
 @media (max-width: 380px) {
@@ -170,27 +199,22 @@
     padding: 12px;
   }
   .profile--artisan-container .whole--content .artisan--down .book--btn {
-    font-size: 12.5px;
+    font-size: 15px;
   }
   .profile--artisan-container .whole--content .artisan--down .artisan--middle {
     font-size: 15px;
   }
-  .profile--artisan-container .whole--content .artisan--down .artisan--bottom {
-    font-size: 12.5px;
-  }
-  .profile--artisan-container .whole--content .artisan--down .artisan--bottom h5 {
-    margin: 0;
-  }
   .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map {
     padding: 5px;
-    font-size: 13px;
+    font-size: 15px;
   }
   .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map .reviewMap--img {
     width: 70px;
     height: 70px;
   }
-  .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map .map--bottom {
-    font-size: 12.5px;
+  .profile--artisan-container .whole--content .artisan--down .artisan--bottom .upload--works label {
+    width: 35%;
+    font-size: 15px;
   }
 }
 @media (max-width: 290px) {
@@ -204,6 +228,7 @@
   }
   .profile--artisan-container .whole--content .artisan--down .book--btn {
     width: 30%;
+    font-size: 12.5px;
   }
   .profile--artisan-container .whole--content .artisan--down .artisan--middle {
     font-size: 12.5px;
@@ -214,5 +239,12 @@
   .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map .reviewMap--img {
     width: 80px;
     height: 80px;
+  }
+  .profile--artisan-container .whole--content .artisan--down .artisan--bottom .reveiwMap--container .review--map .map--bottom {
+    font-size: 12.5px;
+  }
+  .profile--artisan-container .whole--content .artisan--down .artisan--bottom .upload--works label {
+    width: 40%;
+    font-size: 12.5px;
   }
 }/*# sourceMappingURL=ArtisanProfile.css.map */

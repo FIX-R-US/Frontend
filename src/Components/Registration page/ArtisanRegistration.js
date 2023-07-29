@@ -6,6 +6,9 @@ import account from "../../Shared Utils/Login/createaccount.png";
 import axios from "axios";
 import { storage } from "../../firebaseConfig.js";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import Spinner from 'react-bootstrap/Spinner'
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 function ArtisanRegistration() {
   const navigate = useNavigate();
@@ -20,6 +23,7 @@ function ArtisanRegistration() {
   // const [pic, setPic] = useState("");
   const [file, setFile] = useState();
   const [cert, setCert] = useState("");
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -83,8 +87,10 @@ function ArtisanRegistration() {
             console.log("Hello", certificate);
             // console.log("Hello", picture_video);
             // console.log("Hello", location);
-
-            navigate(`/login`);
+            toast.success('Account created Succesfully')
+            setTimeout(() => {
+              navigate(`/login`);
+            },[3000])
           })
           .catch((error) => console.log(error));
       }, 3000);
@@ -105,15 +111,24 @@ function ArtisanRegistration() {
           console.log("Hello", certificate);
           // console.log("Hello", picture_video);
           // console.log("Hello", location);
-
-          navigate(`/login`);
+          toast.success('Account created Succesfully')
+          setTimeout(() => {
+            navigate(`/login`);
+          },[3000])
         })
         .catch((error) => console.log(error));
     }
   };
 
+   let load
+   if(isLoading) {
+    load = <Spinner as="span" animation="border" role="status" size="sm" aria-hidden="true" />
+   }
+
+
   return (
     <div className="artisanForm--container">
+      <ToastContainer/>
       <div className="artisanAccount--left">
         <Header />
         <div className="artisanLeft--container">
@@ -177,7 +192,13 @@ function ArtisanRegistration() {
               </div>
             </div>
             <div className="artisanCreate--btn">
-              {cert ? <button>Submit</button> : <button>Save</button>}
+              {cert ? 
+              <button>Submit</button> : 
+              <button onClick={()=>setIsLoading(true)}>
+                Save
+                {load}
+              </button>
+              }
             </div>
           </form>
         </div>

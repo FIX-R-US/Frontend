@@ -4,6 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../Components/Home page/Header";
 import account from "../../Shared Utils/Login/createaccount.png";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 function UserRegistration() {
   const navigate = useNavigate();
@@ -32,11 +34,15 @@ function UserRegistration() {
       })
       .then((data) => {
         console.log(data);
-        navigate("/login");
+        toast.success('Account created Successfully')
+        setTimeout(() => {
+          navigate("/login");
+        },[3000])
       });
   };
   return (
     <div className="form--container">
+      <ToastContainer/>
       <div className="userAccount--left">
         <Header />
         <div className="userLeft--container">

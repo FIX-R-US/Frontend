@@ -60,12 +60,11 @@
                 text-decoration: underline;
             }
             .reveiwMap--container{
-                padding: 10px;
                 .review--map{
                     display: flex;
                     align-items: center;
                     gap: 10px;
-                    padding: 15px;
+                    padding: 10px;
                     .reviewMap--img{
                         width: 60px;
                         height: 60px;
@@ -96,6 +95,7 @@
                     background-color: #7200CC;
                     color: white;
                     font-weight: 500;
+                    margin-top: 10px;
     
                     &:hover{
                         cursor: pointer;
@@ -114,7 +114,8 @@
                 div{
                     img{
                         width: 350px;
-                        height: 400px;
+                        height: 450px;
+                        object-fit: cover;
                     }
                 }
             }
@@ -129,10 +130,60 @@
             .book--btn{
                     width: 15%;
             }
+            .artisan--bottom{
+                .upload--works{
+                    label{
+                        width: 25%;
+                    }
+                }
+            }
+            .works--container{
+                .upload--container{
+                    div{
+                        img{
+                            width: 323px;
+                            height: 380px;
+                        }
+                    }
+                }
+            }
         }
       }
-    }
-    
+    }   
+}
+
+@media (max-width: 825px) {
+        .profile--artisan-container{
+          .whole--content{
+            .artisan--down{
+                .artisan--bottom{
+                    .upload--works{
+                        label{
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+          }
+        }   
+}
+@media (max-width: 770px) {
+    .profile--artisan-container{
+        .whole--content{
+          .artisan--down{
+            .works--container{
+                .upload--container{
+                    div{
+                        img{
+                           width: 315px;
+                           height: 390px;
+                        }
+                    }
+                }
+            }
+        }
+        }
+      }   
 }
 
 @media (max-width: 560px) {
@@ -153,11 +204,24 @@
                 width: 20%;
             }
             .artisan--bottom{
+                h5{
+                    margin: 0;
+                }
                 .reveiwMap--container{
                     padding: 0;
                     .review--map{
                         padding: 10px;
                         font-size: 16px;
+                    }
+                }
+            }
+            .works--container{
+                .upload--container{
+                    div{
+                        img{
+                           width: 212px;
+                           height: 340px;
+                        }
                     }
                 }
             }
@@ -186,15 +250,30 @@
             .book--btn{
                 width: 25%;
             }
-              .artisan--bottom{
-                  .reveiwMap--container{
-                      .review--map{
-                          .map--bottom{
-                            font-size: 13px;
-                          }
-                      }
-                  }
-              }
+            .artisan--bottom{
+                // .reveiwMap--container{
+                //     .review--map{
+                //         .map--bottom{
+                //             font-size: 13px;
+                //         }
+                //     }
+                // }
+                .upload--works{
+                    label{
+                        width: 33%;
+                    }
+                }
+            }
+            .works--container{
+                .upload--container{
+                    div{
+                        img{
+                           width: 154px;
+                           height: 250px;
+                        }
+                    }
+                }
+            }
           }
         }
       }
@@ -212,31 +291,30 @@
           }
           .artisan--down{
             .book--btn{
-                font-size: 12.5px;
+                font-size: 15px;
             }
               padding: 12px;
               .artisan--middle{
                 font-size: 15px;
               }
-              .artisan--bottom{
-                font-size: 12.5px;
-                h5{
-                    margin: 0;
-                }
-                  .reveiwMap--container{
-                      .review--map{
+            .artisan--bottom{
+                .reveiwMap--container{
+                    .review--map{
                         padding: 5px;
-                          font-size: 13px;
-                          .reviewMap--img{
+                        font-size: 15px;
+                        .reviewMap--img{
                             width: 70px;
                             height: 70px;
-                          }
-                          .map--bottom{
-                            font-size: 12.5px;
-                          }
-                      }
-                  }
-              }
+                        }
+                    }
+                }
+                .upload--works{
+                    label{
+                        width: 35%;
+                        font-size: 15px;
+                    }
+                }
+            }
           }
         }
       }
@@ -256,6 +334,7 @@
               padding: 8px;
               .book--btn{
                 width: 30%;
+                font-size: 12.5px;
             }
               .artisan--middle{
                 font-size: 12.5px;
@@ -264,14 +343,23 @@
                 }
               }
               .artisan--bottom{
-                  .reveiwMap--container{
-                      .review--map{
-                          .reviewMap--img{
+                .reveiwMap--container{
+                    .review--map{
+                        .reviewMap--img{
                            width: 80px;
                            height: 80px;
-                          }
-                      }
-                  }
+                        }
+                        .map--bottom{
+                            font-size: 12.5px;
+                        }
+                    }
+                }
+                .upload--works{
+                    label{
+                        width: 40%;
+                        font-size: 12.5px;
+                    }
+                }
               }
           }
         }
