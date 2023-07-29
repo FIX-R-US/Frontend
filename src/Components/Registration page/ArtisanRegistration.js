@@ -16,7 +16,7 @@ function ArtisanRegistration() {
   const locationRef = useRef();
   const occupationRef = useRef();
   const certificateRef = useRef();
-  // const picRef = useRef();
+  const nationalIDRef = useRef();
   // const [pic, setPic] = useState("");
   const [file, setFile] = useState();
   const [cert, setCert] = useState("");
@@ -29,10 +29,12 @@ function ArtisanRegistration() {
     const location = locationRef.current.value;
     const occupation = occupationRef.current.value;
     const certificate = certificateRef.current.files[0];
+    const nationalid = nationalIDRef.current.files[0]
     // const picture_video = certificateRef.current.files[0];
     const isActive = "1";
     //console.log(firstname, lastname, contact, location, occupation);
     //console.log(file);
+    console.log(nationalid);
 
     ///upload to firebase
 
@@ -150,6 +152,19 @@ function ArtisanRegistration() {
                 </select>
               </div>
               <div className="artisanCreate--field">
+                <label htmlFor="nationalid">
+                  NationalID
+                </label>
+                <input
+                  type="file"
+                  id="nationalid"
+                  ref={nationalIDRef}
+                  onChange={(e) => setFile(e.target.files)}
+                  className="file--input"
+                  required
+                />
+              </div>
+              <div className="artisanCreate--field">
                 <label htmlFor="certificate">Certificate(if any)</label>
                 <input
                   type="file"
@@ -160,19 +175,6 @@ function ArtisanRegistration() {
                   className="file--input"
                 />
               </div>
-              {/* <div className="artisanCreate--field">
-                <label htmlFor="projects">
-                  Projects worked on(picture or video)
-                </label>
-                <input
-                  type="file"
-                  id="projects"
-                  ref={picRef}
-                  onChange={(e) => setFile(e.target.files)}
-                  multiple={true}
-                  className="file--input"
-                />
-              </div> */}
             </div>
             <div className="artisanCreate--btn">
               {cert ? <button>Submit</button> : <button>Save</button>}
