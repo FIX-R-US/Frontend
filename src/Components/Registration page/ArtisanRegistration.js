@@ -24,6 +24,7 @@ function ArtisanRegistration() {
   const [file, setFile] = useState();
   const [cert, setCert] = useState("");
   const [isLoading, setIsLoading] = useState(false)
+  const [demoId, setDemoId] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,12 +34,10 @@ function ArtisanRegistration() {
     const location = locationRef.current.value;
     const occupation = occupationRef.current.value;
     const certificate = certificateRef.current.files[0];
-    const nationalid = nationalIDRef.current.files[0]
-    // const picture_video = certificateRef.current.files[0];
+    const nationalID = nationalIDRef.current.files[0];
     const isActive = "1";
-    //console.log(firstname, lastname, contact, location, occupation);
-    //console.log(file);
-    console.log(nationalid);
+
+    console.log(nationalID);
 
     ///upload to firebase
 
@@ -56,6 +55,21 @@ function ArtisanRegistration() {
         });
       });
     }
+
+    if (nationalID !== undefined || nationalID !== null) {
+      const storageRef = ref(
+        storage,
+        `/docs/nationalID/${nationalID.name}` + username
+      );
+      await uploadBytesResumable(storageRef, nationalID).then((snapshot) => {
+        getDownloadURL(snapshot.ref).then((url) => {
+          // console.log("url:",
+          setDemoId(url);
+          console.log("hello", demoId);
+          // console.log("mmm: ", cert);
+        });
+      });
+    }
     // if (picture_video !== undefined || picture_video !== null) {
     //   const storageRef = ref(
     //     storage,
@@ -69,7 +83,36 @@ function ArtisanRegistration() {
     //     });
     //   });
     // }
-    if (cert) {
+    if (demoId) {
+      axios
+        .post("http://localhost:3001/update/updateregister", {
+          firstname,
+          lastname,
+          contact,
+          location,
+          occupation,
+          certificate,
+          nationalID: demoId,
+          isActive,
+          username,
+        })
+        .then((data) => {
+          console.log("hi:", data);
+          console.log("Hello", nationalID);
+          // console.log("Hello", picture_video);
+          // console.log("Hello", location);
+          toast.success('Account created Succesfully')
+          setTimeout(() => {
+            navigate(`/login`);
+          },[3000])
+
+        })
+        .catch((error) => {
+          console.log(error)
+          toast.error(error.message)
+        });
+    }
+    if (cert && demoId) {
       setTimeout(() => {
         axios
           .post("http://localhost:3001/update/updateregister", {
@@ -79,6 +122,7 @@ function ArtisanRegistration() {
             location,
             occupation,
             certificate: cert ? cert : "",
+            nationalID: demoId,
             isActive,
             username,
           })
@@ -92,7 +136,10 @@ function ArtisanRegistration() {
               navigate(`/login`);
             },[3000])
           })
-          .catch((error) => console.log(error));
+          .catch((error) => {
+            console.log(error)
+            toast.error(error.message)
+          });
       }, 3000);
     } else {
       axios
@@ -116,7 +163,10 @@ function ArtisanRegistration() {
             navigate(`/login`);
           },[3000])
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          console.log(error)
+          toast.error(error.message)
+        });
     }
   };
 
@@ -167,9 +217,7 @@ function ArtisanRegistration() {
                 </select>
               </div>
               <div className="artisanCreate--field">
-                <label htmlFor="nationalid">
-                  NationalID
-                </label>
+                <label htmlFor="nationalid">NationalID</label>
                 <input
                   type="file"
                   id="nationalid"
@@ -192,12 +240,9 @@ function ArtisanRegistration() {
               </div>
             </div>
             <div className="artisanCreate--btn">
-              {cert ? 
+              {demoId ? 
               <button>Submit</button> : 
-              <button onClick={()=>setIsLoading(true)}>
-                Save
-                {load}
-              </button>
+              <button onClick={()=>setIsLoading(true)}>Save {''} {load}</button>
               }
             </div>
           </form>

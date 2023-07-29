@@ -7,10 +7,12 @@ import account from "./createaccount.png";
 import axios from "axios";
 import {toast, ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Spinner from 'react-bootstrap/Spinner'
 
 function CreateAccount() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
 
   const usernameRef = useRef();
   const emailRef = useRef();
@@ -38,11 +40,18 @@ function CreateAccount() {
          toast.error('Passwords do not match')
         } else {
           console.log(data);
-          navigate(`${role}/${username}`);
+          setTimeout(() => {
+            navigate(`${role}/${username}`);
+          }, [3000])
         }
       })
       .catch((error) => console.log(error));
   };
+
+  let load
+   if(isLoading) {
+    load = <Spinner as="span" animation="border" role="status" size="sm" aria-hidden="true" />
+   }
 
   return (
     <div className="container--account">
@@ -114,7 +123,7 @@ function CreateAccount() {
                 </div>
               </div>
               <div className="create--btn">
-                <button>Continue</button>
+                <button onClick={() => setIsLoading(true)}>Continue {''} {load}</button>
               </div>
             </form>
           </div>

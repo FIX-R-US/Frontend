@@ -73,18 +73,6 @@ function VerifyRegistration() {
   //   });
   // };
 
-  const sentimentScore = (review) => {
-    if (!Array.isArray(review) || review.length === 0) return 0;
-    const sentiment = new Sentiment();
-    let totalScore = 0;
-    review.forEach((review) => {
-      const { score } = sentiment.analyze(review);
-      totalScore += score;
-    });
-    const avgScore = totalScore / review.length;
-    return avgScore;
-  };
-
   if(isLoading){
     return(
       <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
@@ -118,7 +106,7 @@ function VerifyRegistration() {
                 <td>{item.firstname}</td>
                 <td>{item.lastname}</td>
                 <td>{item.email}</td>
-                <td>{item.profile_photo}</td>
+                <td>{item.nationalID}</td>
                 <td>{item.certificate}</td>
                 {/* <td>{sentimentScore(item.reviews)}</td> */}
                 <td>
