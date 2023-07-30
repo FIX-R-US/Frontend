@@ -38,6 +38,8 @@
   border-radius: 50%;
   width: 100px;
   height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .sidebar--container .sidebar .user--icon h5 {
   padding: 10px;

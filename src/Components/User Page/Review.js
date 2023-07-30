@@ -50,7 +50,7 @@ function Review() {
         if (!selectedOption || review.trim() === "") {
           return;
         }
-        console.log(selectedOption, review);
+        // console.log(selectedOption, review);
       })
       .catch((error) => console.log(error));
 

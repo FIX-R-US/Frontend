@@ -242,7 +242,7 @@ function ArtisanRegistration() {
             <div className="artisanCreate--btn">
               {demoId ? 
               <button>Submit</button> : 
-              <button onClick={()=>setIsLoading(true)}>Save {''} {load}</button>
+              <button onClick={()=>setIsLoading(true)}>Save {load}</button>
               }
             </div>
           </form>

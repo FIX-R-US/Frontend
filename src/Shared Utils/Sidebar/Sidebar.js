@@ -44,7 +44,7 @@ function Sidebar({ data }) {
       await axios
         .post("http://localhost:3001/details/getuser", { id })
         .then((data) => {
-          console.log(data.data);
+          // console.log(data.data);
           setArtisan({
             username: data.data[0].username,
             id: data.data[0].id,

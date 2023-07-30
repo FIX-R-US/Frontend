@@ -6,6 +6,9 @@ import axios from "axios";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../../firebaseConfig";
 import { useNavigate } from "react-router-dom";
+import Spinner from 'react-bootstrap/Spinner'
+import {toast, ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function EditArtisanProfile() {
   const UsernameRef = useRef();
@@ -20,6 +23,7 @@ function EditArtisanProfile() {
   // const VideoRef = useRef();
   const id = sessionStorage.getItem("id");
   const [pic, setCert] = useState("");
+  const [isLoading, setIsLoading] = useState(false)
   // const [showProfilePic, setShowProfilePic] = useState();
 
   const handleSave = (e) => {
@@ -39,9 +43,16 @@ function EditArtisanProfile() {
         .post("http://localhost:3001/editp1/editartisanProfile", { inputs })
         .then((data) => {
           console.log(data.data);
-          navigate("/login/artisan/home");
+          setIsLoading(prevLoading => !prevLoading)
+          toast.success('Profile updated')
+          setTimeout(() => {
+            navigate("/login/artisan/home");
+          },[3000])
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          console.log(error)
+          toast.error(error.message)
+        });
     };
 
     if (profile_photo !== undefined && profile_photo != null) {
@@ -93,8 +104,14 @@ function EditArtisanProfile() {
     }
   };
 
+  let load
+  if(isLoading) {
+   load = <Spinner as="span" animation="border" role="status" size="sm" aria-hidden="true" />
+  }
+
   return (
     <div className="artisanProfile--container">
+      <ToastContainer/>
       <Container>
         <ProfileHeader title={"Edit Profile"} />
         <form onSubmit={handleSave}>
@@ -138,7 +155,7 @@ function EditArtisanProfile() {
             </div>
           </div>
           <div className="artisanProfile--btn">
-            <button>Save</button>
+            <button onClick={()=>setIsLoading(true)}>Save {load}</button>
           </div>
         </form>
       </Container>

@@ -6,6 +6,9 @@ import axios from "axios";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../../firebaseConfig";
 import { useNavigate } from "react-router-dom";
+import Spinner from 'react-bootstrap/Spinner'
+import {toast, ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function Profile() {
   // const [showUsername, setShowUsername] = useState("Snipes");
@@ -25,6 +28,7 @@ function Profile() {
   const id = sessionStorage.getItem("id");
   const navigate = useNavigate();
   const [pic, setCert] = useState("");
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSave = (e) => {
     e.preventDefault();
@@ -41,7 +45,11 @@ function Profile() {
         .post("http://localhost:3001/editp/editprofile", { inputs })
         .then((data) => {
           console.log(data);
-          navigate("/login/user/home");
+          setIsLoading(prevLoading => !prevLoading)
+          toast.success('Profile updated')
+          setTimeout(() => {
+            navigate("/login/user/home");
+          },[3000])
         })
         .catch((error) => console.log(error));
     };
@@ -97,8 +105,14 @@ function Profile() {
     }
   };
 
+  let load
+  if(isLoading) {
+   load = <Spinner as="span" animation="border" role="status" size="sm" aria-hidden="true" />
+  }
+
   return (
     <div className="profile--container">
+      <ToastContainer/>
       <Container>
         <ProfileHeader title={"Edit Profile"} />
         <form onSubmit={handleSave}>
@@ -138,7 +152,7 @@ function Profile() {
             </div>
           </div>
           <div className="profile--btn">
-            <button>Save</button>
+            <button onClick={()=>setIsLoading(true)}>Save {load}</button>
           </div>
         </form>
       </Container>

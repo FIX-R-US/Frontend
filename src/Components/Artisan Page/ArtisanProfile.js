@@ -17,6 +17,7 @@ import { BsCloudUploadFill } from "react-icons/bs";
 import Spinner from "react-bootstrap/Spinner";
 import { storage } from "../../firebaseConfig.js";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { toast } from "react-toastify";
 
 function ArtisanProfile() {
   const navigate = useNavigate();
@@ -32,7 +33,8 @@ function ArtisanProfile() {
     occupation: "",
     contact: "",
     Description: "",
-    fullname: "",
+    firstname: "",
+    lastname:"",
     location: "",
     isVerified: "",
     email: "",
@@ -44,7 +46,7 @@ function ArtisanProfile() {
       await axios
         .post("http://localhost:3001/details/getuser", { id })
         .then((data) => {
-          console.log(data.data[0]);
+          // console.log(data.data[0]);
           setArtisan({
             username: data.data[0].username,
             id: data.data[0].id,
@@ -52,7 +54,8 @@ function ArtisanProfile() {
             occupation: data.data[0].occupation,
             contact: data.data[0].contact,
             Description: data.data[0].Description,
-            fullname: data.data[0].fullname,
+            firstname: data.data[0].firstname,
+            lastname: data.data[0].lastname,
             location: data.data[0].location,
             isVerified: data.data[0].isVerified,
             email: data.data[0].email,
@@ -120,6 +123,10 @@ function ArtisanProfile() {
           })
           .then((data) => {
             console.log(data.data);
+            toast.success('Upload successful')
+            setTimeout(() => {
+              window.location.reload()
+            },[3000])
           })
           .catch((error) => console.log(error));
         // console.log("mmm: ", cert);
@@ -163,7 +170,7 @@ function ArtisanProfile() {
             {artisan && (
               <div className="artisan--middle">
                 <h2>
-                  {artisan.fullname}{" "}
+                  {`${artisan.firstname} ${artisan.lastname}`}{" "}
                   {artisan.isVerified ? (
                     <MdVerified size={20} color="#7200CC" />
                   ) : (

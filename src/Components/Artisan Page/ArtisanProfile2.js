@@ -37,7 +37,8 @@ function ArtisanProfile2() {
     occupation: "",
     contact: "",
     Description: "",
-    fullname: "",
+    firstname:"",
+    lastname:"",
     location: "",
     email: "",
     isVerified: "",
@@ -45,13 +46,14 @@ function ArtisanProfile2() {
   const [review, setReviews] = useState([]);
   const [isRequested, setIsRequested] = useState(false);
   const [isLoading, setIsLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
     axios
       .post("http://localhost:3001/bookings/check", { artisan_id, user_id })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.data.length === 0) {
           setIsRequested(false);
         } else {
@@ -64,7 +66,7 @@ function ArtisanProfile2() {
       await axios
         .post("http://localhost:3001/details/getuser", { id })
         .then((data) => {
-          console.log(data.data[0]);
+          // console.log(data.data[0]);
           setArtisan({
             username: data.data[0].username,
             id: data.data[0].id,
@@ -72,7 +74,8 @@ function ArtisanProfile2() {
             occupation: data.data[0].occupation,
             contact: data.data[0].contact,
             Description: data.data[0].Description,
-            fullname: data.data[0].fullname,
+            firstname: data.data[0].firstname,
+            lastname: data.data[0].lastname,
             location: data.data[0].location,
             email: data.data[0].email,
             isVerified: data.data[0].isVerified,
@@ -88,6 +91,7 @@ function ArtisanProfile2() {
 
   const handleBooking = async () => {
     setShowModal(prevShow => !prevShow)
+    setLoading(true)
 
     try {
       const request = "book";
@@ -106,6 +110,7 @@ function ArtisanProfile2() {
         .then((data) => {
           console.log(data.data);
           setIsRequested(true);
+          setLoading(prevLoad => !prevLoad)
           toast.success("Booking Successful");
         });
     } catch (error) {
@@ -169,11 +174,16 @@ function ArtisanProfile2() {
     )
   }
 
+  let load
+  if(loading){
+    load = <Spinner as="span" animation="border" role="status" size="sm" aria-hidden="true" />
+  }
+
   return (
     <div className="profile--artisan-container">
       <ToastContainer />
       <Prompts showModal={showModal} hideModal={openModal} title={'Booking'} 
-      message={`Do you want to book ${artisan.fullname}?`} action={handleBooking}/>
+      message={`Do you want to book ${artisan.firstname} ${artisan.lastname}?`} action={handleBooking}/>
       <Container>
         <ProfileHeader title={"Profile"} />
         <div className="whole--content">
@@ -193,7 +203,7 @@ function ArtisanProfile2() {
             {artisan && (
               <div className="artisan--middle">
                 <h2>
-                  {artisan.fullname}{" "}
+                  {`${artisan.firstname} ${artisan.lastname}`}{" "}
                   {artisan.isVerified ? (
                     <MdVerified size={20} color="#7200CC" />
                   ) : (
@@ -213,7 +223,7 @@ function ArtisanProfile2() {
               </button>
             ) : (
               <button onClick={openModal} className="book--btn">
-                Book
+                Book {load}
               </button>
             )}
             {review.length > 0 && (

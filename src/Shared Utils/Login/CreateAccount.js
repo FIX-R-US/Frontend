@@ -123,7 +123,7 @@ function CreateAccount() {
                 </div>
               </div>
               <div className="create--btn">
-                <button onClick={() => setIsLoading(true)}>Continue {''} {load}</button>
+                <button onClick={() => setIsLoading(true)}>Continue {load}</button>
               </div>
             </form>
           </div>

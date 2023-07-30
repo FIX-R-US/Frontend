@@ -25,6 +25,7 @@
             border: 1px solid #212529;
             width: 150px;
             height: 150px;
+            object-fit: cover;
         }
     }
     .artisan--down{
@@ -110,7 +111,7 @@
             .upload--container{
                 display: flex;
                 flex-wrap: wrap;
-                gap: 10px;
+                gap: 13px;
                 div{
                     img{
                         width: 350px;
@@ -139,6 +140,7 @@
             }
             .works--container{
                 .upload--container{
+                    gap: 10px;
                     div{
                         img{
                             width: 323px;
@@ -242,13 +244,13 @@
             }
           .artisan--down{
             .artisan--middle{
-                max-width: 76%;
                 h2{
+                    max-width: 76%;
                     font-size: 20px;
                 }
             }
             .book--btn{
-                width: 25%;
+                width: 30%;
             }
             .artisan--bottom{
                 // .reveiwMap--container{
@@ -260,7 +262,7 @@
                 // }
                 .upload--works{
                     label{
-                        width: 33%;
+                        width: 35%;
                     }
                 }
             }
@@ -268,7 +270,7 @@
                 .upload--container{
                     div{
                         img{
-                           width: 154px;
+                           width: 153px;
                            height: 250px;
                         }
                     }
@@ -279,15 +281,41 @@
       }
 }
 
+@media (max-width: 400px) {
+    .profile--artisan-container{
+        .whole--content{
+            .artisan--down{
+                .artisan--bottom{
+                    .upload--works{
+                        label{
+                          width: 40%;
+                        }
+                    }
+                }
+                .works--container{
+                    .upload--container{
+                        div{
+                            img{
+                               width: 142px;
+                               height: 240px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }   
+}
+
 @media (max-width: 380px) {
     .profile--artisan-container{
         .whole--content{
           .artisan--top{
-              .profile--icon{
-                  width: 70px;
-                  height: 70px;
-                  bottom: -35px;
-              }
+            .profile--icon{
+                width: 70px;
+                height: 70px;
+                bottom: -35px;
+            }
           }
           .artisan--down{
             .book--btn{
@@ -310,8 +338,36 @@
                 }
                 .upload--works{
                     label{
-                        width: 35%;
                         font-size: 15px;
+                    }
+                }
+            }
+            .works--container{
+                .upload--container{
+                    div{
+                        img{
+                           width: 141px;
+                           height: 235px;
+                        }
+                    }
+                }
+            }
+          }
+        }
+      }
+}
+
+@media (max-width: 365px) {
+    .profile--artisan-container{
+        .whole--content{
+          .artisan--down{
+            .works--container{
+                .upload--container{
+                    div{
+                        img{
+                           width: 133px;
+                           height: 235px;
+                        }
                     }
                 }
             }
@@ -333,15 +389,15 @@
           .artisan--down{
               padding: 8px;
               .book--btn{
-                width: 30%;
+                width: 35%;
                 font-size: 12.5px;
-            }
+               }
               .artisan--middle{
                 font-size: 12.5px;
                 h2{
                     font-size: medium;
                 }
-              }
+               }
               .artisan--bottom{
                 .reveiwMap--container{
                     .review--map{
@@ -356,12 +412,38 @@
                 }
                 .upload--works{
                     label{
-                        width: 40%;
+                        width: 45%;
                         font-size: 12.5px;
                     }
                 }
               }
-          }
+              .works--container{
+                .upload--container{
+                    justify-content: center;
+                    div{
+                        img{
+                           width: 200px;
+                           height: 235px;
+                        }
+                    }
+                }
+            }
+            }
         }
-      }
+    }
+}
+
+@media (min-width: 1020px) and (max-width: 1030px) {
+    .profile--artisan-container{
+        .whole--content{
+          .artisan--down{
+              .works--container{
+                .upload--container{
+                    justify-content: center;
+                    gap: 30px;
+                }
+            }
+            }
+        }
+    }
 }

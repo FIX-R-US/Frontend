@@ -18,14 +18,14 @@ function ArtisanBookings() {
   const [isLoading, setIsLoading] = useState(true);
   const [showModal, setShowModal] = useState(false)
   const [showModal2, setShowModal2] = useState(false)
-  console.log("table", tableId);
+  // console.log("table", tableId);
   const artisan_id = sessionStorage.getItem("id");
   // console.log("hello", books);
   useEffect(() => {
     axios
       .post("http://localhost:3001/hasbooked/book", { artisan_id })
       .then((data) => {
-        console.log(data.data);
+        // console.log(data.data);
         setBookings(data.data);
         setIsLoading(false);
       })
