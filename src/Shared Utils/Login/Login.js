@@ -7,12 +7,15 @@ import Header from "../../Components/Home page/Header";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Spinner from 'react-bootstrap/Spinner'
+
 
 function Login() {
   const navigate = useNavigate();
   const UsernameRef = useRef();
   const passwordRef = useRef();
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,6 +31,7 @@ function Login() {
         if (data.data.user.isActive === 0) {
           toast.error("Account deactivated");
         } else {
+          setIsLoading(prevLoading => !prevLoading)
           toast.success("Login successful");
           setTimeout(() => {
             navigate(`${data.data.user.role}/home`);
@@ -71,6 +75,11 @@ function Login() {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
+  let load
+   if(isLoading) {
+    load = <Spinner as="span" animation="border" role="status" size="sm" aria-hidden="true" />
+   }
+
   return (
     <div className="form--wrapper">
       <ToastContainer />
@@ -113,7 +122,7 @@ function Login() {
               </div>
             </div>
             <div className="btn--container">
-              <button className="login--btn">Log In</button>
+              <button className="login--btn" onClick={()=>setIsLoading(true)}>Log In {load}</button>
               <div className="links">
                 <a href="/forgotPassword" className="login--link">
                   Forgotten Password?

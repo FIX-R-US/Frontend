@@ -4,11 +4,14 @@ import Table from "react-bootstrap/Table";
 import axios from "axios";
 import { MdVerified } from "react-icons/md";
 import "./VerifyArtisan.css";
-import Sentiment from "sentiment";
+// import Sentiment from "sentiment";
+import Form from "react-bootstrap/Form";
+import "./Search.css";
 import Spinner from 'react-bootstrap/Spinner'
 
 function VerifyRegistration() {
   const [artisan, setArtisan] = useState([]);
+  const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(true)
   // const [review, setReviews] = useState([]);
   const role = "artisan";
@@ -22,6 +25,14 @@ function VerifyRegistration() {
       })
       .catch((error) => console.log(error));
   }, []);
+
+  const filter = artisan.filter(
+    (item) =>
+      item.firstname.toLowerCase().includes(search) ||
+      item.lastname.toLowerCase().includes(search) ||
+      item.location.toLowerCase().includes(search) ||
+      item.email.toLowerCase().includes(search)
+  );
   // const calculateSentiment = (reviews) => {
   //   if (reviews.length === 0 || reviews.length === null) {
   //     return 0;
@@ -86,6 +97,16 @@ function VerifyRegistration() {
   return (
     <div className="Table--container">
       <Container className="mt-3">
+      <div className="sticky--container">
+          <Form>
+            <Form.Control
+              placeholder="Search users"
+              type="search"
+              onChange={(e) => setSearch(e.target.value)}
+              className="my-3 sticky"
+            />
+          </Form>
+        </div>
         <Table bordered hover responsive style={{ color: "#7200CC" }}>
           <thead>
             <tr>
@@ -100,7 +121,7 @@ function VerifyRegistration() {
             </tr>
           </thead>
           <tbody>
-            {artisan.map((item) => (
+            {filter.map((item) => (
               <tr key={item.id}>
                 <td>{item.username}</td>
                 <td>{item.firstname}</td>

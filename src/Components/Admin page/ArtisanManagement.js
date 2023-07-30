@@ -111,10 +111,10 @@ function ArtisanManagement() {
               <th>Location</th>
               <th>Occupation</th>
               <th>isVerified</th>
-              <th>paymentMade</th>
+              {/* <th>paymentMade</th> */}
               <th>PaymentMade</th>
               <th>isActive</th>
-              <th>isActive</th>
+              {/* <th>isActive</th> */}
             </tr>
           </thead>
           <tbody>
@@ -130,7 +130,7 @@ function ArtisanManagement() {
                 <td>
                   {item.isVerified ? <MdVerified size={40} /> : "Not verified"}
                 </td>
-                <td>{item.paymentMade ? "Yes" : "No"}</td>
+                {/* <td>{item.paymentMade ? "Yes" : "No"}</td> */}
                 <td>
                   {item.paymentMade ? (
                     <button
@@ -165,7 +165,7 @@ function ArtisanManagement() {
                     </button>
                   )}
                 </td>
-                <td>{item.isActive ? "Yes" : "No"}</td>
+                {/* <td>{item.isActive ? "Yes" : "No"}</td> */}
               </tr>
             ))}
           </tbody>

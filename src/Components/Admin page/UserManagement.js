@@ -13,12 +13,12 @@ function UserManagement() {
   const [artisan, setArtisan] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
 
-  // const filter = artisan.filter(
-  //   (item) =>
-  //     item.firstname.includes(search) ||
-  //     item.lastname.includes(search) ||
-  //     item.location.includes(search)
-  // );
+  const filter = artisan.filter(
+    (item) =>
+      item.firstname.toLowerCase().includes(search) ||
+      item.lastname.toLowerCase().includes(search) ||
+      item.location.toLowerCase().includes(search)
+  );
 
   const role = "user";
   useEffect(() => {
@@ -83,7 +83,7 @@ function UserManagement() {
             </tr>
           </thead>
           <tbody>
-            {artisan.map((item) => (
+            {filter.map((item) => (
               <tr key={item.id}>
                 <td>{item.username}</td>
                 <td>{item.firstname}</td>

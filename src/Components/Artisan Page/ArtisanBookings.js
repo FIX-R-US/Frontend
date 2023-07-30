@@ -68,7 +68,7 @@ function ArtisanBookings() {
 
     setTimeout(() => {
       toast.success(
-        `Booking ${selectedBooking.id} accepted. Agreed Price: ${agreedPrice}`
+        `Booking accepted. Agreed Price: ${agreedPrice}`
       );
     },[2000])
 
