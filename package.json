@@ -2,7 +2,8 @@
   "name": "fix-r-us",
   "version": "0.1.0",
   "engines": {
-    "node": "18.9.0"
+    "node": "18.9.0",
+    "npm" : "9.8.1"
   },
   "private": true,
   "dependencies": {
