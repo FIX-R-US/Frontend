@@ -29,6 +29,7 @@ function Login() {
         sessionStorage.setItem("user", JSON.stringify(data.data.user));
         console.log(data);
         if (data.data.user.isActive === 0) {
+          setIsLoading(prevLoading => !prevLoading)
           toast.error("Account deactivated");
         } else {
           setIsLoading(prevLoading => !prevLoading)
@@ -67,6 +68,7 @@ function Login() {
           }
         }
         toast.error(errorMessage);
+        setIsLoading(prevLoading => !prevLoading)
         console.log(error);
       });
   };

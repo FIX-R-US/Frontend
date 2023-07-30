@@ -100,7 +100,7 @@ function ArtisanManagement() {
             />
           </Form>
         </div>
-        <Table bordered hover responsive style={{ color: "#7200CC" }}>
+        <Table bordered hover responsive style={{color: "#7200CC"}}>
           <thead>
             <tr>
               <th>Username</th>
@@ -128,7 +128,7 @@ function ArtisanManagement() {
                 <td>{item.location}</td>
                 <td>{item.occupation}</td>
                 <td>
-                  {item.isVerified ? <MdVerified size={40} /> : "Not verified"}
+                  {item.isVerified ? <MdVerified size={40} color="#7200CC"/> : "Not verified"}
                 </td>
                 {/* <td>{item.paymentMade ? "Yes" : "No"}</td> */}
                 <td>

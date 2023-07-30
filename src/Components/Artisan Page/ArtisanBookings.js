@@ -86,8 +86,8 @@ function ArtisanBookings() {
     axios
       .post("http://localhost:3001/book/deleted", { id })
       .then((data) => {
-        console.log(data);
         setShowModal2(prevShow => !prevShow)
+        console.log(data);
         setBookings(updatedBookings);
         toast.error(`Booking rejected`);
         setSelectedBooking(null);

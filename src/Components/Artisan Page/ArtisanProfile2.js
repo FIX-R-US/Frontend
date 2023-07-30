@@ -115,6 +115,7 @@ function ArtisanProfile2() {
         });
     } catch (error) {
       console.error("Error sending booking request", error);
+      setLoading(prevLoad => !prevLoad)
       toast.error(error.message);
 
     }

@@ -131,7 +131,7 @@ function VerifyRegistration() {
                 <td>{item.certificate}</td>
                 {/* <td>{sentimentScore(item.reviews)}</td> */}
                 <td>
-                  {item.isVerified ? <MdVerified size={50} /> : "Not Verified"}
+                  {item.isVerified ? <MdVerified size={50} color="#7200CC" /> : "Not Verified"}
                 </td>
               </tr>
             ))}
