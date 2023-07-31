@@ -15,7 +15,7 @@ import axios from "axios";
 import { MdVerified } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Spinner from 'react-bootstrap/Spinner'
+import Spinner from "react-bootstrap/Spinner";
 import Prompts from "../../Prompts";
 
 function ArtisanProfile2() {
@@ -28,7 +28,7 @@ function ArtisanProfile2() {
   const contact = sessionStorage.getItem("contact");
   const location = sessionStorage.getItem("location");
   const user_id = sessionStorage.getItem("id");
-  const [pics, setPics] = useState([]);  // for displaying pics
+  const [pics, setPics] = useState([]); // for displaying pics
 
   const [artisan, setArtisan] = useState({
     username: "",
@@ -37,21 +37,24 @@ function ArtisanProfile2() {
     occupation: "",
     contact: "",
     Description: "",
-    firstname:"",
-    lastname:"",
+    firstname: "",
+    lastname: "",
     location: "",
     email: "",
     isVerified: "",
   });
   const [review, setReviews] = useState([]);
   const [isRequested, setIsRequested] = useState(false);
-  const [isLoading, setIsLoading] = useState(true)
-  const [loading, setLoading] = useState(false)
-  const [showModal, setShowModal] = useState(false)
+  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     axios
-      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/bookings/check", { artisan_id, user_id })
+      .post(
+        "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/bookings/check",
+        { artisan_id, user_id }
+      )
       .then((data) => {
         // console.log(data);
         if (data.data.length === 0) {
@@ -60,12 +63,15 @@ function ArtisanProfile2() {
           setIsRequested(true);
         }
       });
-      // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
   useEffect(() => {
     const fetchDetails = async () => {
       await axios
-        .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/details/getuser", { id })
+        .post(
+          "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/details/getuser",
+          { id }
+        )
         .then((data) => {
           // console.log(data.data[0]);
           setArtisan({
@@ -81,7 +87,7 @@ function ArtisanProfile2() {
             email: data.data[0].email,
             isVerified: data.data[0].isVerified,
           });
-          setIsLoading(false)
+          setIsLoading(false);
 
           // console.log("aa:", artisan[0]);
         });
@@ -89,58 +95,64 @@ function ArtisanProfile2() {
     fetchDetails();
   }, [id]);
 
-
   const handleBooking = async () => {
-    setShowModal(prevShow => !prevShow)
-    setLoading(true)
+    setShowModal((prevShow) => !prevShow);
+    setLoading(true);
 
     try {
       const request = "book";
       await axios
-        .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/book/booking", {
-          artisan_id,
-          user_id,
-          request,
-          firstname,
-          lastname,
-          email,
-          contact,
-          location,
-          artisan_email: artisan.email,
-        })
+        .post(
+          "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/book/booking",
+          {
+            artisan_id,
+            user_id,
+            request,
+            firstname,
+            lastname,
+            email,
+            contact,
+            location,
+            artisan_email: artisan.email,
+          }
+        )
         .then((data) => {
           console.log(data.data);
           setIsRequested(true);
-          setLoading(prevLoad => !prevLoad)
+          setLoading((prevLoad) => !prevLoad);
           toast.success("Booking Successful");
         });
     } catch (error) {
       console.error("Error sending booking request", error);
-      setLoading(prevLoad => !prevLoad)
+      setLoading((prevLoad) => !prevLoad);
       toast.error(error.message);
-
     }
   };
 
   useEffect(() => {
     axios
-      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/review/display", { artisan_id })
+      .post(
+        "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/review/display",
+        { artisan_id }
+      )
       .then((data) => {
         // console.log(data.data)
         setReviews(data.data);
-        setIsLoading(false)
+        setIsLoading(false);
       })
       .catch((error) => console.log(error));
   }, [artisan_id]);
 
-   //displaying the pics
-   useEffect(() => {
+  //displaying the pics
+  useEffect(() => {
     axios
-      .post("http://https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/view/pic", { artisan_id })
+      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/view/pic", {
+        artisan_id,
+      })
       .then((data) => {
         // console.log(data.data)
         setPics(data.data);
-        setIsLoading(false)
+        setIsLoading(false);
       })
       .catch((error) => console.log(error));
   }, [artisan_id]);
@@ -163,29 +175,45 @@ function ArtisanProfile2() {
   }
 
   const openModal = () => {
-    setShowModal(prevShow => !prevShow)
-  }
+    setShowModal((prevShow) => !prevShow);
+  };
 
-  if(isLoading){
-    return(
-      <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
-        <Spinner animation="grow" role="status" style={{color: '#7200CC'}}>
+  if (isLoading) {
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "90vh" }}
+      >
+        <Spinner animation="grow" role="status" style={{ color: "#7200CC" }}>
           <span className="visually-hidden">Loading...</span>
         </Spinner>
-    </div>
-    )
+      </div>
+    );
   }
 
-  let load
-  if(loading){
-    load = <Spinner as="span" animation="border" role="status" size="sm" aria-hidden="true" />
+  let load;
+  if (loading) {
+    load = (
+      <Spinner
+        as="span"
+        animation="border"
+        role="status"
+        size="sm"
+        aria-hidden="true"
+      />
+    );
   }
 
   return (
     <div className="profile--artisan-container">
       <ToastContainer />
-      <Prompts showModal={showModal} hideModal={openModal} title={'Booking'} 
-      message={`Do you want to book ${artisan.firstname} ${artisan.lastname}?`} action={handleBooking}/>
+      <Prompts
+        showModal={showModal}
+        hideModal={openModal}
+        title={"Booking"}
+        message={`Do you want to book ${artisan.firstname} ${artisan.lastname}?`}
+        action={handleBooking}
+      />
       <Container>
         <ProfileHeader title={"Profile"} />
         <div className="whole--content">
@@ -250,20 +278,20 @@ function ArtisanProfile2() {
                     </div>
                   ))}
                 </div>
-              </div>   
+              </div>
             )}
-              {pics.length > 0 && (
-                <div className="works--container">
-                  <h5>Works</h5>
-                  <div className="upload--container">
-                    {pics.map((works, index) => (
-                      <div key={index}>
-                        <img src={works.picture_video} alt=""/>
-                      </div>
-                    ))}
-                  </div>
+            {pics.length > 0 && (
+              <div className="works--container">
+                <h5>Works</h5>
+                <div className="upload--container">
+                  {pics.map((works, index) => (
+                    <div key={index}>
+                      <img src={works.picture_video} alt="" />
+                    </div>
+                  ))}
                 </div>
-              )}
+              </div>
+            )}
           </div>
         </div>
       </Container>
