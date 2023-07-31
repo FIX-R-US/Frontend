@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ProfileHeader from "../../Shared Utils/Pages/ProfileHeader";
 import Container from "react-bootstrap/Container";
 import "./EditArtisanProfile.css";
@@ -6,9 +6,9 @@ import axios from "axios";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../../firebaseConfig";
 import { useNavigate } from "react-router-dom";
-import Spinner from 'react-bootstrap/Spinner'
-import {toast, ToastContainer} from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import Spinner from "react-bootstrap/Spinner";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function EditArtisanProfile() {
   const UsernameRef = useRef();
@@ -23,7 +23,40 @@ function EditArtisanProfile() {
   const id = sessionStorage.getItem("id");
   // eslint-disable-next-line
   const [pic, setCert] = useState("");
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
+  const [artisan, setArtisan] = useState({
+    username: "",
+    id: "",
+    profile_photo: "",
+    firstname: "",
+    lastname: "",
+    contact: "",
+    location: "",
+    email: "",
+    Description: "",
+  });
+
+  useEffect(() => {
+    const handlePost = async () => {
+      await axios
+        .post("http://localhost:3001/details/getuser", { id })
+        .then((data) => {
+          // console.log(data.data);
+          setArtisan({
+            username: data.data[0].username,
+            id: data.data[0].id,
+            profile_photo: data.data[0].profile_photo,
+            email: data.data[0].email,
+            contact: data.data[0].contact,
+            firstname: data.data[0].firstname,
+            lastname: data.data[0].lastname,
+            location: data.data[0].location,
+            Description: data.data[0].Description,
+          });
+        });
+    };
+    handlePost();
+  }, [id]);
 
   const handleSave = (e) => {
     e.preventDefault();
@@ -39,18 +72,21 @@ function EditArtisanProfile() {
 
     const send = async (inputs) => {
       await axios
-        .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/editp1/editartisanProfile", { inputs })
+        .post(
+          "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/editp1/editartisanProfile",
+          { inputs }
+        )
         .then((data) => {
           console.log(data.data);
-          setIsLoading(prevLoading => !prevLoading)
-          toast.success('Profile updated')
+          setIsLoading((prevLoading) => !prevLoading);
+          toast.success("Profile updated");
           setTimeout(() => {
             navigate("/login/artisan/home");
-          },[3000])
+          }, [3000]);
         })
         .catch((error) => {
-          console.log(error)
-          toast.error(error.message)
+          console.log(error);
+          toast.error(error.message);
         });
     };
 
@@ -104,45 +140,78 @@ function EditArtisanProfile() {
     }
   };
 
-  let load
-  if(isLoading) {
-   load = <Spinner as="span" animation="border" role="status" size="sm" aria-hidden="true" />
+  let load;
+  if (isLoading) {
+    load = (
+      <Spinner
+        as="span"
+        animation="border"
+        role="status"
+        size="sm"
+        aria-hidden="true"
+      />
+    );
   }
 
   return (
     <div className="artisanProfile--container">
-      <ToastContainer/>
+      <ToastContainer />
       <Container>
         <ProfileHeader title={"Edit Profile"} />
         <form onSubmit={handleSave}>
           <div className="artisanProfile--content">
             <div className="artisanProfile--fields">
               <label>Username</label>
-              <input type="text" ref={UsernameRef} />
+              <input
+                type="text"
+                ref={UsernameRef}
+                placeholder={artisan.username}
+              />
             </div>
             <div className="artisanProfile--fields">
               <label>Firstname</label>
-              <input type="text" ref={FirstnameRef} />
+              <input
+                type="text"
+                ref={FirstnameRef}
+                placeholder={artisan.firstname}
+              />
             </div>
             <div className="artisanProfile--fields">
               <label>Lastname</label>
-              <input type="text" ref={LastnameRef} />
+              <input
+                type="text"
+                ref={LastnameRef}
+                placeholder={artisan.lastname}
+              />
             </div>
             <div className="artisanProfile--fields">
               <label>Email</label>
-              <input type="email" ref={EmailRef} />
+              <input type="email" ref={EmailRef} placeholder={artisan.email} />
             </div>
             <div className="artisanProfile--fields">
               <label>Contact</label>
-              <input type="phone" ref={ContactRef} />
+              <input
+                type="phone"
+                ref={ContactRef}
+                placeholder={artisan.contact}
+              />
             </div>
             <div className="artisanProfile--fields">
               <label>Location</label>
-              <input type="text" ref={LocationRef} />
+              <input
+                type="text"
+                ref={LocationRef}
+                placeholder={artisan.location}
+              />
             </div>
             <div className="artisanProfile--fields">
               <label>Description</label>
-              <textarea ref={DescriptionRef} rows={3} cols={70} />
+              <textarea
+                ref={DescriptionRef}
+                rows={3}
+                cols={70}
+                placeholder={artisan.Description}
+              />
             </div>
             <div className="artisanProfile--fields">
               <label>Profile Picture</label>
@@ -155,7 +224,7 @@ function EditArtisanProfile() {
             </div>
           </div>
           <div className="artisanProfile--btn">
-            <button onClick={()=>setIsLoading(true)}>Save {load}</button>
+            <button onClick={() => setIsLoading(true)}>Save {load}</button>
           </div>
         </form>
       </Container>
