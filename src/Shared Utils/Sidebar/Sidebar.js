@@ -4,9 +4,20 @@ import { MdLogout } from "react-icons/md";
 import "./Sidebar.css";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { GiAutoRepair } from "react-icons/gi";
-import { StyleRoot } from "radium";
 import axios from "axios";
 import Prompts from "../../Prompts";
+import './Usestate.css'
+import styled from "styled-components";
+
+const BottomSection = styled.div.attrs((props) => ({
+  // Define the prop as an attribute to avoid the warning
+  isOpen: props.isOpen,
+}))`
+  width: 100%;
+  @media (max-width: 480px) {
+    display: ${(props) => (props.isOpen ? "flex" : "none")};
+  }
+`;
 
 function Sidebar({ data }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,36 +66,20 @@ function Sidebar({ data }) {
     handlePost();
   }, [id]);
 
-  const width = {
-    width: isOpen ? "250px" : "50px",
-    "@media (min-width: 760px) and (max-width: 920px)": {
-      width: isOpen ? "350px" : "60px",
-    },
-    "@media (max-width: 480px)": {
-      width: isOpen ? "240px" : "40px",
-    },
-    "@media (max-width: 376px)": {
-      width: isOpen ? "230px" : "35px",
-    },
-  };
+  
   const display = {
     display: isOpen ? "flex" : "none",
   };
   const display2 = {
     display: isOpen ? "inline-block" : "none",
   };
-  const display3 = {
-    "@media (max-width: 480px)": {
-      display: isOpen ? "flex" : "none",
-    },
-  };
 
   return (
-    <StyleRoot>
       <div className="sidebar--container">
         <Prompts showModal={showModal} hideModal={openModal} message={'Do you want to log out?'} 
         action={handleLogout} title={'Logging out'}/>
-        <div className="sidebar" style={width}>
+        <div className="sidebar" 
+        style={{ width: isOpen ? "var(--sidebar-width-open)" : "var(--sidebar-width-closed)" }}>
           <div className="top--section">
             <div className="logo" style={display}>
               <GiAutoRepair size={25} />
@@ -105,43 +100,44 @@ function Sidebar({ data }) {
             )}
             <h5>{artisan.username}</h5>
           </div>
-          <div className="bottom--section" style={display3}>
-            <div>
-              {data.map((item, index) => (
-                <NavLink
-                  to={item.path}
-                  key={index}
-                  className={`link ${
-                    location.pathname === item.path ? "active" : ""
-                  }`}
-                  onClick={() => setIsOpen(false)}
+          <BottomSection isOpen={isOpen}>
+            <div className="bottom--section">
+              <div>
+                {data.map((item, index) => (
+                  <NavLink
+                    to={item.path}
+                    key={index}
+                    className={`link ${
+                      location.pathname === item.path ? "active" : ""
+                    }`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <div className="icon">{item.icon}</div>
+                    <div className="text--link" style={display}>
+                      {item.name}
+                    </div>
+                  </NavLink>
+                ))}
+              </div>
+              {isOpen ? (
+                <button
+                  className="logout--btn"
+                  style={display2}
+                  onClick={openModal}
                 >
-                  <div className="icon">{item.icon}</div>
-                  <div className="text--link" style={display}>
-                    {item.name}
-                  </div>
-                </NavLink>
-              ))}
+                  Logout <MdLogout size={20} />
+                </button>
+              ) : (
+                <MdLogout
+                  className="logout--icon"
+                  size={20}
+                  onClick={openModal}
+                />
+              )}
             </div>
-            {isOpen ? (
-              <button
-                className="logout--btn"
-                style={display2}
-                onClick={openModal}
-              >
-                Logout <MdLogout size={20} />
-              </button>
-            ) : (
-              <MdLogout
-                className="logout--icon"
-                size={20}
-                onClick={openModal}
-              />
-            )}
-          </div>
+          </BottomSection>
         </div>
       </div>
-    </StyleRoot>
   );
 }
 
