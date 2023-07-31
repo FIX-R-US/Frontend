@@ -8,7 +8,6 @@ import axios from "axios";
 import {toast, ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Spinner from 'react-bootstrap/Spinner'
-import { SERVER_URL } from "../../SERVER_URL";
 
 function CreateAccount() {
   const navigate = useNavigate();
@@ -30,7 +29,7 @@ function CreateAccount() {
     const role = roleRef.current.value;
     console.log(username, email, password, confirmPassword, role);
     axios
-      .post(`${SERVER_URL}/auth1/register1`, {
+      .post(`https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/auth1/register1`, {
         username,
         email,
         password,

@@ -15,7 +15,7 @@ function ProfileHeader({ title }) {
   });
 
   useEffect(() => {
-    axios.post("http://localhost:3001/details/getuser", { id }).then((data) => {
+    axios.post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/details/getuser", { id }).then((data) => {
       //console.log(data.data);
       setArtisan({
         username: data.data[0].username,

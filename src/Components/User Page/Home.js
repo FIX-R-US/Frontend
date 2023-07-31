@@ -7,7 +7,6 @@ import axios from "axios";
 import { FaUserCircle } from "react-icons/fa";
 import { MdVerified } from "react-icons/md";
 import Spinner from 'react-bootstrap/Spinner'
-// import { SERVER_URL } from "../../SERVER_URL";
 
 function Home() {
   const navigate = useNavigate();

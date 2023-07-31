@@ -85,7 +85,7 @@ function ArtisanRegistration() {
     // }
     if (demoId) {
       axios
-        .post("http://localhost:3001/update/updateregister", {
+        .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/update/updateregister", {
           firstname,
           lastname,
           contact,
@@ -101,6 +101,7 @@ function ArtisanRegistration() {
           console.log("Hello", nationalID);
           // console.log("Hello", picture_video);
           // console.log("Hello", location);
+          setIsLoading(prevLoad=> !prevLoad)
           toast.success('Account created Succesfully')
           setTimeout(() => {
             navigate(`/login`);
@@ -109,13 +110,14 @@ function ArtisanRegistration() {
         })
         .catch((error) => {
           console.log(error)
+          setIsLoading(prevLoad=> !prevLoad)
           toast.error(error.message)
         });
     }
     if (cert && demoId) {
       setTimeout(() => {
         axios
-          .post("http://localhost:3001/update/updateregister", {
+          .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/update/updateregister", {
             firstname,
             lastname,
             contact,
@@ -131,6 +133,7 @@ function ArtisanRegistration() {
             console.log("Hello", certificate);
             // console.log("Hello", picture_video);
             // console.log("Hello", location);
+            setIsLoading(prevLoad=> !prevLoad)
             toast.success('Account created Succesfully')
             setTimeout(() => {
               navigate(`/login`);
@@ -138,12 +141,13 @@ function ArtisanRegistration() {
           })
           .catch((error) => {
             console.log(error)
+            setIsLoading(prevLoad=> !prevLoad)
             toast.error(error.message)
           });
       }, 3000);
     } else {
       axios
-        .post("http://localhost:3001/update/updateregister", {
+        .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/update/updateregister", {
           firstname,
           lastname,
           contact,
@@ -158,6 +162,7 @@ function ArtisanRegistration() {
           console.log("Hello", certificate);
           // console.log("Hello", picture_video);
           // console.log("Hello", location);
+          setIsLoading(prevLoad=> !prevLoad)
           toast.success('Account created Succesfully')
           setTimeout(() => {
             navigate(`/login`);
@@ -165,6 +170,7 @@ function ArtisanRegistration() {
         })
         .catch((error) => {
           console.log(error)
+          setIsLoading(prevLoad=> !prevLoad)
           toast.error(error.message)
         });
     }

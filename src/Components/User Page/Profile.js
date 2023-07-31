@@ -43,7 +43,7 @@ function Profile() {
 
     const send = async (inputs) => {
       await axios
-        .post("http://localhost:3001/editp/editprofile", { inputs })
+        .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/editp/editprofile", { inputs })
         .then((data) => {
           console.log(data);
           setIsLoading(prevLoading => !prevLoading)

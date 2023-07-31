@@ -51,7 +51,7 @@ function ArtisanProfile2() {
 
   useEffect(() => {
     axios
-      .post("http://localhost:3001/bookings/check", { artisan_id, user_id })
+      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/bookings/check", { artisan_id, user_id })
       .then((data) => {
         // console.log(data);
         if (data.data.length === 0) {
@@ -65,7 +65,7 @@ function ArtisanProfile2() {
   useEffect(() => {
     const fetchDetails = async () => {
       await axios
-        .post("http://localhost:3001/details/getuser", { id })
+        .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/details/getuser", { id })
         .then((data) => {
           // console.log(data.data[0]);
           setArtisan({
@@ -97,7 +97,7 @@ function ArtisanProfile2() {
     try {
       const request = "book";
       await axios
-        .post("http://localhost:3001/book/booking", {
+        .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/book/booking", {
           artisan_id,
           user_id,
           request,
@@ -124,7 +124,7 @@ function ArtisanProfile2() {
 
   useEffect(() => {
     axios
-      .post("http://localhost:3001/review/display", { artisan_id })
+      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/review/display", { artisan_id })
       .then((data) => {
         // console.log(data.data)
         setReviews(data.data);
@@ -136,7 +136,7 @@ function ArtisanProfile2() {
    //displaying the pics
    useEffect(() => {
     axios
-      .post("http://localhost:3001/view/pic", { artisan_id })
+      .post("http://https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/view/pic", { artisan_id })
       .then((data) => {
         // console.log(data.data)
         setPics(data.data);

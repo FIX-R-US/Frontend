@@ -24,7 +24,7 @@ function ArtisanManagement() {
   const role = "artisan";
   useEffect(() => {
     axios
-      .post("http://localhost:3001/data/getdata", { role })
+      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/data/getdata", { role })
       .then((data) => {
         // console.log(data.data)
         setArtisan(data.data);
@@ -34,7 +34,7 @@ function ArtisanManagement() {
   }, []);
 
   const handleAccountToggle = (id) => {
-    axios.post("http://localhost:3001/isactive/active", { id }).then((data) => {
+    axios.post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/isactive/active", { id }).then((data) => {
       console.log(data);
       setArtisan((prevState) =>
         prevState.map((item) => {
@@ -49,7 +49,7 @@ function ArtisanManagement() {
   };
 
   const handlePaymentToggle = (id) => {
-    axios.post("http://localhost:3001/haspaid/paid", { id }).then((data) => {
+    axios.post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/haspaid/paid", { id }).then((data) => {
       console.log(data);
       setArtisan((prevState) =>
         prevState.map((item) => {

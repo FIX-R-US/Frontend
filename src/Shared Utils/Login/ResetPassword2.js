@@ -5,7 +5,6 @@ import { HiEye, HiEyeOff } from "react-icons/hi";
 import reset from "./reset.png";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { SERVER_URL } from "../../SERVER_URL";
 
 function ResetPassword2() {
   const [showPassword, setShowPassword] = useState(false);
@@ -19,7 +18,7 @@ function ResetPassword2() {
     e.preventDefault();
     const password = passwordRef.current.value;
     axios
-      .post(`${SERVER_URL}/newpassword/resetpassword`, {
+      .post(`https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/newpassword/resetpassword`, {
         email,
         password,
       })

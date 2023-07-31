@@ -5,7 +5,6 @@ import { useRef } from "react";
 import Header from "../../Components/Home page/Header";
 import reset from "./email.png";
 import axios from "axios";
-import { SERVER_URL } from "../../SERVER_URL";
 
 function ResetPassword() {
   const navigate = useNavigate();
@@ -16,7 +15,7 @@ function ResetPassword() {
     const email = emailRef.current.value;
     console.log(email);
     axios
-      .post(`${SERVER_URL}/resetpassword/forgetpassword`, { email })
+      .post(`$https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/resetpassword/forgetpassword`, { email })
       .then((data) => {
         console.log(data);
         navigate(`/checkEmail/${email}`);

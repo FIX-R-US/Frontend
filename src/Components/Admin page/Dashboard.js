@@ -23,7 +23,7 @@ function Dashboard() {
     const fetchData = async () => {
       const role = "user";
       const userResponse = await axios.post(
-        "http://localhost:3001/datauser/getuserdata",
+        "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/datauser/getuserdata",
         { role }
       );
       setUser(userResponse.data);
@@ -36,7 +36,7 @@ function Dashboard() {
     const fetchme = async () => {
       const role = "artisan";
       const artisanResponse = await axios.post(
-        "http://localhost:3001/data/getdata",
+        "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/data/getdata",
         { role }
       );
       setArtisan(artisanResponse.data);

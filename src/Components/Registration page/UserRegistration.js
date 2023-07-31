@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./Registration.css";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../Components/Home page/Header";
@@ -14,6 +14,8 @@ function UserRegistration() {
   const lastNameRef = useRef();
   const contactRef = useRef();
   const locationRef = useRef();
+  const [isLoading, setIsLoading] = useState(false)
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,7 +26,7 @@ function UserRegistration() {
     const isActive = "1";
     // console.log(firstName, lastName, contact, location)
     axios
-      .post("http://localhost:3001/update/updateregister", {
+      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/update/updateregister", {
         firstname,
         lastname,
         contact,
@@ -34,12 +36,19 @@ function UserRegistration() {
       })
       .then((data) => {
         console.log(data);
+        setIsLoading(prevLoad => !prevLoad)
         toast.success('Account created Successfully')
         setTimeout(() => {
           navigate("/login");
         },[3000])
       });
   };
+
+  let load
+  if(isLoading) {
+   load = <Spinner as="span" animation="border" role="status" size="sm" aria-hidden="true" />
+  }
+
   return (
     <div className="form--container">
       <ToastContainer/>
@@ -70,7 +79,7 @@ function UserRegistration() {
               </div>
             </div>
             <div className="userCreate--btn">
-              <button>Submit</button>
+              <button onClick={()=>setIsLoading(true)}>Submit {load}</button>
             </div>
           </form>
         </div>

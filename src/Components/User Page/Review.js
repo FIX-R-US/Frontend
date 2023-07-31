@@ -25,7 +25,7 @@ function Review() {
   const role = "artisan";
   useEffect(() => {
     axios
-      .post("http://localhost:3001/data/getdata", { role })
+      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/data/getdata", { role })
       .then((data) => {
         // console.log(data.data)
         setArtisan(data.data);
@@ -40,7 +40,7 @@ function Review() {
     const artisan_id = selectedOption.id;
     const username = username1;
     axios
-      .post("http://localhost:3001/storereviews/reviews", {
+      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/storereviews/reviews", {
         review,
         artisan_id,
         username,

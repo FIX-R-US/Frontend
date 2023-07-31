@@ -23,7 +23,7 @@ function ArtisanBookings() {
   // console.log("hello", books);
   useEffect(() => {
     axios
-      .post("http://localhost:3001/hasbooked/book", { artisan_id })
+      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/hasbooked/book", { artisan_id })
       .then((data) => {
         // console.log(data.data);
         setBookings(data.data);
@@ -43,7 +43,7 @@ function ArtisanBookings() {
       return;
     }
     axios
-      .post("http://localhost:3001/booking/accept", {
+      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/booking/accept", {
         accepted: true,
         agreedPrice,
         id: tableId,
@@ -84,7 +84,7 @@ function ArtisanBookings() {
   const handleDeclineBooking = (id) => {
     const updatedBookings = books.filter((item) => item.id !== id);
     axios
-      .post("http://localhost:3001/book/deleted", { id })
+      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/book/deleted", { id })
       .then((data) => {
         setShowModal2(prevShow => !prevShow)
         console.log(data);
@@ -103,7 +103,7 @@ function ArtisanBookings() {
     //API call
     const accepted = "1";
     axios
-      .post("http://localhost:3001/workedbooks/clear", {
+      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/workedbooks/clear", {
         accepted,
         artisan_id,
       })

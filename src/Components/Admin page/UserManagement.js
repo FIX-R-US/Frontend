@@ -23,7 +23,7 @@ function UserManagement() {
   const role = "user";
   useEffect(() => {
     axios
-      .post("http://localhost:3001/datauser/getuserdata", { role })
+      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/datauser/getuserdata", { role })
       .then((data) => {
         // console.log(data.data)
         setArtisan(data.data);
@@ -33,7 +33,7 @@ function UserManagement() {
   }, []);
  
   const handleAccountToggle = (id) => {
-    axios.post("http://localhost:3001/isactive/active", { id }).then((data) => {
+    axios.post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/isactive/active", { id }).then((data) => {
       console.log(data);
       setArtisan((prevState) =>
         prevState.map((item) => {

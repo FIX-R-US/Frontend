@@ -53,7 +53,7 @@ function Sidebar({ data }) {
   useEffect(() => {
     const handlePost = async () => {
       await axios
-        .post("http://localhost:3001/details/getuser", { id })
+        .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/details/getuser", { id })
         .then((data) => {
           // console.log(data.data);
           setArtisan({

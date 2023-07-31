@@ -17,7 +17,7 @@ function VerifyRegistration() {
   const role = "artisan";
   useEffect(() => {
     axios
-      .post("http://localhost:3001/data/getdata", { role })
+      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/data/getdata", { role })
       .then((data) => {
         // console.log(data.data)
         setArtisan(data.data);

@@ -44,7 +44,7 @@ function ArtisanProfile() {
   useEffect(() => {
     const fetchDetails = async () => {
       await axios
-        .post("http://localhost:3001/details/getuser", { id })
+        .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/details/getuser", { id })
         .then((data) => {
           // console.log(data.data[0]);
           setArtisan({
@@ -69,7 +69,7 @@ function ArtisanProfile() {
   }, [id]);
   useEffect(() => {
     axios
-      .post("http://localhost:3001/review/display", { artisan_id })
+      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/review/display", { artisan_id })
       .then((data) => {
         // console.log(data.data)
         setReviews(data.data);
@@ -81,7 +81,7 @@ function ArtisanProfile() {
   //displaying the pics
   useEffect(() => {
     axios
-      .post("http://localhost:3001/view/pic", { artisan_id })
+      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/view/pic", { artisan_id })
       .then((data) => {
         // console.log(data.data)
         setPics(data.data);
@@ -117,7 +117,7 @@ function ArtisanProfile() {
       getDownloadURL(snapshot.ref).then((url) => {
         // console.log("url:",
         axios
-          .post("http://localhost:3001/pic/upload", {
+          .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/pic/upload", {
             picture_video: url,
             artisan_id,
           })

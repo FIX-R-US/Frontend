@@ -39,7 +39,7 @@ function EditArtisanProfile() {
 
     const send = async (inputs) => {
       await axios
-        .post("http://localhost:3001/editp1/editartisanProfile", { inputs })
+        .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/editp1/editartisanProfile", { inputs })
         .then((data) => {
           console.log(data.data);
           setIsLoading(prevLoading => !prevLoading)

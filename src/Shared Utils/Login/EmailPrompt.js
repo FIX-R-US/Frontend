@@ -11,7 +11,7 @@ function EmailPrompt() {
     e.preventDefault();
     console.log(email);
     axios
-      .post("http://localhost:3001/resetpassword/forgetpassword", { email })
+      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/resetpassword/forgetpassword", { email })
       .then((data) => {
         console.log(data);
       })
