@@ -8,6 +8,7 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from 'react-bootstrap/Spinner'
+import { SERVER_URL } from "../../SERVER_URL";
 
 
 function Login() {
@@ -24,7 +25,7 @@ function Login() {
     //console.log(username, password);
 
     axios
-      .post("http://localhost:3001/auth/login", { username, password })
+      .post(`${SERVER_URL}/auth/login`, { username, password })
       .then((data) => {
         sessionStorage.setItem("user", JSON.stringify(data.data.user));
         console.log(data);
