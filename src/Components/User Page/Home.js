@@ -7,7 +7,7 @@ import axios from "axios";
 import { FaUserCircle } from "react-icons/fa";
 import { MdVerified } from "react-icons/md";
 import Spinner from 'react-bootstrap/Spinner'
-import { SERVER_URL } from "../../SERVER_URL";
+// import { SERVER_URL } from "../../SERVER_URL";
 
 function Home() {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ function Home() {
     );
   const role = "artisan";
   useEffect(() => {
-    axios.post(`${SERVER_URL}/data/getdata`, { role }).then((data) => {
+    axios.post(`https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/data/getdata`, { role }).then((data) => {
       // console.log(data.data)
       setArtisan(data.data);
       setIsLoading(false)
