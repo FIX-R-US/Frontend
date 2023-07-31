@@ -6,6 +6,7 @@ import account from "../../Shared Utils/Login/createaccount.png";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
+import Spinner from 'react-bootstrap/Spinner'
 
 function UserRegistration() {
   const navigate = useNavigate();
