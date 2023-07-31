@@ -20,11 +20,10 @@ function EditArtisanProfile() {
   const LocationRef = useRef();
   const DescriptionRef = useRef();
   const ProfilepicRef = useRef();
-  // const VideoRef = useRef();
   const id = sessionStorage.getItem("id");
+  // eslint-disable-next-line
   const [pic, setCert] = useState("");
   const [isLoading, setIsLoading] = useState(false)
-  // const [showProfilePic, setShowProfilePic] = useState();
 
   const handleSave = (e) => {
     e.preventDefault();
@@ -66,6 +65,7 @@ function EditArtisanProfile() {
           getDownloadURL(uploadTask.snapshot.ref)
             .then((url) => {
               console.log(url);
+              // eslint-disable-next-line
               const profile_photo = pic !== undefined ? `${pic}` : null;
               const values = {
                 username,

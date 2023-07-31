@@ -60,6 +60,7 @@ function ArtisanProfile2() {
           setIsRequested(true);
         }
       });
+      // eslint-disable-next-line
   }, []);
   useEffect(() => {
     const fetchDetails = async () => {

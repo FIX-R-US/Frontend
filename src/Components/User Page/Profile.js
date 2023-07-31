@@ -27,6 +27,7 @@ function Profile() {
   const ProfilepicRef = useRef();
   const id = sessionStorage.getItem("id");
   const navigate = useNavigate();
+  // eslint-disable-next-line
   const [pic, setCert] = useState("");
   const [isLoading, setIsLoading] = useState(false)
 
@@ -66,6 +67,7 @@ function Profile() {
           getDownloadURL(uploadTask.snapshot.ref)
             .then((url) => {
               console.log(url);
+              // eslint-disable-next-line
               const profile_photo = pic !== undefined ? `${pic}` : null;
 
               const values = {

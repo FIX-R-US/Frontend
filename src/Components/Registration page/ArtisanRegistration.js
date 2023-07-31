@@ -20,7 +20,7 @@ function ArtisanRegistration() {
   const occupationRef = useRef();
   const certificateRef = useRef();
   const nationalIDRef = useRef();
-  // const [pic, setPic] = useState("");
+  // eslint-disable-next-line
   const [file, setFile] = useState();
   const [cert, setCert] = useState("");
   const [isLoading, setIsLoading] = useState(false)
