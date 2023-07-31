@@ -25,7 +25,7 @@ function Login() {
     //console.log(username, password);
 
     axios
-      .post(`${SERVER_URL}/auth/login`, { username, password })
+      .post(`${SERVER_URL}:3001/auth/login`, { username, password })
       .then((data) => {
         sessionStorage.setItem("user", JSON.stringify(data.data.user));
         console.log(data);
