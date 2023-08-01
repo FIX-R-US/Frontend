@@ -24,7 +24,7 @@ function EditArtisanProfile() {
   // eslint-disable-next-line
   const [pic, setCert] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isLoading2, setIsLoading2] = useState(true)
+  const [isLoading2, setIsLoading2] = useState(true);
   const [artisan, setArtisan] = useState({
     username: "",
     id: "",
@@ -57,7 +57,7 @@ function EditArtisanProfile() {
             location: data.data[0].location,
             Description: data.data[0].Description,
           });
-          setIsLoading2(false)
+          setIsLoading2(false);
         });
     };
     handlePost();
@@ -75,74 +75,86 @@ function EditArtisanProfile() {
     const profile_photo = ProfilepicRef.current.files[0];
     // const picture_videos = VideoRef.current.files[0];
 
-    const send = async (inputs) => {
-      await axios
-        .post(
-          "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/editp1/editartisanProfile",
-          { inputs }
-        )
-        .then((data) => {
-          console.log(data.data);
-          setIsLoading((prevLoading) => !prevLoading);
-          toast.success("Profile updated");
-          setTimeout(() => {
-            navigate("/login/artisan/home");
-          }, [3000]);
-        })
-        .catch((error) => {
-          console.log(error);
-          toast.error(error.message);
-        });
-    };
+    axios
+      .post(
+        "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/username/checkUser",
+        { username, email }
+      )
+      .then((data) => {
+        if (data.data.length !== 0) {
+          setIsLoading((prevLoad) => !prevLoad);
+          toast.error("username or email exists");
+        } else {
+          const send = async (inputs) => {
+            await axios
+              .post(
+                "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/editp1/editartisanProfile",
+                { inputs }
+              )
+              .then((data) => {
+                console.log(data.data);
+                setIsLoading((prevLoading) => !prevLoading);
+                toast.success("Profile updated");
+                setTimeout(() => {
+                  navigate("/login/artisan/home");
+                }, [3000]);
+              })
+              .catch((error) => {
+                console.log(error);
+                toast.error(error.message);
+              });
+          };
 
-    if (profile_photo !== undefined && profile_photo != null) {
-      const storageRef = ref(
-        storage,
-        `/docs/profilepics(Artisans)/${profile_photo.name}` + id
-      );
-      const uploadTask = uploadBytesResumable(storageRef, profile_photo);
-      uploadTask
-        .then(() => {
-          getDownloadURL(uploadTask.snapshot.ref)
-            .then((url) => {
-              console.log(url);
-              // eslint-disable-next-line
-              const profile_photo = pic !== undefined ? `${pic}` : null;
-              const values = {
-                username,
-                firstname,
-                lastname,
-                email,
-                contact,
-                location,
-                Description,
-                profile_photo: url,
-                id,
-              };
-              console.log("identity: ", id);
-              send(values);
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else {
-      const values = {
-        username,
-        firstname,
-        lastname,
-        email,
-        contact,
-        location,
-        Description,
-        profile_photo,
-        id,
-      };
-      send(values);
-    }
+          if (profile_photo !== undefined && profile_photo != null) {
+            const storageRef = ref(
+              storage,
+              `/docs/profilepics(Artisans)/${profile_photo.name}` + id
+            );
+            const uploadTask = uploadBytesResumable(storageRef, profile_photo);
+            uploadTask
+              .then(() => {
+                getDownloadURL(uploadTask.snapshot.ref)
+                  .then((url) => {
+                    console.log(url);
+                    // eslint-disable-next-line
+                    const profile_photo = pic !== undefined ? `${pic}` : null;
+                    const values = {
+                      username,
+                      firstname,
+                      lastname,
+                      email,
+                      contact,
+                      location,
+                      Description,
+                      profile_photo: url,
+                      id,
+                    };
+                    console.log("identity: ", id);
+                    send(values);
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          } else {
+            const values = {
+              username,
+              firstname,
+              lastname,
+              email,
+              contact,
+              location,
+              Description,
+              profile_photo,
+              id,
+            };
+            send(values);
+          }
+        }
+      });
   };
 
   let load;
@@ -158,14 +170,17 @@ function EditArtisanProfile() {
     );
   }
 
-  if(isLoading2){
-    return(
-      <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
-        <Spinner animation="grow" role="status" style={{color: '#7200CC'}}>
+  if (isLoading2) {
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "90vh" }}
+      >
+        <Spinner animation="grow" role="status" style={{ color: "#7200CC" }}>
           <span className="visually-hidden">Loading...</span>
         </Spinner>
       </div>
-    )
+    );
   }
 
   return (

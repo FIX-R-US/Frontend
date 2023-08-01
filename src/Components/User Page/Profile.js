@@ -76,6 +76,7 @@ function Profile() {
       )
       .then((data) => {
         if (data.data.length !== 0) {
+          setIsLoading((prevLoad) => !prevLoad);
           toast.error("username or email exists");
         } else {
           const send = async (inputs) => {
