@@ -5,31 +5,45 @@ import { HiEye, HiEyeOff } from "react-icons/hi";
 import reset from "./reset.png";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function ResetPassword2() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const email = useParams().email;
   const passwordRef = useRef();
+  const confirmPasswordRef = useRef();
   const handleShow = () =>
     setShowPassword((prevShowPassword) => !prevShowPassword);
 
   const handleclick = (e) => {
     e.preventDefault();
     const password = passwordRef.current.value;
-    axios
-      .post(`https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/newpassword/resetpassword`, {
-        email,
-        password,
-      })
-      .then((data) => {
-        console.log(data);
-        navigate("/login");
-      })
-      .catch((error) => console.log(error));
+    const confirmPassword = confirmPasswordRef.current.value;
+
+    if (password !== confirmPassword) {
+      toast.error("Passwords don't match");
+    } else {
+      axios
+        .post(
+          `https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/newpassword/resetpassword`,
+          {
+            email,
+            password,
+          }
+        )
+        .then((data) => {
+          toast.success("Password Changed");
+          console.log(data);
+          navigate("/login");
+        })
+        .catch((error) => console.log(error));
+    }
   };
   return (
     <div className="reset--container">
+      <ToastContainer />
       <div className="left--reset">
         <Header />
         <div className="reset--fields">
@@ -60,7 +74,7 @@ function ResetPassword2() {
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Confirm new password"
-                  ref={passwordRef}
+                  ref={confirmPasswordRef}
                 />
                 {showPassword ? (
                   <HiEyeOff className="show--eye" onClick={handleShow} />
