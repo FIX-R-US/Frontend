@@ -153,7 +153,7 @@ function VerifyRegistration() {
                 <td>{item.email}</td>
                 <td>{item.nationalID}</td>
                 <td>{item.certificate}</td>
-                <td>{item.sentimentScores}</td>
+                <td>{item.sentimentScores}%</td>
                 <td>
                   {item.isVerified ? (
                     <MdVerified size={50} color="#7200CC" />
