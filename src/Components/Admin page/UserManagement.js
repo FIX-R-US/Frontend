@@ -13,12 +13,19 @@ function UserManagement() {
   const [artisan, setArtisan] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
 
-  const filter = artisan.filter(
-    (item) =>
-      item.firstname.toLowerCase().includes(search) ||
-      item.lastname.toLowerCase().includes(search) ||
-      item.location.toLowerCase().includes(search)
-  );
+  const filter = artisan.filter((item) => {
+    const firstNameLower = item.firstname ? item.firstname.toLowerCase() : '';
+    const lastNameLower = item.lastname ? item.lastname.toLowerCase() : '';
+    const locationLower = item.location ? item.location.toLowerCase() : '';
+    const searchLower = search ? search.toLowerCase() : '';
+  
+    return (
+      firstNameLower.includes(searchLower) ||
+      lastNameLower.includes(searchLower) ||
+      locationLower.includes(searchLower) 
+    );
+  });
+  
 
   const role = "user";
   useEffect(() => {
