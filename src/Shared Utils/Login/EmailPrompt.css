@@ -109,6 +109,9 @@
     .prompt--responsive > img{
         height: 270px;
     }
+    .left--prompt{
+        padding: 10px;
+    }
 }
 
 @media (max-width: 376px) {
