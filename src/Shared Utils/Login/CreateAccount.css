@@ -133,7 +133,7 @@
     }
     .account--left{
         gap: 20px;
-        padding: 10px;
+        padding-top: 10px;
     }
 }
 @media (max-width: 290px){

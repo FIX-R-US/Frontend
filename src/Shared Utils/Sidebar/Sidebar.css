@@ -211,12 +211,12 @@
     height: 120px;
   }
   .sidebar--container .sidebar .bottom--section {
-    gap: 290px;
+    gap: 250px;
   }
 }
 @media (min-width: 385px) and (max-width: 450px) {
   .sidebar--container .sidebar .bottom--section {
-    gap: 250px;
+    gap: 200px;
   }
 }
 @media (min-width: 370px) and (max-width: 380px) {

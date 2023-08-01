@@ -8,7 +8,7 @@ import "./Management.css";
 import { MdVerified } from "react-icons/md";
 import axios from "axios";
 import Spinner from 'react-bootstrap/Spinner'
-import { DivStyle } from "../StyledComponents";
+// import { DivStyle } from "../StyledComponents";
 
 function ArtisanManagement() {
   const [artisan, setArtisan] = useState([]);
@@ -96,6 +96,10 @@ function ArtisanManagement() {
     )
   }
 
+  const style ={
+    color:'#7200CC'
+  }
+
   return (
     <div className="Table--container">
       <Container>
@@ -109,8 +113,8 @@ function ArtisanManagement() {
             />
           </Form>
         </div>
-        <DivStyle>
-          <Table bordered hover responsive>
+        {/* <DivStyle> */}
+          <Table bordered hover responsive style={style}>
             <thead>
               <tr>
                 <th>Username</th>
@@ -180,7 +184,7 @@ function ArtisanManagement() {
               ))}
             </tbody>
           </Table>
-        </DivStyle>
+        {/* </DivStyle> */}
       </Container>
     </div>
   );

@@ -7,7 +7,7 @@ import "./Search.css";
 import "./Management.css";
 import axios from "axios";
 import Spinner from 'react-bootstrap/Spinner'
-import { DivStyle } from "../StyledComponents";
+// import { DivStyle } from "../StyledComponents";
 
 function UserManagement() {
   const [search, setSearch] = useState("");
@@ -65,6 +65,10 @@ function UserManagement() {
     )
   }
 
+  const style = {
+    color: '#7200CC'
+  }
+
   return (
     <div className="Table--container">
       <Container>
@@ -78,8 +82,8 @@ function UserManagement() {
             />
           </Form>
         </div>
-        <DivStyle>
-          <Table bordered hover responsive>
+        {/* <DivStyle> */}
+          <Table bordered hover responsive style={style}>
             <thead>
               <tr>
                 <th>Username</th>
@@ -121,7 +125,7 @@ function UserManagement() {
               ))}
             </tbody>
           </Table>
-        </DivStyle>
+        {/* </DivStyle> */}
       </Container>
     </div>
   );

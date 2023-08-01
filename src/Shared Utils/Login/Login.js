@@ -129,10 +129,6 @@ function Login() {
                 <a href="/forgotPassword" className="login--link">
                   Forgotten Password?
                 </a>
-                <p className="p-tag">Don't have an account?</p>
-                <a href="/createAccount" className="login--link">
-                  Create Account
-                </a>
               </div>
             </div>
           </form>

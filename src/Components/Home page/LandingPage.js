@@ -27,8 +27,14 @@ function LandingPage() {
                     <p>Let's get started to your account and start the experience</p>
                  </div>
                  <div className='aboutUs'>
-                    <button className='landingright--btn' onClick={()=>navigate('login')}>Get Started</button>
-                    <a href='./About'>About us</a>
+                    <button className='landingright--btn' onClick={()=>navigate('createAccount')}>Get Started</button>
+                    <p>
+                        Already have an account? 
+                        <a href="/login" className="login--link">
+                            Login
+                         </a>
+                    </p>
+                    {/* <a href='./About'>About us</a> */}
                  </div>
             </div>
         </div>

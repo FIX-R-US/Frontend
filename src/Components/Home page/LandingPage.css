@@ -106,6 +106,7 @@
   }
   .landing--container .landing--leftside {
     gap: 65px;
+    padding-top: 10px;
   }
   .landing--container .landing--leftside .text--content h3 {
     font-size: larger;

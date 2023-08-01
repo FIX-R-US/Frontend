@@ -9,7 +9,7 @@ import { BsFillTrash3Fill } from "react-icons/bs";
 import Spinner from "react-bootstrap/Spinner";
 import "./ArtisanBooking.css";
 import Prompts from "../../Prompts";
-import { DivStyle } from "../StyledComponents";
+// import { DivStyle } from "../StyledComponents";
 
 function ArtisanBookings() {
   const [books, setBookings] = useState([]);
@@ -131,6 +131,10 @@ function ArtisanBookings() {
     );
   }
 
+  const style ={
+    color: '#7200CC'
+  }
+
   const openModal = () => {
     setShowModal(prevShow => !prevShow)
   }
@@ -157,8 +161,8 @@ function ArtisanBookings() {
             />
           </div>
         )}
-        <DivStyle>
-          <Table bordered hover responsive>
+        {/* <DivStyle> */}
+          <Table bordered hover responsive style={style}>
             <thead>
               <tr>
                 <th>Firstname</th>
@@ -205,7 +209,7 @@ function ArtisanBookings() {
               ))}
             </tbody>
           </Table>
-        </DivStyle>
+        {/* </DivStyle> */}
 
         <Modal show={selectedBooking !== null} onHide={handleCloseModal}>
           <Modal.Header closeButton>

@@ -8,7 +8,7 @@ import "./Dashboard.css";
 import { PieChart, Pie, Tooltip, Cell } from "recharts";
 import { useNavigate } from "react-router-dom";
 import Spinner from 'react-bootstrap/Spinner'
-import { DivStyle } from "../StyledComponents";
+// import { DivStyle } from "../StyledComponents";
 
 
 function Dashboard() {
@@ -71,14 +71,18 @@ function Dashboard() {
     )
   }
 
+  const style ={
+    color: '#7200CC'
+  }
+
   return (
     <div>
       <Container>
         <div className="dashboard--container">
           <div className="admin--cardDiv">
             <h5 style={{ color: "#7200CC" }}>Analytics</h5>
-            <DivStyle>
-              <div className="admin--cardContent">
+            {/* <DivStyle> */}
+              <div className="admin--cardContent" style={style}>
                 <Card
                   className="users--overview"
                   onClick={() => navigate("/login/admin/manageUsers")}
@@ -176,12 +180,12 @@ function Dashboard() {
                   </Card.Body>
                 </Card>
               </div>
-            </DivStyle>
+            {/* </DivStyle> */}
           </div>
           <div className="admin--verification">
             <h5 style={{ color: "#7200CC" }}>Report</h5>
-            <DivStyle>
-              <div className="admin--verificationContent">
+            {/* <DivStyle> */}
+              <div className="admin--verificationContent" style={style}>
                 <Card
                   className="verification--overview"
                   style={{ height: "89.72vh" }}
@@ -219,7 +223,7 @@ function Dashboard() {
                   </Card.Body>
                 </Card>
               </div>
-            </DivStyle>
+            {/* </DivStyle> */}
           </div>
         </div>
       </Container>

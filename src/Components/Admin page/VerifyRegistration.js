@@ -8,7 +8,7 @@ import "./VerifyArtisan.css";
 import Form from "react-bootstrap/Form";
 import "./Search.css";
 import Spinner from 'react-bootstrap/Spinner'
-import { DivStyle } from "../StyledComponents";
+// import { DivStyle } from "../StyledComponents";
 
 function VerifyRegistration() {
   const [artisan, setArtisan] = useState([]);
@@ -105,6 +105,10 @@ function VerifyRegistration() {
     )
   }
 
+  const style = {
+    color: '#7200CC'
+  }
+
   return (
     <div className="Table--container">
       <Container className="mt-3">
@@ -118,8 +122,8 @@ function VerifyRegistration() {
             />
           </Form>
         </div>
-        <DivStyle>
-          <Table bordered hover responsive style={{ color: "#7200CC" }}>
+        {/* <DivStyle> */}
+          <Table bordered hover responsive style={style}>
             <thead>
               <tr>
                 <th>Username</th>
@@ -149,7 +153,7 @@ function VerifyRegistration() {
               ))}
             </tbody>
           </Table>
-        </DivStyle>
+        {/* </DivStyle> */}
       </Container>
     </div>
   );

@@ -162,7 +162,7 @@
     }
     .login--left{
         gap: 19px;
-        padding: 10px;
+        padding-top: 10px;
     }
 }
 
