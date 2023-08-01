@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 import Header from "../../Components/Home page/Header";
 import account from "./createaccount.png";
 import axios from "axios";
-import {toast, ToastContainer} from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import Spinner from 'react-bootstrap/Spinner'
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Spinner from "react-bootstrap/Spinner";
 
 function CreateAccount() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
   const usernameRef = useRef();
   const emailRef = useRef();
@@ -28,39 +28,50 @@ function CreateAccount() {
     const confirmPassword = confirmPasswordRef.current.value;
     const role = roleRef.current.value;
     console.log(username, email, password, confirmPassword, role);
-    axios
-      .post(`https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/auth1/register1`, {
-        username,
-        email,
-        password,
-        role,
-      })
-      .then((data) => {
-        if (password !== confirmPassword) {
-          setIsLoading(prevLoad => !prevLoad)
-         toast.error('Passwords do not match')
-        } else {
+    if (password !== confirmPassword) {
+      setIsLoading((prevLoad) => !prevLoad);
+      toast.error("Passwords do not match");
+    } else {
+      axios
+        .post(
+          `https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/auth1/register1`,
+          {
+            username,
+            email,
+            password,
+            role,
+          }
+        )
+        .then((data) => {
           console.log(data);
-          setIsLoading(prevLoad => !prevLoad)
+          setIsLoading((prevLoad) => !prevLoad);
           setTimeout(() => {
             navigate(`${role}/${username}`);
-          }, [3000])
-        }
-      })
-      .catch((error) => {
-        console.log(error)
-        toast.error(error.message)
-      });
+          }, [3000]);
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error(error.message);
+        });
+    }
   };
 
-  let load
-   if(isLoading) {
-    load = <Spinner as="span" animation="border" role="status" size="sm" aria-hidden="true" />
-   }
+  let load;
+  if (isLoading) {
+    load = (
+      <Spinner
+        as="span"
+        animation="border"
+        role="status"
+        size="sm"
+        aria-hidden="true"
+      />
+    );
+  }
 
   return (
     <div className="container--account">
-      <ToastContainer/>
+      <ToastContainer />
       <div className="account--container">
         <div className="account--left">
           <Header />
@@ -128,7 +139,9 @@ function CreateAccount() {
                 </div>
               </div>
               <div className="create--btn">
-                <button onClick={() => setIsLoading(true)}>Continue {load}</button>
+                <button onClick={() => setIsLoading(true)}>
+                  Continue {load}
+                </button>
               </div>
             </form>
           </div>
