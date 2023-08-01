@@ -14,13 +14,21 @@ function ArtisanManagement() {
   const [accountState, setAccountState] = useState(artisan);
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(true)
-  const filter = artisan.filter(
-    (item) =>
-      item.firstname.toLowerCase().includes(search) ||
-      item.lastname.toLowerCase().includes(search) ||
-      item.location.toLowerCase().includes(search) ||
-      item.occupation.toLowerCase().includes(search)
-  );
+  const filter = artisan.filter((item) => {
+    const firstNameLower = item.firstname ? item.firstname.toLowerCase() : '';
+    const lastNameLower = item.lastname ? item.lastname.toLowerCase() : '';
+    const locationLower = item.location ? item.location.toLowerCase() : '';
+    const occupationLower = item.occupation ? item.occupation.toLowerCase() : '';
+    const searchLower = search ? search.toLowerCase() : '';
+  
+    return (
+      firstNameLower.includes(searchLower) ||
+      lastNameLower.includes(searchLower) ||
+      locationLower.includes(searchLower) ||
+      occupationLower.includes(searchLower)
+    );
+  });
+  
   const role = "artisan";
   useEffect(() => {
     axios

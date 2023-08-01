@@ -37,15 +37,20 @@ function CreateAccount() {
       })
       .then((data) => {
         if (password !== confirmPassword) {
+          setIsLoading(prevLoad => !prevLoad)
          toast.error('Passwords do not match')
         } else {
           console.log(data);
+          setIsLoading(prevLoad => !prevLoad)
           setTimeout(() => {
             navigate(`${role}/${username}`);
           }, [3000])
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error)
+        toast.error(error.message)
+      });
   };
 
   let load

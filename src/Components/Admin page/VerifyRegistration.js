@@ -26,13 +26,23 @@ function VerifyRegistration() {
       .catch((error) => console.log(error));
   }, []);
 
-  const filter = artisan.filter(
-    (item) =>
-      item.firstname.toLowerCase().includes(search) ||
-      item.lastname.toLowerCase().includes(search) ||
-      item.location.toLowerCase().includes(search) ||
-      item.email.toLowerCase().includes(search)
+  const filter = artisan.filter((item) => {
+  const firstNameLower = item.firstname ? item.firstname.toLowerCase() : '';
+  const lastNameLower = item.lastname ? item.lastname.toLowerCase() : '';
+  const locationLower = item.location ? item.location.toLowerCase() : '';
+  const emailLower = item.email ? item.email.toLowerCase() : '';
+  const occupationLower = item.occupation ? item.occupation.toLowerCase() : '';
+  const searchLower = search ? search.toLowerCase() : '';
+
+  return (
+    firstNameLower.includes(searchLower) ||
+    lastNameLower.includes(searchLower) ||
+    locationLower.includes(searchLower) ||
+    occupationLower.includes(searchLower) ||
+    emailLower.includes(searchLower)
   );
+});
+
   // const calculateSentiment = (reviews) => {
   //   if (reviews.length === 0 || reviews.length === null) {
   //     return 0;

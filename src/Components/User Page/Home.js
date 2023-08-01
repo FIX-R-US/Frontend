@@ -16,12 +16,14 @@ function Home() {
   const [isLoading, setIsLoading] = useState(true)
 
   const filter = artisan
-    .slice(0, itemsToShow)
-    .filter(
-      (item) =>
-        item.occupation.toLowerCase().includes(search) ||
-        item.location.toLowerCase().includes(search)
-    );
+  .slice(0, itemsToShow)
+  .filter((item) => {
+    const occupationLower = item.occupation ? item.occupation.toLowerCase() : '';
+    const locationLower = item.location ? item.location.toLowerCase() : '';
+    const searchLower = search ? search.toLowerCase() : '';
+
+    return occupationLower.includes(searchLower) || locationLower.includes(searchLower);
+  });
   const role = "artisan";
   useEffect(() => {
     axios.post(`https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/data/getdata`, { role }).then((data) => {
