@@ -70,7 +70,10 @@ function Profile() {
     const location = LocationRef.current.value;
     const profile_photo = ProfilepicRef.current.files[0];
     axios
-      .post("http://localhost:3001/username/checkUser", { username, email })
+      .post(
+        "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/username/checkUser",
+        { username, email }
+      )
       .then((data) => {
         if (data.data.length !== 0) {
           toast.error("username or email exists");
