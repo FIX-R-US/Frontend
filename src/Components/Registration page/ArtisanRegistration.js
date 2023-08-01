@@ -6,9 +6,9 @@ import account from "../../Shared Utils/Login/createaccount.png";
 import axios from "axios";
 import { storage } from "../../firebaseConfig.js";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import Spinner from 'react-bootstrap/Spinner'
+import Spinner from "react-bootstrap/Spinner";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'
+import "react-toastify/dist/ReactToastify.css";
 
 function ArtisanRegistration() {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ function ArtisanRegistration() {
   // eslint-disable-next-line
   const [file, setFile] = useState();
   const [cert, setCert] = useState("");
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const [demoId, setDemoId] = useState("");
 
   const handleSubmit = async (e) => {
@@ -70,121 +70,93 @@ function ArtisanRegistration() {
         });
       });
     }
-    // if (picture_video !== undefined || picture_video !== null) {
-    //   const storageRef = ref(
-    //     storage,
-    //     `/docs/picture_video/${picture_video}` + username
-    //   );
-    //   await uploadBytesResumable(storageRef, picture_video).then((snapshot) => {
-    //     getDownloadURL(snapshot.ref).then((img) => {
-    //       // console.log("url:",
-    //       setPic(img);
-    //       console.log("mm: ", pic);
-    //     });
-    //   });
-    // }
-    if (demoId) {
-      axios
-        .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/update/updateregister", {
-          firstname,
-          lastname,
-          contact,
-          location,
-          occupation,
-          certificate,
-          nationalID: demoId,
-          isActive,
-          username,
-        })
-        .then((data) => {
-          console.log("hi:", data);
-          console.log("Hello", nationalID);
-          // console.log("Hello", picture_video);
-          // console.log("Hello", location);
-          setIsLoading(prevLoad=> !prevLoad)
-          toast.success('Account created Succesfully')
-          setTimeout(() => {
-            navigate(`/login`);
-          },[3000])
 
-        })
-        .catch((error) => {
-          console.log(error)
-          setIsLoading(prevLoad=> !prevLoad)
-          toast.error(error.message)
-        });
-    }
     if (cert && demoId) {
       setTimeout(() => {
         axios
-          .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/update/updateregister", {
-            firstname,
-            lastname,
-            contact,
-            location,
-            occupation,
-            certificate: cert ? cert : "",
-            nationalID: demoId,
-            isActive,
-            username,
-          })
+          .post(
+            "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/update/updateregister",
+            {
+              firstname,
+              lastname,
+              contact,
+              location,
+              occupation,
+              certificate: cert ? cert : "",
+              nationalID: demoId,
+              isActive,
+              username,
+            }
+          )
           .then((data) => {
             console.log("hi:", data);
             console.log("Hello", certificate);
             // console.log("Hello", picture_video);
             // console.log("Hello", location);
-            setIsLoading(prevLoad=> !prevLoad)
-            toast.success('Account created Succesfully')
+            setIsLoading((prevLoad) => !prevLoad);
+            toast.success("Account created Succesfully");
             setTimeout(() => {
               navigate(`/login`);
-            },[3000])
+            }, [3000]);
           })
           .catch((error) => {
-            console.log(error)
-            setIsLoading(prevLoad=> !prevLoad)
-            toast.error(error.message)
+            console.log(error);
+            setIsLoading((prevLoad) => !prevLoad);
+            toast.error(error.message);
           });
       }, 3000);
-    } else {
+    }
+    if (demoId) {
       axios
-        .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/update/updateregister", {
-          firstname,
-          lastname,
-          contact,
-          location,
-          occupation,
-          certificate,
-          isActive,
-          username,
-        })
+        .post(
+          "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/update/updateregister",
+          {
+            firstname,
+            lastname,
+            contact,
+            location,
+            occupation,
+            certificate,
+            nationalID: demoId,
+            isActive,
+            username,
+          }
+        )
         .then((data) => {
           console.log("hi:", data);
-          console.log("Hello", certificate);
+          console.log("Hello", nationalID);
           // console.log("Hello", picture_video);
           // console.log("Hello", location);
-          setIsLoading(prevLoad=> !prevLoad)
-          toast.success('Account created Succesfully')
+          setIsLoading((prevLoad) => !prevLoad);
+          toast.success("Account created Succesfully");
           setTimeout(() => {
             navigate(`/login`);
-          },[3000])
+          }, [3000]);
         })
         .catch((error) => {
-          console.log(error)
-          setIsLoading(prevLoad=> !prevLoad)
-          toast.error(error.message)
+          console.log(error);
+          // setIsLoading((prevLoad) => !prevLoad);
+          // toast.error(error.message);
         });
     }
   };
 
-   let load
-   if(isLoading) {
-    load = <Spinner as="span" animation="border" role="status" size="sm" aria-hidden="true" />
-   }
-
+  let load;
+  if (isLoading) {
+    load = (
+      <Spinner
+        as="span"
+        animation="border"
+        role="status"
+        size="sm"
+        aria-hidden="true"
+      />
+    );
+  }
 
   return (
     <div className="artisanForm--container">
-      <ToastContainer/>
+      <ToastContainer />
       <div className="artisanAccount--left">
         <Header />
         <div className="artisanLeft--container">
@@ -246,10 +218,11 @@ function ArtisanRegistration() {
               </div>
             </div>
             <div className="artisanCreate--btn">
-              {demoId ? 
-              <button>Submit</button> : 
-              <button onClick={()=>setIsLoading(true)}>Save {load}</button>
-              }
+              {demoId ? (
+                <button onClick={() => setIsLoading(true)}>Submit</button>
+              ) : (
+                <button onClick={() => setIsLoading(true)}>Save {load}</button>
+              )}
             </div>
           </form>
         </div>
