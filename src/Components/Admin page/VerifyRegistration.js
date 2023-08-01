@@ -7,42 +7,47 @@ import "./VerifyArtisan.css";
 // import Sentiment from "sentiment";
 import Form from "react-bootstrap/Form";
 import "./Search.css";
-import Spinner from 'react-bootstrap/Spinner'
+import Spinner from "react-bootstrap/Spinner";
 // import { DivStyle } from "../StyledComponents";
 
 function VerifyRegistration() {
   const [artisan, setArtisan] = useState([]);
   const [search, setSearch] = useState("");
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
   // const [review, setReviews] = useState([]);
   const role = "artisan";
   useEffect(() => {
     axios
-      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/data/getdata", { role })
+      .post(
+        "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/data/getdata",
+        { role }
+      )
       .then((data) => {
         // console.log(data.data)
         setArtisan(data.data);
-        setIsLoading(false)
+        setIsLoading(false);
       })
       .catch((error) => console.log(error));
   }, []);
 
   const filter = artisan.filter((item) => {
-  const firstNameLower = item.firstname ? item.firstname.toLowerCase() : '';
-  const lastNameLower = item.lastname ? item.lastname.toLowerCase() : '';
-  const locationLower = item.location ? item.location.toLowerCase() : '';
-  const emailLower = item.email ? item.email.toLowerCase() : '';
-  const occupationLower = item.occupation ? item.occupation.toLowerCase() : '';
-  const searchLower = search ? search.toLowerCase() : '';
+    const firstNameLower = item.firstname ? item.firstname.toLowerCase() : "";
+    const lastNameLower = item.lastname ? item.lastname.toLowerCase() : "";
+    const locationLower = item.location ? item.location.toLowerCase() : "";
+    const emailLower = item.email ? item.email.toLowerCase() : "";
+    const occupationLower = item.occupation
+      ? item.occupation.toLowerCase()
+      : "";
+    const searchLower = search ? search.toLowerCase() : "";
 
-  return (
-    firstNameLower.includes(searchLower) ||
-    lastNameLower.includes(searchLower) ||
-    locationLower.includes(searchLower) ||
-    occupationLower.includes(searchLower) ||
-    emailLower.includes(searchLower)
-  );
-});
+    return (
+      firstNameLower.includes(searchLower) ||
+      lastNameLower.includes(searchLower) ||
+      locationLower.includes(searchLower) ||
+      occupationLower.includes(searchLower) ||
+      emailLower.includes(searchLower)
+    );
+  });
 
   // const calculateSentiment = (reviews) => {
   //   if (reviews.length === 0 || reviews.length === null) {
@@ -95,24 +100,27 @@ function VerifyRegistration() {
   //   });
   // };
 
-  if(isLoading){
-    return(
-      <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
-        <Spinner animation="grow" role="status" style={{color: '#7200CC'}}>
+  if (isLoading) {
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "90vh" }}
+      >
+        <Spinner animation="grow" role="status" style={{ color: "#7200CC" }}>
           <span className="visually-hidden">Loading...</span>
         </Spinner>
       </div>
-    )
+    );
   }
 
   const style = {
-    color: '#7200CC'
-  }
+    color: "#7200CC",
+  };
 
   return (
     <div className="Table--container">
       <Container className="mt-3">
-      <div className="sticky--container">
+        <div className="sticky--container">
           <Form>
             <Form.Control
               placeholder="Search users"
@@ -123,36 +131,40 @@ function VerifyRegistration() {
           </Form>
         </div>
         {/* <DivStyle> */}
-          <Table bordered hover responsive style={style}>
-            <thead>
-              <tr>
-                <th>Username</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
-                <th>National ID</th>
-                <th>Certificate</th>
-                {/* <th>Results</th> */}
-                <th>Status</th>
+        <Table bordered hover responsive style={style}>
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+              <th>National ID</th>
+              <th>Certificate</th>
+              <th>Results</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filter.map((item) => (
+              <tr key={item.id}>
+                <td>{item.username}</td>
+                <td>{item.firstname}</td>
+                <td>{item.lastname}</td>
+                <td>{item.email}</td>
+                <td>{item.nationalID}</td>
+                <td>{item.certificate}</td>
+                <td>{item.sentimentScores}</td>
+                <td>
+                  {item.isVerified ? (
+                    <MdVerified size={50} color="#7200CC" />
+                  ) : (
+                    "Not Verified"
+                  )}
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {filter.map((item) => (
-                <tr key={item.id}>
-                  <td>{item.username}</td>
-                  <td>{item.firstname}</td>
-                  <td>{item.lastname}</td>
-                  <td>{item.email}</td>
-                  <td>{item.nationalID}</td>
-                  <td>{item.certificate}</td>
-                  {/* <td>{sentimentScore(item.reviews)}</td> */}
-                  <td>
-                    {item.isVerified ? <MdVerified size={50} color="#7200CC" /> : "Not Verified"}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+            ))}
+          </tbody>
+        </Table>
         {/* </DivStyle> */}
       </Container>
     </div>
