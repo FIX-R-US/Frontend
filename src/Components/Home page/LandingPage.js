@@ -28,7 +28,7 @@ function LandingPage() {
                  </div>
                  <div className='aboutUs'>
                     <button className='landingright--btn' onClick={()=>navigate('createAccount')}>Get Started</button>
-                    <p className="p-tag">
+                    <p>
                         Already have an account? {''}
                         <a href="/login" className="login--link">
                             Login

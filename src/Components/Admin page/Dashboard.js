@@ -71,10 +71,6 @@ function Dashboard() {
     )
   }
 
-  const style ={
-    color: '#7200CC'
-  }
-
   return (
     <div>
       <Container>
@@ -82,7 +78,7 @@ function Dashboard() {
           <div className="admin--cardDiv">
             <h5 style={{ color: "#7200CC" }}>Analytics</h5>
             {/* <DivStyle> */}
-              <div className="admin--cardContent" style={style}>
+              <div className="admin--cardContent">
                 <Card
                   className="users--overview"
                   onClick={() => navigate("/login/admin/manageUsers")}
@@ -185,7 +181,7 @@ function Dashboard() {
           <div className="admin--verification">
             <h5 style={{ color: "#7200CC" }}>Report</h5>
             {/* <DivStyle> */}
-              <div className="admin--verificationContent" style={style}>
+              <div className="admin--verificationContent">
                 <Card
                   className="verification--overview"
                   style={{ height: "89.72vh" }}

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Table from "react-bootstrap/Table";
+// import Table from "react-bootstrap/Table";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
@@ -7,7 +7,7 @@ import "./Search.css";
 import "./Management.css";
 import axios from "axios";
 import Spinner from 'react-bootstrap/Spinner'
-// import { DivStyle } from "../StyledComponents";
+import { CustomTable } from "../StyledComponents";
 
 function UserManagement() {
   const [search, setSearch] = useState("");
@@ -65,10 +65,6 @@ function UserManagement() {
     )
   }
 
-  const style = {
-    color: '#7200CC'
-  }
-
   return (
     <div className="Table--container">
       <Container>
@@ -82,8 +78,7 @@ function UserManagement() {
             />
           </Form>
         </div>
-        {/* <DivStyle> */}
-          <Table bordered hover responsive style={style}>
+          <CustomTable bordered hover responsive>
             <thead>
               <tr>
                 <th>Username</th>
@@ -124,8 +119,7 @@ function UserManagement() {
                 </tr>
               ))}
             </tbody>
-          </Table>
-        {/* </DivStyle> */}
+          </CustomTable>
       </Container>
     </div>
   );

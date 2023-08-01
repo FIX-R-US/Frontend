@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
-import Table from "react-bootstrap/Table";
+// import Table from "react-bootstrap/Table";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,7 +9,7 @@ import { BsFillTrash3Fill } from "react-icons/bs";
 import Spinner from "react-bootstrap/Spinner";
 import "./ArtisanBooking.css";
 import Prompts from "../../Prompts";
-// import { DivStyle } from "../StyledComponents";
+import { CustomTable } from "../StyledComponents";
 
 function ArtisanBookings() {
   const [books, setBookings] = useState([]);
@@ -131,10 +131,6 @@ function ArtisanBookings() {
     );
   }
 
-  const style ={
-    color: '#7200CC'
-  }
-
   const openModal = () => {
     setShowModal(prevShow => !prevShow)
   }
@@ -161,8 +157,7 @@ function ArtisanBookings() {
             />
           </div>
         )}
-        {/* <DivStyle> */}
-          <Table bordered hover responsive style={style}>
+          <CustomTable bordered hover responsive>
             <thead>
               <tr>
                 <th>Firstname</th>
@@ -208,8 +203,7 @@ function ArtisanBookings() {
                 </tr>
               ))}
             </tbody>
-          </Table>
-        {/* </DivStyle> */}
+          </CustomTable>
 
         <Modal show={selectedBooking !== null} onHide={handleCloseModal}>
           <Modal.Header closeButton>
