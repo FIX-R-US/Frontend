@@ -8,6 +8,7 @@ import "./VerifyArtisan.css";
 import Form from "react-bootstrap/Form";
 import "./Search.css";
 import Spinner from 'react-bootstrap/Spinner'
+import { DivStyle } from "../StyledComponents";
 
 function VerifyRegistration() {
   const [artisan, setArtisan] = useState([]);
@@ -117,36 +118,38 @@ function VerifyRegistration() {
             />
           </Form>
         </div>
-        <Table bordered hover responsive style={{ color: "#7200CC" }}>
-          <thead>
-            <tr>
-              <th>Username</th>
-              <th>Firstname</th>
-              <th>Lastname</th>
-              <th>Email</th>
-              <th>National ID</th>
-              <th>Certificate</th>
-              {/* <th>Results</th> */}
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filter.map((item) => (
-              <tr key={item.id}>
-                <td>{item.username}</td>
-                <td>{item.firstname}</td>
-                <td>{item.lastname}</td>
-                <td>{item.email}</td>
-                <td>{item.nationalID}</td>
-                <td>{item.certificate}</td>
-                {/* <td>{sentimentScore(item.reviews)}</td> */}
-                <td>
-                  {item.isVerified ? <MdVerified size={50} color="#7200CC" /> : "Not Verified"}
-                </td>
+        <DivStyle>
+          <Table bordered hover responsive style={{ color: "#7200CC" }}>
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>National ID</th>
+                <th>Certificate</th>
+                {/* <th>Results</th> */}
+                <th>Status</th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
+            </thead>
+            <tbody>
+              {filter.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.username}</td>
+                  <td>{item.firstname}</td>
+                  <td>{item.lastname}</td>
+                  <td>{item.email}</td>
+                  <td>{item.nationalID}</td>
+                  <td>{item.certificate}</td>
+                  {/* <td>{sentimentScore(item.reviews)}</td> */}
+                  <td>
+                    {item.isVerified ? <MdVerified size={50} color="#7200CC" /> : "Not Verified"}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </DivStyle>
       </Container>
     </div>
   );

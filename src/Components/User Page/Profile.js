@@ -11,13 +11,6 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Profile() {
-  // const [showUsername, setShowUsername] = useState("Snipes");
-  // const [showFirstname, setShowFirstname] = useState("Samuel");
-  // const [showLastname, setShowLastname] = useState("Nyame");
-  // const [showEmail, setShowEmail] = useState("samuelbaafi309@gmail.com");
-  // const [showContact, setShowContact] = useState("0559389586");
-  // const [showLocation, setShowLocation] = useState("Ayeduase, KNUST");
-  // const [profilePic, setProfilePic] = useState();
   const UsernameRef = useRef();
   const FirstnameRef = useRef();
   const LastnameRef = useRef();
@@ -30,6 +23,7 @@ function Profile() {
   // eslint-disable-next-line
   const [pic, setCert] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoading2, setIsLoading2] = useState(true)
   const [artisan, setArtisan] = useState({
     username: "",
     id: "",
@@ -60,6 +54,7 @@ function Profile() {
             lastname: data.data[0].lastname,
             location: data.data[0].location,
           });
+          setIsLoading2(false)
         });
     };
     handlePost();
@@ -157,6 +152,16 @@ function Profile() {
     );
   }
 
+  if(isLoading2){
+    return(
+      <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
+        <Spinner animation="grow" role="status" style={{color: '#7200CC'}}>
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div>
+    )
+  }
+
   return (
     <div className="profile--container">
       <ToastContainer />
@@ -195,7 +200,7 @@ function Profile() {
             <div className="profile--fields">
               <label>Contact</label>
               <input
-                type="phone"
+                type="number"
                 ref={ContactRef}
                 placeholder={artisan.contact}
               />

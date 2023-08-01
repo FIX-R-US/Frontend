@@ -21,3 +21,7 @@ export const StyledDiv = styled.div`
     margin-left: 50px;
   }
 `;
+
+export const DivStyle = styled.div`
+  color: #7200CC
+`

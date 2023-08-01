@@ -204,7 +204,7 @@ function ArtisanRegistration() {
               </div>
               <div className="artisanCreate--field">
                 <label htmlFor="contact">Contact</label>
-                <input type="phone" required id="contact" ref={contactRef} />
+                <input type="number" required id="contact" ref={contactRef} />
               </div>
               <div className="artisanCreate--field">
                 <label htmlFor="location">Location</label>

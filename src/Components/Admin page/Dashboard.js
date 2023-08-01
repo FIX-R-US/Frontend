@@ -8,17 +8,14 @@ import "./Dashboard.css";
 import { PieChart, Pie, Tooltip, Cell } from "recharts";
 import { useNavigate } from "react-router-dom";
 import Spinner from 'react-bootstrap/Spinner'
+import { DivStyle } from "../StyledComponents";
 
 
 function Dashboard() {
   const [artisan, setArtisan] = useState([]);
   const [user, setUser] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
-  // const [userActive, setActive] = useState([]);
-  // const [userInactive, setInactive] = useState([]);
-  // const [userInactiveA, setInactiveA] = useState([]);
-  // const [userActiveA, setActiveA] = useState([]);
-  // const data = [{ name: "User", pv: artisan.length }];
+  
   useEffect(() => {
     const fetchData = async () => {
       const role = "user";
@@ -45,46 +42,7 @@ function Dashboard() {
     fetchme();
   }, []);
 
-  // useEffect(() => {
-  //   const fetchactive = async () => {
-  //     const role = "user";
-  //     const isActive = "1";
-  //     const userResponse = await axios.post("http://localhost:3001/active/me", {
-  //       role,
-  //       isActive,
-  //     });
-  //     setActive(userResponse.data);
-
-  //     const artisanResponse = await axios.post(
-  //       "http://localhost:3001/active/me",
-  //       { role: "user", isActive: "0" }
-  //     );
-  //     setInactive(artisanResponse.data);
-  //   };
-
-  //   fetchactive();
-  // }, []);
-
-  // useEffect(() => {
-  //   const fetchartisan = async () => {
-  //     const role = "artisan";
-  //     const isActive = "1";
-  //     const userResponse = await axios.post("http://localhost:3001/active/me", {
-  //       role,
-  //       isActive,
-  //     });
-  //     setActiveA(userResponse.data);
-
-  //     const artisanResponse = await axios.post(
-  //       "http://localhost:3001/active/me",
-  //       { role: "artisan", isActive: "0" }
-  //     );
-  //     setInactiveA(artisanResponse.data);
-  //   };
-
-  //   fetchartisan();
-  // }, []);
-
+  
   const navigate = useNavigate();
 
   const totalArtisans = artisan.length;
@@ -116,149 +74,152 @@ function Dashboard() {
   return (
     <div>
       <Container>
-        {/* <h1 style={{textAlign: 'center', color:'#7200CC'}}>Overview</h1> */}
         <div className="dashboard--container">
           <div className="admin--cardDiv">
             <h5 style={{ color: "#7200CC" }}>Analytics</h5>
-            <div className="admin--cardContent">
-              <Card
-                className="users--overview"
-                onClick={() => navigate("/login/admin/manageUsers")}
-              >
-                <Card.Body style={{ textAlign: "center" }}>
-                  <h1>
-                    <HiUsers />
-                  </h1>
-                  <h1>{user.length}</h1>
-                  <h5>Users</h5>
-                </Card.Body>
-              </Card>
-              <Card
-                className="users--overview"
-                onClick={() => navigate("/login/admin/manageUsers")}
-              >
-                <Card.Body style={{ textAlign: "center" }}>
-                  <h1>
-                    <HiUsers />
-                  </h1>
-                  <h1>{user.filter((item) => item.isActive).length}</h1>
-                  <h5>Active Users</h5>
-                </Card.Body>
-              </Card>
-              <Card
-                className="users--overview"
-                onClick={() => navigate("/login/admin/manageUsers")}
-              >
-                <Card.Body style={{ textAlign: "center" }}>
-                  <h1>
-                    <HiUsers />
-                  </h1>
-                  <h1>{user.filter((item) => !item.isActive).length}</h1>
-                  <h5>Inactive Users</h5>
-                </Card.Body>
-              </Card>
-              <Card
-                className="users--overview"
-                onClick={() => navigate("/login/admin/manageArtisans")}
-              >
-                <Card.Body style={{ textAlign: "center" }}>
-                  <h1>
-                    <MdEngineering />
-                  </h1>
-                  <h1>{artisan.length}</h1>
-                  <h5>Artisans</h5>
-                </Card.Body>
-              </Card>
-              <Card
-                className="users--overview"
-                onClick={() => navigate("/login/admin/manageArtisans")}
-              >
-                <Card.Body style={{ textAlign: "center" }}>
-                  <h1>
-                    <MdEngineering />
-                  </h1>
-                  <h1>{artisan.filter((item) => item.isActive).length}</h1>
-                  <h5>Active artisans</h5>
-                </Card.Body>
-              </Card>
-              <Card
-                className="users--overview"
-                onClick={() => navigate("/login/admin/manageArtisans")}
-              >
-                <Card.Body style={{ textAlign: "center" }}>
-                  <h1>
-                    <MdEngineering />
-                  </h1>
-                  <h1>{artisan.filter((item) => !item.isActive).length}</h1>
-                  <h5>Inactive artisans</h5>
-                </Card.Body>
-              </Card>
-              <Card
-                className="users--overview"
-                onClick={() => navigate("/login/admin/manageArtisans")}
-              >
-                <Card.Body style={{ textAlign: "center" }}>
-                  <h1>
-                    <MdEngineering />
-                  </h1>
-                  <h1>{artisan.filter((item) => item.paymentMade).length}</h1>
-                  <h5>Payments Made</h5>
-                </Card.Body>
-              </Card>
-              <Card
-                className="users--overview"
-                onClick={() => navigate("/login/admin/manageArtisans")}
-              >
-                <Card.Body style={{ textAlign: "center" }}>
-                  <h1>
-                    <MdEngineering />
-                  </h1>
-                  <h1>{artisan.filter((item) => !item.paymentMade).length}</h1>
-                  <h5>No Payments</h5>
-                </Card.Body>
-              </Card>
-            </div>
+            <DivStyle>
+              <div className="admin--cardContent">
+                <Card
+                  className="users--overview"
+                  onClick={() => navigate("/login/admin/manageUsers")}
+                >
+                  <Card.Body style={{ textAlign: "center" }}>
+                    <h1>
+                      <HiUsers />
+                    </h1>
+                    <h1>{user.length}</h1>
+                    <h5>Users</h5>
+                  </Card.Body>
+                </Card>
+                <Card
+                  className="users--overview"
+                  onClick={() => navigate("/login/admin/manageUsers")}
+                >
+                  <Card.Body style={{ textAlign: "center" }}>
+                    <h1>
+                      <HiUsers />
+                    </h1>
+                    <h1>{user.filter((item) => item.isActive).length}</h1>
+                    <h5>Active Users</h5>
+                  </Card.Body>
+                </Card>
+                <Card
+                  className="users--overview"
+                  onClick={() => navigate("/login/admin/manageUsers")}
+                >
+                  <Card.Body style={{ textAlign: "center" }}>
+                    <h1>
+                      <HiUsers />
+                    </h1>
+                    <h1>{user.filter((item) => !item.isActive).length}</h1>
+                    <h5>Inactive Users</h5>
+                  </Card.Body>
+                </Card>
+                <Card
+                  className="users--overview"
+                  onClick={() => navigate("/login/admin/manageArtisans")}
+                >
+                  <Card.Body style={{ textAlign: "center" }}>
+                    <h1>
+                      <MdEngineering />
+                    </h1>
+                    <h1>{artisan.length}</h1>
+                    <h5>Artisans</h5>
+                  </Card.Body>
+                </Card>
+                <Card
+                  className="users--overview"
+                  onClick={() => navigate("/login/admin/manageArtisans")}
+                >
+                  <Card.Body style={{ textAlign: "center" }}>
+                    <h1>
+                      <MdEngineering />
+                    </h1>
+                    <h1>{artisan.filter((item) => item.isActive).length}</h1>
+                    <h5>Active artisans</h5>
+                  </Card.Body>
+                </Card>
+                <Card
+                  className="users--overview"
+                  onClick={() => navigate("/login/admin/manageArtisans")}
+                >
+                  <Card.Body style={{ textAlign: "center" }}>
+                    <h1>
+                      <MdEngineering />
+                    </h1>
+                    <h1>{artisan.filter((item) => !item.isActive).length}</h1>
+                    <h5>Inactive artisans</h5>
+                  </Card.Body>
+                </Card>
+                <Card
+                  className="users--overview"
+                  onClick={() => navigate("/login/admin/manageArtisans")}
+                >
+                  <Card.Body style={{ textAlign: "center" }}>
+                    <h1>
+                      <MdEngineering />
+                    </h1>
+                    <h1>{artisan.filter((item) => item.paymentMade).length}</h1>
+                    <h5>Payments Made</h5>
+                  </Card.Body>
+                </Card>
+                <Card
+                  className="users--overview"
+                  onClick={() => navigate("/login/admin/manageArtisans")}
+                >
+                  <Card.Body style={{ textAlign: "center" }}>
+                    <h1>
+                      <MdEngineering />
+                    </h1>
+                    <h1>{artisan.filter((item) => !item.paymentMade).length}</h1>
+                    <h5>No Payments</h5>
+                  </Card.Body>
+                </Card>
+              </div>
+            </DivStyle>
           </div>
           <div className="admin--verification">
             <h5 style={{ color: "#7200CC" }}>Report</h5>
-            <div className="admin--verificationContent">
-              <Card
-                className="verification--overview"
-                style={{ height: "89.72vh" }}
-                onClick={() => navigate("/login/admin/verifyArtisans")}
-              >
-                <Card.Body style={{ textAlign: "center" }}>
-                  <h5>VERIFICATION</h5>
-                  <p>
-                    Verified Artisans:{" "}
-                    {artisan.filter((item) => item.isVerified).length}
-                  </p>
-                  <p>
-                    Unverified Artisans:{" "}
-                    {artisan.filter((item) => !item.isVerified).length}
-                  </p>
-                  <PieChart width={525} height={420}>
-                    <Pie
-                      data={chartData}
-                      cx="50%"
-                      cy="50%"
-                      labelLine={false}
-                      outerRadius={180}
-                      dataKey="value"
-                    >
-                      {chartData.map((entry, index) => (
-                        <Cell
-                          key={`cell-${index}`}
-                          fill={COLORS[index % COLORS.length]}
-                        />
-                      ))}
-                    </Pie>
-                    <Tooltip />
-                  </PieChart>
-                  <h5>Percentage scale</h5>
-                </Card.Body>
-              </Card>
-            </div>
+            <DivStyle>
+              <div className="admin--verificationContent">
+                <Card
+                  className="verification--overview"
+                  style={{ height: "89.72vh" }}
+                  onClick={() => navigate("/login/admin/verifyArtisans")}
+                >
+                  <Card.Body style={{ textAlign: "center" }}>
+                    <h5>VERIFICATION</h5>
+                    <p>
+                      Verified Artisans:{" "}
+                      {artisan.filter((item) => item.isVerified).length}
+                    </p>
+                    <p>
+                      Unverified Artisans:{" "}
+                      {artisan.filter((item) => !item.isVerified).length}
+                    </p>
+                    <PieChart width={525} height={420}>
+                      <Pie
+                        data={chartData}
+                        cx="50%"
+                        cy="50%"
+                        labelLine={false}
+                        outerRadius={180}
+                        dataKey="value"
+                      >
+                        {chartData.map((entry, index) => (
+                          <Cell
+                            key={`cell-${index}`}
+                            fill={COLORS[index % COLORS.length]}
+                          />
+                        ))}
+                      </Pie>
+                      <Tooltip />
+                    </PieChart>
+                    <h5>Percentage scale</h5>
+                  </Card.Body>
+                </Card>
+              </div>
+            </DivStyle>
           </div>
         </div>
       </Container>

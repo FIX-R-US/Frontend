@@ -24,6 +24,7 @@ function EditArtisanProfile() {
   // eslint-disable-next-line
   const [pic, setCert] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoading2, setIsLoading2] = useState(true)
   const [artisan, setArtisan] = useState({
     username: "",
     id: "",
@@ -56,6 +57,7 @@ function EditArtisanProfile() {
             location: data.data[0].location,
             Description: data.data[0].Description,
           });
+          setIsLoading2(false)
         });
     };
     handlePost();
@@ -156,6 +158,16 @@ function EditArtisanProfile() {
     );
   }
 
+  if(isLoading2){
+    return(
+      <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
+        <Spinner animation="grow" role="status" style={{color: '#7200CC'}}>
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div>
+    )
+  }
+
   return (
     <div className="artisanProfile--container">
       <ToastContainer />
@@ -194,7 +206,7 @@ function EditArtisanProfile() {
             <div className="artisanProfile--fields">
               <label>Contact</label>
               <input
-                type="phone"
+                type="number"
                 ref={ContactRef}
                 placeholder={artisan.contact}
               />

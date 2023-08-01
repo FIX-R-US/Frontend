@@ -7,6 +7,7 @@ import "./Search.css";
 import "./Management.css";
 import axios from "axios";
 import Spinner from 'react-bootstrap/Spinner'
+import { DivStyle } from "../StyledComponents";
 
 function UserManagement() {
   const [search, setSearch] = useState("");
@@ -77,48 +78,50 @@ function UserManagement() {
             />
           </Form>
         </div>
-        <Table bordered hover responsive style={{ color: "#7200CC" }}>
-          <thead>
-            <tr>
-              <th>Username</th>
-              <th>Firstname</th>
-              <th>Lastname</th>
-              <th>Email</th>
-              <th>Contact</th>
-              <th>Location</th>
-              <th>isActive</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filter.map((item) => (
-              <tr key={item.id}>
-                <td>{item.username}</td>
-                <td>{item.firstname}</td>
-                <td>{item.lastname}</td>
-                <td>{item.email}</td>
-                <td>{item.contact}</td>
-                <td>{item.location}</td>
-                <td>
-                  {item.isActive ? (
-                    <button
-                      className="admin--btn"
-                      onClick={() => handleAccountToggle(item.id)}
-                    >
-                      Deactivate
-                    </button>
-                  ) : (
-                    <button
-                      className="admin--btn"
-                      onClick={() => handleAccountToggle(item.id)}
-                    >
-                      Activate
-                    </button>
-                  )}
-                </td>
+        <DivStyle>
+          <Table bordered hover responsive>
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Location</th>
+                <th>isActive</th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
+            </thead>
+            <tbody>
+              {filter.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.username}</td>
+                  <td>{item.firstname}</td>
+                  <td>{item.lastname}</td>
+                  <td>{item.email}</td>
+                  <td>{item.contact}</td>
+                  <td>{item.location}</td>
+                  <td>
+                    {item.isActive ? (
+                      <button
+                        className="admin--btn"
+                        onClick={() => handleAccountToggle(item.id)}
+                      >
+                        Deactivate
+                      </button>
+                    ) : (
+                      <button
+                        className="admin--btn"
+                        onClick={() => handleAccountToggle(item.id)}
+                      >
+                        Activate
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </DivStyle>
       </Container>
     </div>
   );

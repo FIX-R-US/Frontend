@@ -9,6 +9,7 @@ import { BsFillTrash3Fill } from "react-icons/bs";
 import Spinner from "react-bootstrap/Spinner";
 import "./ArtisanBooking.css";
 import Prompts from "../../Prompts";
+import { DivStyle } from "../StyledComponents";
 
 function ArtisanBookings() {
   const [books, setBookings] = useState([]);
@@ -156,53 +157,55 @@ function ArtisanBookings() {
             />
           </div>
         )}
-        <Table bordered hover responsive style={{ color: "#7200CC" }}>
-          <thead>
-            <tr>
-              <th>Firstname</th>
-              <th>Lastname</th>
-              <th>Email</th>
-              <th>Contact</th>
-              <th>Location</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {books.map((item) => (
-              <tr key={item.id}>
-                { <Prompts showModal={showModal2} hideModal={openModal2} title={'Decline booking'} 
-                  message={'Are you sure you want to decline booking?'} 
-                  action={() => handleDeclineBooking(item.id)}/>
-                }
-                <td>{item.firstname}</td>
-                <td>{item.lastname}</td>
-                <td>{item.email}</td>
-                <td>{item.contact}</td>
-                <td>{item.location}</td>
-                <td style={{ display: "flex", gap: "10px" }}>
-                  {item.accepted ? (
-                    <span>Agreed Price: {item.agreedPrice}</span>
-                  ) : (
-                    <>
-                      <button
-                        className="admin--btn"
-                        onClick={() => handleAcceptBooking(item)}
-                      >
-                        Accept
-                      </button>
-                      <button
-                        className="admin--btn"
-                        onClick={openModal2}
-                      >
-                        Decline
-                      </button>
-                    </>
-                  )}
-                </td>
+        <DivStyle>
+          <Table bordered hover responsive>
+            <thead>
+              <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Location</th>
+                <th>Action</th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
+            </thead>
+            <tbody>
+              {books.map((item) => (
+                <tr key={item.id}>
+                  { <Prompts showModal={showModal2} hideModal={openModal2} title={'Decline booking'} 
+                    message={'Are you sure you want to decline booking?'} 
+                    action={() => handleDeclineBooking(item.id)}/>
+                  }
+                  <td>{item.firstname}</td>
+                  <td>{item.lastname}</td>
+                  <td>{item.email}</td>
+                  <td>{item.contact}</td>
+                  <td>{item.location}</td>
+                  <td style={{ display: "flex", gap: "10px" }}>
+                    {item.accepted ? (
+                      <span>Agreed Price: {item.agreedPrice}</span>
+                    ) : (
+                      <>
+                        <button
+                          className="admin--btn"
+                          onClick={() => handleAcceptBooking(item)}
+                        >
+                          Accept
+                        </button>
+                        <button
+                          className="admin--btn"
+                          onClick={openModal2}
+                        >
+                          Decline
+                        </button>
+                      </>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </DivStyle>
 
         <Modal show={selectedBooking !== null} onHide={handleCloseModal}>
           <Modal.Header closeButton>

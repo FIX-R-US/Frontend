@@ -8,6 +8,7 @@ import "./Management.css";
 import { MdVerified } from "react-icons/md";
 import axios from "axios";
 import Spinner from 'react-bootstrap/Spinner'
+import { DivStyle } from "../StyledComponents";
 
 function ArtisanManagement() {
   const [artisan, setArtisan] = useState([]);
@@ -108,76 +109,78 @@ function ArtisanManagement() {
             />
           </Form>
         </div>
-        <Table bordered hover responsive style={{color: "#7200CC"}}>
-          <thead>
-            <tr>
-              <th>Username</th>
-              <th>Firstname</th>
-              <th>Lastname</th>
-              <th>Email</th>
-              <th>Contact</th>
-              <th>Location</th>
-              <th>Occupation</th>
-              <th>isVerified</th>
-              {/* <th>paymentMade</th> */}
-              <th>PaymentMade</th>
-              <th>isActive</th>
-              {/* <th>isActive</th> */}
-            </tr>
-          </thead>
-          <tbody>
-            {filter.map((item) => (
-              <tr key={item.id}>
-                <td>{item.username}</td>
-                <td>{item.firstname}</td>
-                <td>{item.lastname}</td>
-                <td>{item.email}</td>
-                <td>{item.contact}</td>
-                <td>{item.location}</td>
-                <td>{item.occupation}</td>
-                <td>
-                  {item.isVerified ? <MdVerified size={40} color="#7200CC"/> : "Not verified"}
-                </td>
-                {/* <td>{item.paymentMade ? "Yes" : "No"}</td> */}
-                <td>
-                  {item.paymentMade ? (
-                    <button
-                      className="admin--btn"
-                      onClick={() => handlePaymentToggle(item.id)}
-                    >
-                      Yes
-                    </button>
-                  ) : (
-                    <button
-                      className="admin--btn"
-                      onClick={() => handlePaymentToggle(item.id)}
-                    >
-                      No
-                    </button>
-                  )}
-                </td>
-                <td>
-                  {item.isActive ? (
-                    <button
-                      className="admin--btn"
-                      onClick={() => handleAccountToggle(item.id)}
-                    >
-                      Deactivate
-                    </button>
-                  ) : (
-                    <button
-                      className="admin--btn"
-                      onClick={() => handleAccountToggle(item.id)}
-                    >
-                      Activate
-                    </button>
-                  )}
-                </td>
-                {/* <td>{item.isActive ? "Yes" : "No"}</td> */}
+        <DivStyle>
+          <Table bordered hover responsive>
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Location</th>
+                <th>Occupation</th>
+                <th>isVerified</th>
+                {/* <th>paymentMade</th> */}
+                <th>PaymentMade</th>
+                <th>isActive</th>
+                {/* <th>isActive</th> */}
               </tr>
-            ))}
-          </tbody>
-        </Table>
+            </thead>
+            <tbody>
+              {filter.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.username}</td>
+                  <td>{item.firstname}</td>
+                  <td>{item.lastname}</td>
+                  <td>{item.email}</td>
+                  <td>{item.contact}</td>
+                  <td>{item.location}</td>
+                  <td>{item.occupation}</td>
+                  <td>
+                    {item.isVerified ? <MdVerified size={40} color="#7200CC"/> : "Not verified"}
+                  </td>
+                  {/* <td>{item.paymentMade ? "Yes" : "No"}</td> */}
+                  <td>
+                    {item.paymentMade ? (
+                      <button
+                        className="admin--btn"
+                        onClick={() => handlePaymentToggle(item.id)}
+                      >
+                        Yes
+                      </button>
+                    ) : (
+                      <button
+                        className="admin--btn"
+                        onClick={() => handlePaymentToggle(item.id)}
+                      >
+                        No
+                      </button>
+                    )}
+                  </td>
+                  <td>
+                    {item.isActive ? (
+                      <button
+                        className="admin--btn"
+                        onClick={() => handleAccountToggle(item.id)}
+                      >
+                        Deactivate
+                      </button>
+                    ) : (
+                      <button
+                        className="admin--btn"
+                        onClick={() => handleAccountToggle(item.id)}
+                      >
+                        Activate
+                      </button>
+                    )}
+                  </td>
+                  {/* <td>{item.isActive ? "Yes" : "No"}</td> */}
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </DivStyle>
       </Container>
     </div>
   );

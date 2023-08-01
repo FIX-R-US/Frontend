@@ -72,7 +72,7 @@ function UserRegistration() {
               </div>
               <div className="userCreate--field">
                 <label htmlFor="contact">Contact</label>
-                <input type="phone" required id="contact" ref={contactRef} />
+                <input type="number" required id="contact" ref={contactRef} />
               </div>
               <div className="userCreate--field">
                 <label htmlFor="location">Location</label>
