@@ -36,7 +36,9 @@ function ResetPassword2() {
         .then((data) => {
           toast.success("Password Changed");
           console.log(data);
-          navigate("/login");
+          setTimeout(() => {
+            navigate("/login");
+          },[3000])
         })
         .catch((error) => console.log(error));
     }
