@@ -23,7 +23,7 @@ function Profile() {
   // eslint-disable-next-line
   const [pic, setCert] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isLoading2, setIsLoading2] = useState(true)
+  const [isLoading2, setIsLoading2] = useState(true);
   const [artisan, setArtisan] = useState({
     username: "",
     id: "",
@@ -54,7 +54,7 @@ function Profile() {
             lastname: data.data[0].lastname,
             location: data.data[0].location,
           });
-          setIsLoading2(false)
+          setIsLoading2(false);
         });
     };
     handlePost();
@@ -69,74 +69,81 @@ function Profile() {
     const contact = ContactRef.current.value;
     const location = LocationRef.current.value;
     const profile_photo = ProfilepicRef.current.files[0];
+    axios
+      .post("http://localhost:3001/username/checkUser", { username, email })
+      .then((data) => {
+        if (data.data.length !== 0) {
+          toast.error("username or email exists");
+        } else {
+          const send = async (inputs) => {
+            await axios
+              .post(
+                "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/editp/editprofile",
+                { inputs }
+              )
+              .then((data) => {
+                console.log(data);
+                setIsLoading((prevLoading) => !prevLoading);
+                toast.success("Profile updated");
+                setTimeout(() => {
+                  navigate("/login/user/home");
+                }, [3000]);
+              })
+              .catch((error) => console.log(error));
+          };
 
-    const send = async (inputs) => {
-      await axios
-        .post(
-          "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/editp/editprofile",
-          { inputs }
-        )
-        .then((data) => {
-          console.log(data);
-          setIsLoading((prevLoading) => !prevLoading);
-          toast.success("Profile updated");
-          setTimeout(() => {
-            navigate("/login/user/home");
-          }, [3000]);
-        })
-        .catch((error) => console.log(error));
-    };
+          // console.log("Saving profile data:", profileData);
+          if (profile_photo !== undefined && profile_photo !== null) {
+            const storageRef = ref(
+              storage,
+              `/docs/profilepics/${profile_photo.name}` + id
+            );
+            const uploadTask = uploadBytesResumable(storageRef, profile_photo);
+            uploadTask
+              .then(() => {
+                getDownloadURL(uploadTask.snapshot.ref)
+                  .then((url) => {
+                    console.log(url);
+                    // eslint-disable-next-line
+                    const profile_photo = pic !== undefined ? `${pic}` : null;
 
-    // console.log("Saving profile data:", profileData);
-    if (profile_photo !== undefined && profile_photo !== null) {
-      const storageRef = ref(
-        storage,
-        `/docs/profilepics/${profile_photo.name}` + id
-      );
-      const uploadTask = uploadBytesResumable(storageRef, profile_photo);
-      uploadTask
-        .then(() => {
-          getDownloadURL(uploadTask.snapshot.ref)
-            .then((url) => {
-              console.log(url);
-              // eslint-disable-next-line
-              const profile_photo = pic !== undefined ? `${pic}` : null;
-
-              const values = {
-                username,
-                firstname,
-                lastname,
-                email,
-                contact,
-                location,
-                profile_photo: url,
-                id,
-              };
-              console.log("identity: ", id);
-              send(values);
-              // setCert(url);
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-          console.log();
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else {
-      const values = {
-        username,
-        firstname,
-        lastname,
-        email,
-        contact,
-        location,
-        profile_photo,
-        id,
-      };
-      send(values);
-    }
+                    const values = {
+                      username,
+                      firstname,
+                      lastname,
+                      email,
+                      contact,
+                      location,
+                      profile_photo: url,
+                      id,
+                    };
+                    console.log("identity: ", id);
+                    send(values);
+                    // setCert(url);
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
+                console.log();
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          } else {
+            const values = {
+              username,
+              firstname,
+              lastname,
+              email,
+              contact,
+              location,
+              profile_photo,
+              id,
+            };
+            send(values);
+          }
+        }
+      });
   };
 
   let load;
@@ -152,14 +159,17 @@ function Profile() {
     );
   }
 
-  if(isLoading2){
-    return(
-      <div className="d-flex justify-content-center align-items-center" style={{ height: "90vh" }}>
-        <Spinner animation="grow" role="status" style={{color: '#7200CC'}}>
+  if (isLoading2) {
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "90vh" }}
+      >
+        <Spinner animation="grow" role="status" style={{ color: "#7200CC" }}>
           <span className="visually-hidden">Loading...</span>
         </Spinner>
       </div>
-    )
+    );
   }
 
   return (
