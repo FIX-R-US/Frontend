@@ -34,25 +34,34 @@ function CreateAccount() {
     } else {
       axios
         .post(
-          `https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/auth1/register1`,
-          {
-            username,
-            email,
-            password,
-            role,
-          }
+          "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/username/checkUser",
+          { username, email }
         )
         .then((data) => {
-          console.log(data);
-          setIsLoading((prevLoad) => !prevLoad);
-          setTimeout(() => {
-            navigate(`${role}/${username}`);
-          }, [3000]);
+          if (data.data.length != 0) {
+            setIsLoading((prevLoad) => !prevLoad);
+            toast.error("username or email exists");
+          } else {
+            axios
+              .post(
+                "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/auth1/register1",
+                {
+                  username,
+                  email,
+                  password,
+                  role,
+                }
+              )
+              .then((data) => {
+                console.log(data);
+                setTimeout(() => {
+                  navigate(`${role}/${username}`);
+                }, [3000]);
+              })
+              .catch((error) => console.log(error));
+          }
         })
-        .catch((error) => {
-          console.log(error);
-          toast.error(error.message);
-        });
+        .catch((error) => console.log(error));
     }
   };
 
