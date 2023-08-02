@@ -113,10 +113,13 @@ function ArtisanBookings() {
     const jobcompleted = "1";
     if (jobcompleted) {
       axios
-        .post("http://localhost:3001/workedbooks/clear", {
-          jobcompleted,
-          artisan_id,
-        })
+        .post(
+          "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/workedbooks/clear",
+          {
+            jobcompleted,
+            artisan_id,
+          }
+        )
         .then((data) => {
           setBookings(deleteAll);
           console.log(data.data);
