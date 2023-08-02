@@ -257,10 +257,7 @@ function ArtisanBookings() {
                       </>
                     )
                   ) : (
-                    <button className="admin--btn" disabled>
-                      {" "}
-                      Not accepted
-                    </button>
+                    <span>Not Accepetd</span>
                   )}
                 </td>
               </tr>
