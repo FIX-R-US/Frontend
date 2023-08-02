@@ -124,12 +124,27 @@ function ArtisanBookings() {
         toast.info("Bookings worked on deleted");
       });
   };
-  const handleCompleteClick = () => {
-    const updatedBooking = books.map((booking) =>
-      booking.id ? { ...booking, jobcompleted: true } : booking
-    );
-    setBookings(updatedBooking);
-    // console.log("hi");
+  const handleCompleteClick = (item) => {
+    axios
+      .post(
+        "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/completed/job",
+        {
+          artisan_firstname,
+          artisan_lastname,
+          agreedPrice: item.agreedPrice,
+          email: item.email,
+          jobcompleted: true,
+          id: item.id,
+        }
+      )
+      .then((data) => {
+        console.log(data.data);
+        const updatedBooking = books.map((booking) =>
+          booking.id === item.id ? { ...booking, jobcompleted: true } : booking
+        );
+        setBookings(updatedBooking);
+        console.log("hi");
+      });
   };
 
   const hasAcceptedBooking = books.some((booking) => booking.accepted);
