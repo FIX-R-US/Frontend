@@ -69,13 +69,16 @@ function ArtisanProfile2() {
   }, []);
 
   useEffect(() => {
-    const accepted = "1";
+    let accepted = "1" || "0";
     axios
-      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/accept/booked", {
-        artisan_id,
-        user_id,
-        accepted,
-      })
+      .post(
+        "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/accept/booked",
+        {
+          artisan_id,
+          user_id,
+          accepted,
+        }
+      )
       .then((data) => {
         // console.log("hi", data);
         if (data.data.length === 0) {
@@ -84,7 +87,7 @@ function ArtisanProfile2() {
           setIsAccepted(true);
         }
       });
-      // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -150,7 +153,35 @@ function ArtisanProfile2() {
       toast.error(error.message);
     }
   };
+  const handleCancel = () => {
+    const artisan_firstname = artisan.firstname;
+    const artisan_lastname = artisan.firstname;
+    const artisan_email = artisan.email;
+    const user_firstname = firstname;
+    const user_lastname = lastname;
 
+    axios
+      .post(
+        "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/booking/cancel",
+        {
+          artisan_id,
+          user_id,
+          artisan_email,
+          artisan_firstname,
+          artisan_lastname,
+          user_firstname,
+          user_lastname,
+        }
+      )
+      .then((data) => {
+        console.log(data);
+        toast.error(`Booking Cancelled`);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        toast.error(error.message);
+      });
+  };
   useEffect(() => {
     axios
       .post(
@@ -269,7 +300,7 @@ function ArtisanProfile2() {
                 <p className="p">{artisan.Description}</p>
               </div>
             )}
-            <div style={{display:"flex", alignItems: 'center', gap: '5px'}}>
+            <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
               {isRequested ? (
                 <button disabled className="book--btn">
                   Requested
@@ -280,7 +311,13 @@ function ArtisanProfile2() {
                 </button>
               )}
 
-              {isAccepted ? (<button className="book--btn">Cancel</button>) : ''}
+              {isRequested ? (
+                <button className="book--btn" onClick={handleCancel}>
+                  Cancel
+                </button>
+              ) : (
+                ""
+              )}
             </div>
             {review.length > 0 && (
               <div className="artisan--bottom">
