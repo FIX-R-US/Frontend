@@ -7,15 +7,14 @@ import Header from "../../Components/Home page/Header";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Spinner from 'react-bootstrap/Spinner'
-
+import Spinner from "react-bootstrap/Spinner";
 
 function Login() {
   const navigate = useNavigate();
   const UsernameRef = useRef();
   const passwordRef = useRef();
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,15 +23,18 @@ function Login() {
     //console.log(username, password);
 
     axios
-      .post(`https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/auth/login`, { username, password })
+      .post(`https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/auth/login`, {
+        username,
+        password,
+      })
       .then((data) => {
         sessionStorage.setItem("user", JSON.stringify(data.data.user));
         console.log(data);
         if (data.data.user.isActive === 0) {
-          setIsLoading(prevLoading => !prevLoading)
+          setIsLoading((prevLoading) => !prevLoading);
           toast.error("Account deactivated");
         } else {
-          setIsLoading(prevLoading => !prevLoading)
+          setIsLoading((prevLoading) => !prevLoading);
           toast.success("Login successful");
           setTimeout(() => {
             navigate(`${data.data.user.role}/home`);
@@ -67,8 +69,8 @@ function Login() {
             errorMessage = error.response.data.password;
           }
         }
-        toast.error(errorMessage);
-        setIsLoading(prevLoading => !prevLoading)
+        toast.error(error.response.data);
+        setIsLoading((prevLoading) => !prevLoading);
         console.log(error);
       });
   };
@@ -77,10 +79,18 @@ function Login() {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
-  let load
-   if(isLoading) {
-    load = <Spinner as="span" animation="border" role="status" size="sm" aria-hidden="true" />
-   }
+  let load;
+  if (isLoading) {
+    load = (
+      <Spinner
+        as="span"
+        animation="border"
+        role="status"
+        size="sm"
+        aria-hidden="true"
+      />
+    );
+  }
 
   return (
     <div className="form--wrapper">
@@ -124,7 +134,9 @@ function Login() {
               </div>
             </div>
             <div className="btn--container">
-              <button className="login--btn" onClick={()=>setIsLoading(true)}>Log In {load}</button>
+              <button className="login--btn" onClick={() => setIsLoading(true)}>
+                Log In {load}
+              </button>
               <div className="links">
                 <a href="/forgotPassword" className="login--link">
                   Forgot Password

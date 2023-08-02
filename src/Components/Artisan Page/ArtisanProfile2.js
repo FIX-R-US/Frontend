@@ -69,27 +69,27 @@ function ArtisanProfile2() {
     // eslint-disable-next-line
   }, []);
 
-  useEffect(() => {
-    let accepted = "1" || "0";
-    axios
-      .post(
-        "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/accept/booked",
-        {
-        artisan_id,
-        user_id,
-        accepted,
-        }
-      )
-      .then((data) => {
-        // console.log("hi", data);
-        if (data.data.length === 0) {
-          setIsAccepted(false);
-        } else {
-          setIsAccepted(true);
-        }
-      });
-      // eslint-disable-next-line
-  }, []);
+  // useEffect(() => {
+  //   let accepted = "1" || "0";
+  //   axios
+  //     .post(
+  //       "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/accept/booked",
+  //       {
+  //       artisan_id,
+  //       user_id,
+  //       accepted,
+  //       }
+  //     )
+  //     .then((data) => {
+  //       // console.log("hi", data);
+  //       if (data.data.length === 0) {
+  //         setIsAccepted(false);
+  //       } else {
+  //         setIsAccepted(true);
+  //       }
+  //     });
+  //     // eslint-disable-next-line
+  // }, []);
 
   useEffect(() => {
     const fetchDetails = async () => {
