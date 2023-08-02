@@ -108,23 +108,24 @@ function ArtisanBookings() {
   };
 
   const deleteAllBookings = () => {
-    const deleteAll = books.filter((booking) => !booking.accepted);
+    const deleteAll = books.filter((booking) => !booking.jobcompleted);
     //API call
-    const accepted = "1";
-    axios
-      .post(
-        "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/workedbooks/clear",
-        {
-          accepted,
+    const jobcompleted = "1";
+    if (jobcompleted) {
+      axios
+        .post("http://localhost:3001/workedbooks/clear", {
+          jobcompleted,
           artisan_id,
-        }
-      )
-      .then((data) => {
-        setBookings(deleteAll);
-        console.log(data.data);
-        setShowModal((prevState) => !prevState);
-        toast.info("Bookings worked on deleted");
-      });
+        })
+        .then((data) => {
+          setBookings(deleteAll);
+          console.log(data.data);
+          setShowModal((prevState) => !prevState);
+          toast.info("Bookings worked on deleted");
+        });
+    } else {
+      return toast.info("Complete Jobs First");
+    }
   };
   const handleCompleteClick = (item) => {
     axios
