@@ -127,7 +127,7 @@ function Login() {
               <button className="login--btn" onClick={()=>setIsLoading(true)}>Log In {load}</button>
               <div className="links">
                 <a href="/forgotPassword" className="login--link">
-                  Forgotten Password?
+                  Forgot Password
                 </a>
               </div>
             </div>

@@ -14,7 +14,7 @@
   @media (max-width: 480px) {
     .sidebar {
       --sidebar-width-closed: 40px;
-      --sidebar-width-open: 240px;
+      --sidebar-width-open: 250px;
     }
   }
   
