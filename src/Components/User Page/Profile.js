@@ -216,7 +216,7 @@ function Profile() {
               <input
                 type="number"
                 ref={ContactRef}
-                placeholder={artisan.contact}
+                placeholder={`0${artisan.contact}`}
               />
             </div>
             <div className="profile--fields">

@@ -1,3 +1,4 @@
+import { Table } from 'react-bootstrap';
 import styled from 'styled-components'
 
 export const StyledDiv = styled.div`
@@ -22,6 +23,6 @@ export const StyledDiv = styled.div`
   }
 `;
 
-export const DivStyle = styled.div`
-  color: #7200CC
-`
+export const CustomTable = styled(Table)`
+  color: #7200CC;
+`;

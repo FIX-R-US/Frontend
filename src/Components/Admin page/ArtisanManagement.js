@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-import Table from "react-bootstrap/Table";
+// import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import { useState, useEffect } from "react";
 import "./Search.css";
@@ -8,7 +8,7 @@ import "./Management.css";
 import { MdVerified } from "react-icons/md";
 import axios from "axios";
 import Spinner from 'react-bootstrap/Spinner'
-// import { DivStyle } from "../StyledComponents";
+import { CustomTable } from "../StyledComponents";
 
 function ArtisanManagement() {
   const [artisan, setArtisan] = useState([]);
@@ -96,10 +96,6 @@ function ArtisanManagement() {
     )
   }
 
-  const style ={
-    color:'#7200CC'
-  }
-
   return (
     <div className="Table--container">
       <Container>
@@ -113,8 +109,7 @@ function ArtisanManagement() {
             />
           </Form>
         </div>
-        {/* <DivStyle> */}
-          <Table bordered hover responsive style={style}>
+          <CustomTable bordered hover responsive>
             <thead>
               <tr>
                 <th>Username</th>
@@ -138,7 +133,7 @@ function ArtisanManagement() {
                   <td>{item.firstname}</td>
                   <td>{item.lastname}</td>
                   <td>{item.email}</td>
-                  <td>{item.contact}</td>
+                  <td>0{item.contact}</td>
                   <td>{item.location}</td>
                   <td>{item.occupation}</td>
                   <td>
@@ -183,8 +178,7 @@ function ArtisanManagement() {
                 </tr>
               ))}
             </tbody>
-          </Table>
-        {/* </DivStyle> */}
+          </CustomTable>
       </Container>
     </div>
   );

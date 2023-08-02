@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
-import Table from "react-bootstrap/Table";
+// import Table from "react-bootstrap/Table";
 import axios from "axios";
 import { MdVerified } from "react-icons/md";
 import "./VerifyArtisan.css";
@@ -8,7 +8,7 @@ import "./VerifyArtisan.css";
 import Form from "react-bootstrap/Form";
 import "./Search.css";
 import Spinner from "react-bootstrap/Spinner";
-// import { DivStyle } from "../StyledComponents";
+import { CustomTable } from "../StyledComponents";
 
 function VerifyRegistration() {
   const [artisan, setArtisan] = useState([]);
@@ -113,10 +113,6 @@ function VerifyRegistration() {
     );
   }
 
-  const style = {
-    color: "#7200CC",
-  };
-
   return (
     <div className="Table--container">
       <Container className="mt-3">
@@ -130,8 +126,7 @@ function VerifyRegistration() {
             />
           </Form>
         </div>
-        {/* <DivStyle> */}
-        <Table bordered hover responsive style={style}>
+        <CustomTable bordered hover responsive>
           <thead>
             <tr>
               <th>Username</th>
@@ -164,8 +159,7 @@ function VerifyRegistration() {
               </tr>
             ))}
           </tbody>
-        </Table>
-        {/* </DivStyle> */}
+        </CustomTable>
       </Container>
     </div>
   );
