@@ -45,6 +45,7 @@ function ArtisanProfile2() {
   });
   const [review, setReviews] = useState([]);
   const [isRequested, setIsRequested] = useState(false);
+  // eslint-disable-next-line
   const [isAccepted, setIsAccepted] = useState(false);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -74,9 +75,9 @@ function ArtisanProfile2() {
       .post(
         "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/accept/booked",
         {
-          artisan_id,
-          user_id,
-          accepted,
+        artisan_id,
+        user_id,
+        accepted,
         }
       )
       .then((data) => {
@@ -87,7 +88,7 @@ function ArtisanProfile2() {
           setIsAccepted(true);
         }
       });
-    // eslint-disable-next-line
+      // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
