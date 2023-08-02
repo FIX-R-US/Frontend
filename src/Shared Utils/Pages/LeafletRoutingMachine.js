@@ -27,7 +27,7 @@ function LeafletRoutingMachine() {
             ],
             geocoder: L.Control.Geocoder.nominatim(),
             showAlternatives: true,
-            collapsed: true
+            collapsible: true
           }).addTo(map);
     })
 }

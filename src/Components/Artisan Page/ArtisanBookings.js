@@ -19,6 +19,7 @@ function ArtisanBookings() {
   const [isLoading, setIsLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
+  const [showModal3, setShowModal3] = useState(false);
   // console.log("table", tableId);
   const artisan_id = sessionStorage.getItem("id");
   const artisan_firstname = sessionStorage.getItem("firstname");
@@ -111,7 +112,7 @@ function ArtisanBookings() {
     const deleteAll = books.filter((booking) => !booking.jobcompleted);
     //API call
     const jobcompleted = "1";
-    if (jobcompleted) {
+    if (jobcompleted === '1') {
       axios
         .post(
           "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/workedbooks/clear",
@@ -149,7 +150,7 @@ function ArtisanBookings() {
           booking.id === item.id ? { ...booking, jobcompleted: true } : booking
         );
         setBookings(updatedBooking);
-        console.log("hi");
+        // console.log("hi");
       });
   };
 
@@ -174,6 +175,10 @@ function ArtisanBookings() {
 
   const openModal2 = () => {
     setShowModal2((prevShow) => !prevShow);
+  };
+
+  const openModal3 = () => {
+    setShowModal3((prevShow) => !prevShow);
   };
 
   return (
@@ -223,6 +228,15 @@ function ArtisanBookings() {
                     action={() => handleDeclineBooking(item.id)}
                   />
                 }
+                {
+                   <Prompts
+                   showModal={showModal3}
+                   hideModal={openModal3}
+                   title={"Confirm job completion"}
+                   message={"Have you completed the job?"}
+                   action={() => handleCompleteClick(item)}
+                 />
+                }
                 <td>{item.firstname}</td>
                 <td>{item.lastname}</td>
                 <td>{item.email}</td>
@@ -253,7 +267,7 @@ function ArtisanBookings() {
                       <>
                         <button
                           className="admin--btn"
-                          onClick={() => handleCompleteClick(item)}
+                          onClick={openModal3}
                         >
                           Complete Job
                         </button>

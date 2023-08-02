@@ -71,19 +71,20 @@ function ArtisanProfile2() {
   useEffect(() => {
     const accepted = "1";
     axios
-      .post("http://localhost:3001/accept/booked", {
+      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/accept/booked", {
         artisan_id,
         user_id,
         accepted,
       })
       .then((data) => {
-        console.log("hi", data);
+        // console.log("hi", data);
         if (data.data.length === 0) {
           setIsAccepted(false);
         } else {
           setIsAccepted(true);
         }
       });
+      // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -273,7 +274,7 @@ function ArtisanProfile2() {
                 Requested
               </button>
             ) : isAccepted ? (
-              <button>Booked</button>
+              <button className="book--btn">Cancel booking</button>
             ) : (
               <button onClick={openModal} className="book--btn">
                 Book {load}
