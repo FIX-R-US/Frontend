@@ -179,8 +179,8 @@ function ArtisanBookings() {
       <Prompts
         showModal={showModal}
         hideModal={openModal}
-        title={"Delete all Agreed bookings"}
-        message={"Do you want to delete all agreed bookings?"}
+        title={"Delete all Completed Jobs"}
+        message={"Do you want to delete all Jobs Completed?"}
         action={() => deleteAllBookings(books.id)}
       />
       <Container>
