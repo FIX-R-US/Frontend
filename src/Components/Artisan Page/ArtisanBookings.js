@@ -128,7 +128,7 @@ function ArtisanBookings() {
           toast.info("Bookings worked on deleted");
         });
     } else {
-      return toast.info("Complete Jobs First");
+       toast.info("Complete Jobs First");
     }
   };
   const handleCompleteClick = (item) => {
