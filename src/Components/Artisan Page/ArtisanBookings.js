@@ -150,6 +150,7 @@ function ArtisanBookings() {
           booking.id === item.id ? { ...booking, jobcompleted: true } : booking
         );
         setBookings(updatedBooking);
+        setShowModal3(prevShow => !prevShow)
         // console.log("hi");
       });
   };
