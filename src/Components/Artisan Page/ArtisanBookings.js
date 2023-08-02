@@ -187,6 +187,7 @@ function ArtisanBookings() {
               <th>Contact</th>
               <th>Location</th>
               <th>Action</th>
+              <th>Completion Status</th>
             </tr>
           </thead>
           <tbody>
