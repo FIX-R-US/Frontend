@@ -269,17 +269,19 @@ function ArtisanProfile2() {
                 <p className="p">{artisan.Description}</p>
               </div>
             )}
-            {isRequested ? (
-              <button disabled className="book--btn">
-                Requested
-              </button>
-            ) : isAccepted ? (
-              <button className="book--btn">Cancel booking</button>
-            ) : (
-              <button onClick={openModal} className="book--btn">
-                Book {load}
-              </button>
-            )}
+            <div style={{display:"flex", alignItems: 'center', gap: '5px'}}>
+              {isRequested ? (
+                <button disabled className="book--btn">
+                  Requested
+                </button>
+              ) : (
+                <button onClick={openModal} className="book--btn">
+                  Book {load}
+                </button>
+              )}
+
+              {isAccepted ? (<button className="book--btn">Cancel</button>) : ''}
+            </div>
             {review.length > 0 && (
               <div className="artisan--bottom">
                 <h5>Reviews</h5>

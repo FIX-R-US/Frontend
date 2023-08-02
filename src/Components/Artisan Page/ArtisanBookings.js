@@ -125,7 +125,7 @@ function ArtisanBookings() {
           setBookings(deleteAll);
           console.log(data.data);
           setShowModal((prevState) => !prevState);
-          toast.info("Bookings worked on deleted");
+          toast.info("Deleted");
         });
     } else {
        toast.info("Complete Jobs First");
