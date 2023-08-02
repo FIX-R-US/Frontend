@@ -46,7 +46,7 @@ function ArtisanProfile2() {
   const [review, setReviews] = useState([]);
   const [isRequested, setIsRequested] = useState(false);
   // eslint-disable-next-line
-  const [isAccepted, setIsAccepted] = useState(false);
+  // const [isAccepted, setIsAccepted] = useState(false);
 
   const [isLoading, setIsLoading] = useState(true);
   const [loading, setLoading] = useState(false);
