@@ -155,7 +155,7 @@ function ArtisanBookings() {
       });
   };
 
-  const hasAcceptedBooking = books.some((booking) => booking.accepted);
+  const hasAcceptedBooking = books.some((booking) => booking.jobcompleted);
 
   if (isLoading) {
     return (
