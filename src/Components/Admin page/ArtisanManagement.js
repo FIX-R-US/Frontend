@@ -133,7 +133,7 @@ function ArtisanManagement() {
                   <td>{item.firstname}</td>
                   <td>{item.lastname}</td>
                   <td>{item.email}</td>
-                  <td>{item.contact}</td>
+                  <td>0{item.contact}</td>
                   <td>{item.location}</td>
                   <td>{item.occupation}</td>
                   <td>

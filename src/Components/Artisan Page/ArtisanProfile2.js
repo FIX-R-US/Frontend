@@ -242,7 +242,7 @@ function ArtisanProfile2() {
                 </h2>
                 <p className="p">{artisan.occupation}</p>
                 <p className="p">{artisan.location}</p>
-                <p className="p">{artisan.contact}</p>
+                <p className="p">0{artisan.contact}</p>
                 <p className="p">{artisan.email}</p>
                 <p className="p">{artisan.Description}</p>
               </div>

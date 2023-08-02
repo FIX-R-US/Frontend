@@ -25,4 +25,4 @@ export const StyledDiv = styled.div`
 
 export const CustomTable = styled(Table)`
   color: #7200CC;
-`
+`;

@@ -26,7 +26,8 @@ function LeafletRoutingMachine() {
               L.latLng()
             ],
             geocoder: L.Control.Geocoder.nominatim(),
-            showAlternatives: true
+            showAlternatives: true,
+            collapsible: true
           }).addTo(map);
     })
 }

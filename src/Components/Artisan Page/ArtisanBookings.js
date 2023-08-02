@@ -178,7 +178,7 @@ function ArtisanBookings() {
                   <td>{item.firstname}</td>
                   <td>{item.lastname}</td>
                   <td>{item.email}</td>
-                  <td>{item.contact}</td>
+                  <td>0{item.contact}</td>
                   <td>{item.location}</td>
                   <td style={{ display: "flex", gap: "10px" }}>
                     {item.accepted ? (
