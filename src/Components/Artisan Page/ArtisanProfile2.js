@@ -45,6 +45,8 @@ function ArtisanProfile2() {
   });
   const [review, setReviews] = useState([]);
   const [isRequested, setIsRequested] = useState(false);
+  const [isAccepted, setIsAccepted] = useState(false);
+
   const [isLoading, setIsLoading] = useState(true);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -65,6 +67,25 @@ function ArtisanProfile2() {
       });
     // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    const accepted = "1";
+    axios
+      .post("http://localhost:3001/accept/booked", {
+        artisan_id,
+        user_id,
+        accepted,
+      })
+      .then((data) => {
+        console.log("hi", data);
+        if (data.data.length === 0) {
+          setIsAccepted(false);
+        } else {
+          setIsAccepted(true);
+        }
+      });
+  }, []);
+
   useEffect(() => {
     const fetchDetails = async () => {
       await axios
@@ -251,6 +272,8 @@ function ArtisanProfile2() {
               <button disabled className="book--btn">
                 Requested
               </button>
+            ) : isAccepted ? (
+              <button>Booked</button>
             ) : (
               <button onClick={openModal} className="book--btn">
                 Book {load}
