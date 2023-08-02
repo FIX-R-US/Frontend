@@ -21,6 +21,8 @@ function ArtisanBookings() {
   const [showModal2, setShowModal2] = useState(false);
   // console.log("table", tableId);
   const artisan_id = sessionStorage.getItem("id");
+  const artisan_firstname = sessionStorage.getItem("firstname");
+  const artisan_lastname = sessionStorage.getItem("lastname");
   // console.log("hello", books);
   useEffect(() => {
     axios
