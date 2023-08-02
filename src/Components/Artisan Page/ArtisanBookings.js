@@ -17,14 +17,17 @@ function ArtisanBookings() {
   const [agreedPrice, setAgreedPrice] = useState("");
   const [tableId, setTableId] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [showModal, setShowModal] = useState(false)
-  const [showModal2, setShowModal2] = useState(false)
+  const [showModal, setShowModal] = useState(false);
+  const [showModal2, setShowModal2] = useState(false);
   // console.log("table", tableId);
   const artisan_id = sessionStorage.getItem("id");
   // console.log("hello", books);
   useEffect(() => {
     axios
-      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/hasbooked/book", { artisan_id })
+      .post(
+        "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/hasbooked/book",
+        { artisan_id }
+      )
       .then((data) => {
         // console.log(data.data);
         setBookings(data.data);
@@ -44,11 +47,14 @@ function ArtisanBookings() {
       return;
     }
     axios
-      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/booking/accept", {
-        accepted: true,
-        agreedPrice,
-        id: tableId,
-      })
+      .post(
+        "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/booking/accept",
+        {
+          accepted: true,
+          agreedPrice,
+          id: tableId,
+        }
+      )
       .then((data) => {
         console.log(data);
         setAgreedPrice(agreedPrice);
@@ -68,11 +74,8 @@ function ArtisanBookings() {
     setBookings(updatedBookings);
 
     setTimeout(() => {
-      toast.success(
-        `Booking accepted. Agreed Price: ${agreedPrice}`
-      );
-    },[2000])
-
+      toast.success(`Booking accepted. Agreed Price: ${agreedPrice}`);
+    }, [2000]);
 
     // const accepted = true;
   };
@@ -85,9 +88,12 @@ function ArtisanBookings() {
   const handleDeclineBooking = (id) => {
     const updatedBookings = books.filter((item) => item.id !== id);
     axios
-      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/book/deleted", { id })
+      .post(
+        "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/book/deleted",
+        { id }
+      )
       .then((data) => {
-        setShowModal2(prevShow => !prevShow)
+        setShowModal2((prevShow) => !prevShow);
         console.log(data);
         setBookings(updatedBookings);
         toast.error(`Booking rejected`);
@@ -104,19 +110,29 @@ function ArtisanBookings() {
     //API call
     const accepted = "1";
     axios
-      .post("https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/workedbooks/clear", {
-        accepted,
-        artisan_id,
-      })
+      .post(
+        "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/workedbooks/clear",
+        {
+          accepted,
+          artisan_id,
+        }
+      )
       .then((data) => {
         setBookings(deleteAll);
         console.log(data.data);
-        setShowModal(prevState => !prevState)
+        setShowModal((prevState) => !prevState);
         toast.info("Bookings worked on deleted");
       });
   };
+  const handleCompleteClick = () => {
+    const updatedBooking = books.map((booking) =>
+      booking.id ? { ...booking, jobcompleted: true } : booking
+    );
+    setBookings(updatedBooking);
+    // console.log("hi");
+  };
 
-  const hasAcceptedBooking = books.some((booking) => booking.accepted)
+  const hasAcceptedBooking = books.some((booking) => booking.accepted);
 
   if (isLoading) {
     return (
@@ -131,23 +147,28 @@ function ArtisanBookings() {
     );
   }
 
-  const style ={
-    color: '#7200CC'
-  }
+  const style = {
+    color: "#7200CC",
+  };
 
   const openModal = () => {
-    setShowModal(prevShow => !prevShow)
-  }
+    setShowModal((prevShow) => !prevShow);
+  };
 
   const openModal2 = () => {
-    setShowModal2(prevShow => !prevShow)
-  }
+    setShowModal2((prevShow) => !prevShow);
+  };
 
   return (
     <div className="Table--container">
       <ToastContainer />
-      <Prompts showModal={showModal} hideModal={openModal} title={'Delete all Agreed bookings'} 
-      message={'Do you want to delete all agreed bookings?'} action={() => deleteAllBookings(books.id)}/>
+      <Prompts
+        showModal={showModal}
+        hideModal={openModal}
+        title={"Delete all Agreed bookings"}
+        message={"Do you want to delete all agreed bookings?"}
+        action={() => deleteAllBookings(books.id)}
+      />
       <Container>
         <div style={{ textAlign: "center" }}>
           <h1 style={{ color: "#7200CC" }}>Bookings</h1>
@@ -162,53 +183,77 @@ function ArtisanBookings() {
           </div>
         )}
         {/* <DivStyle> */}
-          <Table bordered hover responsive style={style}>
-            <thead>
-              <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
-                <th>Contact</th>
-                <th>Location</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {books.map((item) => (
-                <tr key={item.id}>
-                  { <Prompts showModal={showModal2} hideModal={openModal2} title={'Decline booking'} 
-                    message={'Are you sure you want to decline booking?'} 
-                    action={() => handleDeclineBooking(item.id)}/>
-                  }
-                  <td>{item.firstname}</td>
-                  <td>{item.lastname}</td>
-                  <td>{item.email}</td>
-                  <td>{item.contact}</td>
-                  <td>{item.location}</td>
-                  <td style={{ display: "flex", gap: "10px" }}>
-                    {item.accepted ? (
-                      <span>Agreed Price: {item.agreedPrice}</span>
+        <Table bordered hover responsive style={style}>
+          <thead>
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+              <th>Contact</th>
+              <th>Location</th>
+              <th>Action</th>
+              <th>Completion Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {books.map((item) => (
+              <tr key={item.id}>
+                {
+                  <Prompts
+                    showModal={showModal2}
+                    hideModal={openModal2}
+                    title={"Decline booking"}
+                    message={"Are you sure you want to decline booking?"}
+                    action={() => handleDeclineBooking(item.id)}
+                  />
+                }
+                <td>{item.firstname}</td>
+                <td>{item.lastname}</td>
+                <td>{item.email}</td>
+                <td>{item.contact}</td>
+                <td>{item.location}</td>
+                <td style={{ display: "flex", gap: "10px" }}>
+                  {item.accepted ? (
+                    <span>Agreed Price: {item.agreedPrice}</span>
+                  ) : (
+                    <>
+                      <button
+                        className="admin--btn"
+                        onClick={() => handleAcceptBooking(item)}
+                      >
+                        Accept
+                      </button>
+                      <button className="admin--btn" onClick={openModal2}>
+                        Decline
+                      </button>
+                    </>
+                  )}
+                </td>
+                <td>
+                  {item.accepted ? (
+                    item.jobcompleted ? (
+                      <span>Job Completed</span>
                     ) : (
                       <>
                         <button
                           className="admin--btn"
-                          onClick={() => handleAcceptBooking(item)}
+                          onClick={() => handleCompleteClick(item)}
                         >
-                          Accept
-                        </button>
-                        <button
-                          className="admin--btn"
-                          onClick={openModal2}
-                        >
-                          Decline
+                          Complete Job
                         </button>
                       </>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+                    )
+                  ) : (
+                    <button className="admin--btn" disabled>
+                      {" "}
+                      Not accepted
+                    </button>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
         {/* </DivStyle> */}
 
         <Modal show={selectedBooking !== null} onHide={handleCloseModal}>
