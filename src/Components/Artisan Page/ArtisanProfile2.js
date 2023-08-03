@@ -50,7 +50,7 @@ function ArtisanProfile2() {
   const [loading1, setLoading1] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [showModal1, setShowModal1] = useState(false);
+  // const [showModal1, setShowModal1] = useState(false);
 
   useEffect(() => {
     axios
@@ -160,6 +160,8 @@ function ArtisanProfile2() {
     const artisan_email = artisan.email;
     const user_firstname = firstname;
     const user_lastname = lastname;
+    setLoading1(true)
+    // setShowModal1(prevShow => !prevShow)
 
     axios
       .post(
@@ -234,9 +236,9 @@ function ArtisanProfile2() {
     setShowModal((prevShow) => !prevShow);
   };
 
-  const openModal1 = () => {
-    setShowModal1((prevShow) => !prevShow);
-  };
+  // const openModal1 = () => {
+  //   setShowModal1((prevShow) => !prevShow);
+  // };
 
   if (isLoading) {
     return (
@@ -287,13 +289,13 @@ function ArtisanProfile2() {
         message={`Do you want to book ${artisan.firstname} ${artisan.lastname}?`}
         action={handleBooking}
       />
-      <Prompts
+      {/* <Prompts
         showModal={showModal1}
         hideModal={openModal1}
         title={"Cancel booking"}
         message={`Do you want to cancel booking with ${artisan.firstname} ${artisan.lastname}?`}
         action={handleCancel}
-      />
+      /> */}
       <Container>
         <ProfileHeader title={"Profile"} />
         <div className="whole--content">
@@ -339,7 +341,7 @@ function ArtisanProfile2() {
               )}
 
               {isRequested ? (
-                <button className="book--btn" onClick={openModal1}>
+                <button className="book--btn" onClick={handleCancel}>
                   Cancel {load1}
                 </button>
               ) : (
