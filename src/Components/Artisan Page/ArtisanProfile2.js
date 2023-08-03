@@ -273,7 +273,7 @@ function ArtisanProfile2() {
 
   let load1;
   if (loading1) {
-    load = (
+    load1 = (
       <Spinner
         as="span"
         animation="border"
@@ -298,7 +298,7 @@ function ArtisanProfile2() {
         showModal={showModal1}
         hideModal={openModal1}
         title={"Cancel booking"}
-        message={`Do you want to cancel booking with ${artisan.firstname} ${artisan.lastname}?`}
+        message={`Do you want to cancel your booking with ${artisan.firstname} ${artisan.lastname}?`}
         action={handleCancel}
       />
       <Container>
