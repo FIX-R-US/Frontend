@@ -156,7 +156,7 @@ function ArtisanProfile2() {
   };
   const handleCancel = () => {
     const artisan_firstname = artisan.firstname;
-    const artisan_lastname = artisan.firstname;
+    const artisan_lastname = artisan.lastname;
     const artisan_email = artisan.email;
     const user_firstname = firstname;
     const user_lastname = lastname;
