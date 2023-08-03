@@ -101,7 +101,8 @@ function EditArtisanProfile() {
               })
               .catch((error) => {
                 console.log(error);
-                toast.error(error.message);
+                setIsLoading((prevLoading) => !prevLoading);
+                toast.error('Profile update failed');
               });
           };
 

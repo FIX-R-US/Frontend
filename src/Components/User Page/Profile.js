@@ -93,7 +93,11 @@ function Profile() {
                   navigate("/login/user/home");
                 }, [3000]);
               })
-              .catch((error) => console.log(error));
+              .catch((error) => {
+                console.log(error)
+                setIsLoading((prevLoading) => !prevLoading);
+                toast.error('Profile update failed')
+              });
           };
 
           // console.log("Saving profile data:", profileData);

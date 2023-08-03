@@ -45,12 +45,12 @@ function ArtisanProfile2() {
   });
   const [review, setReviews] = useState([]);
   const [isRequested, setIsRequested] = useState(false);
-  // eslint-disable-next-line
   // const [isAccepted, setIsAccepted] = useState(false);
-
   const [isLoading, setIsLoading] = useState(true);
+  const [loading1, setLoading1] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showModal1, setShowModal1] = useState(false);
 
   useEffect(() => {
     axios
@@ -176,10 +176,12 @@ function ArtisanProfile2() {
       )
       .then((data) => {
         console.log(data);
-        toast.error(`Booking Cancelled`);
+        setLoading1(prevLoad => !prevLoad)
+        toast.info(`Booking Cancelled`);
       })
       .catch((error) => {
         console.log(error.message);
+        setLoading1(prevLoad => !prevLoad)
         toast.error(error.message);
       });
   };
@@ -232,6 +234,10 @@ function ArtisanProfile2() {
     setShowModal((prevShow) => !prevShow);
   };
 
+  const openModal1 = () => {
+    setShowModal1((prevShow) => !prevShow);
+  };
+
   if (isLoading) {
     return (
       <div
@@ -258,6 +264,19 @@ function ArtisanProfile2() {
     );
   }
 
+  let load1;
+  if (loading1) {
+    load = (
+      <Spinner
+        as="span"
+        animation="border"
+        role="status"
+        size="sm"
+        aria-hidden="true"
+      />
+    );
+  }
+
   return (
     <div className="profile--artisan-container">
       <ToastContainer />
@@ -267,6 +286,13 @@ function ArtisanProfile2() {
         title={"Booking"}
         message={`Do you want to book ${artisan.firstname} ${artisan.lastname}?`}
         action={handleBooking}
+      />
+      <Prompts
+        showModal={showModal1}
+        hideModal={openModal1}
+        title={"Cancel booking"}
+        message={`Do you want to cancel booking with ${artisan.firstname} ${artisan.lastname}?`}
+        action={handleCancel}
       />
       <Container>
         <ProfileHeader title={"Profile"} />
@@ -313,8 +339,8 @@ function ArtisanProfile2() {
               )}
 
               {isRequested ? (
-                <button className="book--btn" onClick={handleCancel}>
-                  Cancel
+                <button className="book--btn" onClick={openModal1}>
+                  Cancel {load1}
                 </button>
               ) : (
                 ""

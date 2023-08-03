@@ -76,10 +76,8 @@ function ArtisanBookings() {
 
     setBookings(updatedBookings);
 
-    setTimeout(() => {
       toast.success(`Booking accepted. Agreed Price: ${agreedPrice}`);
-    }, [2000]);
-
+   
     // const accepted = true;
   };
 
@@ -245,7 +243,7 @@ function ArtisanBookings() {
                 <td>{item.location}</td>
                 <td style={{ display: "flex", gap: "10px" }}>
                   {item.accepted ? (
-                    <span>Agreed Price: {item.agreedPrice}</span>
+                    <span>Agreed Price:{item.agreedPrice} cedis</span>
                   ) : (
                     <>
                       <button
@@ -275,7 +273,7 @@ function ArtisanBookings() {
                       </>
                     )
                   ) : (
-                    <span>Not Accepetd</span>
+                    <span>Not Accepted</span>
                   )}
                 </td>
               </tr>

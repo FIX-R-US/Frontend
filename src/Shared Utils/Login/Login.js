@@ -59,16 +59,6 @@ function Login() {
         }
       })
       .catch((error) => {
-        let errorMessage = "An error occurred during login";
-        if (error.response && error.response.data) {
-          if (error.response.data.message) {
-            errorMessage = error.response.data.message;
-          } else if (error.response.data.username) {
-            errorMessage = error.response.data.username;
-          } else if (error.response.data.password) {
-            errorMessage = error.response.data.password;
-          }
-        }
         toast.error(error.response.data);
         setIsLoading((prevLoading) => !prevLoading);
         console.log(error);
