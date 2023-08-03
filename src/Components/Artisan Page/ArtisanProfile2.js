@@ -45,13 +45,12 @@ function ArtisanProfile2() {
   });
   const [review, setReviews] = useState([]);
   const [isRequested, setIsRequested] = useState(false);
-  // eslint-disable-next-line
-  const [isAccepted, setIsAccepted] = useState(false);
+  // const [isAccepted, setIsAccepted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [loading1, setLoading1] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  // const [showModal1, setShowModal1] = useState(false);
+  const [showModal1, setShowModal1] = useState(false);
 
   useEffect(() => {
     axios
@@ -69,28 +68,28 @@ function ArtisanProfile2() {
       });
     // eslint-disable-next-line
   }, []);
-  // vv
-  useEffect(() => {
-    let accepted = "1" || "0";
-    axios
-      .post(
-        "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/accept/booked",
-        {
-          artisan_id,
-          user_id,
-          accepted,
-        }
-      )
-      .then((data) => {
-        // console.log("hi", data);
-        if (data.data.length === 0) {
-          setIsAccepted(false);
-        } else {
-          setIsAccepted(true);
-        }
-      });
-    // eslint-disable-next-line
-  }, []);
+  
+  // useEffect(() => {
+  //   let accepted = "1" || "0";
+  //   axios
+  //     .post(
+  //       "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/accept/booked",
+  //       {
+  //         artisan_id,
+  //         user_id,
+  //         accepted,
+  //       }
+  //     )
+  //     .then((data) => {
+  //       // console.log("hi", data);
+  //       if (data.data.length === 0) {
+  //         setIsAccepted(false);
+  //       } else {
+  //         setIsAccepted(true);
+  //       }
+  //     });
+  //   // eslint-disable-next-line
+  // }, []);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -162,7 +161,7 @@ function ArtisanProfile2() {
     const user_firstname = firstname;
     const user_lastname = lastname;
     setLoading1(true);
-    // setShowModal1(prevShow => !prevShow)
+    setShowModal1(prevShow => !prevShow)
 
     axios
       .post(
@@ -237,9 +236,9 @@ function ArtisanProfile2() {
     setShowModal((prevShow) => !prevShow);
   };
 
-  // const openModal1 = () => {
-  //   setShowModal1((prevShow) => !prevShow);
-  // };
+  const openModal1 = () => {
+    setShowModal1((prevShow) => !prevShow);
+  };
 
   if (isLoading) {
     return (
@@ -290,13 +289,13 @@ function ArtisanProfile2() {
         message={`Do you want to book ${artisan.firstname} ${artisan.lastname}?`}
         action={handleBooking}
       />
-      {/* <Prompts
+      <Prompts
         showModal={showModal1}
         hideModal={openModal1}
         title={"Cancel booking"}
         message={`Do you want to cancel booking with ${artisan.firstname} ${artisan.lastname}?`}
         action={handleCancel}
-      /> */}
+      />
       <Container>
         <ProfileHeader title={"Profile"} />
         <div className="whole--content">
@@ -342,7 +341,7 @@ function ArtisanProfile2() {
               )}
 
               {isRequested ? (
-                <button className="book--btn" onClick={handleCancel}>
+                <button className="book--btn" onClick={openModal1}>
                   Cancel {load1}
                 </button>
               ) : (
