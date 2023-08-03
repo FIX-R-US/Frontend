@@ -161,7 +161,7 @@ function ArtisanProfile2() {
     const artisan_email = artisan.email;
     const user_firstname = firstname;
     const user_lastname = lastname;
-    setLoading1(true)
+    setLoading1(true);
     // setShowModal1(prevShow => !prevShow)
 
     axios
