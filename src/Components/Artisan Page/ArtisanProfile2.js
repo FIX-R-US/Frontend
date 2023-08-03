@@ -45,7 +45,8 @@ function ArtisanProfile2() {
   });
   const [review, setReviews] = useState([]);
   const [isRequested, setIsRequested] = useState(false);
-  // const [isAccepted, setIsAccepted] = useState(false);
+  // eslint-disable-next-line
+  const [isAccepted, setIsAccepted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [loading1, setLoading1] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -69,27 +70,27 @@ function ArtisanProfile2() {
     // eslint-disable-next-line
   }, []);
 
-  // useEffect(() => {
-  //   let accepted = "1" || "0";
-  //   axios
-  //     .post(
-  //       "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/accept/booked",
-  //       {
-  //       artisan_id,
-  //       user_id,
-  //       accepted,
-  //       }
-  //     )
-  //     .then((data) => {
-  //       // console.log("hi", data);
-  //       if (data.data.length === 0) {
-  //         setIsAccepted(false);
-  //       } else {
-  //         setIsAccepted(true);
-  //       }
-  //     });
-  //     // eslint-disable-next-line
-  // }, []);
+  useEffect(() => {
+    let accepted = "1" || "0";
+    axios
+      .post(
+        "https://fix-r-us-backend-1f9302e2f7be.herokuapp.com/accept/booked",
+        {
+          artisan_id,
+          user_id,
+          accepted,
+        }
+      )
+      .then((data) => {
+        // console.log("hi", data);
+        if (data.data.length === 0) {
+          setIsAccepted(false);
+        } else {
+          setIsAccepted(true);
+        }
+      });
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -178,12 +179,12 @@ function ArtisanProfile2() {
       )
       .then((data) => {
         console.log(data);
-        setLoading1(prevLoad => !prevLoad)
+        setLoading1((prevLoad) => !prevLoad);
         toast.info(`Booking Cancelled`);
       })
       .catch((error) => {
         console.log(error.message);
-        setLoading1(prevLoad => !prevLoad)
+        setLoading1((prevLoad) => !prevLoad);
         toast.error(error.message);
       });
   };
