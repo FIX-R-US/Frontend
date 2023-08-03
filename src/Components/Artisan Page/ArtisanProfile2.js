@@ -69,7 +69,7 @@ function ArtisanProfile2() {
       });
     // eslint-disable-next-line
   }, []);
-
+  // vv
   useEffect(() => {
     let accepted = "1" || "0";
     axios
