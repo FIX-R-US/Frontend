@@ -17,6 +17,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from "react-bootstrap/Spinner";
 import Prompts from "../../Prompts";
+import { useNavigate } from "react-router-dom";
 
 function ArtisanProfile2() {
   const id = useParams().id;
@@ -51,6 +52,7 @@ function ArtisanProfile2() {
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showModal1, setShowModal1] = useState(false);
+  const navigate = useNavigate()
 
   useEffect(() => {
     axios
@@ -160,8 +162,8 @@ function ArtisanProfile2() {
     const artisan_email = artisan.email;
     const user_firstname = firstname;
     const user_lastname = lastname;
-    setLoading1(true);
     setShowModal1(prevShow => !prevShow)
+    setLoading1(true);
 
     axios
       .post(
@@ -180,6 +182,9 @@ function ArtisanProfile2() {
         console.log(data);
         setLoading1((prevLoad) => !prevLoad);
         toast.info(`Booking Cancelled`);
+        setTimeout(() => {
+          navigate("/login/user/home");
+        },[3000])
       })
       .catch((error) => {
         console.log(error.message);
